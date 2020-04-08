@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0591916A56CB56AF7985E723 /* Pods_Mime_GameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */; };
+		36BC041D243E1080005B753A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC041C243E1080005B753A /* AppDelegate.swift */; };
+		36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC041E243E1080005B753A /* SceneDelegate.swift */; };
+		36BC0421243E1080005B753A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0420243E1080005B753A /* ViewController.swift */; };
+		36BC0424243E1081005B753A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BC0422243E1081005B753A /* Main.storyboard */; };
+		36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0425243E1081005B753A /* Mime_Game.xcdatamodeld */; };
+		36BC0429243E1083005B753A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BC0428243E1083005B753A /* Assets.xcassets */; };
+		36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BC042A243E1083005B753A /* LaunchScreen.storyboard */; };
+		36BC0437243E1083005B753A /* Mime_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0436243E1083005B753A /* Mime_GameTests.swift */; };
+		F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		36BC0433243E1083005B753A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36BC0411243E1080005B753A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36BC0418243E1080005B753A;
+			remoteInfo = "Mime Game";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0DC1904EF892B7EA68E9AB00 /* Pods-Mime GameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime GameTests.debug.xcconfig"; path = "Target Support Files/Pods-Mime GameTests/Pods-Mime GameTests.debug.xcconfig"; sourceTree = "<group>"; };
+		280206A99F7FD16FFF0E75BC /* Pods-Mime GameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime GameTests.release.xcconfig"; path = "Target Support Files/Pods-Mime GameTests/Pods-Mime GameTests.release.xcconfig"; sourceTree = "<group>"; };
+		2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.release.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.release.xcconfig"; sourceTree = "<group>"; };
+		36BC0419243E1080005B753A /* Mime Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mime Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36BC041C243E1080005B753A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		36BC041E243E1080005B753A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		36BC0420243E1080005B753A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		36BC0423243E1081005B753A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36BC0426243E1081005B753A /* Mime_Game.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mime_Game.xcdatamodel; sourceTree = "<group>"; };
+		36BC0428243E1083005B753A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36BC042B243E1083005B753A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		36BC042D243E1083005B753A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36BC0432243E1083005B753A /* Mime GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mime GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36BC0436243E1083005B753A /* Mime_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime_GameTests.swift; sourceTree = "<group>"; };
+		36BC0438243E1083005B753A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
+		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		36BC0416243E1080005B753A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36BC042F243E1083005B753A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0591916A56CB56AF7985E723 /* Pods_Mime_GameTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36BC0410243E1080005B753A = {
+			isa = PBXGroup;
+			children = (
+				36BC041B243E1080005B753A /* Mime Game */,
+				36BC0435243E1083005B753A /* Mime GameTests */,
+				36BC041A243E1080005B753A /* Products */,
+				71E4627A6CC6AFEE02425049 /* Pods */,
+				C08ADCE8D6EA85BB448FFF3B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		36BC041A243E1080005B753A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36BC0419243E1080005B753A /* Mime Game.app */,
+				36BC0432243E1083005B753A /* Mime GameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		36BC041B243E1080005B753A /* Mime Game */ = {
+			isa = PBXGroup;
+			children = (
+				36BC041C243E1080005B753A /* AppDelegate.swift */,
+				36BC041E243E1080005B753A /* SceneDelegate.swift */,
+				36BC0420243E1080005B753A /* ViewController.swift */,
+				36BC0422243E1081005B753A /* Main.storyboard */,
+				36BC0428243E1083005B753A /* Assets.xcassets */,
+				36BC042A243E1083005B753A /* LaunchScreen.storyboard */,
+				36BC042D243E1083005B753A /* Info.plist */,
+				36BC0425243E1081005B753A /* Mime_Game.xcdatamodeld */,
+			);
+			path = "Mime Game";
+			sourceTree = "<group>";
+		};
+		36BC0435243E1083005B753A /* Mime GameTests */ = {
+			isa = PBXGroup;
+			children = (
+				36BC0436243E1083005B753A /* Mime_GameTests.swift */,
+				36BC0438243E1083005B753A /* Info.plist */,
+			);
+			path = "Mime GameTests";
+			sourceTree = "<group>";
+		};
+		71E4627A6CC6AFEE02425049 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */,
+				2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */,
+				0DC1904EF892B7EA68E9AB00 /* Pods-Mime GameTests.debug.xcconfig */,
+				280206A99F7FD16FFF0E75BC /* Pods-Mime GameTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C08ADCE8D6EA85BB448FFF3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */,
+				513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36BC0418243E1080005B753A /* Mime Game */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36BC043B243E1083005B753A /* Build configuration list for PBXNativeTarget "Mime Game" */;
+			buildPhases = (
+				1443B8092907BE4A43830640 /* [CP] Check Pods Manifest.lock */,
+				36BC0415243E1080005B753A /* Sources */,
+				36BC0416243E1080005B753A /* Frameworks */,
+				36BC0417243E1080005B753A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mime Game";
+			productName = "Mime Game";
+			productReference = 36BC0419243E1080005B753A /* Mime Game.app */;
+			productType = "com.apple.product-type.application";
+		};
+		36BC0431243E1083005B753A /* Mime GameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36BC043E243E1083005B753A /* Build configuration list for PBXNativeTarget "Mime GameTests" */;
+			buildPhases = (
+				CA9AD898353C21AE3449984E /* [CP] Check Pods Manifest.lock */,
+				36BC042E243E1083005B753A /* Sources */,
+				36BC042F243E1083005B753A /* Frameworks */,
+				36BC0430243E1083005B753A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36BC0434243E1083005B753A /* PBXTargetDependency */,
+			);
+			name = "Mime GameTests";
+			productName = "Mime GameTests";
+			productReference = 36BC0432243E1083005B753A /* Mime GameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		36BC0411243E1080005B753A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Arthur Rodrigues";
+				TargetAttributes = {
+					36BC0418243E1080005B753A = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					36BC0431243E1083005B753A = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 36BC0418243E1080005B753A;
+					};
+				};
+			};
+			buildConfigurationList = 36BC0414243E1080005B753A /* Build configuration list for PBXProject "Mime Game" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 36BC0410243E1080005B753A;
+			productRefGroup = 36BC041A243E1080005B753A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				36BC0418243E1080005B753A /* Mime Game */,
+				36BC0431243E1083005B753A /* Mime GameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		36BC0417243E1080005B753A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
+				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
+				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36BC0430243E1083005B753A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1443B8092907BE4A43830640 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mime Game-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA9AD898353C21AE3449984E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mime GameTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		36BC0415243E1080005B753A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36BC0421243E1080005B753A /* ViewController.swift in Sources */,
+				36BC041D243E1080005B753A /* AppDelegate.swift in Sources */,
+				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
+				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36BC042E243E1083005B753A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36BC0437243E1083005B753A /* Mime_GameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36BC0434243E1083005B753A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36BC0418243E1080005B753A /* Mime Game */;
+			targetProxy = 36BC0433243E1083005B753A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		36BC0422243E1081005B753A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36BC0423243E1081005B753A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		36BC042A243E1083005B753A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36BC042B243E1083005B753A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		36BC0439243E1083005B753A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		36BC043A243E1083005B753A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		36BC043C243E1083005B753A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9KU377264X;
+				INFOPLIST_FILE = "Mime Game/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Mime-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		36BC043D243E1083005B753A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9KU377264X;
+				INFOPLIST_FILE = "Mime Game/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Mime-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		36BC043F243E1083005B753A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DC1904EF892B7EA68E9AB00 /* Pods-Mime GameTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9KU377264X;
+				INFOPLIST_FILE = "Mime GameTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Mime-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mime Game.app/Mime Game";
+			};
+			name = Debug;
+		};
+		36BC0440243E1083005B753A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 280206A99F7FD16FFF0E75BC /* Pods-Mime GameTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9KU377264X;
+				INFOPLIST_FILE = "Mime GameTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Mime-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mime Game.app/Mime Game";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		36BC0414243E1080005B753A /* Build configuration list for PBXProject "Mime Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36BC0439243E1083005B753A /* Debug */,
+				36BC043A243E1083005B753A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36BC043B243E1083005B753A /* Build configuration list for PBXNativeTarget "Mime Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36BC043C243E1083005B753A /* Debug */,
+				36BC043D243E1083005B753A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36BC043E243E1083005B753A /* Build configuration list for PBXNativeTarget "Mime GameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36BC043F243E1083005B753A /* Debug */,
+				36BC0440243E1083005B753A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		36BC0425243E1081005B753A /* Mime_Game.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				36BC0426243E1081005B753A /* Mime_Game.xcdatamodel */,
+			);
+			currentVersion = 36BC0426243E1081005B753A /* Mime_Game.xcdatamodel */;
+			path = Mime_Game.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 36BC0411243E1080005B753A /* Project object */;
+}

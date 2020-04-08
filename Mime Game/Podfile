@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Mime Game' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+	pod ‘AgoraRtcEngine_iOS’, '~> 3.0.0.1'
+
+  # Pods for Mime Game
+
+  target 'Mime GameTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
