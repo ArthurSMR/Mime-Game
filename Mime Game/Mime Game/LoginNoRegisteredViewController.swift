@@ -12,8 +12,11 @@ class LoginNoRegisteredViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var avaliableAvatars: [Avatar] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        avaliableAvatars = createAvaliableAvatarsArray()
 
         // Do any additional setup after loading the view.
     }
@@ -23,34 +26,18 @@ class LoginNoRegisteredViewController: UIViewController {
 //        self.scrollView.frame =
 //    }
 
-    func createAvaliableAvatarsArray() -> [Avatar]? {
-        guard let _resourcePath = Bundle.main.resourcePath else{
-            return nil
-        }
-        
-        var avatars: [Avatar]? = nil
-        
-        do{
-            if let url = NSURL(string: _resourcePath)?.appendingPathComponent("test-no-register-avatars"){
-                let resourcesContent = try FileManager().contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+    func createAvaliableAvatarsArray() -> [Avatar] {
+        var avatars: [Avatar] = []
+        let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
 
-                for imageUrl in resourcesContent {
-                    let imageName = imageUrl.lastPathComponent
-                    let avatarI = Bundle.main.loadNibNamed("Avatar", owner: self, options: nil)?.first as! Avatar
-                    avatarI.avatarImageView.image = UIImage(named: imageName)
-                    
-                    guard avatars != nil else {
-                        avatars = []
-                        avatars?.append(avatarI)
-                        return avatars
-                    }
-                    
-                    avatars?.append(avatarI)
-                }
-            }
-        }catch let error{
-            print(error.localizedDescription)
+        for url in imageURLArray {
+            let avatarIImage = UIImage(contentsOfFile: url.path!)
+            
+            let avatar = Bundle.main.loadNibNamed("Avatar", owner: self, options: nil)?.first as! Avatar
+            avatar.avatarImageView.image = avatarIImage
+            avatars.append(avatar)
         }
+        
         return avatars
     }
     

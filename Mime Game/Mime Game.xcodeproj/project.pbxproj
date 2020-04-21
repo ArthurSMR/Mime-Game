@@ -16,6 +16,10 @@
 		36BC0429243E1083005B753A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BC0428243E1083005B753A /* Assets.xcassets */; };
 		36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BC042A243E1083005B753A /* LaunchScreen.storyboard */; };
 		36BC0437243E1083005B753A /* Mime_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0436243E1083005B753A /* Mime_GameTests.swift */; };
+		9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */ = {isa = PBXBuildFile; fileRef = 9A13FB06244E9CE200A74F6F /* test-no-register-avatars */; };
+		9A5CE8DD244E89EF007A1475 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CE8DC244E89EF007A1475 /* Avatar.swift */; };
+		9A5CE8DF244E89F9007A1475 /* Avatar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CE8DE244E89F9007A1475 /* Avatar.xib */; };
+		9A5CE8E1244E8A01007A1475 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */; };
 		F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,10 @@
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A13FB06244E9CE200A74F6F /* test-no-register-avatars */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "test-no-register-avatars"; sourceTree = "<group>"; };
+		9A5CE8DC244E89EF007A1475 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		9A5CE8DE244E89F9007A1475 /* Avatar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Avatar.xib; sourceTree = "<group>"; };
+		9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 		36BC0410243E1080005B753A = {
 			isa = PBXGroup;
 			children = (
+				9A13FB06244E9CE200A74F6F /* test-no-register-avatars */,
 				36BC041B243E1080005B753A /* Mime Game */,
 				36BC0435243E1083005B753A /* Mime GameTests */,
 				36BC041A243E1080005B753A /* Products */,
@@ -96,6 +105,9 @@
 				36BC041C243E1080005B753A /* AppDelegate.swift */,
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
 				36BC0420243E1080005B753A /* ViewController.swift */,
+				9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */,
+				9A5CE8DE244E89F9007A1475 /* Avatar.xib */,
+				9A5CE8DC244E89EF007A1475 /* Avatar.swift */,
 				36BC0422243E1081005B753A /* Main.storyboard */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
 				36BC042A243E1083005B753A /* LaunchScreen.storyboard */,
@@ -122,7 +134,6 @@
 				0DC1904EF892B7EA68E9AB00 /* Pods-Mime GameTests.debug.xcconfig */,
 				280206A99F7FD16FFF0E75BC /* Pods-Mime GameTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -220,6 +231,8 @@
 			files = (
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
+				9A5CE8DF244E89F9007A1475 /* Avatar.xib in Resources */,
+				9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +301,9 @@
 				36BC0421243E1080005B753A /* ViewController.swift in Sources */,
 				36BC041D243E1080005B753A /* AppDelegate.swift in Sources */,
 				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
+				9A5CE8DD244E89EF007A1475 /* Avatar.swift in Sources */,
 				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
+				9A5CE8E1244E8A01007A1475 /* LoginNoRegisteredViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,7 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -489,7 +504,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime GameTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -512,7 +527,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime GameTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
