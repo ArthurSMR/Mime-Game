@@ -104,10 +104,8 @@
 			children = (
 				36BC041C243E1080005B753A /* AppDelegate.swift */,
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
-				36BC0420243E1080005B753A /* ViewController.swift */,
-				9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */,
-				9A5CE8DE244E89F9007A1475 /* Avatar.xib */,
-				9A5CE8DC244E89EF007A1475 /* Avatar.swift */,
+				9A13FB0A244EA0F800A74F6F /* Controllers */,
+				9A13FB08244EA0D600A74F6F /* Views */,
 				36BC0422243E1081005B753A /* Main.storyboard */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
 				36BC042A243E1083005B753A /* LaunchScreen.storyboard */,
@@ -135,6 +133,32 @@
 				280206A99F7FD16FFF0E75BC /* Pods-Mime GameTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9A13FB08244EA0D600A74F6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A13FB09244EA0E200A74F6F /* Avatar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9A13FB09244EA0E200A74F6F /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				9A5CE8DE244E89F9007A1475 /* Avatar.xib */,
+				9A5CE8DC244E89EF007A1475 /* Avatar.swift */,
+			);
+			path = Avatar;
+			sourceTree = "<group>";
+		};
+		9A13FB0A244EA0F800A74F6F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				36BC0420243E1080005B753A /* ViewController.swift */,
+				9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C08ADCE8D6EA85BB448FFF3B /* Frameworks */ = {
