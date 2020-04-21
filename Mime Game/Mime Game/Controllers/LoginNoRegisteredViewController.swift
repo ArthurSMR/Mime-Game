@@ -11,6 +11,8 @@ import UIKit
 class LoginNoRegisteredViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var containerView: UIView!
     
     var avaliableAvatars: [Avatar] = []
     
@@ -18,7 +20,12 @@ class LoginNoRegisteredViewController: UIViewController {
         super.viewDidLoad()
         avaliableAvatars = createAvaliableAvatarsArray()
 
-        // Do any additional setup after loading the view.
+        setupAvatarsScrollView(avatars: avaliableAvatars)
+        
+        pageControl.numberOfPages = avaliableAvatars.count
+        pageControl.currentPage = 0
+        
+        containerView.bringSubviewToFront(pageControl)
     }
     
     
@@ -35,10 +42,23 @@ class LoginNoRegisteredViewController: UIViewController {
             
             let avatar = Bundle.main.loadNibNamed("Avatar", owner: self, options: nil)?.first as! Avatar
             avatar.avatarImageView.image = avatarIImage
+            avatar.avatarImageView.contentMode = .scaleAspectFit
+            
             avatars.append(avatar)
         }
         
         return avatars
+    }
+    
+    func setupAvatarsScrollView(avatars: [Avatar]) {
+//        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(avatars.count), height: scrollView.frame.height)
+        scrollView.isPagingEnabled = true
+        
+        for i in 0 ..< avatars.count {
+            avatars[i].frame = CGRect(x: scrollView.frame.width * CGFloat(i), y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+            scrollView.addSubview(avatars[i])
+        }
     }
     
     /*

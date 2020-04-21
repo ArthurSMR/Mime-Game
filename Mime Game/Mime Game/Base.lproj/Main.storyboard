@@ -36,11 +36,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gly-rx-DgD">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="Nxi-LI-mLp"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="u3W-RZ-pNh"/>
-                            </scrollView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Zézinho" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-at-FtG">
                                 <rect key="frame" x="167" y="666" width="80" height="34"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,31 +48,48 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Jogar"/>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Cn4-F4-1El">
-                                <rect key="frame" x="195" y="475" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-ae-dg5">
+                                <rect key="frame" x="20" y="305" width="374" height="286"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gly-rx-DgD">
+                                        <rect key="frame" x="0.0" y="8" width="374" height="270"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="Nxi-LI-mLp"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="u3W-RZ-pNh"/>
+                                    </scrollView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wio-zH-MYe">
+                                        <rect key="frame" x="167.5" y="196" width="39" height="37"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4214104414" green="0.73143815990000005" blue="0.28793418409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="wio-zH-MYe" firstAttribute="centerX" secondItem="h6g-ae-dg5" secondAttribute="centerX" id="Puw-qm-flw"/>
+                                    <constraint firstItem="wio-zH-MYe" firstAttribute="centerY" secondItem="h6g-ae-dg5" secondAttribute="centerY" multiplier="1.5" id="Yqd-7M-PTG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="4Er-at-FtG" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" constant="235" id="4QD-63-FM6"/>
+                            <constraint firstItem="h6g-ae-dg5" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" id="Bd1-d2-G9C"/>
+                            <constraint firstItem="h6g-ae-dg5" firstAttribute="height" secondItem="Xyv-lS-xZj" secondAttribute="height" multiplier="0.319196" id="HdE-XQ-0XD"/>
                             <constraint firstItem="aYA-zr-NIj" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" constant="-306.5" id="Lzj-Rg-tTt"/>
-                            <constraint firstAttribute="trailing" secondItem="gly-rx-DgD" secondAttribute="trailing" id="U1H-WG-RHl"/>
-                            <constraint firstItem="gly-rx-DgD" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" id="WTA-7r-8t5"/>
-                            <constraint firstItem="gly-rx-DgD" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="lDW-yh-v9r"/>
                             <constraint firstItem="aYA-zr-NIj" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" constant="3" id="mbo-bE-TBf"/>
-                            <constraint firstItem="gly-rx-DgD" firstAttribute="leading" secondItem="Xyv-lS-xZj" secondAttribute="leading" id="s3V-SE-ndh"/>
+                            <constraint firstItem="h6g-ae-dg5" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="pLQ-1K-eay"/>
+                            <constraint firstItem="h6g-ae-dg5" firstAttribute="width" secondItem="Xyv-lS-xZj" secondAttribute="width" multiplier="0.903382" id="u79-q4-ZQw"/>
                             <constraint firstItem="4Er-at-FtG" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="uZl-JT-2wr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cU1-0V-KaS"/>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="gly-rx-DgD" id="hUA-AU-MFT"/>
+                        <outlet property="containerView" destination="h6g-ae-dg5" id="xB1-GU-7JV"/>
+                        <outlet property="pageControl" destination="wio-zH-MYe" id="fp9-2J-8tJ"/>
+                        <outlet property="scrollView" destination="gly-rx-DgD" id="tBN-bE-Xc9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwC-CU-GeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="-179"/>
+            <point key="canvasLocation" x="1000.0000000000001" y="-179.46428571428569"/>
         </scene>
     </scenes>
 </document>
