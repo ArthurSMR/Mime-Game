@@ -17,7 +17,7 @@ class LobbyViewController: UIViewController {
     
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
-    var remotePlayers: [Player]!
+    var remotePlayers: [Player] = []
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -58,7 +58,6 @@ class LobbyViewController: UIViewController {
     private func initializateAgoraEngine() {
         agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
         agoraKit.enableWebSdkInteroperability(true)
-        agoraKit.setChannelProfile(.communication)
     }
     
     private func joinChannel() {
@@ -78,10 +77,27 @@ class LobbyViewController: UIViewController {
     
     private func createRemotePlayer(userInfo: AgoraUserInfo) {
         let remote = Player(agoraUserInfo: userInfo)
-        self.remotePlayers?.append(remote)
+        self.remotePlayers.append(remote)
         
         print("remote \(remote.name) with id \(remote.uid) joined")
-        print(remotePlayers!)
+        
+        for remotePlayer in remotePlayers {
+            print(remotePlayer.name)
+        }
+    }
+    
+    private func removeRemotePlayer(with uid: UInt) {
+        
+        for index in 0 ..< self.remotePlayers.count {
+            if self.remotePlayers[index].uid == uid {
+                print("\(self.remotePlayers[index].name) leave channel ")
+                self.remotePlayers.remove(at: index)
+            }
+        }
+    }
+    
+    private func leaveChannel() {
+        agoraKit.leaveChannel(nil)
     }
     
     func stageBtn(isValid valid: Bool) {
@@ -92,6 +108,7 @@ class LobbyViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
+        self.leaveChannel()
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
@@ -106,7 +123,7 @@ class LobbyViewController: UIViewController {
 //MARK: TableView
 extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.remotePlayers.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,18 +135,15 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: Agora
 extension LobbyViewController: AgoraRtcEngineDelegate {
     
-    func rtcEngine(_ engine: AgoraRtcEngineKit, didMicrophoneEnabled enabled: Bool) {
-        print("microphone is \(enabled)")
-    }
-    
     func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteAudioFrameOfUid uid: UInt, elapsed: Int) {
-        
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didUpdatedUserInfo userInfo: AgoraUserInfo, withUid uid: UInt) {
-        
-        let remote =  Player(agoraUserInfo: userInfo)
-        self.remotePlayers?.append(remote)
-        print(remote.name)
+        createRemotePlayer(userInfo: userInfo)
     }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
+        self.removeRemotePlayer(with: uid)
+    }
+    
 }
