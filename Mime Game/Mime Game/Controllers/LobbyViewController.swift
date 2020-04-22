@@ -14,6 +14,13 @@ class LobbyViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var exitLobby: UIButton!
+    @IBOutlet weak var muteBtn: RoundButton!
+    
+    var isMuted: Bool = false {
+        didSet {
+            self.stageBtn(isValid: isMuted)
+        }
+    }
     
     //MARK: LiveCycle
     override func viewDidLoad() {
@@ -23,7 +30,8 @@ class LobbyViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
-      prepareTableView()
+        prepareTableView()
+        self.stageBtn(isValid: false)
     }
     
     func prepareTableView() {
@@ -34,8 +42,22 @@ class LobbyViewController: UIViewController {
         
     }
     
+    func stageBtn(isValid valid: Bool) {
+       
+        muteBtn?.backgroundColor = valid ? .red : .gray
+//        muteBtn?.setTitleColor(valid ? .whiteffffff : .whiteffffff, for: .normal)
+    }
+    
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
+    }
+    
+    @IBAction func muteActionBtn(_ sender: UIButton) {
+        if !isMuted {
+            !sender.isSelected
+        }
+        sender.isSelected = !sender.isSelected
+        isMuted = !isMuted
     }
 }
 

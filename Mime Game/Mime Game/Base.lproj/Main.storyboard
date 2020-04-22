@@ -99,7 +99,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Captura de Tela 2020-04-22 às 11.24.31" translatesAutoresizingMaskIntoConstraints="NO" id="vYh-dQ-KcD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img 1" translatesAutoresizingMaskIntoConstraints="NO" id="vYh-dQ-KcD">
                                 <rect key="frame" x="0.0" y="44" width="414" height="582"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-dd-be5" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
@@ -143,11 +143,35 @@
                                     <action selector="didPressExitLobbyBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="Zyg-2K-VoS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOO-i5-8fW" customClass="RoundButton" customModule="Mime_Game" customModuleProvider="target">
+                                <rect key="frame" x="348" y="530" width="46" height="46"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IOO-i5-8fW" secondAttribute="height" id="4j4-c6-dxB"/>
+                                    <constraint firstAttribute="height" constant="46" id="b7d-dS-loN"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="disabled" image="mic.fill" catalog="system"/>
+                                <state key="selected" image="mic.slash.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="muteActionBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="fpu-eM-LXc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0S3-2j-mzT" firstAttribute="top" secondItem="1Kv-Zg-Fcy" secondAttribute="top" constant="56" id="0nB-dY-ko0"/>
                             <constraint firstItem="0S3-2j-mzT" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" constant="27" id="23C-nt-q5q"/>
+                            <constraint firstItem="1Kv-Zg-Fcy" firstAttribute="trailing" secondItem="IOO-i5-8fW" secondAttribute="trailing" constant="20" id="3Fz-es-JOM"/>
+                            <constraint firstItem="cVy-dd-be5" firstAttribute="top" secondItem="IOO-i5-8fW" secondAttribute="bottom" constant="20" id="4Aj-pL-Tq8"/>
                             <constraint firstItem="cVy-dd-be5" firstAttribute="trailing" secondItem="1Kv-Zg-Fcy" secondAttribute="trailing" id="71u-y6-cem"/>
                             <constraint firstItem="vYh-dQ-KcD" firstAttribute="top" secondItem="1Kv-Zg-Fcy" secondAttribute="top" id="K7d-3h-wHu"/>
                             <constraint firstItem="cVy-dd-be5" firstAttribute="top" secondItem="vYh-dQ-KcD" secondAttribute="bottom" constant="-30" id="g9o-tQ-JFh"/>
@@ -160,6 +184,7 @@
                     </view>
                     <connections>
                         <outlet property="exitLobby" destination="0S3-2j-mzT" id="VKB-W7-1dT"/>
+                        <outlet property="muteBtn" destination="IOO-i5-8fW" id="fKe-8i-yWV"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
                     </connections>
                 </viewController>
@@ -169,6 +194,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Captura de Tela 2020-04-22 às 11.24.31" width="680" height="962"/>
+        <image name="img 1" width="680" height="962"/>
+        <image name="mic.fill" catalog="system" width="108" height="128"/>
+        <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
     </resources>
 </document>
