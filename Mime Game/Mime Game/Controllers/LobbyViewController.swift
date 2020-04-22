@@ -11,6 +11,14 @@ import AgoraRtcKit
 
 class LobbyViewController: UIViewController {
     
+    //MARK: Variables
+    private var agoraKit: AgoraRtcEngineKit!
+    var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
+    
+    var localAgoraUserInfo = AgoraUserInfo()
+    var localPlayer: Player!
+    var remotePlayers: [Player]!
+    
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var exitLobby: UIButton!
@@ -32,6 +40,12 @@ class LobbyViewController: UIViewController {
     func setupLayout() {
         prepareTableView()
         self.stageBtn(isValid: false)
+        setupAgora()
+    }
+    
+    func setupAgora() {
+        initializateAgoraEngine()
+        joinChannel()
     }
     
     func prepareTableView() {
@@ -39,7 +53,35 @@ class LobbyViewController: UIViewController {
         tableView.dataSource = self
         guard let table = tableView else { return }
         LobbyTableViewCell.registerNib(for: table)
+    }
+    
+    private func initializateAgoraEngine() {
+        agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
+        agoraKit.enableWebSdkInteroperability(true)
+        agoraKit.setChannelProfile(.communication)
+    }
+    
+    private func joinChannel() {
+        agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
+        agoraKit.joinChannel(byUserAccount: "Arthur", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+            self.createLocalPlayer(uid: uid)
+        }
+    }
+    
+    private func createLocalPlayer(uid: UInt) {
+        self.localAgoraUserInfo.userAccount = "Arthur"
+        self.localAgoraUserInfo.uid = uid
+        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo)
+        print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
+    }
+    
+    private func createRemotePlayer(userInfo: AgoraUserInfo) {
+        let remote = Player(agoraUserInfo: userInfo)
+        self.remotePlayers?.append(remote)
+        
+        print("remote \(remote.name) with id \(remote.uid) joined")
+        print(remotePlayers!)
     }
     
     func stageBtn(isValid valid: Bool) {
@@ -75,4 +117,19 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: Agora
 extension LobbyViewController: AgoraRtcEngineDelegate {
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didMicrophoneEnabled enabled: Bool) {
+        print("microphone is \(enabled)")
+    }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteAudioFrameOfUid uid: UInt, elapsed: Int) {
+        
+    }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didUpdatedUserInfo userInfo: AgoraUserInfo, withUid uid: UInt) {
+        
+        let remote =  Player(agoraUserInfo: userInfo)
+        self.remotePlayers?.append(remote)
+        print(remote.name)
+    }
 }
