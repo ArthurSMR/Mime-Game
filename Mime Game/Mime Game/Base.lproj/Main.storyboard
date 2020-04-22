@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jxF-6x-DiR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mfc-Vc-YaR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,21 +99,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ptJ-XD-LZv">
-                                <rect key="frame" x="0.0" y="518" width="414" height="378"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Captura de Tela 2020-04-22 às 11.24.31" translatesAutoresizingMaskIntoConstraints="NO" id="vYh-dQ-KcD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="582"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-dd-be5" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="596" width="414" height="300"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ptJ-XD-LZv">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S3-2j-mzT">
-                                <rect key="frame" x="20" y="44" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ptJ-XD-LZv" secondAttribute="trailing" id="ChU-4A-L7i"/>
+                                    <constraint firstAttribute="height" constant="300" id="KPI-em-Z6g"/>
+                                    <constraint firstAttribute="bottom" secondItem="ptJ-XD-LZv" secondAttribute="bottom" id="ttW-Hb-MMp"/>
+                                    <constraint firstItem="ptJ-XD-LZv" firstAttribute="top" secondItem="cVy-dd-be5" secondAttribute="top" id="yXo-aM-fHz"/>
+                                    <constraint firstItem="ptJ-XD-LZv" firstAttribute="leading" secondItem="cVy-dd-be5" secondAttribute="leading" id="zQ8-kh-wTB"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S3-2j-mzT" customClass="RoundButton" customModule="Mime_Game" customModuleProvider="target">
+                                <rect key="frame" x="27" y="100" width="71" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZUa-e3-Hxr"/>
+                                    <constraint firstAttribute="width" constant="71" id="hBC-4j-sr7"/>
+                                </constraints>
+                                <state key="normal" title="Sair">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didPressExitLobbyBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="Zyg-2K-VoS"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0S3-2j-mzT" firstAttribute="top" secondItem="1Kv-Zg-Fcy" secondAttribute="top" constant="56" id="0nB-dY-ko0"/>
+                            <constraint firstItem="0S3-2j-mzT" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" constant="27" id="23C-nt-q5q"/>
+                            <constraint firstItem="cVy-dd-be5" firstAttribute="trailing" secondItem="1Kv-Zg-Fcy" secondAttribute="trailing" id="71u-y6-cem"/>
+                            <constraint firstItem="vYh-dQ-KcD" firstAttribute="top" secondItem="1Kv-Zg-Fcy" secondAttribute="top" id="K7d-3h-wHu"/>
+                            <constraint firstItem="cVy-dd-be5" firstAttribute="top" secondItem="vYh-dQ-KcD" secondAttribute="bottom" constant="-30" id="g9o-tQ-JFh"/>
+                            <constraint firstItem="vYh-dQ-KcD" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" id="gz5-zD-TFY"/>
+                            <constraint firstAttribute="bottom" secondItem="cVy-dd-be5" secondAttribute="bottom" id="oJa-OE-bnu"/>
+                            <constraint firstItem="cVy-dd-be5" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" id="sQk-BK-h6n"/>
+                            <constraint firstItem="vYh-dQ-KcD" firstAttribute="trailing" secondItem="1Kv-Zg-Fcy" secondAttribute="trailing" id="vap-cl-sS6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Kv-Zg-Fcy"/>
                     </view>
                     <connections>
@@ -126,4 +168,7 @@
             <point key="canvasLocation" x="1901.449275362319" y="-182.14285714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Captura de Tela 2020-04-22 às 11.24.31" width="680" height="962"/>
+    </resources>
 </document>
