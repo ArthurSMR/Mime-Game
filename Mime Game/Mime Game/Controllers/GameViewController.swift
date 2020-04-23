@@ -77,6 +77,7 @@ class GameViewController: UIViewController {
         if self.UIDs[turn] == localPlayer.uid {
             setupLocalVideo()
         } else {
+            agoraKit.enableLocalVideo(false)
             setupRemotePlayer()
         }
         
