@@ -157,7 +157,7 @@ class LobbyViewController: UIViewController {
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
         isMuted = !isMuted
-        agoraKit.muteLocalAudioStream(sender.isSelected)
+        agoraKit.muteLocalAudioStream(isMuted)
     }
 }
 
@@ -221,4 +221,5 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     func changeColorBorderWhenSpeaking(remotePlayer: Player) -> UIColor {
         return remotePlayer.isSpeaking ? .green : .clear
     }
+
 }
