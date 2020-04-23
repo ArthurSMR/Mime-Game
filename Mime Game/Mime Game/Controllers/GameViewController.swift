@@ -18,17 +18,22 @@ class GameViewController: UIViewController {
     var UIDs: [UInt] = []
     
     var timer = Timer()
-    var seconds = 10
+    
+    var totalTime = 20
+    var seconds = 20
     
     var _turn = -1
     var turn: Int {
-        set {
-            if newValue == self.UIDs.count {
-                _turn = -1
-            }
-        }
         get {
+            print(_turn)
             return _turn
+        }
+        set {
+            if newValue >= self.UIDs.count {
+                _turn = -1
+            } else {
+                _turn = newValue
+            }
         }
     }
     
@@ -43,7 +48,6 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //self.UIDs = drawPlayers()
         startGame()
     }
     
@@ -78,12 +82,11 @@ class GameViewController: UIViewController {
         if self.UIDs[turn] == localPlayer.uid {
             setupLocalVideo()
         } else {
-            agoraKit.enableLocalVideo(false)
             setupRemotePlayer()
         }
         
-        seconds = 10
-        turn += 1
+        seconds = totalTime // Reseting timer
+        turn += 1   // Turn next round
         runTimer()
     }
     
