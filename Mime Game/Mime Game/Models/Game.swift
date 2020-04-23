@@ -15,13 +15,15 @@ class Game {
     var players: [Player] = []
     var uids: [UInt] = []
     var totalTime: Int
-    var turn: Int
+    var currentPlayer: Int
+    var wordCategory: WordCategory
     
-    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, turn: Int) {
+    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: WordCategory) {
         self.localPlayer = localPlayer
         self.players = players
         self.uids = uids
         self.totalTime = totalTime
-        self.turn = turn
+        self.currentPlayer = currentPlayer
+        self.wordCategory = wordCategory
     }
 }

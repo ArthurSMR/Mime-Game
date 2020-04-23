@@ -48,7 +48,7 @@ class LobbyViewController: UIViewController {
 //                gameVC.players = self.remotePlayers
 //                gameVC.localPlayer = self.localPlayer
 //                gameVC.UIDs = self.UIDs
-                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 20, turn: 0)
+                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 5, currentPlayer: 0, wordCategory: .general)
                 gameVC.agoraKit = agoraKit
                 gameVC.game = game
             }

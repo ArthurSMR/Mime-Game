@@ -13,12 +13,13 @@ class GameViewController: UIViewController {
     
     //MARK: Variables
     var agoraKit: AgoraRtcEngineKit!
-    //var UIDs: [UInt] = []
     
     var timer = Timer()
     var seconds = 20
-    //    var turn =
+    var turn = -1
     
+    var mimes: [Mime] = []
+    var currentMime: Mime?
     var game: Game!
     
     //MARK: Outlets
@@ -29,6 +30,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        fetchMimes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,14 +50,40 @@ class GameViewController: UIViewController {
     
     //MARK: Methods
     
+    
+    /// This method is for fetching mimes from the databse
+    func fetchMimes() {
+        MimeServices.fetchMimes(for: game.wordCategory, completion: { (mimes, error) in
+            if let error = error {
+                print(error)
+            } else {
+                self.mimes = mimes
+                self.mimes.shuffle()
+            }
+        })
+    }
+    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     
+    /// This method is for reseting the timer and increment the turn
     func resetTimer() {
         self.seconds = game.totalTime // Reseting timer
-        game.turn += 1   // Turn next round
+        game.currentPlayer += 1   // Turn next round
+        self.turn += 1
+        changeMime()
         runTimer()
+    }
+    
+    func changeMime() {
+        
+        if self.turn == self.mimes.count {
+            self.turn = 0
+        }
+        
+        self.currentMime = self.mimes[self.turn]
+        print(currentMime?.word)
     }
     
     @objc func updateTimer() {
@@ -69,16 +97,16 @@ class GameViewController: UIViewController {
     }
     
     private func resetTurn() {
-        game.turn = 0
+        game.currentPlayer = 0
     }
     
     private func nextTurn() {
         
-        if game.turn == game.uids.count {
+        if game.currentPlayer == game.uids.count {
             resetTurn()
         }
         
-        if self.game.uids[game.turn] == game.localPlayer.uid {
+        if self.game.uids[game.currentPlayer] == game.localPlayer.uid {
             setupLocalVideo()
         } else {
             agoraKit.enableLocalVideo(false)
@@ -90,7 +118,7 @@ class GameViewController: UIViewController {
     
     private func setupRemotePlayer() {
         let videoCanvas = AgoraRtcVideoCanvas()
-        videoCanvas.uid = game.uids[game.turn]
+        videoCanvas.uid = game.uids[game.currentPlayer]
         videoCanvas.view = self.videoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
