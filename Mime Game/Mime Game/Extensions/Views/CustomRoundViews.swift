@@ -36,6 +36,26 @@ class RoundView: UIView, RoundViewProtocol {
         }
     }
     
+    @IBInspectable
+    var lineWidth: CGFloat  {
+        get{
+            return self.layer.borderWidth
+        }
+        set{
+            self.layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable
+    var borderColor: UIColor {
+        get{
+            return UIColor(cgColor: self.layer.borderColor ?? UIColor.black.cgColor)
+        }
+        set{
+            self.layer.borderColor = newValue.cgColor
+        }
+    }
+    
 }
 
 @IBDesignable

@@ -192,9 +192,145 @@
             </objects>
             <point key="canvasLocation" x="1901.449275362319" y="-182.14285714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="0ZZ-tT-WNX">
+            <objects>
+                <viewController id="wo4-Pi-ajL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6FA-vV-4N5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5X-YE-BAe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="userLabel">
+diviner</string>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-US-meX" userLabel="mimicry">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Xms-jO-WzH">
+                                        <rect key="frame" x="16" y="16" width="136" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30s-Wb-bJg" customClass="RoundButton" customModule="Mime_Game" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="jgt-LM-WrS"/>
+                                                    <constraint firstAttribute="width" secondItem="30s-Wb-bJg" secondAttribute="height" id="l1s-ii-e7g"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="exclamationmark.triangle.fill" catalog="system"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsy-UO-vuw" customClass="RoundButton" customModule="Mime_Game" customModuleProvider="target">
+                                                <rect key="frame" x="48" y="0.0" width="40" height="40"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="jsy-UO-vuw" secondAttribute="height" id="mKO-Tw-iK3"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="info" catalog="system"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTs-Qi-bp6" customClass="RoundButton" customModule="Mime_Game" customModuleProvider="target">
+                                                <rect key="frame" x="96" y="0.0" width="40" height="40"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="pTs-Qi-bp6" secondAttribute="height" id="bJO-V3-Ule"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="mic.slash.fill" catalog="system"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mM-Eb-kAI" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                        <rect key="frame" x="167" y="50" width="80" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ep-l1-lEr">
+                                                <rect key="frame" x="25.5" y="30" width="29.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="0ep-l1-lEr" firstAttribute="centerX" secondItem="1mM-Eb-kAI" secondAttribute="centerX" id="EAt-po-QA3"/>
+                                            <constraint firstAttribute="width" secondItem="1mM-Eb-kAI" secondAttribute="height" id="Onq-pE-iaU"/>
+                                            <constraint firstItem="0ep-l1-lEr" firstAttribute="centerY" secondItem="1mM-Eb-kAI" secondAttribute="centerY" id="QWl-MA-9zm"/>
+                                            <constraint firstAttribute="height" constant="80" id="T5w-Wc-fYN"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O1n-kR-OFm" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="90" width="382" height="439"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="21"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="1mM-Eb-kAI" firstAttribute="centerX" secondItem="Sfd-US-meX" secondAttribute="centerX" id="5Ex-Gu-a2Q"/>
+                                    <constraint firstItem="O1n-kR-OFm" firstAttribute="leading" secondItem="Sfd-US-meX" secondAttribute="leading" constant="16" id="WGW-8D-b5k"/>
+                                    <constraint firstItem="Xms-jO-WzH" firstAttribute="top" secondItem="Sfd-US-meX" secondAttribute="top" constant="16" id="jvK-cR-Lll"/>
+                                    <constraint firstItem="1mM-Eb-kAI" firstAttribute="top" secondItem="Sfd-US-meX" secondAttribute="top" constant="50" id="m4k-54-fSL"/>
+                                    <constraint firstItem="O1n-kR-OFm" firstAttribute="top" secondItem="1mM-Eb-kAI" secondAttribute="bottom" constant="-40" id="rlW-7Q-J3a"/>
+                                    <constraint firstItem="Xms-jO-WzH" firstAttribute="leading" secondItem="Sfd-US-meX" secondAttribute="leading" constant="16" id="vOm-MG-FBO"/>
+                                    <constraint firstAttribute="trailing" secondItem="O1n-kR-OFm" secondAttribute="trailing" constant="16" id="wd3-FD-gQR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Sfd-US-meX" firstAttribute="leading" secondItem="noD-63-RCe" secondAttribute="leading" id="2XS-H0-qee"/>
+                            <constraint firstItem="Y5X-YE-BAe" firstAttribute="leading" secondItem="noD-63-RCe" secondAttribute="leading" id="JJK-xJ-SaC"/>
+                            <constraint firstItem="noD-63-RCe" firstAttribute="trailing" secondItem="Sfd-US-meX" secondAttribute="trailing" id="RZD-bv-xoq"/>
+                            <constraint firstItem="noD-63-RCe" firstAttribute="bottom" secondItem="Y5X-YE-BAe" secondAttribute="bottom" id="Srz-Xf-o5d"/>
+                            <constraint firstItem="Y5X-YE-BAe" firstAttribute="top" secondItem="noD-63-RCe" secondAttribute="top" id="UX7-K8-zbQ"/>
+                            <constraint firstItem="noD-63-RCe" firstAttribute="trailing" secondItem="Y5X-YE-BAe" secondAttribute="trailing" id="nc1-c8-Kt9"/>
+                            <constraint firstItem="noD-63-RCe" firstAttribute="bottom" secondItem="Sfd-US-meX" secondAttribute="bottom" id="scH-0N-bX9"/>
+                            <constraint firstItem="Sfd-US-meX" firstAttribute="top" secondItem="noD-63-RCe" secondAttribute="top" id="xs1-xx-hxN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="noD-63-RCe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2S-l8-np3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2786.9565217391305" y="-182.14285714285714"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="112"/>
         <image name="img 1" width="424" height="600"/>
+        <image name="info" catalog="system" width="93" height="128"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
     </resources>
