@@ -70,6 +70,17 @@ class RoundLabel: UILabel, RoundViewProtocol {
 }
 
 @IBDesignable
+class RoundTextField: UITextField, RoundViewProtocol {
+    
+    @IBInspectable
+    var radius: CGFloat = 0.0 {
+        didSet {
+            setRadius(corner: Double(radius))
+        }
+    }
+}
+
+@IBDesignable
 class RoundButton: UIButton, RoundViewProtocol {
     
     @IBInspectable
