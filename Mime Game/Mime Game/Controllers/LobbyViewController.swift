@@ -38,7 +38,7 @@ class LobbyViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
-        self.changeMuteButtonState()
+        changeMuteButtonState()
         setupAgora()
     }
     
@@ -72,7 +72,22 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    /// This method is to change the button image and background color when is muted or not
+    func changeMuteButtonState() {
+        
+        if isMuted {
+            muteBtn.setImage(UIImage(systemName: "mic.slash.fill"), for: .normal)
+            muteBtn.backgroundColor = .red
+        } else {
+            muteBtn.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+            muteBtn.backgroundColor = .gray
+        }
+    }
+    
     // MARK: Players setup
+    
+    /// This method is for creating a local player
+    /// - Parameter uid: uid from the local player
     private func createLocalPlayer(uid: UInt) {
         self.localAgoraUserInfo.userAccount = "Arthur"
         self.localAgoraUserInfo.uid = uid
@@ -80,6 +95,8 @@ class LobbyViewController: UIViewController {
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
     }
     
+    /// Creating remote player and setting it to available
+    /// - Parameter userInfo: the userAccount and the uid from the player joining
     private func createRemotePlayer(userInfo: AgoraUserInfo) {
         
         let remote = Player(agoraUserInfo: userInfo, type: .available)
@@ -88,15 +105,10 @@ class LobbyViewController: UIViewController {
         self.tableView.reloadData()
     }
     
+    
+    /// Set the player type to unavailable  when he leaves
+    /// - Parameter uid: player leaving uid
     private func removeRemotePlayer(with uid: UInt) {
-        
-        //        for index in 0 ..< self.remotePlayers.count {
-        //            if self.remotePlayers[index].uid == uid {
-        //                print("\(self.remotePlayers[index].name) leave channel ")
-        //                self.remotePlayers.remove(at: index)
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         
         for remotePlayer in self.remotePlayers {
             if remotePlayer.uid == uid {
@@ -107,15 +119,9 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    /// This method is to uptade the player type if he join the lobby again
+    /// - Parameter uid: player uid joining
     private func updateRemotePlayers(uid: UInt) {
-        
-        //        for removedPlayer in removedPlayers {
-        //            if uid == removedPlayer.uid {
-        //                self.remotePlayers.append(removedPlayer)
-        //                self.tableView.reloadData()
-        //                print("\(removedPlayer.name) join again")
-        //            }
-        //        }
         
         for updatedPlayer in self.remotePlayers {
             if uid == updatedPlayer.uid {
@@ -142,20 +148,6 @@ class LobbyViewController: UIViewController {
             }
         }
         return players
-    }
-    
-    // MARK: Button settings
-    
-    /// This method is to change the button image and background color when is muted or not
-    func changeMuteButtonState() {
-        
-        if isMuted {
-            muteBtn.setImage(UIImage(systemName: "mic.slash.fill"), for: .normal)
-            muteBtn.backgroundColor = .red
-        } else {
-            muteBtn.setImage(UIImage(systemName: "mic.fill"), for: .normal)
-            muteBtn.backgroundColor = .gray
-        }
     }
     
     //MARK: Actions

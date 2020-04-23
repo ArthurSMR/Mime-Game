@@ -9,9 +9,16 @@
 import AgoraRtcKit
 import UIKit
 
+/// ThIis enum set the player type
 enum PlayerType {
+    
+    /// If is a local player
     case local
+    
+    /// If a remote player is available
     case available
+    
+    ///If a remote player is unavailable
     case unavailable
 }
 
