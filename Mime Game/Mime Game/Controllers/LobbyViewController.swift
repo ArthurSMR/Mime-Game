@@ -206,8 +206,7 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
         
         for remotePlayer in remotePlayers {
             if uid == remotePlayer.uid {
-                print(rxKBitRate)
-                if rxKBitRate > 10 {
+                if rxKBitRate > 7 { //This value is to know if a person is speaking
                     remotePlayer.isSpeaking = true
                     self.tableView.reloadData()
                 } else {
@@ -218,6 +217,9 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
         }
     }
     
+    /// This method change the border color when a remote player is speaking
+    /// - Parameter remotePlayer: remotePlayer that is speaking
+    /// - Returns: returns a green or clear color
     func changeColorBorderWhenSpeaking(remotePlayer: Player) -> UIColor {
         return remotePlayer.isSpeaking ? .green : .clear
     }
