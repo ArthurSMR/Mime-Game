@@ -165,6 +165,14 @@
                                     <action selector="muteActionBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="fpu-eM-LXc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCr-64-I7a">
+                                <rect key="frame" x="171" y="545" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Começar"/>
+                                <connections>
+                                    <action selector="startButtonDidPressed:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="Zbf-tv-HMd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -186,11 +194,52 @@
                         <outlet property="exitLobby" destination="0S3-2j-mzT" id="VKB-W7-1dT"/>
                         <outlet property="muteBtn" destination="IOO-i5-8fW" id="fKe-8i-yWV"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
+                        <segue destination="rrp-PL-rDs" kind="show" identifier="startGame" id="x2K-Cb-I1b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e4-Y8-oSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1901.449275362319" y="-182.14285714285714"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="0bJ-rG-h0j">
+            <objects>
+                <viewController id="rrp-PL-rDs" customClass="GameViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MBr-Ek-JB2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KP2-da-HDs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="542"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vf-P9-PF4">
+                                <rect key="frame" x="344.5" y="550" width="61.5" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Khy-O8-404" firstAttribute="bottom" secondItem="KP2-da-HDs" secondAttribute="bottom" constant="266" id="GY3-yu-Afv"/>
+                            <constraint firstItem="0Vf-P9-PF4" firstAttribute="top" secondItem="KP2-da-HDs" secondAttribute="bottom" constant="8" id="HP0-g7-J97"/>
+                            <constraint firstItem="KP2-da-HDs" firstAttribute="top" secondItem="Khy-O8-404" secondAttribute="top" id="fvN-PU-ke1"/>
+                            <constraint firstItem="KP2-da-HDs" firstAttribute="leading" secondItem="Khy-O8-404" secondAttribute="leading" id="hgT-DS-xbG"/>
+                            <constraint firstItem="Khy-O8-404" firstAttribute="trailing" secondItem="0Vf-P9-PF4" secondAttribute="trailing" constant="8" id="nX5-Bl-cE7"/>
+                            <constraint firstItem="Khy-O8-404" firstAttribute="trailing" secondItem="KP2-da-HDs" secondAttribute="trailing" id="vQT-EA-gl4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Khy-O8-404"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cjs-tF-3Ml"/>
+                    <connections>
+                        <outlet property="timerLabel" destination="0Vf-P9-PF4" id="h6B-6b-DmP"/>
+                        <outlet property="videoView" destination="KP2-da-HDs" id="sif-ur-xOB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nx0-20-yke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3025" y="-179"/>
         </scene>
     </scenes>
     <resources>

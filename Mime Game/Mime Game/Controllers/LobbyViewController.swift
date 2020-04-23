@@ -30,10 +30,26 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    ///This variable list all UIDs that are on the lobby
+    var UIDs: [UInt] = []
+    
     //MARK: LiveCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "startGame" {
+            
+            if let gameVC = segue.destination as? GameViewController {
+                gameVC.agoraKit = self.agoraKit
+                gameVC.players = self.remotePlayers
+                gameVC.localPlayer = self.localPlayer
+                gameVC.UIDs = self.UIDs
+            }
+        }
     }
     
     //MARK: Methods
@@ -91,6 +107,7 @@ class LobbyViewController: UIViewController {
     private func createLocalPlayer(uid: UInt) {
         self.localAgoraUserInfo.userAccount = "Arthur"
         self.localAgoraUserInfo.uid = uid
+        self.UIDs.append(uid)
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
     }
@@ -101,6 +118,7 @@ class LobbyViewController: UIViewController {
         
         let remote = Player(agoraUserInfo: userInfo, type: .available)
         self.remotePlayers.append(remote)
+        self.UIDs.append(remote.uid)
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
     }
@@ -153,6 +171,10 @@ class LobbyViewController: UIViewController {
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
         self.leaveChannel()
+    }
+    
+    @IBAction func startButtonDidPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
