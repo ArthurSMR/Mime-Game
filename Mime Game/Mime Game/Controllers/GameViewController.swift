@@ -12,17 +12,14 @@ import AgoraRtcKit
 class GameViewController: UIViewController {
     
     //MARK: Variables
-    var localPlayer: Player!
-    var players: [Player] = []
     var agoraKit: AgoraRtcEngineKit!
-    var UIDs: [UInt] = []
+    //var UIDs: [UInt] = []
     
     var timer = Timer()
-    
-    var totalTime = 20
     var seconds = 20
+    //    var turn =
     
-    var turn = 0
+    var game: Game!
     
     //MARK: Outlets
     @IBOutlet weak var videoView: UIView!
@@ -43,15 +40,22 @@ class GameViewController: UIViewController {
     }
     
     private func startGame() {
-        self.UIDs = self.UIDs.sorted()
+        game.uids = game.uids.sorted()
+        // Setar próprio vídeo
+        self.seconds = 10
         runTimer()
-        turn += 1
     }
     
     //MARK: Methods
     
     func runTimer() {
-         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    func resetTimer() {
+        self.seconds = game.totalTime // Reseting timer
+        game.turn += 1   // Turn next round
+        runTimer()
     }
     
     @objc func updateTimer() {
@@ -65,30 +69,28 @@ class GameViewController: UIViewController {
     }
     
     private func resetTurn() {
-        self.turn = 0
+        game.turn = 0
     }
     
     private func nextTurn() {
         
-        if turn == self.UIDs.count{
+        if game.turn == game.uids.count {
             resetTurn()
         }
         
-        if self.UIDs[turn] == localPlayer.uid {
+        if self.game.uids[game.turn] == game.localPlayer.uid {
             setupLocalVideo()
         } else {
             agoraKit.enableLocalVideo(false)
             setupRemotePlayer()
         }
         
-        seconds = totalTime // Reseting timer
-        turn += 1   // Turn next round
-        runTimer()
+        self.resetTimer()
     }
     
     private func setupRemotePlayer() {
         let videoCanvas = AgoraRtcVideoCanvas()
-        videoCanvas.uid = self.UIDs[turn]
+        videoCanvas.uid = game.uids[game.turn]
         videoCanvas.view = self.videoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
@@ -97,15 +99,11 @@ class GameViewController: UIViewController {
     
     private func setupLocalVideo() {
         let videoCanvas = AgoraRtcVideoCanvas()
-        videoCanvas.uid = self.localPlayer.uid
+        videoCanvas.uid = game.localPlayer.uid
         videoCanvas.view = self.videoView //video fica por cima
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
         print("Setup Local Player")
-    }
-    
-    private func drawPlayers() -> [UInt] {
-        return self.UIDs.shuffled()
     }
     
     private func setupVideo() {

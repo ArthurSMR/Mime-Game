@@ -44,10 +44,13 @@ class LobbyViewController: UIViewController {
         if segue.identifier == "startGame" {
             
             if let gameVC = segue.destination as? GameViewController {
-                gameVC.agoraKit = self.agoraKit
-                gameVC.players = self.remotePlayers
-                gameVC.localPlayer = self.localPlayer
-                gameVC.UIDs = self.UIDs
+//                gameVC.agoraKit = self.agoraKit
+//                gameVC.players = self.remotePlayers
+//                gameVC.localPlayer = self.localPlayer
+//                gameVC.UIDs = self.UIDs
+                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 20, turn: 0)
+                gameVC.agoraKit = agoraKit
+                gameVC.game = game
             }
         }
     }
