@@ -19,7 +19,18 @@ class GameViewController: UIViewController {
     
     var timer = Timer()
     var seconds = 10
-    var turn = -1
+    
+    var _turn = -1
+    var turn: Int {
+        set {
+            if newValue == self.UIDs.count {
+                _turn = -1
+            }
+        }
+        get {
+            return _turn
+        }
+    }
     
     //MARK: Outlets
     @IBOutlet weak var videoView: UIView!
@@ -41,8 +52,7 @@ class GameViewController: UIViewController {
     }
     
     private func startGame() {
-        setupLocalVideo()
-        print(self.UIDs)
+        self.UIDs = self.UIDs.sorted()
         runTimer()
         turn += 1
     }
@@ -73,7 +83,6 @@ class GameViewController: UIViewController {
         }
         
         seconds = 10
-        print(turn)
         turn += 1
         runTimer()
     }
