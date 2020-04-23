@@ -24,11 +24,11 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var exitLobby: UIButton!
     @IBOutlet weak var muteBtn: RoundButton!
     
-    var isMuted: Bool = false {
-        didSet {
-            self.stageBtn(isValid: isMuted)
+        var isMuted: Bool = false {
+            didSet {
+                self.changeMuteButtonState()
+            }
         }
-    }
     
     //MARK: LiveCycle
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class LobbyViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
-        self.stageBtn(isValid: false)
+        self.changeMuteButtonState()
         setupAgora()
     }
     
@@ -90,13 +90,13 @@ class LobbyViewController: UIViewController {
     
     private func removeRemotePlayer(with uid: UInt) {
         
-//        for index in 0 ..< self.remotePlayers.count {
-//            if self.remotePlayers[index].uid == uid {
-//                print("\(self.remotePlayers[index].name) leave channel ")
-//                self.remotePlayers.remove(at: index)
-//                self.tableView.reloadData()
-//            }
-//        }
+        //        for index in 0 ..< self.remotePlayers.count {
+        //            if self.remotePlayers[index].uid == uid {
+        //                print("\(self.remotePlayers[index].name) leave channel ")
+        //                self.remotePlayers.remove(at: index)
+        //                self.tableView.reloadData()
+        //            }
+        //        }
         
         for remotePlayer in self.remotePlayers {
             if remotePlayer.uid == uid {
@@ -109,13 +109,13 @@ class LobbyViewController: UIViewController {
     
     private func updateRemotePlayers(uid: UInt) {
         
-//        for removedPlayer in removedPlayers {
-//            if uid == removedPlayer.uid {
-//                self.remotePlayers.append(removedPlayer)
-//                self.tableView.reloadData()
-//                print("\(removedPlayer.name) join again")
-//            }
-//        }
+        //        for removedPlayer in removedPlayers {
+        //            if uid == removedPlayer.uid {
+        //                self.remotePlayers.append(removedPlayer)
+        //                self.tableView.reloadData()
+        //                print("\(removedPlayer.name) join again")
+        //            }
+        //        }
         
         for updatedPlayer in self.remotePlayers {
             if uid == updatedPlayer.uid {
@@ -131,13 +131,6 @@ class LobbyViewController: UIViewController {
         agoraKit.leaveChannel(nil)
     }
     
-    func stageBtn(isValid valid: Bool) {
-        
-        muteBtn?.backgroundColor = valid ? .red : .gray
-//        muteBtn?.setTitleColor(valid ? .whiteffffff : .whiteffffff, for: .normal)
-    }
-    
-    
     /// This method is for return how many players are on the lobby
     /// - Returns: how many players are on the lobby
     private func getPlayersAtLobby() -> Int {
@@ -151,15 +144,28 @@ class LobbyViewController: UIViewController {
         return players
     }
     
+    // MARK: Button settings
+    
+    /// This method is to change the button image and background color when is muted or not
+    func changeMuteButtonState() {
+        
+        if isMuted {
+            muteBtn.setImage(UIImage(systemName: "mic.slash.fill"), for: .normal)
+            muteBtn.backgroundColor = .red
+        } else {
+            muteBtn.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+            muteBtn.backgroundColor = .gray
+        }
+    }
+    
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
         self.leaveChannel()
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        agoraKit.muteLocalAudioStream(sender.isSelected)
         isMuted = !isMuted
+        agoraKit.muteLocalAudioStream(sender.isSelected)
     }
 }
 
