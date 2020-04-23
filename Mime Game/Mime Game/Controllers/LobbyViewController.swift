@@ -24,11 +24,11 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var exitLobby: UIButton!
     @IBOutlet weak var muteBtn: RoundButton!
     
-        var isMuted: Bool = false {
-            didSet {
-                self.changeMuteButtonState()
-            }
+    var isMuted: Bool = false {
+        didSet {
+            self.changeMuteButtonState()
         }
+    }
     
     //MARK: LiveCycle
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        agoraKit.joinChannel(byUserAccount: "Arthur", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+        agoraKit.joinChannel(byUserAccount: "hey", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             self.tableView.reloadData()
@@ -89,7 +89,7 @@ class LobbyViewController: UIViewController {
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
     private func createLocalPlayer(uid: UInt) {
-        self.localAgoraUserInfo.userAccount = "Arthur"
+        self.localAgoraUserInfo.userAccount = "hey"
         self.localAgoraUserInfo.uid = uid
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
@@ -179,6 +179,7 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
             // Verifying if remote player is available
             if remotePlayer.type == .available {
                 cell.nameLbl.text = remotePlayer.name
+                cell.userImg.borderColor = changeColorBorderWhenSpeaking(remotePlayer: remotePlayer)
             }
         }
         return cell
@@ -200,4 +201,23 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
         self.removeRemotePlayer(with: uid)
     }
     
+    func rtcEngine(_ engine: AgoraRtcEngineKit, audioTransportStatsOfUid uid: UInt, delay: UInt, lost: UInt, rxKBitRate: UInt) {
+        
+        for remotePlayer in remotePlayers {
+            if uid == remotePlayer.uid {
+                print(rxKBitRate)
+                if rxKBitRate > 10 {
+                    remotePlayer.isSpeaking = true
+                    self.tableView.reloadData()
+                } else {
+                    remotePlayer.isSpeaking = false
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func changeColorBorderWhenSpeaking(remotePlayer: Player) -> UIColor {
+        return remotePlayer.isSpeaking ? .green : .clear
+    }
 }

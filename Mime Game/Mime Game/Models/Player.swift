@@ -26,6 +26,7 @@ class Player {
     var type: PlayerType
     var uid: UInt
     var name: String
+    var isSpeaking: Bool = false
     
     init(agoraUserInfo: AgoraUserInfo, type: PlayerType) {
         self.type = type
