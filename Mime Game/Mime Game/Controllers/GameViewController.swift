@@ -32,7 +32,7 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.UIDs = drawPlayers()
+        //self.UIDs = drawPlayers()
         startGame()
     }
     
