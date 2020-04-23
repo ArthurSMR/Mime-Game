@@ -9,11 +9,19 @@
 import AgoraRtcKit
 import UIKit
 
+enum PlayerType {
+    case local
+    case available
+    case unavailable
+}
+
 class Player {
+    var type: PlayerType
     var uid: UInt
     var name: String
     
-    init(agoraUserInfo: AgoraUserInfo) {
+    init(agoraUserInfo: AgoraUserInfo, type: PlayerType) {
+        self.type = type
         self.uid = agoraUserInfo.uid
         self.name = agoraUserInfo.userAccount ?? "User \(agoraUserInfo.uid)"
     }

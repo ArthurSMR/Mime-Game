@@ -18,7 +18,6 @@ class LobbyViewController: UIViewController {
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
     var remotePlayers: [Player] = []
-    var removedPlayers: [Player] = []
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -55,11 +54,14 @@ class LobbyViewController: UIViewController {
         LobbyTableViewCell.registerNib(for: table)
     }
     
+    /// This method is responsible for initializing Agora framework
     private func initializateAgoraEngine() {
         agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
         agoraKit.enableWebSdkInteroperability(true)
     }
     
+    
+    /// This method if for join the channel with some userAccount
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
@@ -69,16 +71,18 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    
+    // MARK: Players setup
     private func createLocalPlayer(uid: UInt) {
         self.localAgoraUserInfo.userAccount = "Arthur"
         self.localAgoraUserInfo.uid = uid
-        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo)
+        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
     }
     
     private func createRemotePlayer(userInfo: AgoraUserInfo) {
         
-        let remote = Player(agoraUserInfo: userInfo)
+        let remote = Player(agoraUserInfo: userInfo, type: .available)
         self.remotePlayers.append(remote)
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
@@ -86,27 +90,43 @@ class LobbyViewController: UIViewController {
     
     private func removeRemotePlayer(with uid: UInt) {
         
-        for index in 0 ..< self.remotePlayers.count {
-            if self.remotePlayers[index].uid == uid {
-                print("\(self.remotePlayers[index].name) leave channel ")
-                self.removedPlayers.append(self.remotePlayers[index])
-                self.remotePlayers.remove(at: index)
+//        for index in 0 ..< self.remotePlayers.count {
+//            if self.remotePlayers[index].uid == uid {
+//                print("\(self.remotePlayers[index].name) leave channel ")
+//                self.remotePlayers.remove(at: index)
+//                self.tableView.reloadData()
+//            }
+//        }
+        
+        for remotePlayer in self.remotePlayers {
+            if remotePlayer.uid == uid {
+                remotePlayer.type = .unavailable
                 self.tableView.reloadData()
+                print("\(remotePlayer.name) leave channel ")
             }
         }
     }
     
     private func updateRemotePlayers(uid: UInt) {
         
-        for removedPlayer in removedPlayers {
-            if uid == removedPlayer.uid {
-                self.remotePlayers.append(removedPlayer)
+//        for removedPlayer in removedPlayers {
+//            if uid == removedPlayer.uid {
+//                self.remotePlayers.append(removedPlayer)
+//                self.tableView.reloadData()
+//                print("\(removedPlayer.name) join again")
+//            }
+//        }
+        
+        for updatedPlayer in self.remotePlayers {
+            if uid == updatedPlayer.uid {
+                updatedPlayer.type = .available
+                print("\(updatedPlayer.name) join again")
                 self.tableView.reloadData()
-                print("\(removedPlayer.name) join again")
             }
         }
     }
     
+    /// This method for leaving the channel
     private func leaveChannel() {
         agoraKit.leaveChannel(nil)
     }
@@ -114,7 +134,21 @@ class LobbyViewController: UIViewController {
     func stageBtn(isValid valid: Bool) {
         
         muteBtn?.backgroundColor = valid ? .red : .gray
-        //        muteBtn?.setTitleColor(valid ? .whiteffffff : .whiteffffff, for: .normal)
+//        muteBtn?.setTitleColor(valid ? .whiteffffff : .whiteffffff, for: .normal)
+    }
+    
+    
+    /// This method is for return how many players are on the lobby
+    /// - Returns: how many players are on the lobby
+    private func getPlayersAtLobby() -> Int {
+        
+        var players = 1
+        for remotePlayer in remotePlayers {
+            if remotePlayer.type == .available {
+                players += 1
+            }
+        }
+        return players
     }
     
     //MARK: Actions
@@ -132,21 +166,23 @@ class LobbyViewController: UIViewController {
 //MARK: TableView
 extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.remotePlayers.count + 1
+        return getPlayersAtLobby()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = LobbyTableViewCell.dequeueCell(from: tableView)
-        // if is the first row, set local player
-        if indexPath.row == 0 {
+        
+        if indexPath.row == 0 {  // set local player
             cell.nameLbl.text = localPlayer.name
         } else {
-            let remotePlayer = self.remotePlayers[indexPath.row - 1]
-            cell.nameLbl.text = remotePlayer.name
+            let remotePlayer = self.remotePlayers[indexPath.row - 1] // set remote player
+            
+            // Verifying if remote player is available
+            if remotePlayer.type == .available {
+                cell.nameLbl.text = remotePlayer.name
+            }
         }
-        
         return cell
     }
 }
@@ -156,16 +192,13 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteAudioFrameOfUid uid: UInt, elapsed: Int) {
         updateRemotePlayers(uid: uid)
-        self.tableView.reloadData()
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didUpdatedUserInfo userInfo: AgoraUserInfo, withUid uid: UInt) {
-        print("2")
         self.createRemotePlayer(userInfo: userInfo)
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
-        print("3")
         self.removeRemotePlayer(with: uid)
     }
     
