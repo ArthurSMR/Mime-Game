@@ -114,7 +114,7 @@ class GameViewController: UIViewController {
     
     private func setupVideo() {
         
-        let configuration = AgoraVideoEncoderConfiguration(size: AgoraVideoDimension640x360, frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
+        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.videoView.frame.size.width, height: self.videoView.frame.size.height), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
         
         agoraKit.enableVideo()
         agoraKit.setVideoEncoderConfiguration(configuration)
