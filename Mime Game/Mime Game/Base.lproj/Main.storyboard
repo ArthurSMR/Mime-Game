@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,61 +31,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escolha um avatar e insira seu nome." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYA-zr-NIj">
-                                <rect key="frame" x="20.5" y="127" width="379.5" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ySB-Qn-ryW">
+                                <rect key="frame" x="20" y="176" width="374" height="544"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G2Y-6M-98h">
+                                    <size key="itemSize" width="211" height="210"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="avatarCellId" id="FqN-DW-fjW" customClass="AvatarCell" customModule="Mime_Game" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="210"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="PLr-BF-poO">
+                                            <rect key="frame" x="0.0" y="0.0" width="211" height="210"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5cX-mA-Jx5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="210"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5cX-mA-Jx5" firstAttribute="top" secondItem="PLr-BF-poO" secondAttribute="top" id="X7X-NE-oCs"/>
+                                                <constraint firstItem="5cX-mA-Jx5" firstAttribute="leading" secondItem="PLr-BF-poO" secondAttribute="leading" id="Xlm-XI-CcW"/>
+                                                <constraint firstAttribute="trailing" secondItem="5cX-mA-Jx5" secondAttribute="trailing" id="nA8-3z-bxa"/>
+                                                <constraint firstAttribute="bottom" secondItem="5cX-mA-Jx5" secondAttribute="bottom" id="s1L-ya-FX2"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="5cX-mA-Jx5" id="8xx-hQ-ENu"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jogador 1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RG1-b1-IVY">
+                                <rect key="frame" x="159" y="562" width="97" height="39.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-rM-COl">
+                                <rect key="frame" x="179.5" y="652.5" width="55" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Jogar"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecione um avatar e insira seu nome" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlG-OQ-h6h">
+                                <rect key="frame" x="40" y="106" width="334" height="57"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Zézinho" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-at-FtG">
-                                <rect key="frame" x="167" y="666" width="80" height="34"/>
-                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="op0-MB-f4j">
-                                <rect key="frame" x="188" y="769" width="46" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Jogar"/>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-ae-dg5">
-                                <rect key="frame" x="20" y="305" width="374" height="286"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gly-rx-DgD">
-                                        <rect key="frame" x="0.0" y="8" width="374" height="270"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="Nxi-LI-mLp"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="u3W-RZ-pNh"/>
-                                    </scrollView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wio-zH-MYe">
-                                        <rect key="frame" x="167.5" y="196" width="39" height="37"/>
-                                    </pageControl>
-                                </subviews>
-                                <color key="backgroundColor" red="0.4214104414" green="0.73143815990000005" blue="0.28793418409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="wio-zH-MYe" firstAttribute="centerX" secondItem="h6g-ae-dg5" secondAttribute="centerX" id="Puw-qm-flw"/>
-                                    <constraint firstItem="wio-zH-MYe" firstAttribute="centerY" secondItem="h6g-ae-dg5" secondAttribute="centerY" multiplier="1.5" id="Yqd-7M-PTG"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="4Er-at-FtG" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" constant="235" id="4QD-63-FM6"/>
-                            <constraint firstItem="h6g-ae-dg5" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" id="Bd1-d2-G9C"/>
-                            <constraint firstItem="h6g-ae-dg5" firstAttribute="height" secondItem="Xyv-lS-xZj" secondAttribute="height" multiplier="0.319196" id="HdE-XQ-0XD"/>
-                            <constraint firstItem="aYA-zr-NIj" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" constant="-306.5" id="Lzj-Rg-tTt"/>
-                            <constraint firstItem="aYA-zr-NIj" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" constant="3" id="mbo-bE-TBf"/>
-                            <constraint firstItem="h6g-ae-dg5" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="pLQ-1K-eay"/>
-                            <constraint firstItem="h6g-ae-dg5" firstAttribute="width" secondItem="Xyv-lS-xZj" secondAttribute="width" multiplier="0.903382" id="u79-q4-ZQw"/>
-                            <constraint firstItem="4Er-at-FtG" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="uZl-JT-2wr"/>
+                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" multiplier="0.3" id="1OL-Rq-7br"/>
+                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="leading" secondItem="Xyv-lS-xZj" secondAttribute="leading" constant="40" id="9V0-re-ZTg"/>
+                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="top" secondItem="jlG-OQ-h6h" secondAttribute="bottom" constant="13" id="BBg-yt-C9e"/>
+                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="top" secondItem="Xyv-lS-xZj" secondAttribute="top" constant="106" id="DqV-Zu-Csv"/>
+                            <constraint firstItem="qkE-rM-COl" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="NJp-ru-5ei"/>
+                            <constraint firstItem="qkE-rM-COl" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" multiplier="1.5" id="Zfw-KT-sMh"/>
+                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="gYr-AY-uSY"/>
+                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="leading" secondItem="cU1-0V-KaS" secondAttribute="leading" constant="20" id="hxU-D2-CA9"/>
+                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" id="prX-F9-hgG"/>
+                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="qp8-rn-u2I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cU1-0V-KaS"/>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="h6g-ae-dg5" id="xB1-GU-7JV"/>
-                        <outlet property="pageControl" destination="wio-zH-MYe" id="fp9-2J-8tJ"/>
-                        <outlet property="scrollView" destination="gly-rx-DgD" id="tBN-bE-Xc9"/>
+                        <outlet property="collectionView" destination="ySB-Qn-ryW" id="C5c-ho-bdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwC-CU-GeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
