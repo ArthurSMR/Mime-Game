@@ -22,20 +22,7 @@ class GameViewController: UIViewController {
     var totalTime = 20
     var seconds = 20
     
-    var _turn = -1
-    var turn: Int {
-        get {
-            print(_turn)
-            return _turn
-        }
-        set {
-            if newValue >= self.UIDs.count {
-                _turn = -1
-            } else {
-                _turn = newValue
-            }
-        }
-    }
+    var turn = 0
     
     //MARK: Outlets
     @IBOutlet weak var videoView: UIView!
@@ -77,7 +64,15 @@ class GameViewController: UIViewController {
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
     }
     
+    private func resetTurn() {
+        self.turn = 0
+    }
+    
     private func nextTurn() {
+        
+        if turn == self.UIDs.count{
+            resetTurn()
+        }
         
         if self.UIDs[turn] == localPlayer.uid {
             setupLocalVideo()
