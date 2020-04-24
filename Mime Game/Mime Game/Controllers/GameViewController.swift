@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var mimickrView: UIView!
     @IBOutlet weak var wordCategoryLbl: UILabel!
     @IBOutlet weak var wordLbl: UILabel!
-    @IBOutlet weak var timerMimicryLabel: UILabel!
+    @IBOutlet weak var timerMimickr: UILabel!
     
     var isMimickrView = false {
         didSet {
@@ -111,6 +111,7 @@ class GameViewController: UIViewController {
             self.timer.invalidate()
             nextTurn()
         }
+        self.timerMimickr.text = "\(self.seconds)s"
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
     }
     
@@ -157,7 +158,7 @@ class GameViewController: UIViewController {
     private func setupRemotePlayer() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.uids[game.currentPlayer]
-        videoCanvas.view = self.videoView
+        videoCanvas.view = self.divinerView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
         print("Setup Remote Player")
@@ -166,7 +167,7 @@ class GameViewController: UIViewController {
     private func setupLocalVideo() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.localPlayer.uid
-        videoCanvas.view = self.videoView //video fica por cima
+        videoCanvas.view = self.mimickrView //video fica por cima
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
         print("Setup Local Player")

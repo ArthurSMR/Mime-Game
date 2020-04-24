@@ -501,7 +501,7 @@
                         <outlet property="reportBtn" destination="30s-Wb-bJg" id="t0B-RZ-jAK"/>
                         <outlet property="textField" destination="fJZ-tp-Ewd" id="I2Q-ow-Equ"/>
                         <outlet property="timerLabel" destination="0ep-l1-lEr" id="P7b-uT-gAF"/>
-                        <outlet property="timerMimicryLabel" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
+                        <outlet property="timerMimickr" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
                         <outlet property="videoView" destination="O1n-kR-OFm" id="dRO-ef-ZDC"/>
                         <outlet property="wordCategoryLbl" destination="efk-pv-Hks" id="6mE-F6-VoL"/>
                         <outlet property="wordLbl" destination="uIJ-ce-nQM" id="slV-HL-WEY"/>
