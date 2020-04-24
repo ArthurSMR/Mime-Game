@@ -64,13 +64,13 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let screenSize = UIScreen.main.bounds.size
-        let cellWidth = floor(screenSize.width * cellScaling)
-        let cellHeight = floor(screenSize.height * cellScaling)
-        
+//        let screenSize = UIScreen.main.bounds.size
+        let cellWidth = floor(collectionView.frame.width * cellScaling)
+        let cellHeight = floor(collectionView.frame.height * cellScaling)
+
         let insetX = (view.bounds.width - cellWidth) / 2.0
         let insetY = (view.bounds.height - cellHeight) / 2.0
-        
+
         return UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
     }
     

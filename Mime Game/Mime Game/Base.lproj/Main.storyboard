@@ -31,8 +31,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jogador 1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RG1-b1-IVY">
+                                <rect key="frame" x="159" y="563.5" width="97" height="38"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-rM-COl">
+                                <rect key="frame" x="179.5" y="652.5" width="55" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Jogar"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecione um avatar e insira seu nome" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlG-OQ-h6h">
+                                <rect key="frame" x="16" y="76" width="382" height="69.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ySB-Qn-ryW">
-                                <rect key="frame" x="20" y="176" width="374" height="544"/>
+                                <rect key="frame" x="20" y="173" width="374" height="338.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G2Y-6M-98h">
                                     <size key="itemSize" width="211" height="210"/>
@@ -42,7 +59,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="avatarCellId" id="FqN-DW-fjW" customClass="AvatarCell" customModule="Mime_Game" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="211" height="210"/>
+                                        <rect key="frame" x="0.0" y="64.5" width="211" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="PLr-BF-poO">
                                             <rect key="frame" x="0.0" y="0.0" width="211" height="210"/>
@@ -50,6 +67,10 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5cX-mA-Jx5">
                                                     <rect key="frame" x="0.0" y="0.0" width="211" height="210"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="210" id="Q8s-tY-3mG"/>
+                                                        <constraint firstAttribute="width" secondItem="5cX-mA-Jx5" secondAttribute="height" multiplier="211:210" id="WmO-g9-zh1"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -65,37 +86,22 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jogador 1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RG1-b1-IVY">
-                                <rect key="frame" x="159" y="562" width="97" height="39.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-rM-COl">
-                                <rect key="frame" x="179.5" y="652.5" width="55" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Jogar"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecione um avatar e insira seu nome" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlG-OQ-h6h">
-                                <rect key="frame" x="40" y="106" width="334" height="57"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" multiplier="0.3" id="1OL-Rq-7br"/>
-                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="leading" secondItem="Xyv-lS-xZj" secondAttribute="leading" constant="40" id="9V0-re-ZTg"/>
-                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="top" secondItem="jlG-OQ-h6h" secondAttribute="bottom" constant="13" id="BBg-yt-C9e"/>
-                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="top" secondItem="Xyv-lS-xZj" secondAttribute="top" constant="106" id="DqV-Zu-Csv"/>
-                            <constraint firstItem="qkE-rM-COl" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="NJp-ru-5ei"/>
-                            <constraint firstItem="qkE-rM-COl" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" multiplier="1.5" id="Zfw-KT-sMh"/>
-                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="gYr-AY-uSY"/>
+                            <constraint firstItem="cU1-0V-KaS" firstAttribute="trailing" secondItem="jlG-OQ-h6h" secondAttribute="trailing" constant="16" id="7Tn-xo-NKh"/>
+                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="top" secondItem="cU1-0V-KaS" secondAttribute="top" constant="32" id="Dxe-iM-0rZ"/>
+                            <constraint firstItem="RG1-b1-IVY" firstAttribute="top" secondItem="ySB-Qn-ryW" secondAttribute="bottom" constant="52" id="Jtt-6b-QhF"/>
+                            <constraint firstItem="RG1-b1-IVY" firstAttribute="leading" secondItem="cU1-0V-KaS" secondAttribute="leading" constant="159" id="QMZ-xI-4nB"/>
+                            <constraint firstItem="cU1-0V-KaS" firstAttribute="trailing" secondItem="ySB-Qn-ryW" secondAttribute="trailing" constant="20" id="dXd-8m-9KE"/>
+                            <constraint firstItem="cU1-0V-KaS" firstAttribute="bottom" secondItem="qkE-rM-COl" secondAttribute="bottom" constant="170.5" id="dmC-XQ-9cg"/>
+                            <constraint firstItem="cU1-0V-KaS" firstAttribute="trailing" secondItem="RG1-b1-IVY" secondAttribute="trailing" constant="158" id="fRR-Qs-BI2"/>
+                            <constraint firstItem="qkE-rM-COl" firstAttribute="leading" secondItem="cU1-0V-KaS" secondAttribute="leading" constant="179.5" id="ftM-bS-3G4"/>
+                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="top" secondItem="jlG-OQ-h6h" secondAttribute="bottom" constant="27.5" id="hIO-sy-BDy"/>
                             <constraint firstItem="ySB-Qn-ryW" firstAttribute="leading" secondItem="cU1-0V-KaS" secondAttribute="leading" constant="20" id="hxU-D2-CA9"/>
-                            <constraint firstItem="ySB-Qn-ryW" firstAttribute="centerY" secondItem="Xyv-lS-xZj" secondAttribute="centerY" id="prX-F9-hgG"/>
-                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="centerX" secondItem="Xyv-lS-xZj" secondAttribute="centerX" id="qp8-rn-u2I"/>
+                            <constraint firstItem="qkE-rM-COl" firstAttribute="top" secondItem="RG1-b1-IVY" secondAttribute="bottom" constant="51" id="mJN-o7-brg"/>
+                            <constraint firstItem="cU1-0V-KaS" firstAttribute="trailing" secondItem="qkE-rM-COl" secondAttribute="trailing" constant="179.5" id="sGi-dj-sg6"/>
+                            <constraint firstItem="jlG-OQ-h6h" firstAttribute="leading" secondItem="cU1-0V-KaS" secondAttribute="leading" constant="16" id="tqC-M1-ArS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cU1-0V-KaS"/>
                     </view>
