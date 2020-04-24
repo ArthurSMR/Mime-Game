@@ -103,6 +103,8 @@ class GameViewController: UIViewController {
             self.turn = 0
         }
         self.currentMime = self.mimes[self.turn]
+        self.wordCategoryLbl.text = "Tema: \(String(describing: self.currentMime?.category))"
+        self.wordLbl.text = "\(String(describing: self.currentMime?.category)): \(String(describing: self.currentMime?.word))"
     }
     
     @objc func updateTimer() {
@@ -153,7 +155,6 @@ class GameViewController: UIViewController {
         default:
             print("can not load view")
         }
-
     }
     
     private func setupRemotePlayer() {
