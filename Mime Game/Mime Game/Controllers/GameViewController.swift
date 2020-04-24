@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
     var game: Game!
     
     //MARK: Outlets Diviner
-    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var divinerVideoView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var pointLbl: UILabel!
     @IBOutlet weak var reportBtn: UIButton!
@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var divinerView: UIView!
     
     //MARK: Outlets Mimickr
+    @IBOutlet weak var mimickrVideoView: RoundView!
     @IBOutlet weak var mimickrView: UIView!
     @IBOutlet weak var wordCategoryLbl: UILabel!
     @IBOutlet weak var wordLbl: UILabel!
@@ -158,7 +159,7 @@ class GameViewController: UIViewController {
     private func setupRemotePlayer() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.uids[game.currentPlayer]
-        videoCanvas.view = self.divinerView
+        videoCanvas.view = self.divinerVideoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
         print("Setup Remote Player")
@@ -167,7 +168,7 @@ class GameViewController: UIViewController {
     private func setupLocalVideo() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.localPlayer.uid
-        videoCanvas.view = self.mimickrView //video fica por cima
+        videoCanvas.view = self.mimickrVideoView //video fica por cima
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
         print("Setup Local Player")
@@ -175,7 +176,7 @@ class GameViewController: UIViewController {
     
     private func setupVideo() {
         
-        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.videoView.frame.size.width, height: self.videoView.frame.size.height), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
+        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.divinerVideoView.frame.size.width, height: self.divinerVideoView.frame.size.height), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
         
         agoraKit.enableVideo()
         agoraKit.setVideoEncoderConfiguration(configuration)

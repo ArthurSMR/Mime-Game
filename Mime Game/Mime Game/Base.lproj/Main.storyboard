@@ -420,7 +420,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moldura" translatesAutoresizingMaskIntoConstraints="NO" id="d99-14-6p6">
                                         <rect key="frame" x="16" y="116" width="382" height="508"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-fI-5WB" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-fI-5WB" userLabel="Mimickr View" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
                                         <rect key="frame" x="30" y="127" width="358" height="482"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -493,8 +493,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="EHn-nX-QDK"/>
                     <connections>
+                        <outlet property="divinerVideoView" destination="O1n-kR-OFm" id="dRO-ef-ZDC"/>
                         <outlet property="divinerView" destination="Sfd-US-meX" id="aap-mD-Hvd"/>
                         <outlet property="infoBtn" destination="jsy-UO-vuw" id="Sqd-Ll-3AX"/>
+                        <outlet property="mimickrVideoView" destination="6fG-fI-5WB" id="qrn-qc-kIo"/>
                         <outlet property="mimickrView" destination="Y5X-YE-BAe" id="7hB-xI-CAe"/>
                         <outlet property="muteBtn" destination="pTs-Qi-bp6" id="BI8-bj-FCB"/>
                         <outlet property="pointLbl" destination="f6v-qA-K2h" id="aW2-Vi-VLc"/>
@@ -502,7 +504,6 @@
                         <outlet property="textField" destination="fJZ-tp-Ewd" id="I2Q-ow-Equ"/>
                         <outlet property="timerLabel" destination="0ep-l1-lEr" id="P7b-uT-gAF"/>
                         <outlet property="timerMimickr" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
-                        <outlet property="videoView" destination="O1n-kR-OFm" id="dRO-ef-ZDC"/>
                         <outlet property="wordCategoryLbl" destination="efk-pv-Hks" id="6mE-F6-VoL"/>
                         <outlet property="wordLbl" destination="uIJ-ce-nQM" id="slV-HL-WEY"/>
                     </connections>
