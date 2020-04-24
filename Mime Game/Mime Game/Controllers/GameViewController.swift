@@ -91,9 +91,7 @@ class GameViewController: UIViewController {
         if self.turn == self.mimes.count {
             self.turn = 0
         }
-        
         self.currentMime = self.mimes[self.turn]
-        print(currentMime?.word)
     }
     
     @objc func updateTimer() {
@@ -117,6 +115,7 @@ class GameViewController: UIViewController {
         }
         
         if self.game.uids[game.currentPlayer] == game.localPlayer.uid {
+            agoraKit.enableLocalVideo(true)
             setupLocalVideo()
         } else {
             agoraKit.enableLocalVideo(false)

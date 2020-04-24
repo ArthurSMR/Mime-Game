@@ -86,7 +86,7 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        agoraKit.joinChannel(byUserAccount: "Arthur", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+        agoraKit.joinChannel(byUserAccount: "Tony", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             self.tableView.reloadData()
@@ -110,7 +110,7 @@ class LobbyViewController: UIViewController {
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
     private func createLocalPlayer(uid: UInt) {
-        self.localAgoraUserInfo.userAccount = "Arthur"
+        self.localAgoraUserInfo.userAccount = "Tony"
         self.localAgoraUserInfo.uid = uid
         self.UIDs.append(uid)
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
