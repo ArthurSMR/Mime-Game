@@ -71,7 +71,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         let insetX = (view.bounds.width - cellWidth) / 2.0
         let insetY = (view.bounds.height - cellHeight) / 2.0
 
-        return UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        return UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
