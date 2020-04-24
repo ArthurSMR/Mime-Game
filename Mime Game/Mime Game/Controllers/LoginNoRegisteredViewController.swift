@@ -22,9 +22,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         self.avaliableAvatars = createAvaliableAvatarsArray()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
-        collectionView.reloadData()
-        
+                
     }
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
