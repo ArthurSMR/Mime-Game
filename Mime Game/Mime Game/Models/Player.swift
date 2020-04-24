@@ -20,6 +20,12 @@ enum PlayerType {
     
     ///If a remote player is unavailable
     case unavailable
+    
+    /// If the player is the mimickr
+    case mimickr
+    
+    /// If the player is the diviner
+    case diviner
 }
 
 class Player {

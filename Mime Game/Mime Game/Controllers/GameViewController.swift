@@ -38,6 +38,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wordLbl: UILabel!
     @IBOutlet weak var timerMimicryLabel: UILabel!
     
+    var isMimickrView = false {
+        didSet {
+            if isMimickrView == false {
+                self.changeView(playerType: .diviner)
+            } else {
+                self.changeView(playerType: .mimickr)
+            }
+        }
+    }
+    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,13 +126,32 @@ class GameViewController: UIViewController {
         
         if self.game.uids[game.currentPlayer] == game.localPlayer.uid {
             agoraKit.enableLocalVideo(true)
+            self.game.localPlayer.type = .mimickr
+            isMimickrView = true
             setupLocalVideo()
         } else {
             agoraKit.enableLocalVideo(false)
+            self.game.localPlayer.type = .diviner
+            isMimickrView = false
             setupRemotePlayer()
         }
         
         self.resetTimer()
+    }
+    
+    private func changeView(playerType: PlayerType) {
+        
+        switch playerType {
+        case .mimickr:
+            self.mimickrView.isHidden = false
+            self.divinerView.isHidden = true
+        case .diviner:
+            self.mimickrView.isHidden = true
+            self.divinerView.isHidden = false
+        default:
+            print("can not load view")
+        }
+
     }
     
     private func setupRemotePlayer() {
