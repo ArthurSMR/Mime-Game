@@ -440,11 +440,11 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tema: Animal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efk-pv-Hks">
                                                 <rect key="frame" x="0.0" y="0.0" width="266" height="29"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animal: Leão" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIJ-ce-nQM">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leão" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIJ-ce-nQM">
                                                 <rect key="frame" x="0.0" y="29" width="266" height="37"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -504,8 +504,8 @@
                         <outlet property="textField" destination="fJZ-tp-Ewd" id="I2Q-ow-Equ"/>
                         <outlet property="timerLabel" destination="0ep-l1-lEr" id="P7b-uT-gAF"/>
                         <outlet property="timerMimickr" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
-                        <outlet property="wordCategoryLbl" destination="efk-pv-Hks" id="6mE-F6-VoL"/>
                         <outlet property="wordLbl" destination="uIJ-ce-nQM" id="slV-HL-WEY"/>
+                        <outlet property="wordThemeLbl" destination="efk-pv-Hks" id="6mE-F6-VoL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2S-l8-np3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,7 +15,7 @@ enum MimesError {
 
 class MimeServices {
     
-    static func fetchMimes(for category: WordCategory, completion: @escaping(_ mimes: [Mime], _ error: MimesError?) -> Void) {
+    static func fetchMimes(for category: Theme, completion: @escaping(_ mimes: [Mime], _ error: MimesError?) -> Void) {
         
         var mimes: [Mime] = []
         
