@@ -38,7 +38,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wordLbl: UILabel!
     @IBOutlet weak var timerMimickr: UILabel!
     
-    var isMimickrView: Bool {
+    var isMimickrView: Bool = false {
         didSet {
             if isMimickrView == false {
                 self.changeView(playerType: .diviner)
@@ -65,9 +65,8 @@ class GameViewController: UIViewController {
     
     private func startGame() {
         game.uids = game.uids.sorted()
-        isMimickrView = true
-        self.setupLocalVideo()
         self.seconds = 10
+        isMimickrView = false
         runTimer()
     }
     
