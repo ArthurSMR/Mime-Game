@@ -22,9 +22,21 @@ class GameViewController: UIViewController {
     var currentMime: Mime?
     var game: Game!
     
-    //MARK: Outlets
+    //MARK: Outlets Diviner
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var pointLbl: UILabel!
+    @IBOutlet weak var reportBtn: UIButton!
+    @IBOutlet weak var infoBtn: UIButton!
+    @IBOutlet weak var muteBtn: UIButton!
+    @IBOutlet weak var textField: RoundTextField!
+    @IBOutlet weak var divinerView: UIView!
+    
+    //MARK: Outlets Mimickr
+    @IBOutlet weak var mimickrView: UIView!
+    @IBOutlet weak var wordCategoryLbl: UILabel!
+    @IBOutlet weak var wordLbl: UILabel!
+    @IBOutlet weak var timerMimicryLabel: UILabel!
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -49,8 +61,6 @@ class GameViewController: UIViewController {
     }
     
     //MARK: Methods
-    
-    
     /// This method is for fetching mimes from the databse
     func fetchMimes() {
         MimeServices.fetchMimes(for: game.wordCategory, completion: { (mimes, error) in
@@ -140,6 +150,15 @@ class GameViewController: UIViewController {
         
         agoraKit.enableVideo()
         agoraKit.setVideoEncoderConfiguration(configuration)
+    }
+    
+    @IBAction func muteActionBtn(_ sender: UIButton) {
+    }
+    
+    @IBAction func infoActionBtn(_ sender: UIButton) {
+    }
+    
+    @IBAction func reportBtn(_ sender: UIButton) {
     }
 }
 
