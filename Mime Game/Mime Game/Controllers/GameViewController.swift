@@ -146,4 +146,8 @@ class GameViewController: UIViewController {
 //MARK: Agora Delegate
 extension GameViewController: AgoraRtcEngineDelegate {
     
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didReceive event: AgoraChannelMediaRelayEvent) {
+        
+    }
+
 }

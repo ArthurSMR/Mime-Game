@@ -18,6 +18,8 @@ class LobbyViewController: UIViewController {
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
     var remotePlayers: [Player] = []
+    var startGame = Data("startGame".utf8)
+    var streamID = 1
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -113,6 +115,10 @@ class LobbyViewController: UIViewController {
         self.UIDs.append(uid)
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
+        
+        
+        let numberPointer = UnsafeMutablePointer<Int>(&streamID)
+        agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
     }
     
     /// Creating remote player and setting it to available
@@ -177,6 +183,7 @@ class LobbyViewController: UIViewController {
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
+        agoraKit.sendStreamMessage(self.streamID, data: startGame)
         self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
@@ -247,6 +254,18 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     /// - Returns: returns a green or clear color
     func changeColorBorderWhenSpeaking(remotePlayer: Player) -> UIColor {
         return remotePlayer.isSpeaking ? .green : .clear
+    }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
+
+            let str = String(decoding: data, as: UTF8.self)
+            print("received from \(uid) data: \(str)")
+        self.performSegue(withIdentifier: str, sender: self)
+    }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurStreamMessageErrorFromUid uid: UInt, streamId: Int, error: Int, missed: Int, cached: Int) {
+        
+        print("received from \(uid), streamID: \(streamId), error: \(error), missed \(missed), cached \(cached)")
     }
 
 }
