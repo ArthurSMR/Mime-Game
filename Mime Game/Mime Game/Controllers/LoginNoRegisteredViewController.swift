@@ -8,12 +8,25 @@
 
 import UIKit
 
-class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var textField: UITextField!
     
-
     var avaliableAvatars: [UIImage] = []
+    var currentSelectedAvatarIndex: Int = 0{
+        didSet{
+            collectionView.cellForItem(at: IndexPath(row: currentSelectedAvatarIndex, section: 0))?.alpha = 1
+            if currentSelectedAvatarIndex > 0{
+                let prevIndex = currentSelectedAvatarIndex - 1
+                collectionView.cellForItem(at:IndexPath(row: prevIndex, section: 0))?.alpha = 0.6
+            }
+            if currentSelectedAvatarIndex < avaliableAvatars.count {
+                let nextIndex = currentSelectedAvatarIndex + 1
+                collectionView.cellForItem(at: IndexPath(row: nextIndex, section: 0))?.alpha = 0.6
+            }
+        }
+    }
     let cellScaling: CGFloat = 0.6
     
     override func viewDidLoad() {
@@ -22,13 +35,17 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         self.avaliableAvatars = createAvaliableAvatarsArray()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-                
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(animated)
+        self.textField.delegate = self
+        
+        self.currentSelectedAvatarIndex = 0
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.setupTranslucidAvatars()
+//    }
     
     func createAvaliableAvatarsArray() -> [UIImage] {
         var avatarsImages: [UIImage] = []
@@ -43,6 +60,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         return avatarsImages
     }
     
+    
     //MARK: Collection View Delegate and DataSource:
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -56,13 +74,16 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AvatarCell.identifier, for: indexPath) as! AvatarCell
         cell.avatar = avaliableAvatars[indexPath.row]
         
-        
+        // not working
+        if indexPath.row > 0 {
+            cell.alpha = 0.6
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let screenSize = UIScreen.main.bounds.size
+
         let cellWidth = floor(collectionView.frame.width * cellScaling)
         let cellHeight = floor(collectionView.frame.height * cellScaling)
 
@@ -74,19 +95,53 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let screenSize = UIScreen.main.bounds.size
-        let cellWidth = floor(screenSize.width * cellScaling)
-        let cellHeight = floor(screenSize.height * cellScaling)
-        
-//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        
+        let cellWidth = floor(collectionView.frame.width * cellScaling)
+        let cellHeight = floor(collectionView.frame.height * cellScaling)
+               
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
 
+    //MARK: ScrollView Delegate
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    }
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        
+        var offSet = targetContentOffset.pointee
+        let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+        let roundedIndex = round(index)
+        self.currentSelectedAvatarIndex = Int(roundedIndex)
+        
+        offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+        targetContentOffset.pointee = offSet
+    }
+    
+
+    //Mark: Keyboard Functions
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 5
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let character = items[(indexPath as NSIndexPath).row]
