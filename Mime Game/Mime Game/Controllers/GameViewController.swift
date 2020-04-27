@@ -77,11 +77,21 @@ class GameViewController: UIViewController {
         
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
-        alert.gamerLabel.text = ""
-        alert.themeLabel.text = ""
+        alert.gamerLabel.text = getCurrentPlayer()
+        alert.themeLabel.text = self.currentMime?.theme.rawValue
         //alert.imageGame.image = UIImage(named: "")
         alert.show(animated: true)
         alert.runTimer()
+    }
+    
+    func getCurrentPlayer() -> String {
+        
+        if game.localPlayer.type == .mimickr {
+            return game.localPlayer.name
+        }
+        else {
+            return game.players[game.currentPlayer].name
+        }
     }
     
     func modalTip() {
@@ -113,9 +123,6 @@ class GameViewController: UIViewController {
     /// This method is for reseting the timer and increment the turn
     func resetTimer() {
         self.seconds = game.totalTime // Reseting timer
-        game.currentPlayer += 1   // Turn next round
-        self.turn += 1
-        changeMime()
         runTimer()
     }
     
@@ -153,6 +160,29 @@ class GameViewController: UIViewController {
     /// This method will set the next mimickr and check if all players did some mime
     private func nextTurn() {
         
+        // if the current player reached the last uid element, it can reset the turn
+        if self.game.currentPlayer == self.game.uids.count {
+            self.resetTurn()
+        }
+        
+        // if the current player is the mimickr, it can set the local video
+        if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
+            self.agoraKit.enableLocalVideo(true)
+            self.game.localPlayer.type = .mimickr
+            
+            //self.modalTip()
+            
+            self.isMimickrView = true
+            self.setupLocalVideo()
+        } else {
+            self.agoraKit.enableLocalVideo(false)
+            self.game.localPlayer.type = .diviner
+            self.isMimickrView = false
+            self.setupRemotePlayer()
+        }
+        game.currentPlayer += 1   // Turn next round
+        self.turn += 1
+        changeMime()
         drawPlayerModal()
     }
     
@@ -231,28 +261,6 @@ extension GameViewController: ModalTipDelegate {
 extension GameViewController: DrawPlayerDelegate {
     
     func resetTimerPrimary() {
-        
-        // if the current player reached the last uid element, it can reset the turn
-        if self.game.currentPlayer == self.game.uids.count {
-            self.resetTurn()
-        }
-        
-        // if the current player is the mimickr, it can set the local video
-        if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
-            self.agoraKit.enableLocalVideo(true)
-            self.game.localPlayer.type = .mimickr
-            
-            //self.modalTip()
-            
-            self.isMimickrView = true
-            self.setupLocalVideo()
-        } else {
-            self.agoraKit.enableLocalVideo(false)
-            self.game.localPlayer.type = .diviner
-            self.isMimickrView = false
-            self.setupRemotePlayer()
-        }
-        
         self.resetTimer()
     }
 }

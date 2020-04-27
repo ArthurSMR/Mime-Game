@@ -46,7 +46,7 @@ class DrawPlayer: UIView, Modal {
         }
     }
     
-        /// This method is to start running the timer
+    /// This method is to start running the timer
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(dismissModal)), userInfo: nil, repeats: true)
     }
