@@ -72,6 +72,24 @@ class GameViewController: UIViewController {
     }
     
     //MARK: Methods
+    func drawPlayerModal() {
+        
+        guard let alert = DrawPlayer.create() else { return }
+        alert.gamerLabel.text = ""
+        alert.themeLabel.text = ""
+        alert.imageGame.image = UIImage(named: "")
+        alert.show(animated: true)
+    }
+    
+    func modalTip() {
+        
+        guard let alert = ModalTip.create() else { return }
+        alert.delegate = self
+        alert.messageLabel.text = ""
+        alert.titleLabel.text = ""
+        alert.show(animated: true)
+    }
+    
     /// This method is for fetching mimes from the databse
     func fetchMimes() {
         MimeServices.fetchMimes(for: game.wordCategory, completion: { (mimes, error) in
@@ -199,5 +217,10 @@ extension GameViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didReceive event: AgoraChannelMediaRelayEvent) {
         
     }
+}
 
+extension GameViewController: ModalTipDelegate {
+    func okayBtn() {
+        return
+    }
 }
