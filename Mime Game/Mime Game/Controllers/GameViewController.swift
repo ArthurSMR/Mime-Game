@@ -67,8 +67,9 @@ class GameViewController: UIViewController {
     private func startGame() {
         game.uids = game.uids.sorted()
         self.seconds = 10
-        isMimickrView = false
+        self.game.localPlayer.type = .diviner
         setupLocalVideo()
+        isMimickrView = false
         runTimer()
     }
     
@@ -167,12 +168,11 @@ class GameViewController: UIViewController {
         
         // if the current player is the mimickr, it can set the local video
         if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
-            self.agoraKit.enableLocalVideo(true)
             self.game.localPlayer.type = .mimickr
+            self.isMimickrView = true
             
             //self.modalTip()
             
-            self.isMimickrView = true
             self.setupLocalVideo()
         } else {
             self.agoraKit.enableLocalVideo(false)
@@ -216,9 +216,15 @@ class GameViewController: UIViewController {
     
     /// This method is to setup the local video to the mimickr video view
     private func setupLocalVideo() {
+        self.agoraKit.enableLocalVideo(true)
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.localPlayer.uid
-        videoCanvas.view = self.mimickrVideoView //video fica por cima
+        
+        if isMimickrView {
+            videoCanvas.view = self.mimickrVideoView
+        } else {
+            videoCanvas.view = self.divinerVideoView // for the first call of setup video
+        }
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
         print("Setup Local Player")
