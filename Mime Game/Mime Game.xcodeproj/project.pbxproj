@@ -45,9 +45,8 @@
 		3C36CFE5245086A0003648AE /* LobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36CFE3245086A0003648AE /* LobbyTableViewCell.swift */; };
 		3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */; };
 		9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */ = {isa = PBXBuildFile; fileRef = 9A13FB06244E9CE200A74F6F /* test-no-register-avatars */; };
-		9A5CE8DD244E89EF007A1475 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CE8DC244E89EF007A1475 /* Avatar.swift */; };
-		9A5CE8DF244E89F9007A1475 /* Avatar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CE8DE244E89F9007A1475 /* Avatar.xib */; };
-		9A5CE8E1244E8A01007A1475 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */; };
+		9AC182212452471C00BD5AD6 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC182202452471C00BD5AD6 /* LoginNoRegisteredViewController.swift */; };
+		9AC182232452472A00BD5AD6 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC182222452472900BD5AD6 /* AvatarCell.swift */; };
 		F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,9 +109,8 @@
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A13FB06244E9CE200A74F6F /* test-no-register-avatars */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "test-no-register-avatars"; sourceTree = "<group>"; };
-		9A5CE8DC244E89EF007A1475 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
-		9A5CE8DE244E89F9007A1475 /* Avatar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Avatar.xib; sourceTree = "<group>"; };
-		9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
+		9AC182202452471C00BD5AD6 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
+		9AC182222452472900BD5AD6 /* AvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,8 +316,7 @@
 		9A13FB09244EA0E200A74F6F /* Avatar */ = {
 			isa = PBXGroup;
 			children = (
-				9A5CE8DE244E89F9007A1475 /* Avatar.xib */,
-				9A5CE8DC244E89EF007A1475 /* Avatar.swift */,
+				9AC182222452472900BD5AD6 /* AvatarCell.swift */,
 			);
 			path = Avatar;
 			sourceTree = "<group>";
@@ -328,9 +325,9 @@
 			isa = PBXGroup;
 			children = (
 				36BC0420243E1080005B753A /* ViewController.swift */,
-				9A5CE8E0244E8A01007A1475 /* LoginNoRegisteredViewController.swift */,
 				3C36CFBD2450809F003648AE /* LobbyViewController.swift */,
 				3642AE0724520495004CBF76 /* GameViewController.swift */,
+				9AC182202452471C00BD5AD6 /* LoginNoRegisteredViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -433,7 +430,6 @@
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
-				9A5CE8DF244E89F9007A1475 /* Avatar.xib in Resources */,
 				9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */,
 				36D3280124575A0700A65E32 /* data.json in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
@@ -544,10 +540,11 @@
 				3C36CFD124508441003648AE /* UIColor+Extension.swift in Sources */,
 				3C36CFD224508441003648AE /* DataExtension.swift in Sources */,
 				3C36CFCE24508441003648AE /* UserDefaults+Extensions.swift in Sources */,
-				9A5CE8E1244E8A01007A1475 /* LoginNoRegisteredViewController.swift in Sources */,
 				3C09D64D24570D0300849B83 /* Modal.swift in Sources */,
 				3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */,
 				3C36CFD324508441003648AE /* DateConverter.swift in Sources */,
+				9AC182232452472A00BD5AD6 /* AvatarCell.swift in Sources */,
+				9AC182212452471C00BD5AD6 /* LoginNoRegisteredViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
