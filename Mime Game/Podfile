@@ -5,6 +5,7 @@ target 'Mime Game' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 	pod ‘AgoraRtcEngine_iOS’, '~> 3.0.0.1'
+	pod 'lottie-ios'
 
   # Pods for Mime Game
 

@@ -1,16 +1,20 @@
 PODS:
   - AgoraRtcEngine_iOS (3.0.0.1)
+  - lottie-ios (3.1.8)
 
 DEPENDENCIES:
   - AgoraRtcEngine_iOS (~> 3.0.0.1)
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - AgoraRtcEngine_iOS
+    - lottie-ios
 
 SPEC CHECKSUMS:
   AgoraRtcEngine_iOS: f7fb9870f884dfa91fc3295c6594ea089f38c481
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
 
-PODFILE CHECKSUM: 1a7561c016ad4b743f9e68b93f2cfabd37f20a78
+PODFILE CHECKSUM: 1bb05d0dd86441fdb99d1280abb43caf090e2737
 
 COCOAPODS: 1.9.1

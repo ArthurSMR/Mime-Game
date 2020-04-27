@@ -99,9 +99,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img 1" translatesAutoresizingMaskIntoConstraints="NO" id="vYh-dQ-KcD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="582"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ni4-kL-dJM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="628"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-dd-be5" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="596" width="414" height="300"/>
                                 <subviews>
@@ -177,21 +178,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0S3-2j-mzT" firstAttribute="top" secondItem="1Kv-Zg-Fcy" secondAttribute="top" constant="56" id="0nB-dY-ko0"/>
+                            <constraint firstAttribute="trailing" secondItem="Ni4-kL-dJM" secondAttribute="trailing" id="22z-64-DYL"/>
                             <constraint firstItem="0S3-2j-mzT" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" constant="27" id="23C-nt-q5q"/>
                             <constraint firstItem="1Kv-Zg-Fcy" firstAttribute="trailing" secondItem="IOO-i5-8fW" secondAttribute="trailing" constant="20" id="3Fz-es-JOM"/>
                             <constraint firstItem="cVy-dd-be5" firstAttribute="top" secondItem="IOO-i5-8fW" secondAttribute="bottom" constant="20" id="4Aj-pL-Tq8"/>
+                            <constraint firstItem="cVy-dd-be5" firstAttribute="top" secondItem="Ni4-kL-dJM" secondAttribute="bottom" constant="-32" id="4XS-St-ORW"/>
                             <constraint firstItem="cVy-dd-be5" firstAttribute="trailing" secondItem="1Kv-Zg-Fcy" secondAttribute="trailing" id="71u-y6-cem"/>
-                            <constraint firstItem="vYh-dQ-KcD" firstAttribute="top" secondItem="1Kv-Zg-Fcy" secondAttribute="top" id="K7d-3h-wHu"/>
-                            <constraint firstItem="cVy-dd-be5" firstAttribute="top" secondItem="vYh-dQ-KcD" secondAttribute="bottom" constant="-30" id="g9o-tQ-JFh"/>
-                            <constraint firstItem="vYh-dQ-KcD" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" id="gz5-zD-TFY"/>
+                            <constraint firstItem="Ni4-kL-dJM" firstAttribute="leading" secondItem="F6D-fi-puJ" secondAttribute="leading" id="8fV-Lm-BF2"/>
+                            <constraint firstItem="Ni4-kL-dJM" firstAttribute="top" secondItem="F6D-fi-puJ" secondAttribute="top" id="OGH-OO-nqj"/>
                             <constraint firstAttribute="bottom" secondItem="cVy-dd-be5" secondAttribute="bottom" id="oJa-OE-bnu"/>
                             <constraint firstItem="cVy-dd-be5" firstAttribute="leading" secondItem="1Kv-Zg-Fcy" secondAttribute="leading" id="sQk-BK-h6n"/>
-                            <constraint firstItem="vYh-dQ-KcD" firstAttribute="trailing" secondItem="1Kv-Zg-Fcy" secondAttribute="trailing" id="vap-cl-sS6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Kv-Zg-Fcy"/>
                     </view>
                     <connections>
                         <outlet property="exitLobby" destination="0S3-2j-mzT" id="VKB-W7-1dT"/>
+                        <outlet property="lobbyViewAnimated" destination="Ni4-kL-dJM" id="8oU-VA-qdj"/>
                         <outlet property="muteBtn" destination="IOO-i5-8fW" id="fKe-8i-yWV"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
                         <segue destination="wo4-Pi-ajL" kind="show" identifier="startGame" id="MBy-jB-Rz7"/>
@@ -683,7 +685,6 @@
         <image name="Points" width="106" height="36"/>
         <image name="Report" width="35" height="39"/>
         <image name="Timer1" width="112" height="112"/>
-        <image name="img 1" width="424" height="600"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
     </resources>
