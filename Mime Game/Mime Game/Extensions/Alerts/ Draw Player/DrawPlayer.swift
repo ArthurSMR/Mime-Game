@@ -46,3 +46,9 @@ extension DrawPlayer {
         return view
     }
 }
+
+extension DrawPlayer: DrawPlayerDelegate {
+    func dismissModas() {
+        dismissModal()
+    }
+}

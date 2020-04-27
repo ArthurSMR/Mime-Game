@@ -9,10 +9,15 @@
 import UIKit
 import AgoraRtcKit
 
+protocol DrawPlayerDelegate {
+    func dismissModal()
+}
+
 class GameViewController: UIViewController {
     
     //MARK: Variables
     var agoraKit: AgoraRtcEngineKit!
+    var delegateModal: DrawPlayerDelegate?
     
     var timer = Timer()
     var seconds = 20
