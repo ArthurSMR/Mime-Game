@@ -16,9 +16,9 @@ class Game {
     var uids: [UInt] = []
     var totalTime: Int
     var currentPlayer: Int
-    var wordCategory: WordCategory
+    var wordCategory: Theme
     
-    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: WordCategory) {
+    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: Theme) {
         self.localPlayer = localPlayer
         self.players = players
         self.uids = uids

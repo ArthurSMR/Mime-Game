@@ -26,13 +26,13 @@ class MockDatabase {
         
         var array: [Mime] = []
         
-        let pen = Mime(word: "Caneta", category: .object)
+        let pen = Mime(word: "Caneta", theme: .object)
         array.append(pen)
         
-        let book = Mime(word: "Livro", category: .object)
+        let book = Mime(word: "Livro", theme: .object)
         array.append(book)
         
-        let vase = Mime(word: "Vaso", category: .object)
+        let vase = Mime(word: "Vaso", theme: .object)
         array.append(vase)
         
         return array
@@ -44,13 +44,13 @@ class MockDatabase {
         
         var array: [Mime] = []
         
-        let horse = Mime(word: "Cavalo", category: .animal)
+        let horse = Mime(word: "Cavalo", theme: .animal)
         array.append(horse)
         
-        let chicken = Mime(word: "Galinha", category: .animal)
+        let chicken = Mime(word: "Galinha", theme: .animal)
         array.append(chicken)
         
-        let duck = Mime(word: "Pato", category: .animal)
+        let duck = Mime(word: "Pato", theme: .animal)
         array.append(duck)
         
         return array

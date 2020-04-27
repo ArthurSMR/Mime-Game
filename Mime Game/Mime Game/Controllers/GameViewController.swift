@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
     //MARK: Outlets Mimickr
     @IBOutlet weak var mimickrVideoView: RoundView!
     @IBOutlet weak var mimickrView: UIView!
-    @IBOutlet weak var wordCategoryLbl: UILabel!
+    @IBOutlet weak var wordThemeLbl: UILabel!
     @IBOutlet weak var wordLbl: UILabel!
     @IBOutlet weak var timerMimickr: UILabel!
     
@@ -68,10 +68,11 @@ class GameViewController: UIViewController {
         game.uids = game.uids.sorted()
         self.seconds = 10
         isMimickrView = false
+        setupLocalVideo()
         runTimer()
     }
     
-    //MARK: Methods
+    //MARK: Methodss
     func drawPlayerModal() {
         
         guard let alert = DrawPlayer.create() else { return }
@@ -102,6 +103,7 @@ class GameViewController: UIViewController {
         })
     }
     
+    /// This method is to start running the timer
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
@@ -115,16 +117,20 @@ class GameViewController: UIViewController {
         runTimer()
     }
     
+    
+    /// This method is to change the mime and get another mime word
     func changeMime() {
         
         if self.turn == self.mimes.count {
             self.turn = 0
         }
         self.currentMime = self.mimes[self.turn]
-        self.wordCategoryLbl.text = "Tema: \(String(describing: self.currentMime?.category))"
-        self.wordLbl.text = "\(String(describing: self.currentMime?.category)): \(String(describing: self.currentMime?.word))"
+        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
+        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
     }
     
+    
+    /// This method is to update the timer and validate if the timer has reached zero
     @objc func updateTimer() {
         
         self.seconds -= 1     //This will decrement the seconds.
@@ -136,16 +142,22 @@ class GameViewController: UIViewController {
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
     }
     
+    
+    /// This method is to reset the turns, that is, the players "line" come back to the beginning
     private func resetTurn() {
         game.currentPlayer = 0
     }
     
+    
+    /// This method will set the next mimickr and check if all players did some mime
     private func nextTurn() {
         
+        // if the current player reached the last uid element, it can reset the turn
         if game.currentPlayer == game.uids.count {
             resetTurn()
         }
         
+        // if the current player is the mimickr, it can set the local video
         if self.game.uids[game.currentPlayer] == game.localPlayer.uid {
             agoraKit.enableLocalVideo(true)
             self.game.localPlayer.type = .mimickr
@@ -161,6 +173,9 @@ class GameViewController: UIViewController {
         self.resetTimer()
     }
     
+    
+    /// This method is to change the mimickr and the diviver view
+    /// - Parameter playerType: it can be mimickr or diviner
     private func changeView(playerType: PlayerType) {
         
         switch playerType {
@@ -171,10 +186,12 @@ class GameViewController: UIViewController {
             self.mimickrView.isHidden = true
             self.divinerView.isHidden = false
         default:
-            print("can not load view")
+            print("can not load view to player with type \(playerType), just to mimickr and diviner")
         }
     }
     
+    
+    /// This method is to setup remotePlayer to the diviner video view
     private func setupRemotePlayer() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.uids[game.currentPlayer]
@@ -184,6 +201,8 @@ class GameViewController: UIViewController {
         print("Setup Remote Player")
     }
     
+    
+    /// This method is to setup the local video to the mimickr video view
     private func setupLocalVideo() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.localPlayer.uid
@@ -195,11 +214,13 @@ class GameViewController: UIViewController {
     
     private func setupVideo() {
         
-        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.divinerVideoView.frame.size.width, height: self.divinerVideoView.frame.size.height), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
+        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.mimickrVideoView.frame.size.width * 1.1, height: self.mimickrVideoView.frame.size.height * 1.1), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
         
         agoraKit.enableVideo()
         agoraKit.setVideoEncoderConfiguration(configuration)
     }
+    
+    //MARK: Actions
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
     }
