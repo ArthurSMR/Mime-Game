@@ -9,15 +9,10 @@
 import UIKit
 import AgoraRtcKit
 
-protocol DrawPlayerDelegate {
-    func dismiss()
-}
-
 class GameViewController: UIViewController {
     
     //MARK: Variables
     var agoraKit: AgoraRtcEngineKit!
-    var delegateModal: DrawPlayerDelegate?
     
     var timer = Timer()
     var seconds = 20
@@ -81,6 +76,7 @@ class GameViewController: UIViewController {
     func drawPlayerModal() {
         
         guard let alert = DrawPlayer.create() else { return }
+        alert.delegate = self
         alert.gamerLabel.text = ""
         alert.themeLabel.text = ""
         //alert.imageGame.image = UIImage(named: "")
@@ -158,30 +154,6 @@ class GameViewController: UIViewController {
     private func nextTurn() {
         
         drawPlayerModal()
-        
-        // if the current player reached the last uid element, it can reset the turn
-        if self.game.currentPlayer == self.game.uids.count {
-            self.resetTurn()
-        }
-        
-        // if the current player is the mimickr, it can set the local video
-        if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
-            self.agoraKit.enableLocalVideo(true)
-            self.game.localPlayer.type = .mimickr
-            
-            //self.modalTip()
-            
-            self.isMimickrView = true
-            self.setupLocalVideo()
-        } else {
-            self.agoraKit.enableLocalVideo(false)
-            self.game.localPlayer.type = .diviner
-            self.isMimickrView = false
-            self.setupRemotePlayer()
-        }
-        
-        self.resetTimer()
-        
     }
     
     /// This method is to change the mimickr and the diviver view
@@ -252,6 +224,35 @@ extension GameViewController: AgoraRtcEngineDelegate {
 
 extension GameViewController: ModalTipDelegate {
     func okayBtn() {
-        self.delegateModal?.dismiss()
+        return
+    }
+}
+
+extension GameViewController: DrawPlayerDelegate {
+    
+    func resetTimerPrimary() {
+        
+        // if the current player reached the last uid element, it can reset the turn
+        if self.game.currentPlayer == self.game.uids.count {
+            self.resetTurn()
+        }
+        
+        // if the current player is the mimickr, it can set the local video
+        if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
+            self.agoraKit.enableLocalVideo(true)
+            self.game.localPlayer.type = .mimickr
+            
+            //self.modalTip()
+            
+            self.isMimickrView = true
+            self.setupLocalVideo()
+        } else {
+            self.agoraKit.enableLocalVideo(false)
+            self.game.localPlayer.type = .diviner
+            self.isMimickrView = false
+            self.setupRemotePlayer()
+        }
+        
+        self.resetTimer()
     }
 }

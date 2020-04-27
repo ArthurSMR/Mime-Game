@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol DrawPlayerDelegate {
+    func resetTimerPrimary()
+}
+
 class DrawPlayer: UIView, Modal {
 
     var backgroundView: UIView!
     var dialogView: UIView!
     var timer = Timer()
     var seconds = 5
+    var delegate: DrawPlayerDelegate?
     
     // MARK: - OUTLETS
     @IBOutlet weak var dialogIBView: UIView!
@@ -37,7 +42,7 @@ class DrawPlayer: UIView, Modal {
         if self.seconds == 0 {
             self.timer.invalidate()
             self.dismiss(animated: true)
-            // delegate
+            delegate?.resetTimerPrimary()
         }
     }
     
@@ -57,11 +62,5 @@ extension DrawPlayer {
         view?.backgroundView = view?.backgroundIBView
         view?.dialogView = view?.dialogIBView
         return view
-    }
-}
-
-extension DrawPlayer: DrawPlayerDelegate {
-    func dismiss() {
-        dismissModal()
     }
 }
