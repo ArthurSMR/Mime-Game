@@ -13,10 +13,11 @@ import Lottie
 class LobbyViewController: UIViewController {
     
     //MARK: Variables
-    var animationView = AnimationView()
-    
+
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
+    
+    var displayLink: CADisplayLink?
     
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
@@ -28,7 +29,7 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var exitLobby: UIButton!
     @IBOutlet weak var muteBtn: RoundButton!
-    @IBOutlet weak var lobbyViewAnimated: UIView!
+    @IBOutlet weak var lobbyView: AnimationView!
     
     var isMuted: Bool = false {
         didSet {
@@ -63,18 +64,20 @@ class LobbyViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
-        startViewAnimation()
+        setupViewAnimation()
         changeMuteButtonState()
         setupAgora()
     }
     
-    func startViewAnimation() {
+    func setupViewAnimation() {
         
-//        let animation = Animation.named("data.json", subdirectory: "Animations")
-//        animationView.animation = animation
-//        animationView.contentMode = .scaleAspectFit
-//        lobbyViewAnimated.addSubview(animationView)
+        let animation = Animation.named("data")
         
+        lobbyView.animation = animation
+        lobbyView.loopMode = .loop
+        lobbyView.play()
+        
+//        displayLink?.add(to: .current, forMode: .default)
     }
     
     func setupAgora() {
