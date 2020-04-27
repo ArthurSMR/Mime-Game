@@ -22,7 +22,6 @@
 		36BC0429243E1083005B753A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BC0428243E1083005B753A /* Assets.xcassets */; };
 		36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BC042A243E1083005B753A /* LaunchScreen.storyboard */; };
 		36BC0437243E1083005B753A /* Mime_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0436243E1083005B753A /* Mime_GameTests.swift */; };
-		36D3280C24576B9E00A65E32 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 36D3280B24576B9E00A65E32 /* data.json */; };
 		3C09D64D24570D0300849B83 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D63A24570D0300849B83 /* Modal.swift */; };
 		3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D65724570DA900849B83 /* DrawPlayer.swift */; };
 		3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65924570DB400849B83 /* DrawPlayer.xib */; };
@@ -83,7 +82,6 @@
 		36BC0432243E1083005B753A /* Mime GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mime GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BC0436243E1083005B753A /* Mime_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime_GameTests.swift; sourceTree = "<group>"; };
 		36BC0438243E1083005B753A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36D3280B24576B9E00A65E32 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = ../../../../../../Downloads/data.json; sourceTree = "<group>"; };
 		3C09D63A24570D0300849B83 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		3C09D65724570DA900849B83 /* DrawPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawPlayer.swift; sourceTree = "<group>"; };
 		3C09D65924570DB400849B83 /* DrawPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawPlayer.xib; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				36BC0422243E1081005B753A /* Main.storyboard */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
 				36BC042A243E1083005B753A /* LaunchScreen.storyboard */,
-				36D3280B24576B9E00A65E32 /* data.json */,
 				36BC042D243E1083005B753A /* Info.plist */,
 				36BC0425243E1081005B753A /* Mime_Game.xcdatamodeld */,
 			);
@@ -425,7 +422,6 @@
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
 				9A5CE8DF244E89F9007A1475 /* Avatar.xib in Resources */,
 				9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */,
-				36D3280C24576B9E00A65E32 /* data.json in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,7 +695,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = B8QFK7C948;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -718,7 +714,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = B8QFK7C948;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
