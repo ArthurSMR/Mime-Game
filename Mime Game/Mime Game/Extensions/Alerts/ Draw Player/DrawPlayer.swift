@@ -12,6 +12,8 @@ class DrawPlayer: UIView, Modal {
 
     var backgroundView: UIView!
     var dialogView: UIView!
+    var timer = Timer()
+    var seconds = 5
     
     // MARK: - OUTLETS
     @IBOutlet weak var dialogIBView: UIView!
@@ -29,8 +31,19 @@ class DrawPlayer: UIView, Modal {
         super.init(coder: aDecoder)
     }
     
-    func dismissModal() {
-        self.dismiss(animated: true)
+    @objc func dismissModal() {
+        
+        self.seconds -= 1
+        if self.seconds == 0 {
+            self.timer.invalidate()
+            self.dismiss(animated: true)
+            // delegate
+        }
+    }
+    
+        /// This method is to start running the timer
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(dismissModal)), userInfo: nil, repeats: true)
     }
     
     // MARK: - ACTIONS
@@ -48,7 +61,7 @@ extension DrawPlayer {
 }
 
 extension DrawPlayer: DrawPlayerDelegate {
-    func dismissModas() {
+    func dismiss() {
         dismissModal()
     }
 }

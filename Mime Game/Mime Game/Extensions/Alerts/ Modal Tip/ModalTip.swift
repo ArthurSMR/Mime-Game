@@ -13,7 +13,6 @@ protocol ModalTipDelegate {
 }
 
 class ModalTip: UIView, Modal {
-
     
     var backgroundView: UIView!
     var dialogView: UIView!
@@ -41,8 +40,8 @@ class ModalTip: UIView, Modal {
     
     // MARK: - ACTIONS
     @IBAction func okPressed(_ sender: UIButton) {
-        delegate?.okayBtn()
         dismissModal()
+        delegate?.okayBtn()
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 import AgoraRtcKit
 
 protocol DrawPlayerDelegate {
-    func dismissModal()
+    func dismiss()
 }
 
 class GameViewController: UIViewController {
@@ -83,8 +83,9 @@ class GameViewController: UIViewController {
         guard let alert = DrawPlayer.create() else { return }
         alert.gamerLabel.text = ""
         alert.themeLabel.text = ""
-        alert.imageGame.image = UIImage(named: "")
+        //alert.imageGame.image = UIImage(named: "")
         alert.show(animated: true)
+        alert.runTimer()
     }
     
     func modalTip() {
@@ -110,7 +111,7 @@ class GameViewController: UIViewController {
     
     /// This method is to start running the timer
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     
     /// This method is for reseting the timer and increment the turn
@@ -121,7 +122,6 @@ class GameViewController: UIViewController {
         changeMime()
         runTimer()
     }
-    
     
     /// This method is to change the mime and get another mime word
     func changeMime() {
@@ -157,27 +157,32 @@ class GameViewController: UIViewController {
     /// This method will set the next mimickr and check if all players did some mime
     private func nextTurn() {
         
+        drawPlayerModal()
+        
         // if the current player reached the last uid element, it can reset the turn
-        if game.currentPlayer == game.uids.count {
-            resetTurn()
+        if self.game.currentPlayer == self.game.uids.count {
+            self.resetTurn()
         }
         
         // if the current player is the mimickr, it can set the local video
-        if self.game.uids[game.currentPlayer] == game.localPlayer.uid {
-            agoraKit.enableLocalVideo(true)
+        if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
+            self.agoraKit.enableLocalVideo(true)
             self.game.localPlayer.type = .mimickr
-            isMimickrView = true
-            setupLocalVideo()
+            
+            //self.modalTip()
+            
+            self.isMimickrView = true
+            self.setupLocalVideo()
         } else {
-            agoraKit.enableLocalVideo(false)
+            self.agoraKit.enableLocalVideo(false)
             self.game.localPlayer.type = .diviner
-            isMimickrView = false
-            setupRemotePlayer()
+            self.isMimickrView = false
+            self.setupRemotePlayer()
         }
         
         self.resetTimer()
+        
     }
-    
     
     /// This method is to change the mimickr and the diviver view
     /// - Parameter playerType: it can be mimickr or diviner
@@ -247,6 +252,6 @@ extension GameViewController: AgoraRtcEngineDelegate {
 
 extension GameViewController: ModalTipDelegate {
     func okayBtn() {
-        return
+        self.delegateModal?.dismiss()
     }
 }
