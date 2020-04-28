@@ -38,8 +38,6 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         self.textField.delegate = self
         
         self.currentSelectedAvatarIndex = 0
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -83,15 +81,9 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-
-        let cellWidth = collectionView.frame.width * cellScaling
-        let cellHeight = floor(collectionView.frame.height * cellScaling)
         
-        let screenSize = UIScreen.main.bounds.size
-        let insetX = (screenSize.width - cellWidth) / 2
-        let insetY = (screenSize.height - cellHeight) / 2
-
-        return UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: 0)
+        let insetX = collectionView.frame.width * cellScaling / 2
+        return UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -119,24 +111,6 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         
         offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offSet
-    }
-    
-
-    //Mark: Keyboard Functions
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height - (self.view.frame.maxY - self.textField.frame.maxY) + 10
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-            self.view.layoutIfNeeded()
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

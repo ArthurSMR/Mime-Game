@@ -6,6 +6,7 @@ target 'Mime Game' do
   use_frameworks!
 	pod ‘AgoraRtcEngine_iOS’, '~> 3.0.0.1'
 	pod 'lottie-ios'
+	pod 'IQKeyboardManagerSwift'
 
   # Pods for Mime Game
 
