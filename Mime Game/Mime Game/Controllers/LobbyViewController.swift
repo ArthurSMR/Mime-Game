@@ -13,6 +13,8 @@ import Lottie
 class LobbyViewController: UIViewController {
     
     //MARK: Variables
+    
+    var incomingName: String = "Usuário não identificado"
 
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
@@ -103,7 +105,7 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        agoraKit.joinChannel(byUserAccount: "Tonynho", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+        agoraKit.joinChannel(byUserAccount: incomingName, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             self.tableView.reloadData()
@@ -127,7 +129,7 @@ class LobbyViewController: UIViewController {
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
     private func createLocalPlayer(uid: UInt) {
-        self.localAgoraUserInfo.userAccount = "Tonynho"
+        self.localAgoraUserInfo.userAccount = incomingName
         self.localAgoraUserInfo.uid = uid
         self.UIDs.append(uid)
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
