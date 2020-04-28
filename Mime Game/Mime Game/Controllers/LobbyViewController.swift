@@ -207,6 +207,7 @@ class LobbyViewController: UIViewController {
         isMuted = !isMuted
         agoraKit.muteLocalAudioStream(isMuted)
     }
+
 }
 
 //MARK: TableView

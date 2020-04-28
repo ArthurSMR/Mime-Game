@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0591916A56CB56AF7985E723 /* Pods_Mime_GameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */; };
 		3605253F24588FF600BEA330 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3605253E24588FF600BEA330 /* data.json */; };
+		360525432458A71600BEA330 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360525412458A71600BEA330 /* ChatTableViewCell.swift */; };
+		360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360525422458A71600BEA330 /* ChatTableViewCell.xib */; };
 		3642AE0824520495004CBF76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0724520495004CBF76 /* GameViewController.swift */; };
 		3642AE0C245241CA004CBF76 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0B245241CA004CBF76 /* Game.swift */; };
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
@@ -65,6 +67,8 @@
 		280206A99F7FD16FFF0E75BC /* Pods-Mime GameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime GameTests.release.xcconfig"; path = "Target Support Files/Pods-Mime GameTests/Pods-Mime GameTests.release.xcconfig"; sourceTree = "<group>"; };
 		2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.release.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.release.xcconfig"; sourceTree = "<group>"; };
 		3605253E24588FF600BEA330 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		360525412458A71600BEA330 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		360525422458A71600BEA330 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		3642AE0724520495004CBF76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3642AE0B245241CA004CBF76 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360525402458A6FC00BEA330 /* ChatViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				360525412458A71600BEA330 /* ChatTableViewCell.swift */,
+				360525422458A71600BEA330 /* ChatTableViewCell.xib */,
+			);
+			path = ChatViewCell;
+			sourceTree = "<group>";
+		};
 		3642AE1424524DC2004CBF76 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +310,7 @@
 		9A13FB08244EA0D600A74F6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				360525402458A6FC00BEA330 /* ChatViewCell */,
 				3C36CFE224508665003648AE /* LobbyTableViewCell */,
 				9A13FB09244EA0E200A74F6F /* AvatarCell */,
 			);
@@ -416,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */,
+				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
 				3605253F24588FF600BEA330 /* data.json in Resources */,
@@ -530,6 +545,7 @@
 				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
 				3C36CFD124508441003648AE /* UIColor+Extension.swift in Sources */,
 				3C36CFD224508441003648AE /* DataExtension.swift in Sources */,
+				360525432458A71600BEA330 /* ChatTableViewCell.swift in Sources */,
 				3C36CFCE24508441003648AE /* UserDefaults+Extensions.swift in Sources */,
 				3C09D64D24570D0300849B83 /* Modal.swift in Sources */,
 				3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */,

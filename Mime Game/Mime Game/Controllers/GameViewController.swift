@@ -21,6 +21,9 @@ class GameViewController: UIViewController {
     var mimes: [Mime] = []
     var currentMime: Mime?
     var game: Game!
+    var streamID = 2
+    
+    var words: [String] = []
     
     //MARK: Outlets Diviner
     @IBOutlet weak var divinerVideoView: UIView!
@@ -38,6 +41,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wordThemeLbl: UILabel!
     @IBOutlet weak var wordLbl: UILabel!
     @IBOutlet weak var timerMimickr: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     var isMimickrView: Bool = false {
         didSet {
@@ -57,12 +61,20 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let numberPointer = UnsafeMutablePointer<Int>(&streamID)
+        agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
         startGame()
     }
     
     private func setupLayout() {
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
+    }
+    
+    private func setupTableView() {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func startGame() {
@@ -259,6 +271,14 @@ class GameViewController: UIViewController {
     @IBAction func reportBtn(_ sender: UIButton) {
     }
     
+    @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
+       
+        guard let text = textField.text else { return }
+        let messege = Data(text.utf8)
+        agoraKit.sendStreamMessage(streamID, data: messege)
+        
+    }
+    
     // MARK: - Player settings
     
     
@@ -292,11 +312,34 @@ class GameViewController: UIViewController {
     }
 }
 
+//MARK: TableView Delegate
+extension GameViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return words.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
+        
+        if let wordCell = cell as? ChatTableViewCell {
+            wordCell.playerName.text = "Toninho"
+            wordCell.word.text = "Baleia"
+        }
+        
+        return cell
+    }
+    
+    
+}
+
 //MARK: Agora Delegate
 extension GameViewController: AgoraRtcEngineDelegate {
     
-    func rtcEngine(_ engine: AgoraRtcEngineKit, didReceive event: AgoraChannelMediaRelayEvent) {
-        
+    func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
+
+            let str = String(decoding: data, as: UTF8.self)
+            print("received from \(uid) data: \(str)")
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
@@ -316,3 +359,5 @@ extension GameViewController: DrawPlayerDelegate {
         self.resetTimer()
     }
 }
+
+
