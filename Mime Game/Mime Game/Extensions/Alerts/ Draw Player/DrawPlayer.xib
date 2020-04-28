@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,39 +17,42 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-of-X1Q">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundSortearJogador" translatesAutoresizingMaskIntoConstraints="NO" id="A17-sJ-d3J">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sG-KS-403" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="leA-ia-zmN">
-                                    <rect key="frame" x="67" y="110" width="280" height="89"/>
+                                    <rect key="frame" x="67" y="110" width="280" height="88"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tema: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du0-xH-m5X">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQ9-C9-0v6">
-                                            <rect key="frame" x="0.0" y="36" width="280" height="53"/>
+                                            <rect key="frame" x="0.0" y="35" width="280" height="53"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="vb7-5Z-CLM">
-                                    <rect key="frame" x="67" y="674.5" width="280" height="121.5"/>
+                                    <rect key="frame" x="67" y="679.5" width="280" height="116.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jogador A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gf-wc-bk3">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="53"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Começa a rodada, se prepare!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaw-Cz-c3b">
-                                            <rect key="frame" x="0.0" y="59" width="280" height="62.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="0.0" y="59" width="280" height="57.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -63,10 +67,16 @@
                                         <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                             <real key="value" value="140"/>
                                         </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" name="Rosa respostas"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="0.93172802509999997" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="vb7-5Z-CLM" firstAttribute="trailing" secondItem="gVm-u1-t6x" secondAttribute="trailing" id="47V-Ts-Jqw"/>
                                 <constraint firstItem="vb7-5Z-CLM" firstAttribute="leading" secondItem="gVm-u1-t6x" secondAttribute="leading" id="6CM-jT-31M"/>
@@ -89,9 +99,13 @@
                     <color key="backgroundColor" white="0.0" alpha="0.29694237299999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="7sG-KS-403" secondAttribute="bottom" id="3aY-YI-LfZ"/>
+                        <constraint firstItem="A17-sJ-d3J" firstAttribute="leading" secondItem="7sG-KS-403" secondAttribute="leading" id="7jH-Gq-FsK"/>
+                        <constraint firstItem="A17-sJ-d3J" firstAttribute="trailing" secondItem="7sG-KS-403" secondAttribute="trailing" id="7od-NB-GNP"/>
                         <constraint firstAttribute="trailing" secondItem="7sG-KS-403" secondAttribute="trailing" id="Fso-Io-uht"/>
                         <constraint firstItem="7sG-KS-403" firstAttribute="top" secondItem="gqr-of-X1Q" secondAttribute="top" id="LjZ-E0-J4E"/>
+                        <constraint firstItem="A17-sJ-d3J" firstAttribute="top" secondItem="7sG-KS-403" secondAttribute="top" id="RAG-2o-lfZ"/>
                         <constraint firstItem="7sG-KS-403" firstAttribute="leading" secondItem="gqr-of-X1Q" secondAttribute="leading" id="j5X-ll-IqO"/>
+                        <constraint firstItem="A17-sJ-d3J" firstAttribute="bottom" secondItem="7sG-KS-403" secondAttribute="bottom" id="jcu-u9-ofe"/>
                     </constraints>
                 </view>
             </subviews>
@@ -114,6 +128,10 @@
         </view>
     </objects>
     <resources>
+        <image name="BackgroundSortearJogador" width="375" height="812"/>
         <image name="img_user_placeholder" width="300" height="300"/>
+        <namedColor name="Rosa respostas">
+            <color red="0.68235294117647061" green="0.41568627450980389" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
