@@ -74,7 +74,7 @@ class GameViewController: UIViewController {
         runTimer()
     }
     
-    //MARK: Methodss
+    //MARK: Draw Modals
     func drawPlayerModal() {
         
         guard let alert = DrawPlayer.create() else { return }
@@ -95,6 +95,8 @@ class GameViewController: UIViewController {
         alert.show(animated: true)
     }
     
+    // MARK: - Fetches
+    
     /// This method is for fetching mimes from the databse
     func fetchMimes() {
         MimeServices.fetchMimes(for: game.wordCategory, completion: { (mimes, error) in
@@ -107,6 +109,8 @@ class GameViewController: UIViewController {
         })
     }
     
+    // MARK: - Timer settings
+    
     /// This method is to start running the timer
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
@@ -117,18 +121,6 @@ class GameViewController: UIViewController {
         self.seconds = game.totalTime // Reseting timer
         runTimer()
     }
-    
-    /// This method is to change the mime and get another mime word
-    func changeMime() {
-        
-        if self.turn == self.mimes.count {
-            self.turn = 0
-        }
-        self.currentMime = self.mimes[self.turn]
-        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
-        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
-    }
-    
     
     /// This method is to update the timer and validate if the timer has reached zero
     @objc func updateTimer() {
@@ -142,12 +134,23 @@ class GameViewController: UIViewController {
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
     }
     
+    // MARK: Game Methods
+    
+    /// This method is to change the mime and get another mime word
+    func changeMime() {
+        
+        if self.turn == self.mimes.count {
+            self.turn = 0
+        }
+        self.currentMime = self.mimes[self.turn]
+        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
+        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+    }
     
     /// This method is to reset the turns, that is, the players "line" come back to the beginning
     private func resetTurn() {
         game.currentPlayer = 0
     }
-    
     
     /// This method will set the next mimickr and check if all players did some mime
     private func nextTurn() {
@@ -178,6 +181,23 @@ class GameViewController: UIViewController {
         game.currentPlayer += 1   // Turn next round
     }
     
+    private func getCurrentPlayerName() -> String{
+        
+        if isMimickrView {
+            return game.localPlayer.name
+        } else {
+            for player in game.remotePlayers {
+                if game.uids[game.currentPlayer] == player.uid {
+                    return player.name
+                }
+            }
+        }
+        
+        return ""
+    }
+    
+    // MARK: - View/Videos Settings
+    
     /// This method is to change the mimickr and the diviver view
     /// - Parameter playerType: it can be mimickr or diviner
     private func changeView(playerType: PlayerType) {
@@ -193,7 +213,6 @@ class GameViewController: UIViewController {
             print("can not load view to player with type \(playerType), just to mimickr and diviner")
         }
     }
-    
     
     /// This method is to setup remotePlayer to the diviner video view
     private func setupRemotePlayer() {
@@ -221,21 +240,6 @@ class GameViewController: UIViewController {
         print("Setup Local Player")
     }
     
-    private func getCurrentPlayerName() -> String{
-        
-        if isMimickrView {
-            return game.localPlayer.name
-        } else {
-            for player in game.remotePlayers {
-                if game.uids[game.currentPlayer] == player.uid {
-                    return player.name
-                }
-            }
-        }
-        
-        return ""
-    }
-    
     private func setupVideo() {
         
         let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.mimickrVideoView.frame.size.width * 1.1, height: self.mimickrVideoView.frame.size.height * 1.1), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
@@ -254,6 +258,21 @@ class GameViewController: UIViewController {
     
     @IBAction func reportBtn(_ sender: UIButton) {
     }
+    
+    // MARK: - Player settings
+    
+    /// Set the player type to unavailable  when he leaves
+    /// - Parameter uid: player leaving uid
+//    private func removeRemotePlayer(with uid: UInt) {
+//        
+//        for remotePlayer in game.remotePlayers {
+//            if remotePlayer.uid == uid {
+//                remotePlayer.type = .unavailable
+//                
+//                print("\(remotePlayer.name) leave channel ")
+//            }
+//        }
+//    }
 }
 
 //MARK: Agora Delegate
@@ -262,6 +281,10 @@ extension GameViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didReceive event: AgoraChannelMediaRelayEvent) {
         
     }
+    
+//    func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
+//        self.removeRemotePlayer(with: uid)
+//    }
 }
 
 extension GameViewController: ModalTipDelegate {
