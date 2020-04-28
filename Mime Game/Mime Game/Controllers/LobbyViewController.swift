@@ -115,11 +115,9 @@ class LobbyViewController: UIViewController {
     func changeMuteButtonState() {
         
         if isMuted {
-            muteBtn.setImage(UIImage(systemName: "mic.slash.fill"), for: .normal)
-            muteBtn.backgroundColor = .red
+            muteBtn.setImage(UIImage(named: "MuteLobbyOn"), for: .normal)
         } else {
-            muteBtn.setImage(UIImage(systemName: "mic.fill"), for: .normal)
-            muteBtn.backgroundColor = .gray
+            muteBtn.setImage(UIImage(named: "MuteLobbyOff"), for: .normal)
         }
     }
     
