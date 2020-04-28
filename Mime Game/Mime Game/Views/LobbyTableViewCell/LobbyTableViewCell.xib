@@ -62,7 +62,7 @@
     <resources>
         <image name="img_user_placeholder" width="300" height="300"/>
         <namedColor name="Azul mediano">
-            <color red="0.16862745098039217" green="0.33725490196078434" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16899999976158142" green="0.33700001239776611" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

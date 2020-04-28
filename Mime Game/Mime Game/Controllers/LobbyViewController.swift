@@ -15,6 +15,7 @@ class LobbyViewController: UIViewController {
     //MARK: Variables
     
     var incomingName: String?
+    var incomingAvatar: UIImage?
 
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
@@ -25,6 +26,7 @@ class LobbyViewController: UIViewController {
     var localPlayer: Player!
     var remotePlayers: [Player] = []
     var startGame = Data("startGame".utf8)
+    
     var streamID = 1
     
     //MARK: Outlets
@@ -91,6 +93,18 @@ class LobbyViewController: UIViewController {
         LobbyTableViewCell.registerNib(for: table)
     }
     
+    // tranforms avatar image
+    func getAvatarPath(avatar: UIImage) -> String? {
+        let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
+        for url in imageURLArray {
+            let avatarImage = UIImage(contentsOfFile: url.path!)
+            if avatar.isEqual(avatarImage){
+                return url.path!
+            }
+        }
+        return nil
+    }
+    
     /// This method is responsible for initializing Agora framework
     private func initializateAgoraEngine() {
         agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
@@ -102,11 +116,15 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        guard let name = incomingName else { return }
+        guard let name = incomingName, let avatar = incomingAvatar else { return }
         
         agoraKit.joinChannel(byUserAccount: name, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
+            
+            let avatarImagePath = self.getAvatarPath(avatar: avatar)
+            
+            self.agoraKit.sendStreamMessage(self.streamID, data: Data(avatarImagePath!.utf8))
             self.tableView.reloadData()
         }
     }
@@ -129,7 +147,7 @@ class LobbyViewController: UIViewController {
         self.localAgoraUserInfo.userAccount = incomingName
         self.localAgoraUserInfo.uid = uid
         self.UIDs.append(uid)
-        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
+        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local, avatar: incomingAvatar!)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
         
         
@@ -221,6 +239,7 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == 0 {  // set local player
             cell.nameLbl.text = localPlayer.name
+            cell.userImg.image = incomingAvatar
             cell.userImg.borderColor = changeColorBorderWhenSpeaking(remotePlayer: localPlayer)
         } else {
             let remotePlayer = self.remotePlayers[indexPath.row - 1] // set remote player
@@ -274,14 +293,31 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
 
-            let str = String(decoding: data, as: UTF8.self)
-            print("received from \(uid) data: \(str)")
-        self.performSegue(withIdentifier: str, sender: self)
+        let str = String(decoding: data, as: UTF8.self)
+        let avaliableAvatars = LoginNoRegisteredViewController.createAvaliableAvatarsArray()
+        var avatarPossiblePaths: [String] = []
+        
+        for avatar in avaliableAvatars{
+            let avatarPath = self.getAvatarPath(avatar: avatar)!
+            
+            if avatarPath == str{
+                for remotePlayer in remotePlayers {
+                    if uid == remotePlayer.uid {
+                        remotePlayer.avatar = UIImage(contentsOfFile: avatarPath)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+        if str == "startGame"{
+            self.performSegue(withIdentifier: str, sender: self)
+        }
+        print("received from \(uid) data: \(str)")
+        
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurStreamMessageErrorFromUid uid: UInt, streamId: Int, error: Int, missed: Int, cached: Int) {
         
         print("received from \(uid), streamID: \(streamId), error: \(error), missed \(missed), cached \(cached)")
     }
-
 }

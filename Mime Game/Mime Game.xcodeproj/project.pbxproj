@@ -47,6 +47,7 @@
 		9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */ = {isa = PBXBuildFile; fileRef = 9A13FB06244E9CE200A74F6F /* test-no-register-avatars */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
+		9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610D2458A2AE00E449A4 /* UserServices.swift */; };
 		F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		9A13FB06244E9CE200A74F6F /* test-no-register-avatars */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "test-no-register-avatars"; sourceTree = "<group>"; };
 		9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
 		9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		9AD2610D2458A2AE00E449A4 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				3695A91E24524FF700815617 /* MimeServices.swift */,
+				9AD2610D2458A2AE00E449A4 /* UserServices.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
+				9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */,
 				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
 				3C36CFDE2450856E003648AE /* CustomRoundViews.swift in Sources */,
@@ -695,7 +699,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -714,7 +718,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

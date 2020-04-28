@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UITextFieldDelegate{
+class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextField!
@@ -32,7 +32,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        self.avaliableAvatars = createAvaliableAvatarsArray()
+        self.avaliableAvatars = LoginNoRegisteredViewController.createAvaliableAvatarsArray()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.textField.delegate = self
@@ -45,7 +45,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
 //        self.setupTranslucidAvatars()
 //    }
     
-    func createAvaliableAvatarsArray() -> [UIImage] {
+    static func createAvaliableAvatarsArray() -> [UIImage] {
         var avatarsImages: [UIImage] = []
         let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
         
@@ -126,6 +126,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         
         if let destinationVC = segue.destination as? LobbyViewController {
             destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+            destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
         }
         
     default:

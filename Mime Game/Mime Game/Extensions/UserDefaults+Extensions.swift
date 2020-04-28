@@ -10,7 +10,7 @@ import Foundation
 
 extension UserDefaults {
     
-    enum Keys: String {
+    enum Keys: String, CodingKey {
         
         case token
         case currentUser
