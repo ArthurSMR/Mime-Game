@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
     var mimes: [Mime] = []
     var currentMime: Mime?
     var game: Game!
-    var streamID = 2
+    var chatStreamId = 2
     
     var words: [String] = []
     
@@ -61,7 +61,7 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let numberPointer = UnsafeMutablePointer<Int>(&streamID)
+        let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
         agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
         startGame()
     }
@@ -206,7 +206,7 @@ class GameViewController: UIViewController {
         game.currentPlayer += 1   // Turn next round
     }
     
-
+    
     
     // MARK: - View/Videos Settings
     
@@ -272,10 +272,10 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
-       
+        
         guard let text = textField.text else { return }
         let messege = Data(text.utf8)
-        agoraKit.sendStreamMessage(streamID, data: messege)
+        agoraKit.sendStreamMessage(self.chatStreamId, data: messege)
         
     }
     
@@ -337,9 +337,11 @@ extension GameViewController : UITableViewDelegate, UITableViewDataSource {
 extension GameViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
-
+        
+        if streamId == self.chatStreamId {
             let str = String(decoding: data, as: UTF8.self)
             print("received from \(uid) data: \(str)")
+        }
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {

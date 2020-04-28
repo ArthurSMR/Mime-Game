@@ -274,10 +274,11 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
-
+        if streamId == streamID {
             let str = String(decoding: data, as: UTF8.self)
             print("received from \(uid) data: \(str)")
-        self.performSegue(withIdentifier: str, sender: self)
+            self.performSegue(withIdentifier: str, sender: self)
+        }
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurStreamMessageErrorFromUid uid: UInt, streamId: Int, error: Int, missed: Int, cached: Int) {
