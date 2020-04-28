@@ -61,6 +61,7 @@ class GameViewController: UIViewController {
     }
     
     private func setupLayout() {
+        self.navigationController?.isNavigationBarHidden = true
         setupVideo()
     }
     

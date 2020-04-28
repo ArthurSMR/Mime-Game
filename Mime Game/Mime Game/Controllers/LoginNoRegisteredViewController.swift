@@ -31,7 +31,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.isNavigationBarHidden = true
         self.avaliableAvatars = createAvaliableAvatarsArray()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -123,8 +123,11 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     switch segue.identifier {
     case "playButtonSegue":
-        let destinationVC = segue.destination as! LobbyViewController
-        destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+        
+        if let destinationVC = segue.destination as? LobbyViewController {
+            destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+        }
+        
     default:
         print("No segue found")
     }

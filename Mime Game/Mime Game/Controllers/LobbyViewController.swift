@@ -14,7 +14,7 @@ class LobbyViewController: UIViewController {
     
     //MARK: Variables
     
-    var incomingName: String = "Usuário não identificado"
+    var incomingName: String?
 
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
@@ -53,10 +53,6 @@ class LobbyViewController: UIViewController {
         if segue.identifier == "startGame" {
             
             if let gameVC = segue.destination as? GameViewController {
-//                gameVC.agoraKit = self.agoraKit
-//                gameVC.players = self.remotePlayers
-//                gameVC.localPlayer = self.localPlayer
-//                gameVC.UIDs = self.UIDs
                 let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 15, currentPlayer: 0, wordCategory: .general)
                 gameVC.agoraKit = agoraKit
                 gameVC.game = game
@@ -66,6 +62,7 @@ class LobbyViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
+        self.navigationController?.isNavigationBarHidden = true
         setupViewAnimation()
         changeMuteButtonState()
         setupAgora()
@@ -105,7 +102,9 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        agoraKit.joinChannel(byUserAccount: incomingName, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+        guard let name = incomingName else { return }
+        
+        agoraKit.joinChannel(byUserAccount: name, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             self.tableView.reloadData()
