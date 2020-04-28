@@ -79,21 +79,11 @@ class GameViewController: UIViewController {
         
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
-        alert.gamerLabel.text = getCurrentPlayer()
+        alert.gamerLabel.text = getCurrentPlayerName()
         alert.themeLabel.text = self.currentMime?.theme.rawValue
         //alert.imageGame.image = UIImage(named: "")
         alert.show(animated: true)
         alert.runTimer()
-    }
-    
-    func getCurrentPlayer() -> String {
-        
-        if game.localPlayer.type == .mimickr {
-            return game.localPlayer.name
-        }
-        else {
-            return game.players[game.currentPlayer].name
-        }
     }
     
     func modalTip() {
@@ -171,7 +161,6 @@ class GameViewController: UIViewController {
         if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
             self.game.localPlayer.type = .mimickr
             self.isMimickrView = true
-            
             //self.modalTip()
             
             self.setupLocalVideo()
@@ -179,12 +168,14 @@ class GameViewController: UIViewController {
             self.agoraKit.enableLocalVideo(false)
             self.game.localPlayer.type = .diviner
             self.isMimickrView = false
+            
             self.setupRemotePlayer()
         }
-        game.currentPlayer += 1   // Turn next round
+        
         self.turn += 1
         changeMime()
         drawPlayerModal()
+        game.currentPlayer += 1   // Turn next round
     }
     
     /// This method is to change the mimickr and the diviver view
@@ -211,9 +202,8 @@ class GameViewController: UIViewController {
         videoCanvas.view = self.divinerVideoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
-        print("Setup Remote Player")
+        print("Setup Remote Player with name \(getCurrentPlayerName())")
     }
-    
     
     /// This method is to setup the local video to the mimickr video view
     private func setupLocalVideo() {
@@ -229,6 +219,21 @@ class GameViewController: UIViewController {
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
         print("Setup Local Player")
+    }
+    
+    private func getCurrentPlayerName() -> String{
+        
+        if isMimickrView {
+            return game.localPlayer.name
+        } else {
+            for player in game.remotePlayers {
+                if game.uids[game.currentPlayer] == player.uid {
+                    return player.name
+                }
+            }
+        }
+        
+        return ""
     }
     
     private func setupVideo() {

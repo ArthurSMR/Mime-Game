@@ -12,7 +12,7 @@ import UIKit
 class Game {
     
     var localPlayer: Player
-    var players: [Player] = []
+    var remotePlayers: [Player] = []
     var uids: [UInt] = []
     var totalTime: Int
     var currentPlayer: Int
@@ -20,7 +20,7 @@ class Game {
     
     init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: Theme) {
         self.localPlayer = localPlayer
-        self.players = players
+        self.remotePlayers = players
         self.uids = uids
         self.totalTime = totalTime
         self.currentPlayer = currentPlayer
