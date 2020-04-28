@@ -153,10 +153,13 @@ class GameViewController: UIViewController {
     }
     
     /// This method will set the next mimickr and check if all players did some mime
+    ///
+    /// This method has the logic to turn the round, if the player is available to play and which player will play the next roud
     private func nextTurn() {
         
+        print(game.currentPlayer)
         // if the current player reached the last uid element, it can reset the turn
-        if self.game.currentPlayer == self.game.uids.count {
+        if self.game.currentPlayer >= self.game.uids.count {
             self.resetTurn()
         }
         
@@ -168,33 +171,30 @@ class GameViewController: UIViewController {
             
             self.setupLocalVideo()
         } else {
-            self.agoraKit.enableLocalVideo(false)
-            self.game.localPlayer.type = .diviner
-            self.isMimickrView = false
             
-            self.setupRemotePlayer()
+            // Used this for to validate if the user is available or not
+            for remotePlayer in game.remotePlayers {
+                if remotePlayer.uid == self.game.uids[self.game.currentPlayer] {
+                    if remotePlayer.type == .unavailable { // Get the next player
+                        game.currentPlayer += 1
+                        nextTurn()
+                    } else { // if is available, it can set the remote player
+                        self.agoraKit.enableLocalVideo(false)
+                        self.game.localPlayer.type = .diviner
+                        self.isMimickrView = false
+                        self.setupRemotePlayer()
+                    }
+                }
+            }
         }
-        
+        // Turning the round
         self.turn += 1
         changeMime()
         drawPlayerModal()
         game.currentPlayer += 1   // Turn next round
     }
     
-    private func getCurrentPlayerName() -> String{
-        
-        if isMimickrView {
-            return game.localPlayer.name
-        } else {
-            for player in game.remotePlayers {
-                if game.uids[game.currentPlayer] == player.uid {
-                    return player.name
-                }
-            }
-        }
-        
-        return ""
-    }
+
     
     // MARK: - View/Videos Settings
     
@@ -261,18 +261,35 @@ class GameViewController: UIViewController {
     
     // MARK: - Player settings
     
+    
+    /// Get the current player name, describing a string
+    /// - Returns: return the current player name as string
+    private func getCurrentPlayerName() -> String{
+        
+        if isMimickrView {
+            return game.localPlayer.name
+        } else {
+            for player in game.remotePlayers {
+                if game.uids[game.currentPlayer] == player.uid {
+                    return player.name
+                }
+            }
+        }
+        
+        return ""
+    }
+    
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
-//    private func removeRemotePlayer(with uid: UInt) {
-//        
-//        for remotePlayer in game.remotePlayers {
-//            if remotePlayer.uid == uid {
-//                remotePlayer.type = .unavailable
-//                
-//                print("\(remotePlayer.name) leave channel ")
-//            }
-//        }
-//    }
+    private func removeRemotePlayer(with uid: UInt) {
+        
+        for remotePlayer in game.remotePlayers {
+            if remotePlayer.uid == uid {
+                remotePlayer.type = .unavailable
+                print("\(remotePlayer.name) leave channel ")
+            }
+        }
+    }
 }
 
 //MARK: Agora Delegate
@@ -282,9 +299,9 @@ extension GameViewController: AgoraRtcEngineDelegate {
         
     }
     
-//    func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
-//        self.removeRemotePlayer(with: uid)
-//    }
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
+        self.removeRemotePlayer(with: uid)
+    }
 }
 
 extension GameViewController: ModalTipDelegate {
