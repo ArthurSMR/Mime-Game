@@ -8,21 +8,30 @@
 
 import UIKit
 import AgoraRtcKit
+import Lottie
 
 class LobbyViewController: UIViewController {
     
     //MARK: Variables
+    
+    var incomingName: String?
+
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
+    
+    var displayLink: CADisplayLink?
     
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
     var remotePlayers: [Player] = []
+    var startGame = Data("startGame".utf8)
+    var streamID = 1
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var exitLobby: UIButton!
     @IBOutlet weak var muteBtn: RoundButton!
+    @IBOutlet weak var lobbyView: AnimationView!
     
     var isMuted: Bool = false {
         didSet {
@@ -30,16 +39,44 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    ///This variable list all UIDs that are on the lobby
+    var UIDs: [UInt] = []
+    
     //MARK: LiveCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "startGame" {
+            
+            if let gameVC = segue.destination as? GameViewController {
+                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 15, currentPlayer: 0, wordCategory: .general)
+                gameVC.agoraKit = agoraKit
+                gameVC.game = game
+            }
+        }
+    }
+    
     //MARK: Methods
     func setupLayout() {
+        self.navigationController?.isNavigationBarHidden = true
+        setupViewAnimation()
         changeMuteButtonState()
         setupAgora()
+    }
+    
+    func setupViewAnimation() {
+        
+        let animation = Animation.named("data")
+        
+        lobbyView.animation = animation
+        lobbyView.loopMode = .loop
+        lobbyView.play()
+        
+//        displayLink?.add(to: .current, forMode: .default)
     }
     
     func setupAgora() {
@@ -65,7 +102,9 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        agoraKit.joinChannel(byUserAccount: "Arthur", token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+        guard let name = incomingName else { return }
+        
+        agoraKit.joinChannel(byUserAccount: name, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             self.tableView.reloadData()
@@ -76,11 +115,9 @@ class LobbyViewController: UIViewController {
     func changeMuteButtonState() {
         
         if isMuted {
-            muteBtn.setImage(UIImage(systemName: "mic.slash.fill"), for: .normal)
-            muteBtn.backgroundColor = .red
+            muteBtn.setImage(UIImage(named: "MuteLobbyOff"), for: .normal)
         } else {
-            muteBtn.setImage(UIImage(systemName: "mic.fill"), for: .normal)
-            muteBtn.backgroundColor = .gray
+            muteBtn.setImage(UIImage(named: "MuteLobbyOn"), for: .normal)
         }
     }
     
@@ -89,10 +126,15 @@ class LobbyViewController: UIViewController {
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
     private func createLocalPlayer(uid: UInt) {
-        self.localAgoraUserInfo.userAccount = "Arthur"
+        self.localAgoraUserInfo.userAccount = incomingName
         self.localAgoraUserInfo.uid = uid
+        self.UIDs.append(uid)
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
+        
+        
+        let numberPointer = UnsafeMutablePointer<Int>(&streamID)
+        agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
     }
     
     /// Creating remote player and setting it to available
@@ -101,6 +143,7 @@ class LobbyViewController: UIViewController {
         
         let remote = Player(agoraUserInfo: userInfo, type: .available)
         self.remotePlayers.append(remote)
+        self.UIDs.append(remote.uid)
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
     }
@@ -153,6 +196,11 @@ class LobbyViewController: UIViewController {
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
         self.leaveChannel()
+    }
+    
+    @IBAction func startButtonDidPressed(_ sender: UIButton) {
+        agoraKit.sendStreamMessage(self.streamID, data: startGame)
+        self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
@@ -222,6 +270,18 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     /// - Returns: returns a green or clear color
     func changeColorBorderWhenSpeaking(remotePlayer: Player) -> UIColor {
         return remotePlayer.isSpeaking ? .green : .clear
+    }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
+
+            let str = String(decoding: data, as: UTF8.self)
+            print("received from \(uid) data: \(str)")
+        self.performSegue(withIdentifier: str, sender: self)
+    }
+    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurStreamMessageErrorFromUid uid: UInt, streamId: Int, error: Int, missed: Int, cached: Int) {
+        
+        print("received from \(uid), streamID: \(streamId), error: \(error), missed \(missed), cached \(cached)")
     }
 
 }

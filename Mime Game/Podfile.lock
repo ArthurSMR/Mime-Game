@@ -1,16 +1,24 @@
 PODS:
   - AgoraRtcEngine_iOS (3.0.0.1)
+  - IQKeyboardManagerSwift (6.5.5)
+  - lottie-ios (3.1.8)
 
 DEPENDENCIES:
   - AgoraRtcEngine_iOS (~> 3.0.0.1)
+  - IQKeyboardManagerSwift
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - AgoraRtcEngine_iOS
+    - IQKeyboardManagerSwift
+    - lottie-ios
 
 SPEC CHECKSUMS:
   AgoraRtcEngine_iOS: f7fb9870f884dfa91fc3295c6594ea089f38c481
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
 
-PODFILE CHECKSUM: 1a7561c016ad4b743f9e68b93f2cfabd37f20a78
+PODFILE CHECKSUM: 6fa73a1f7ddd0ee46e2365c94cb8902bfb129acd
 
 COCOAPODS: 1.9.1

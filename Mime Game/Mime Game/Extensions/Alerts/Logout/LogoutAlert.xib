@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="LogoutAlert" customModule="Divoem" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNw-D7-DdL" userLabel="BackgroundIB View">
+                    <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="443-hp-ucX" customClass="RoundView" customModule="Divoem" customModuleProvider="target">
+                            <rect key="frame" x="16" y="372" width="382" height="152.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-kC-tk6">
+                                    <rect key="frame" x="16" y="16" width="350" height="76.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoW-pa-1os">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                                            <color key="textColor" name="#000000"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja realmente sair de sua conta ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjd-kX-cb0">
+                                            <rect key="frame" x="0.0" y="53.5" width="350" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" name="#43464E"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="WLo-Iy-zOw">
+                                    <rect key="frame" x="0.0" y="108.5" width="382" height="44"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7W-Ra-0BM">
+                                            <rect key="frame" x="0.0" y="0.0" width="190.5" height="44"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" title="Cancelar">
+                                                <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="logoutCancelBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="ncn-oF-0vU"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHC-Jf-8dl">
+                                            <rect key="frame" x="191.5" y="0.0" width="190.5" height="44"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="OK ">
+                                                <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="logoutOkBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="fHh-mX-KOB"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="OKJ-Nw-Wkz"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" name="#FFFFFF"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="WLo-Iy-zOw" secondAttribute="bottom" id="HCI-ao-Tut"/>
+                                <constraint firstItem="Dwh-kC-tk6" firstAttribute="top" secondItem="443-hp-ucX" secondAttribute="top" constant="16" id="Ohp-nU-6PL"/>
+                                <constraint firstAttribute="trailing" secondItem="WLo-Iy-zOw" secondAttribute="trailing" id="Tmd-is-CcL"/>
+                                <constraint firstAttribute="trailing" secondItem="Dwh-kC-tk6" secondAttribute="trailing" constant="16" id="iYG-74-FZ8"/>
+                                <constraint firstItem="WLo-Iy-zOw" firstAttribute="top" secondItem="Dwh-kC-tk6" secondAttribute="bottom" constant="16" id="iu6-kC-bkt"/>
+                                <constraint firstItem="Dwh-kC-tk6" firstAttribute="leading" secondItem="443-hp-ucX" secondAttribute="leading" constant="16" id="kOZ-tt-6SR"/>
+                                <constraint firstItem="WLo-Iy-zOw" firstAttribute="leading" secondItem="443-hp-ucX" secondAttribute="leading" id="r5t-4p-f10"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dv-pz-MSx">
+                            <rect key="frame" x="16" y="480.5" width="382" height="1"/>
+                            <color key="backgroundColor" name="#BBBBBB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="KIj-mJ-usA"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tar-1x-FCE">
+                            <rect key="frame" x="206.5" y="480.5" width="1" height="44"/>
+                            <color key="backgroundColor" name="#BBBBBB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="YD5-fd-bWH"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.29694237299999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Tar-1x-FCE" firstAttribute="trailing" secondItem="n7W-Ra-0BM" secondAttribute="trailing" constant="1" id="Nqy-bI-Wch"/>
+                        <constraint firstItem="443-hp-ucX" firstAttribute="leading" secondItem="xNw-D7-DdL" secondAttribute="leading" constant="16" id="P6Z-43-ycp"/>
+                        <constraint firstItem="443-hp-ucX" firstAttribute="centerX" secondItem="xNw-D7-DdL" secondAttribute="centerX" id="Whf-pO-ozs"/>
+                        <constraint firstItem="443-hp-ucX" firstAttribute="centerY" secondItem="xNw-D7-DdL" secondAttribute="centerY" id="Xme-Vw-e4V"/>
+                        <constraint firstItem="9dv-pz-MSx" firstAttribute="trailing" secondItem="WLo-Iy-zOw" secondAttribute="trailing" id="arI-wS-2eJ"/>
+                        <constraint firstAttribute="trailing" secondItem="443-hp-ucX" secondAttribute="trailing" constant="16" id="etW-9r-V4q"/>
+                        <constraint firstItem="9dv-pz-MSx" firstAttribute="leading" secondItem="WLo-Iy-zOw" secondAttribute="leading" id="fMb-Bi-l4R"/>
+                        <constraint firstItem="9dv-pz-MSx" firstAttribute="top" secondItem="WLo-Iy-zOw" secondAttribute="top" id="gvu-0H-aHe"/>
+                        <constraint firstItem="Tar-1x-FCE" firstAttribute="bottom" secondItem="n7W-Ra-0BM" secondAttribute="bottom" id="hF2-Te-sVw"/>
+                        <constraint firstItem="Tar-1x-FCE" firstAttribute="top" secondItem="n7W-Ra-0BM" secondAttribute="top" id="vDX-4N-40k"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xNw-D7-DdL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="NN8-Xv-Yuc"/>
+                <constraint firstItem="xNw-D7-DdL" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="SXE-dn-TW3"/>
+                <constraint firstItem="xNw-D7-DdL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="TJB-rN-ebg"/>
+                <constraint firstItem="xNw-D7-DdL" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="dTU-yU-ywu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xNw-D7-DdL" secondAttribute="trailing" id="x7a-kl-FWY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backgroundIBView" destination="xNw-D7-DdL" id="aJE-NK-wPN"/>
+                <outlet property="cancelButton" destination="n7W-Ra-0BM" id="GxI-i9-qgg"/>
+                <outlet property="dialogIBView" destination="443-hp-ucX" id="jjV-8J-1rV"/>
+                <outlet property="labelMessage" destination="kjd-kX-cb0" id="TUn-dj-h53"/>
+                <outlet property="labelTitle" destination="QoW-pa-1os" id="03H-VF-bwC"/>
+                <outlet property="okayButton" destination="uHC-Jf-8dl" id="zWB-o9-1A2"/>
+            </connections>
+            <point key="canvasLocation" x="208.69565217391306" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="#000000">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#43464E">
+            <color red="0.2630000114440918" green="0.27500000596046448" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#BBBBBB">
+            <color red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#FFFFFF">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
