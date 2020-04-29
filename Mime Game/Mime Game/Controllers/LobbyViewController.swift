@@ -16,6 +16,7 @@ class LobbyViewController: UIViewController {
     
     var incomingName: String?
     var incomingAvatar: UIImage?
+    var currentAvatarIndex: Int = 0
 
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
@@ -96,13 +97,10 @@ class LobbyViewController: UIViewController {
     // tranforms avatar image
     func getAvatarPath(avatar: UIImage) -> String? {
         let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
-        for url in imageURLArray {
-            let avatarImage = UIImage(contentsOfFile: url.path!)
-            if avatar.isEqual(avatarImage){
-                return url.path!
-            }
-        }
-        return nil
+        
+        let avatarURL = imageURLArray[currentAvatarIndex]
+        
+        return avatarURL.path
     }
     
     /// This method is responsible for initializing Agora framework

@@ -127,6 +127,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         if let destinationVC = segue.destination as? LobbyViewController {
             destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
             destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
+            destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
         }
         
     default:

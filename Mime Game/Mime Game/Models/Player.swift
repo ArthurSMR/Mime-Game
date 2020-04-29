@@ -11,11 +11,6 @@ import UIKit
 
 /// ThIis enum set the player type
 enum PlayerType{
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: )
-//        
-//    }
-    
     /// If is a local player
     case local
     
