@@ -11,10 +11,12 @@ import Foundation
 class Message {
     var word: String
     var player: Player
+    var isCorrect: Bool
     
-    init(word: String, player: Player) {
+    init(word: String, player: Player, isCorrect: Bool) {
         self.word = word
         self.player = player
+        self.isCorrect = isCorrect
     }
     
 }

@@ -134,7 +134,7 @@ class GameViewController: UIViewController {
                 print(error)
             } else {
                 self.mimes = mimes
-                self.mimes.shuffle()
+//                self.mimes.shuffle()
             }
         })
     }
@@ -178,12 +178,15 @@ class GameViewController: UIViewController {
     /// This method is to change the mime and get another mime word
     func changeMime() {
         
+        
+        
         if self.turn == self.mimes.count {
             self.turn = 0
         }
         self.currentMime = self.mimes[self.turn]
         self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
         self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+        print("Deu change")
     }
     
     /// This method is to reset the turns, that is, the players "line" come back to the beginning
@@ -196,7 +199,6 @@ class GameViewController: UIViewController {
     /// This method has the logic to turn the round, if the player is available to play and which player will play the next roud
     private func nextTurn() {
         
-        print(game.currentPlayer)
         // if the current player reached the last uid element, it can reset the turn
         if self.game.currentPlayer >= self.game.uids.count {
             self.resetTurn()
@@ -233,6 +235,11 @@ class GameViewController: UIViewController {
         game.currentPlayer += 1   // Turn next round
     }
     
+    private func isSentMessageCorrect(word: String) -> Bool{
+        print("\(word) = \(self.currentMime?.word)")
+        return word == self.currentMime?.word ? true : false
+    }
+    
     // MARK: - View/Videos Settings
     
     /// This method is to change the mimickr and the diviver view
@@ -258,7 +265,6 @@ class GameViewController: UIViewController {
         videoCanvas.view = self.divinerVideoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
-        print("Setup Remote Player with name \(getCurrentPlayerName())")
     }
     
     /// This method is to setup the local video to the mimickr video view
@@ -274,7 +280,6 @@ class GameViewController: UIViewController {
         }
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
-        print("Setup Local Player")
     }
     
     private func setupVideo() {
@@ -304,7 +309,9 @@ class GameViewController: UIViewController {
         guard let text = textField.text else { return }
         let sendMessege = Data(text.utf8)
         agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
-        let message = Message(word: text, player: game.localPlayer)
+        let isCorrect = isSentMessageCorrect(word: text)
+        let message = Message(word: text, player: game.localPlayer, isCorrect: isCorrect)
+        print(isCorrect)
         self.messages.append(message)
         divinerTableView.reloadData()
         textField.text = ""
@@ -377,7 +384,11 @@ extension GameViewController: AgoraRtcEngineDelegate {
         // checking if is the receive stream id is the chat stream ID
         if streamId == self.chatStreamId {
             let decodedMessage = String(decoding: data, as: UTF8.self)
-            let message = Message(word: decodedMessage, player: getPlayer(with: uid))
+            
+            let isCorrect = isSentMessageCorrect(word: decodedMessage)
+            
+            let message = Message(word: decodedMessage, player: getPlayer(with: uid), isCorrect: isCorrect)
+            print(isCorrect)
             messages.append(message)
         }
     }

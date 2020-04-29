@@ -70,7 +70,7 @@ class LobbyViewController: UIViewController {
     
     func setupViewAnimation() {
         
-        let animation = Animation.named("data")
+        let animation = Animation.named("Lobby")
         
         lobbyView.animation = animation
         lobbyView.loopMode = .loop
@@ -249,7 +249,6 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         self.removeRemotePlayer(with: uid)
-        print("lOBBY")
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, audioTransportStatsOfUid uid: UInt, delay: UInt, lost: UInt, rxKBitRate: UInt) {
