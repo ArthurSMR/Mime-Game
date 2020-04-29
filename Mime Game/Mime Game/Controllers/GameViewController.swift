@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
     var game: Game!
     var chatStreamId = 2
     
-    var words: [String] = []
+    var messages: [Message] = []
     
     //MARK: Outlets Diviner
     @IBOutlet weak var divinerVideoView: UIView!
@@ -56,13 +56,12 @@ class GameViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAgora()
         setupLayout()
         fetchMimes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
-        agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
         startGame()
     }
     
@@ -72,9 +71,10 @@ class GameViewController: UIViewController {
     }
     
     private func setupTableView() {
-        
         tableView.delegate = self
         tableView.dataSource = self
+        guard let table = tableView else { return }
+        ChatTableViewCell.registerNib(for: table)
     }
     
     private func startGame() {
@@ -119,6 +119,13 @@ class GameViewController: UIViewController {
                 self.mimes.shuffle()
             }
         })
+    }
+    
+    // MARK: - Agora settings
+    func setupAgora() {
+        agoraKit.delegate = self
+        let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
+        agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
     }
     
     // MARK: - Timer settings
@@ -276,7 +283,7 @@ class GameViewController: UIViewController {
         guard let text = textField.text else { return }
         let messege = Data(text.utf8)
         agoraKit.sendStreamMessage(self.chatStreamId, data: messege)
-        
+        textField.text = ""
     }
     
     // MARK: - Player settings
@@ -310,22 +317,30 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    private func getPlayer(with uid: UInt) -> Player {
+        
+        for remotePlayer in game.remotePlayers {
+            if remotePlayer.uid == uid {
+                return remotePlayer
+            }
+        }
+        return Player()
+    }
 }
 
 //MARK: TableView Delegate
 extension GameViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return words.count
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
-        
-        if let wordCell = cell as? ChatTableViewCell {
-            wordCell.playerName.text = "Toninho"
-            wordCell.word.text = "Baleia"
-        }
+        let cell = ChatTableViewCell.dequeueCell(from: tableView)
+        let message = messages[indexPath.row]
+        cell.playerName.text = message.player.name
+        cell.word.text = message.word
         
         return cell
     }
@@ -339,8 +354,12 @@ extension GameViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
         
         if streamId == self.chatStreamId {
-            let str = String(decoding: data, as: UTF8.self)
-            print("received from \(uid) data: \(str)")
+            let decodedMessage = String(decoding: data, as: UTF8.self)
+            print("received from \(uid) message: \(decodedMessage)")
+            
+            let message = Message(word: decodedMessage, player: getPlayer(with: uid))
+            messages.append(message)
+            tableView.reloadData()
         }
     }
     

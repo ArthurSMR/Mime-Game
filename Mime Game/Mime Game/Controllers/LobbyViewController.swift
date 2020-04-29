@@ -274,6 +274,9 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
+        
+        print("receive on lobby")
+        
         if streamId == streamID {
             let str = String(decoding: data, as: UTF8.self)
             print("received from \(uid) data: \(str)")

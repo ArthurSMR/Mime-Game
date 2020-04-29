@@ -39,4 +39,11 @@ class Player {
         self.uid = agoraUserInfo.uid
         self.name = agoraUserInfo.userAccount ?? "User \(agoraUserInfo.uid)"
     }
+    
+    init() {
+        self.type = .unavailable
+        self.uid = UInt()
+        self.name = ""
+        self.isSpeaking = false
+    }
 }
