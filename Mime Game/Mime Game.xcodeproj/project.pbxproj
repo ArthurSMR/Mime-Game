@@ -16,7 +16,7 @@
 		3642AE1624524DD8004CBF76 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1524524DD8004CBF76 /* MockDatabase.swift */; };
 		3682147E2459B23200C6A254 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147D2459B23200C6A254 /* Message.swift */; };
 		368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */; };
-		368214842459E6CD00C6A254 /* Lobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 368214832459E6CD00C6A254 /* Lobby.json */; };
+		368214862459F92E00C6A254 /* Lobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 368214852459F92E00C6A254 /* Lobby.json */; };
 		3695A91F24524FF700815617 /* MimeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A91E24524FF700815617 /* MimeServices.swift */; };
 		36A8F93924508AB4008D0FD3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8F93824508AB4008D0FD3 /* Player.swift */; };
 		36BC041D243E1080005B753A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC041C243E1080005B753A /* AppDelegate.swift */; };
@@ -76,7 +76,7 @@
 		3642AE1524524DD8004CBF76 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		3682147D2459B23200C6A254 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ScrollBottom.swift"; sourceTree = "<group>"; };
-		368214832459E6CD00C6A254 /* Lobby.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Lobby.json; path = ../../../../../../Downloads/Lobby.json; sourceTree = "<group>"; };
+		368214852459F92E00C6A254 /* Lobby.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lobby.json; sourceTree = "<group>"; };
 		3695A91E24524FF700815617 /* MimeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeServices.swift; sourceTree = "<group>"; };
 		36A8F93824508AB4008D0FD3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		36BC0419243E1080005B753A /* Mime Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mime Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +209,7 @@
 				9A13FB08244EA0D600A74F6F /* Views */,
 				3C36CFBF24508293003648AE /* Extensions */,
 				36BC0422243E1081005B753A /* Main.storyboard */,
-				368214832459E6CD00C6A254 /* Lobby.json */,
+				368214852459F92E00C6A254 /* Lobby.json */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
 				36BC042A243E1083005B753A /* LaunchScreen.storyboard */,
 				36BC042D243E1083005B753A /* Info.plist */,
@@ -443,7 +443,7 @@
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
 				9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
-				368214842459E6CD00C6A254 /* Lobby.json in Resources */,
+				368214862459F92E00C6A254 /* Lobby.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
