@@ -18,6 +18,9 @@ extension UserDefaults {
         case firstAccess
         case grantAccess
         
+        case currentUserName
+        case currentUserAvatar
+        
         var description: String {
             return self.rawValue
         }

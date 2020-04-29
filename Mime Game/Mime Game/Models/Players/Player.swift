@@ -32,6 +32,7 @@ class Player: Codable {
     var uid: UInt
     var name: String
     var avatar: UIImage?
+    var avatarImagePath: String?
     var isSpeaking: Bool = false
     
     init(agoraUserInfo: AgoraUserInfo, type: PlayerType) {
