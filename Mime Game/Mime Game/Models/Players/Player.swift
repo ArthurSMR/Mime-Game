@@ -40,9 +40,9 @@ class Player: Codable {
         self.uid = agoraUserInfo.uid
         self.name = agoraUserInfo.userAccount ?? "User \(agoraUserInfo.uid)"
         
-        let avatarImageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
-        let avatarDefaultImageURL = avatarImageURLArray.first
-        self.avatar = UIImage(contentsOfFile: (avatarDefaultImageURL?.path)!)
+        let avatarImageNamesArray = LobbyViewController.getAvatarImagesNames()
+        let avatarDefaultImageName = avatarImageNamesArray.first
+        self.avatar = UIImage(named: avatarDefaultImageName!)
     }
     
     init(agoraUserInfo: AgoraUserInfo, type: PlayerType, avatar: UIImage) {

@@ -42,16 +42,20 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         setupReturningPlayerInfo()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    
     static func createAvaliableAvatarsArray() -> [UIImage] {
         var avatarsImages: [UIImage] = []
-        let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
+        var n: Int = 1
         
-        for url in imageURLArray {
-            let avatarImage = UIImage(contentsOfFile: url.path!)
-           
-            avatarsImages.append(avatarImage!)
+        while let avatarImage = UIImage(named: "Avatar\(n)"){
+            avatarsImages.append(avatarImage)
+            n += 1
         }
-        
         return avatarsImages
     }
     
@@ -68,11 +72,6 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AvatarCell.identifier, for: indexPath) as! AvatarCell
         cell.avatar = avaliableAvatars[indexPath.row]
-        
-        // not working
-        if indexPath.row > 0 {
-            cell.alpha = 0.6
-        }
         
         return cell
     }
@@ -114,6 +113,10 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
     }
     
     //MARK: - Returning Player

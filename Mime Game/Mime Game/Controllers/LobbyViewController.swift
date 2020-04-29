@@ -94,14 +94,23 @@ class LobbyViewController: UIViewController {
         LobbyTableViewCell.registerNib(for: table)
     }
     
-    // tranforms avatar image
-    func getAvatarPath(avatar: UIImage) -> String? {
-        let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
+    static func getAvatarImagesNames() -> [String] {
+        var n: Int = 1
+        var avatarAssetName = "Avatar\(n)"
         
-        let avatarURL = imageURLArray[currentAvatarIndex]
+        var avatarNames: [String] = []
         
-        return avatarURL.path
+        while UIImage(named: avatarAssetName) != nil{
+            
+            avatarNames.append(avatarAssetName)
+            
+            avatarAssetName = "Avatar\(n+1)"
+            n += 1
+        }
+        return avatarNames
     }
+    
+
     
     /// This method is responsible for initializing Agora framework
     private func initializateAgoraEngine() {
@@ -114,15 +123,17 @@ class LobbyViewController: UIViewController {
     private func joinChannel() {
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
-        guard let name = incomingName, let avatar = incomingAvatar else { return }
+        guard let name = incomingName else { return }
         
         agoraKit.joinChannel(byUserAccount: name, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             
-            let avatarImagePath = self.getAvatarPath(avatar: avatar)
+            let avatarNames = LobbyViewController.getAvatarImagesNames()
+            let avatarChosenName = avatarNames[self.currentAvatarIndex]
             
-            self.agoraKit.sendStreamMessage(self.streamID, data: Data(avatarImagePath!.utf8))
+            
+            self.agoraKit.sendStreamMessage(self.streamID, data: Data(avatarChosenName.utf8))
             self.tableView.reloadData()
         }
     }
@@ -292,16 +303,13 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
 
         let str = String(decoding: data, as: UTF8.self)
-        let avaliableAvatars = LoginNoRegisteredViewController.createAvaliableAvatarsArray()
-        var avatarPossiblePaths: [String] = []
+        let avatarAssetsNames = LobbyViewController.getAvatarImagesNames()
         
-        for avatar in avaliableAvatars{
-            let avatarPath = self.getAvatarPath(avatar: avatar)!
-            
-            if avatarPath == str{
+        for avatarName in avatarAssetsNames{
+            if avatarName == str{
                 for remotePlayer in remotePlayers {
                     if uid == remotePlayer.uid {
-                        remotePlayer.avatar = UIImage(contentsOfFile: avatarPath)
+                        remotePlayer.avatar = UIImage(named: avatarName)
                         self.tableView.reloadData()
                     }
                 }
