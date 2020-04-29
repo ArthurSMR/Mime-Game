@@ -358,14 +358,9 @@ extension GameViewController : UITableViewDelegate, UITableViewDataSource {
         
         let cell = ChatTableViewCell.dequeueCell(from: tableView)
         let message = messages[indexPath.row]
-        
-        if tableView == self.divinerTableView {
-            cell.playerName.text = message.player.name
-            cell.word.text = message.word
-        } else if tableView == self.mimickrTableView {
-            cell.playerName.text = message.player.name
-            cell.word.text = message.word
-        }
+        cell.playerName.text = message.player.name
+        cell.word.text = message.word
+
         return cell
     }
 }
