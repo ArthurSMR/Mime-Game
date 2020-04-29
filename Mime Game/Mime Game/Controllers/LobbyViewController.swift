@@ -134,6 +134,7 @@ class LobbyViewController: UIViewController {
             
             
             self.agoraKit.sendStreamMessage(self.streamID, data: Data(avatarChosenName.utf8))
+            
             self.tableView.reloadData()
         }
     }
@@ -256,6 +257,7 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
             // Verifying if remote player is available
             if remotePlayer.type == .available {
                 cell.nameLbl.text = remotePlayer.name
+                cell.userImg.image = remotePlayer.avatar
                 cell.userImg.borderColor = changeColorBorderWhenSpeaking(remotePlayer: remotePlayer)
             }
         }
