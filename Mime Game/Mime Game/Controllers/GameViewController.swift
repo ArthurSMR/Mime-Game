@@ -140,6 +140,7 @@ class GameViewController: UIViewController {
     }
     
     // MARK: - Agora settings
+    
     func setupAgora() {
         agoraKit.delegate = self
         let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
@@ -155,6 +156,7 @@ class GameViewController: UIViewController {
     
     /// This method is for reseting the timer and increment the turn
     func resetTimer() {
+        self.timer.invalidate()
         self.seconds = game.totalTime // Reseting timer
         runTimer()
     }
@@ -372,9 +374,9 @@ extension GameViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
         
+        // checking if is the receive stream id is the chat stream ID
         if streamId == self.chatStreamId {
             let decodedMessage = String(decoding: data, as: UTF8.self)
-            print("received from \(uid) message: \(decodedMessage)")
             let message = Message(word: decodedMessage, player: getPlayer(with: uid))
             messages.append(message)
         }

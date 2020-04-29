@@ -53,7 +53,7 @@ class LobbyViewController: UIViewController {
         if segue.identifier == "startGame" {
             
             if let gameVC = segue.destination as? GameViewController {
-                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 30, currentPlayer: 0, wordCategory: .general)
+                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 10, currentPlayer: 0, wordCategory: .general)
                 gameVC.agoraKit = agoraKit
                 gameVC.game = game
             }
@@ -249,6 +249,7 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         self.removeRemotePlayer(with: uid)
+        print("lOBBY")
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, audioTransportStatsOfUid uid: UInt, delay: UInt, lost: UInt, rxKBitRate: UInt) {

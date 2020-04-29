@@ -27,7 +27,7 @@ extension Modal where Self: UIView {
                            options: UIView.AnimationOptions(rawValue: 0),
                            animations: { self.dialogView.center = self.center },
                            completion: { (completed) in
-                                print("Completed: \(completed)")
+                                
             })
         } else {
             self.backgroundView.alpha = 1
@@ -41,7 +41,7 @@ extension Modal where Self: UIView {
                            animations: {
                             self.backgroundView.alpha = 0
             }, completion: { (completed) in
-                print("Completed: \(completed)")
+                
             })
             UIView.animate(withDuration: 0.33,
                            delay: 0,
@@ -53,7 +53,7 @@ extension Modal where Self: UIView {
                                                              y: self.frame.height +
                                                                 self.dialogView.frame.height / 2)
             }, completion: { (completed) in
-                print("Completed: \(completed)")
+                
                 self.removeFromSuperview()
             })
         } else {
@@ -77,7 +77,7 @@ extension Modal where Self: UIView {
                            options: UIView.AnimationOptions(rawValue: 0),
                            animations: { self.dialogView.center = currentPosition },
                            completion: { (completed) in
-                            print("Completed: \(completed)")
+                            
             })
         } else {
             self.backgroundView.alpha = 1
