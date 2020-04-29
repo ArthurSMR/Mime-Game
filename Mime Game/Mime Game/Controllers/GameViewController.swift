@@ -26,7 +26,9 @@ class GameViewController: UIViewController {
     var messages: [Message] = [] {
         didSet {
             divinerTableView.reloadData()
+            divinerTableView.scrollToBottom()
             mimickrTableView.reloadData()
+            mimickrTableView.scrollToBottom()
         }
     }
     
@@ -90,7 +92,7 @@ class GameViewController: UIViewController {
         mimickrTableView.delegate = self
         mimickrTableView.dataSource = self
         guard let mimickrTable = mimickrTableView else { return }
-        ChatTableViewCell.registerNib(for: mimickrTableView)
+        ChatTableViewCell.registerNib(for: mimickrTable)
     }
     
     private func startGame() {
@@ -229,8 +231,6 @@ class GameViewController: UIViewController {
         game.currentPlayer += 1   // Turn next round
     }
     
-    
-    
     // MARK: - View/Videos Settings
     
     /// This method is to change the mimickr and the diviver view
@@ -294,6 +294,9 @@ class GameViewController: UIViewController {
     @IBAction func reportBtn(_ sender: UIButton) {
     }
     
+    /// This method is called when the button did pressed, it will get the text on the text on text field and send stream
+    /// messege to all player that are on the game.
+    /// - Parameter sender: send messege button
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
         
         guard let text = textField.text else { return }
@@ -306,7 +309,6 @@ class GameViewController: UIViewController {
     }
     
     // MARK: - Player settings
-    
     
     /// Get the current player name, describing a string
     /// - Returns: return the current player name as string
@@ -360,7 +362,7 @@ extension GameViewController : UITableViewDelegate, UITableViewDataSource {
         let message = messages[indexPath.row]
         cell.playerName.text = message.player.name
         cell.word.text = message.word
-
+        
         return cell
     }
 }

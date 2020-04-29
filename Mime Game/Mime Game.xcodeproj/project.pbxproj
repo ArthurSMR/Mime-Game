@@ -16,6 +16,7 @@
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
 		3642AE1624524DD8004CBF76 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1524524DD8004CBF76 /* MockDatabase.swift */; };
 		3682147E2459B23200C6A254 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147D2459B23200C6A254 /* Message.swift */; };
+		368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */; };
 		3695A91F24524FF700815617 /* MimeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A91E24524FF700815617 /* MimeServices.swift */; };
 		36A8F93924508AB4008D0FD3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8F93824508AB4008D0FD3 /* Player.swift */; };
 		36BC041D243E1080005B753A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC041C243E1080005B753A /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
 		3642AE1524524DD8004CBF76 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		3682147D2459B23200C6A254 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ScrollBottom.swift"; sourceTree = "<group>"; };
 		3695A91E24524FF700815617 /* MimeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeServices.swift; sourceTree = "<group>"; };
 		36A8F93824508AB4008D0FD3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		36BC0419243E1080005B753A /* Mime Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mime Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +262,7 @@
 				3C36CFDF24508617003648AE /* Protocols */,
 				3C36CFD82450856E003648AE /* Views */,
 				3C36CFC624508440003648AE /* DataExtension.swift */,
+				3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */,
 				3C36CFC324508440003648AE /* DataFormatter+Extensions.swift */,
 				3C36CFC724508440003648AE /* DateConverter.swift */,
 				3C36CFC124508440003648AE /* DoubleExtension.swift */,
@@ -530,6 +533,7 @@
 				3C36CFCF24508441003648AE /* DataFormatter+Extensions.swift in Sources */,
 				36BC041D243E1080005B753A /* AppDelegate.swift in Sources */,
 				3C36CFDD2450856E003648AE /* ImagePicker.swift in Sources */,
+				368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
