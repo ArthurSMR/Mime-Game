@@ -59,18 +59,17 @@ class Player: Codable {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: UserDefaults.Keys.self)
         let currentUser = try values.decode(Player.self, forKey: .currentUser)
-        
+
         self.name = currentUser.name
         self.avatar = currentUser.avatar
         self.isSpeaking = currentUser.isSpeaking
         self.uid = currentUser.uid
         self.type = currentUser.type
-        
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: UserDefaults.Keys.self)
         try container.encode(self, forKey: .currentUser)
     }
-    
+
 }

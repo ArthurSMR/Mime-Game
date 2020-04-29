@@ -9,19 +9,17 @@
 import UIKit
 
 class UserServices {
-//    
-//    static func saveCurrentUser(user: Player) {
-//        let encoder = 
-//
-//      if let encoded = try? encoder.encode(Player) {
-//        let defaults = UserDefaults.standard
-//        defaults.set(encoded, forKey: UserDefaults.Keys.currentUser.description)
-//      }
-//    }
+    
+    static func saveCurrentUser(user: Player) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+        let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: UserDefaults.Keys.currentUser.description)
+      }
+    }
 
     static func retrieveCurrentUser() -> Player? {
-      if let currentUserData = UserDefaults.standard.object(forKey: UserDefaults.Keys.currentUser.description)
-        as? Data {
+        if let currentUserData = UserDefaults.standard.object(forKey: UserDefaults.Keys.currentUser.description) as? Data {
         let decoder = JSONDecoder()
         if let currentUser = try? decoder.decode(Player.self, from: currentUserData) {
           return currentUser
