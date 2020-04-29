@@ -23,7 +23,12 @@ class GameViewController: UIViewController {
     var game: Game!
     var chatStreamId = 2
     
-    var messages: [Message] = []
+    var messages: [Message] = [] {
+        didSet {
+            divinerTableView.reloadData()
+            mimickrTableView.reloadData()
+        }
+    }
     
     //MARK: Outlets Diviner
     @IBOutlet weak var divinerVideoView: UIView!
@@ -34,6 +39,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var muteBtn: UIButton!
     @IBOutlet weak var textField: RoundTextField!
     @IBOutlet weak var divinerView: UIView!
+    @IBOutlet weak var divinerTableView: UITableView!
     
     //MARK: Outlets Mimickr
     @IBOutlet weak var mimickrVideoView: RoundView!
@@ -41,7 +47,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wordThemeLbl: UILabel!
     @IBOutlet weak var wordLbl: UILabel!
     @IBOutlet weak var timerMimickr: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mimickrTableView: UITableView!
+    
     
     var isMimickrView: Bool = false {
         didSet {
@@ -72,10 +79,18 @@ class GameViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        guard let table = tableView else { return }
-        ChatTableViewCell.registerNib(for: table)
+        
+        // Setting up diviner tableView
+        divinerTableView.delegate = self
+        divinerTableView.dataSource = self
+        guard let divinerTable = divinerTableView else { return }
+        ChatTableViewCell.registerNib(for: divinerTable)
+        
+        // Setting up mimickr tableView
+        mimickrTableView.delegate = self
+        mimickrTableView.dataSource = self
+        guard let mimickrTable = mimickrTableView else { return }
+        ChatTableViewCell.registerNib(for: mimickrTableView)
     }
     
     private func startGame() {
@@ -286,7 +301,7 @@ class GameViewController: UIViewController {
         agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
         let message = Message(word: text, player: game.localPlayer)
         self.messages.append(message)
-        tableView.reloadData()
+        divinerTableView.reloadData()
         textField.text = ""
     }
     
@@ -343,13 +358,16 @@ extension GameViewController : UITableViewDelegate, UITableViewDataSource {
         
         let cell = ChatTableViewCell.dequeueCell(from: tableView)
         let message = messages[indexPath.row]
-        cell.playerName.text = message.player.name
-        cell.word.text = message.word
         
+        if tableView == self.divinerTableView {
+            cell.playerName.text = message.player.name
+            cell.word.text = message.word
+        } else if tableView == self.mimickrTableView {
+            cell.playerName.text = message.player.name
+            cell.word.text = message.word
+        }
         return cell
     }
-    
-    
 }
 
 //MARK: Agora Delegate
@@ -360,10 +378,8 @@ extension GameViewController: AgoraRtcEngineDelegate {
         if streamId == self.chatStreamId {
             let decodedMessage = String(decoding: data, as: UTF8.self)
             print("received from \(uid) message: \(decodedMessage)")
-            
             let message = Message(word: decodedMessage, player: getPlayer(with: uid))
             messages.append(message)
-            tableView.reloadData()
         }
     }
     
