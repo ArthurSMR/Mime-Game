@@ -68,6 +68,7 @@ class GameViewController: UIViewController {
     private func setupLayout() {
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
+        setupTableView()
     }
     
     private func setupTableView() {
@@ -281,8 +282,11 @@ class GameViewController: UIViewController {
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
         
         guard let text = textField.text else { return }
-        let messege = Data(text.utf8)
-        agoraKit.sendStreamMessage(self.chatStreamId, data: messege)
+        let sendMessege = Data(text.utf8)
+        agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
+        let message = Message(word: text, player: game.localPlayer)
+        self.messages.append(message)
+        tableView.reloadData()
         textField.text = ""
     }
     

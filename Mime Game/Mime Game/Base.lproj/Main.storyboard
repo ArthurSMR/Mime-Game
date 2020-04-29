@@ -320,7 +320,7 @@
                                         <rect key="frame" x="16" y="506" width="382" height="200"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F4N-Cl-Y3B">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="200"/>
+                                                <rect key="frame" x="0.0" y="32" width="382" height="168"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="wo4-Pi-ajL" id="5II-XF-naq"/>
@@ -334,7 +334,6 @@
                                             <constraint firstAttribute="height" constant="200" id="JnH-RV-hQQ"/>
                                             <constraint firstAttribute="trailing" secondItem="F4N-Cl-Y3B" secondAttribute="trailing" id="Xun-J3-sKC"/>
                                             <constraint firstAttribute="bottom" secondItem="F4N-Cl-Y3B" secondAttribute="bottom" id="bXR-EO-kIp"/>
-                                            <constraint firstItem="F4N-Cl-Y3B" firstAttribute="top" secondItem="3bl-d3-bg6" secondAttribute="top" id="pgm-QE-QX4"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="radius">
@@ -425,6 +424,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="8Kj-Js-Emn" firstAttribute="leading" secondItem="Sfd-US-meX" secondAttribute="leading" constant="16" id="0R3-Nf-sBV"/>
+                                    <constraint firstItem="F4N-Cl-Y3B" firstAttribute="top" secondItem="8Kj-Js-Emn" secondAttribute="bottom" id="3Vz-ok-hnX"/>
                                     <constraint firstItem="3bl-d3-bg6" firstAttribute="trailing" secondItem="8Kj-Js-Emn" secondAttribute="trailing" id="3yb-We-Sf3"/>
                                     <constraint firstItem="f6v-qA-K2h" firstAttribute="leading" secondItem="XeT-w7-e8A" secondAttribute="leading" constant="40" id="4l1-0A-yyF"/>
                                     <constraint firstItem="1mM-Eb-kAI" firstAttribute="centerX" secondItem="Sfd-US-meX" secondAttribute="centerX" id="5Ex-Gu-a2Q"/>
