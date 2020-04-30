@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UITextFieldDelegate{
+class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextField!
@@ -32,29 +32,30 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        self.avaliableAvatars = createAvaliableAvatarsArray()
+        self.avaliableAvatars = LoginNoRegisteredViewController.createAvaliableAvatarsArray()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.textField.delegate = self
         
         self.currentSelectedAvatarIndex = 0
+        
+        setupReturningPlayerInfo()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.setupTranslucidAvatars()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
-    func createAvaliableAvatarsArray() -> [UIImage] {
+    
+    static func createAvaliableAvatarsArray() -> [UIImage] {
         var avatarsImages: [UIImage] = []
-        let imageURLArray = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "test-no-register-avatars")! as [NSURL]
+        var n: Int = 1
         
-        for url in imageURLArray {
-            let avatarImage = UIImage(contentsOfFile: url.path!)
-           
-            avatarsImages.append(avatarImage!)
+        while let avatarImage = UIImage(named: "Avatar\(n)"){
+            avatarsImages.append(avatarImage)
+            n += 1
         }
-        
         return avatarsImages
     }
     
@@ -71,11 +72,6 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AvatarCell.identifier, for: indexPath) as! AvatarCell
         cell.avatar = avaliableAvatars[indexPath.row]
-        
-        // not working
-        if indexPath.row > 0 {
-            cell.alpha = 0.6
-        }
         
         return cell
     }
@@ -96,11 +92,11 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     
 
     //MARK: ScrollView Delegate
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
         
@@ -113,26 +109,46 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         targetContentOffset.pointee = offSet
     }
     
+    //MARK: - TextField
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
- // MARK: - Navigation
- 
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    switch segue.identifier {
-    case "playButtonSegue":
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        if let destinationVC = segue.destination as? LobbyViewController {
-            destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+    }
+    
+    //MARK: - Returning Player
+    func setupReturningPlayerInfo(){
+         if let returningNotRegisteredPlayer = UserServices.retrieveCurrentUser() {
+            self.textField.text = returningNotRegisteredPlayer.userName!
+            self.collectionView.scrollToItem(at: IndexPath(row: returningNotRegisteredPlayer.avatarIndex!, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "playButtonSegue":
+            
+            if let destinationVC = segue.destination as? LobbyViewController {
+                destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+                destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
+                destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
+                
+                let noRegisteredUser = NoRegisteredPlayerCodable()
+                noRegisteredUser.userName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+                noRegisteredUser.avatarIndex = self.currentSelectedAvatarIndex
+                UserServices.saveCurrentUser(user: noRegisteredUser)
+            }
+            
+        default:
+            print("No segue found")
         }
         
-    default:
-        print("No segue found")
     }
-  
- }
     
     
 }

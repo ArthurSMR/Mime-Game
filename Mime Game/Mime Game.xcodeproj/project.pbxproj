@@ -48,9 +48,10 @@
 		3C36CFE124508617003648AE /* ReusableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36CFE024508617003648AE /* ReusableCells.swift */; };
 		3C36CFE5245086A0003648AE /* LobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36CFE3245086A0003648AE /* LobbyTableViewCell.swift */; };
 		3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */; };
-		9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */ = {isa = PBXBuildFile; fileRef = 9A13FB06244E9CE200A74F6F /* test-no-register-avatars */; };
+		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
+		9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610D2458A2AE00E449A4 /* UserServices.swift */; };
 		F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,9 +116,10 @@
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A13FB06244E9CE200A74F6F /* test-no-register-avatars */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "test-no-register-avatars"; sourceTree = "<group>"; };
+		9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRegisteredPlayerCodable.swift; sourceTree = "<group>"; };
 		9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
 		9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		9AD2610D2458A2AE00E449A4 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				3695A91E24524FF700815617 /* MimeServices.swift */,
+				9AD2610D2458A2AE00E449A4 /* UserServices.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -168,7 +171,7 @@
 		36A8F93724508A9D008D0FD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				36A8F93824508AB4008D0FD3 /* Player.swift */,
+				9A5E73A42459F27600911FEB /* Players */,
 				3642AE0B245241CA004CBF76 /* Game.swift */,
 				3642AE1024524CEF004CBF76 /* Mime.swift */,
 				3682147D2459B23200C6A254 /* Message.swift */,
@@ -179,7 +182,6 @@
 		36BC0410243E1080005B753A = {
 			isa = PBXGroup;
 			children = (
-				9A13FB06244E9CE200A74F6F /* test-no-register-avatars */,
 				36BC041B243E1080005B753A /* Mime Game */,
 				36BC0435243E1083005B753A /* Mime GameTests */,
 				36BC041A243E1080005B753A /* Products */,
@@ -342,6 +344,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		9A5E73A42459F27600911FEB /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				36A8F93824508AB4008D0FD3 /* Player.swift */,
+				9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
 		C08ADCE8D6EA85BB448FFF3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,7 +452,6 @@
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
-				9A13FB07244E9CE300A74F6F /* test-no-register-avatars in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
 				368214862459F92E00C6A254 /* Lobby.json in Resources */,
 			);
@@ -537,6 +547,7 @@
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
+				9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */,
 				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
 				3682147E2459B23200C6A254 /* Message.swift in Sources */,
@@ -555,6 +566,7 @@
 				3C36CFD224508441003648AE /* DataExtension.swift in Sources */,
 				360525432458A71600BEA330 /* ChatTableViewCell.swift in Sources */,
 				3C36CFCE24508441003648AE /* UserDefaults+Extensions.swift in Sources */,
+				9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */,
 				3C09D64D24570D0300849B83 /* Modal.swift in Sources */,
 				3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */,
 				3C36CFD324508441003648AE /* DateConverter.swift in Sources */,
@@ -719,7 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -738,7 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KU377264X;
+				DEVELOPMENT_TEAM = 96576CZ92S;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

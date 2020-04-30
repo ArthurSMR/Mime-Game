@@ -27,13 +27,13 @@ class AvatarCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.layer.cornerRadius = max(self.frame.size.width, self.frame.size.height) / 2
-        
-        self.layer.shadowRadius = 1
-        self.layer.shadowOpacity = 0.8
-        self.layer.shadowOffset = CGSize(width: 5, height: 10)
-        
+//        
+//        self.layer.cornerRadius = max(self.frame.size.width, self.frame.size.height) / 2
+//        
+//        self.layer.shadowRadius = 1
+//        self.layer.shadowOpacity = 0.8
+//        self.layer.shadowOffset = CGSize(width: 0, height: 10)
+//
         self.clipsToBounds = false
     }
     
