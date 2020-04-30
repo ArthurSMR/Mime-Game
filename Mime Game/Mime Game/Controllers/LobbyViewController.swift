@@ -75,8 +75,6 @@ class LobbyViewController: UIViewController {
         lobbyView.animation = animation
         lobbyView.loopMode = .loop
         lobbyView.play()
-        
-//        displayLink?.add(to: .current, forMode: .default)
     }
     
     func setupAgora() {
@@ -96,7 +94,6 @@ class LobbyViewController: UIViewController {
         agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
         agoraKit.enableWebSdkInteroperability(true)
     }
-    
     
     /// This method if for join the channel with some userAccount
     private func joinChannel() {
@@ -131,8 +128,7 @@ class LobbyViewController: UIViewController {
         self.UIDs.append(uid)
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
-        
-        
+               
         let numberPointer = UnsafeMutablePointer<Int>(&streamID)
         agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
     }
@@ -147,7 +143,6 @@ class LobbyViewController: UIViewController {
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
     }
-    
     
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
@@ -193,9 +188,14 @@ class LobbyViewController: UIViewController {
         return players
     }
     
+    func pop(animated: Bool) {
+        self.navigationController?.popViewController(animated: animated)
+    }
+    
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
         self.leaveChannel()
+        pop(animated: true)
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
