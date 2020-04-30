@@ -14,19 +14,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     @IBOutlet weak var textField: UITextField!
     
     var avaliableAvatars: [UIImage] = []
-    var currentSelectedAvatarIndex: Int = 0{
-        didSet{
-            collectionView.cellForItem(at: IndexPath(row: currentSelectedAvatarIndex, section: 0))?.alpha = 1
-            if currentSelectedAvatarIndex > 0{
-                let prevIndex = currentSelectedAvatarIndex - 1
-                collectionView.cellForItem(at:IndexPath(row: prevIndex, section: 0))?.alpha = 0.6
-            }
-            if currentSelectedAvatarIndex < avaliableAvatars.count {
-                let nextIndex = currentSelectedAvatarIndex + 1
-                collectionView.cellForItem(at: IndexPath(row: nextIndex, section: 0))?.alpha = 0.6
-            }
-        }
-    }
+    var currentSelectedAvatarIndex: Int = 0
     let cellScaling: CGFloat = 0.5
     
     override func viewDidLoad() {
@@ -36,7 +24,6 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.textField.delegate = self
-        
         self.currentSelectedAvatarIndex = 0
         
         setupReturningPlayerInfo()
@@ -45,8 +32,13 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        OperationQueue.main.addOperation {
+            self.collectionView.reloadData()
+            self.collectionView.performBatchUpdates(nil) { (result) in
+                self.calculateAvatarCellAlpha(scrollView: self.collectionView)
+            }
+        }
     }
-    
     
     static func createAvaliableAvatarsArray() -> [UIImage] {
         var avatarsImages: [UIImage] = []
@@ -59,6 +51,23 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         return avatarsImages
     }
     
+    func calculateAvatarCellAlpha(scrollView: UIScrollView) {
+        guard let collectionView = scrollView as? UICollectionView else { return }
+        
+        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        guard let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) else { return }
+        
+        for visibleIndex in collectionView.indexPathsForVisibleItems {
+            let cell = collectionView.cellForItem(at: visibleIndex) as? AvatarCell
+            if visibleIndex == visibleIndexPath {
+                cell?.imageView.alpha = 1.0
+            } else {
+                cell?.imageView.alpha = 0.6
+            }
+        }
+    }
+    
     
     //MARK: Collection View Delegate and DataSource:
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -68,11 +77,10 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return avaliableAvatars.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AvatarCell.identifier, for: indexPath) as! AvatarCell
-        cell.avatar = avaliableAvatars[indexPath.row]
-        
+        cell.imageView.image = avaliableAvatars[indexPath.row]
         return cell
     }
     
@@ -86,14 +94,13 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         
         let cellWidth = floor(collectionView.frame.width * cellScaling)
         let cellHeight = floor(collectionView.frame.height * cellScaling)
-               
+        
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
-
+    
+    
     //MARK: ScrollView Delegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -109,6 +116,11 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         targetContentOffset.pointee = offSet
     }
     
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        calculateAvatarCellAlpha(scrollView: scrollView)
+    }
+    
     //MARK: - TextField
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -121,7 +133,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     
     //MARK: - Returning Player
     func setupReturningPlayerInfo(){
-         if let returningNotRegisteredPlayer = UserServices.retrieveCurrentUser() {
+        if let returningNotRegisteredPlayer = UserServices.retrieveCurrentUser() {
             self.textField.text = returningNotRegisteredPlayer.userName!
             self.collectionView.scrollToItem(at: IndexPath(row: returningNotRegisteredPlayer.avatarIndex!, section: 0), at: .centeredHorizontally, animated: true)
         }
@@ -147,8 +159,5 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         default:
             print("No segue found")
         }
-        
     }
-    
-    
 }
