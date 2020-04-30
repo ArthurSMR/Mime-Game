@@ -35,7 +35,8 @@ class Player: Codable {
     var avatarImagePath: String?
     var isSpeaking: Bool = false
     
-    init(agoraUserInfo: AgoraUserInfo, type: PlayerType) {
+    convenience init(agoraUserInfo: AgoraUserInfo, type: PlayerType) {
+        self.init()
         self.type = type
         self.uid = agoraUserInfo.uid
         self.name = agoraUserInfo.userAccount ?? "User \(agoraUserInfo.uid)"
@@ -45,11 +46,19 @@ class Player: Codable {
         self.avatar = UIImage(named: avatarDefaultImageName!)
     }
     
-    init(agoraUserInfo: AgoraUserInfo, type: PlayerType, avatar: UIImage) {
+    convenience init(agoraUserInfo: AgoraUserInfo, type: PlayerType, avatar: UIImage) {
+        self.init()
         self.type = type
         self.uid = agoraUserInfo.uid
         self.name = agoraUserInfo.userAccount ?? "User \(agoraUserInfo.uid)"
         self.avatar = avatar
+    }
+
+    init() {
+        self.type = .unavailable
+        self.uid = UInt()
+        self.name = ""
+        self.isSpeaking = false
     }
     
     required init(from decoder: Decoder) throws {
@@ -67,5 +76,7 @@ class Player: Codable {
         var container = encoder.container(keyedBy: UserDefaults.Keys.self)
         try container.encode(self, forKey: .currentUser)
     }
+
+
 
 }
