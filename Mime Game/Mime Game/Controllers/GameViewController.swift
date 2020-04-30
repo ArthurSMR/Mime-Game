@@ -51,7 +51,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timerMimickr: UILabel!
     @IBOutlet weak var mimickrTableView: UITableView!
     
-    
     var isMimickrView: Bool = false {
         didSet {
             if isMimickrView == false {
@@ -134,7 +133,6 @@ class GameViewController: UIViewController {
                 print(error)
             } else {
                 self.mimes = mimes
-//                self.mimes.shuffle()
             }
         })
     }
@@ -177,9 +175,7 @@ class GameViewController: UIViewController {
     
     /// This method is to change the mime and get another mime word
     func changeMime() {
-        
-        
-        
+                
         if self.turn == self.mimes.count {
             self.turn = 0
         }
@@ -236,7 +232,6 @@ class GameViewController: UIViewController {
     }
     
     private func isSentMessageCorrect(word: String) -> Bool{
-        print("\(word) = \(self.currentMime?.word)")
         return word == self.currentMime?.word ? true : false
     }
     
@@ -311,7 +306,6 @@ class GameViewController: UIViewController {
         agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
         let isCorrect = isSentMessageCorrect(word: text)
         let message = Message(word: text, player: game.localPlayer, isCorrect: isCorrect)
-        print(isCorrect)
         self.messages.append(message)
         divinerTableView.reloadData()
         textField.text = ""
@@ -388,7 +382,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
             let isCorrect = isSentMessageCorrect(word: decodedMessage)
             
             let message = Message(word: decodedMessage, player: getPlayer(with: uid), isCorrect: isCorrect)
-            print(isCorrect)
+            
             messages.append(message)
         }
     }
