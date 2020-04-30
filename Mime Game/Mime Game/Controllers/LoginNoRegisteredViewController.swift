@@ -10,13 +10,19 @@ import UIKit
 
 class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UITextFieldDelegate{
     
+    //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextField!
     
+    //MARK: Variables
     var avaliableAvatars: [UIImage] = []
     var currentSelectedAvatarIndex: Int = 0
+    
+    /// Percentage factor of scaling.
+    /// Used on calculating collectionView insets and cell size.
     let cellScaling: CGFloat = 0.5
     
+    //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -32,6 +38,7 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Calculates AvatarCell visibility (review)
         OperationQueue.main.addOperation {
             self.collectionView.reloadData()
             self.collectionView.performBatchUpdates(nil) { (result) in
@@ -40,6 +47,10 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         }
     }
     
+    //MARK: Methods
+    
+    /// Initialize avatar images avaliable for the player based on image's names on xcAssets
+    /// - Returns: An array of UIImages for avatar selection.
     static func createAvaliableAvatarsArray() -> [UIImage] {
         var avatarsImages: [UIImage] = []
         var n: Int = 1
@@ -51,6 +62,9 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         return avatarsImages
     }
     
+    /// Calculates AvatarCell Alpha factor based on cell's visibility.
+    /// This method makes the centered avatar image alpha to 1 while keeping the others at 0.6.
+    /// - Parameter scrollView: Avatar's CollectionView
     func calculateAvatarCellAlpha(scrollView: UIScrollView) {
         guard let collectionView = scrollView as? UICollectionView else { return }
         
@@ -102,6 +116,11 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
     
     //MARK: ScrollView Delegate
     
+    /// This method is responsible for keeping an avatar centered at the carroussel collection view at all times.
+    /// - Parameters:
+    ///   - scrollView: The scroll-view object where the user ended the touch. In this case it's also a collectionView.
+    ///   - velocity: The velocity of the scroll view (in points) at the moment the touch was released.
+    ///   - targetContentOffset: The expected offset when the scrolling action decelerates to a stop.
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -116,7 +135,8 @@ class LoginNoRegisteredViewController: UIViewController, UICollectionViewDelegat
         targetContentOffset.pointee = offSet
     }
     
-    
+    /// Calculates AvatarCell alpha on every scroll.
+    /// - Parameter scrollView: <#scrollView description#>
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         calculateAvatarCellAlpha(scrollView: scrollView)
     }

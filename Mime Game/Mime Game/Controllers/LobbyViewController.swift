@@ -51,10 +51,9 @@ class LobbyViewController: UIViewController {
         setupLayout()
     }
     
+    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "startGame" {
-            
             if let gameVC = segue.destination as? GameViewController {
                 let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 10, currentPlayer: 0, wordCategory: .general)
                 gameVC.agoraKit = agoraKit
