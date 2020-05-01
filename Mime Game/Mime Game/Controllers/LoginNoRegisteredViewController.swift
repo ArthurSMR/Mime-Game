@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class LoginNoRegisteredViewController: UIViewController {
     
@@ -177,6 +178,7 @@ extension LoginNoRegisteredViewController:  UIScrollViewDelegate {
         let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
         let roundedIndex = round(index)
         self.currentSelectedAvatarIndex = Int(roundedIndex)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
         offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offSet
