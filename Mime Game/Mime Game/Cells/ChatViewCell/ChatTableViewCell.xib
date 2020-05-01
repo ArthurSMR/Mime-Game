@@ -50,6 +50,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="playerImage" destination="HBU-8z-AcJ" id="g0M-4D-gwp"/>
                 <outlet property="playerName" destination="iuF-57-Y7k" id="5z7-Kq-95b"/>
                 <outlet property="word" destination="dT4-qo-eAr" id="j07-dK-Uu5"/>
             </connections>

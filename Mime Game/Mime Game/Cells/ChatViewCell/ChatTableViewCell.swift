@@ -12,6 +12,7 @@ class ChatTableViewCell: UITableViewCell {
 
     @IBOutlet weak var playerName: UILabel!
     @IBOutlet weak var word: UILabel!
+    @IBOutlet weak var playerImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
