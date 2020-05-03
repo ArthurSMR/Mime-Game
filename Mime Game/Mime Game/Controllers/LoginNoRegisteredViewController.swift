@@ -27,6 +27,7 @@ class LoginNoRegisteredViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,13 +44,14 @@ class LoginNoRegisteredViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
-        
         self.navigationController?.isNavigationBarHidden = true
         self.avaliableAvatars = LoginNoRegisteredViewController.createAvaliableAvatarsArray()
         prepereCollectionView()
         prepareTextField()
         self.currentSelectedAvatarIndex = 0
-        setupReturningPlayerInfo()
+        
+        self.setupReturningPlayerInfo()
+        
     }
     
     func prepereCollectionView() {
@@ -209,9 +211,13 @@ extension LoginNoRegisteredViewController:  UITextFieldDelegate {
         if let returningNotRegisteredPlayer = UserServices.retrieveCurrentUser() {
             
             self.textField.text = returningNotRegisteredPlayer.userName!
-            self.collectionView.scrollToItem(at: IndexPath(row: returningNotRegisteredPlayer.avatarIndex!,
-                                                           section: 0),
-                                             at: .centeredHorizontally, animated: true)
+            
+            DispatchQueue.main.async {
+                self.collectionView.scrollToItem(at: IndexPath(item: returningNotRegisteredPlayer.avatarIndex!, section: 0), at: .centeredHorizontally, animated: true)
+            }
+            
         }
     }
 }
+
+
