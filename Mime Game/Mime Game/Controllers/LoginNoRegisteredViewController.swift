@@ -213,6 +213,7 @@ extension LoginNoRegisteredViewController:  UITextFieldDelegate {
             self.textField.text = returningNotRegisteredPlayer.userName!
             
             DispatchQueue.main.async {
+                self.currentSelectedAvatarIndex = returningNotRegisteredPlayer.avatarIndex!
                 self.collectionView.scrollToItem(at: IndexPath(item: returningNotRegisteredPlayer.avatarIndex!, section: 0), at: .centeredHorizontally, animated: true)
             }
             

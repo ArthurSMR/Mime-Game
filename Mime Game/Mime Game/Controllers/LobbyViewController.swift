@@ -80,6 +80,9 @@ class LobbyViewController: UIViewController {
         LobbyTableViewCell.registerNib(for: table)
     }
     
+    
+    /// Auxiliary method.
+    /// - Returns: The file names for all avatars avaliable.
     static func getAvatarImagesNames() -> [String] {
         
         var n: Int = 1
@@ -97,10 +100,13 @@ class LobbyViewController: UIViewController {
         return avatarNames
     }
     
+    
+    /// Sends local player avatar image to be displayed to all remote players
     func sendAvatarThroughMessageStream() {
-            let avatarNames = LobbyViewController.getAvatarImagesNames()
-            let avatarChosenName = avatarNames[self.currentAvatarIndex]
-            let dataAvatarName = Data(avatarChosenName.utf8)
+        let avatarNames = LobbyViewController.getAvatarImagesNames()
+        let avatarChosenName = avatarNames[self.currentAvatarIndex]
+        let dataAvatarName = Data(avatarChosenName.utf8)
+        
         self.agoraKit.sendStreamMessage(self.avatarStreamId, data: dataAvatarName)
     }
     

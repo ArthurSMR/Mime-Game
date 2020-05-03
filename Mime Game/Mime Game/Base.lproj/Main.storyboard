@@ -629,7 +629,7 @@
                                     <constraint firstAttribute="height" constant="55" id="7Df-51-FkT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Selecionar Tema" backgroundImage="Button_SelecionarTema">
+                                <state key="normal" title="Entrar na sala" backgroundImage="Button_SelecionarTema">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
