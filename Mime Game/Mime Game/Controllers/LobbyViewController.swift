@@ -268,7 +268,7 @@ class LobbyViewController: UIViewController {
                 let game = Game(localPlayer: self.localPlayer,
                                 players: self.remotePlayers,
                                 uids: self.UIDs,
-                                totalTime: 10,
+                                totalTime: 60,
                                 currentPlayer: 0,
                                 wordCategory: .general)
                 gameVC.agoraKit = agoraKit

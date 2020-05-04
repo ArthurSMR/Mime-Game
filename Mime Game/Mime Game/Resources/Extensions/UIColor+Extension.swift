@@ -12,7 +12,7 @@ extension UIColor {
     
     static let whiteApp = UIColor(hex: 0xFFFFFF)
     static let darkerBlue = UIColor(hex: 0x1D3A80)
-    static let pinkReply = UIColor(hex: 0xAE6A85)
+    static let pinkReply = UIColor(hex: 0xEB5390)
     static let mediumBlue = UIColor(hex: 0x2B56A9)
     static let lightBlue = UIColor(hex: 0x8CC6F9)
     static let yellowApp = UIColor(hex: 0xFAE569)
