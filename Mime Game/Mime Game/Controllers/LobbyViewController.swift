@@ -12,26 +12,27 @@ import Lottie
 
 class LobbyViewController: UIViewController {
     
-    //MARK: Variables
-    
-    var incomingName: String?
-
-    private var agoraKit: AgoraRtcEngineKit!
-    var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
-    
-    var displayLink: CADisplayLink?
-    
-    var localAgoraUserInfo = AgoraUserInfo()
-    var localPlayer: Player!
-    var remotePlayers: [Player] = []
-    var startGame = Data("startGame".utf8)
-    var streamID = 1
-    
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var exitLobby: UIButton!
     @IBOutlet weak var muteBtn: RoundButton!
     @IBOutlet weak var lobbyView: AnimationView!
+    
+    //MARK: Variables
+    var incomingName: String?
+    var incomingAvatar: UIImage?
+    var currentAvatarIndex: Int = 0
+
+    private var agoraKit: AgoraRtcEngineKit!
+    var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
+    
+    var localAgoraUserInfo = AgoraUserInfo()
+    var localPlayer: Player!
+    var remotePlayers: [Player] = []
+    var startGame = Data("startGame".utf8)
+    
+    var startGameStreamId = 1
+    var avatarStreamId = 2
     
     var isMuted: Bool = false {
         didSet {
@@ -48,20 +49,9 @@ class LobbyViewController: UIViewController {
         setupLayout()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "startGame" {
-            
-            if let gameVC = segue.destination as? GameViewController {
-                let game = Game(localPlayer: self.localPlayer, players: self.remotePlayers, uids: self.UIDs, totalTime: 15, currentPlayer: 0, wordCategory: .general)
-                gameVC.agoraKit = agoraKit
-                gameVC.game = game
-            }
-        }
-    }
-    
     //MARK: Methods
     func setupLayout() {
+        
         self.navigationController?.isNavigationBarHidden = true
         setupViewAnimation()
         changeMuteButtonState()
@@ -70,25 +60,54 @@ class LobbyViewController: UIViewController {
     
     func setupViewAnimation() {
         
-        let animation = Animation.named("data")
-        
+        let animation = Animation.named("Lobby")
         lobbyView.animation = animation
         lobbyView.loopMode = .loop
         lobbyView.play()
-        
-//        displayLink?.add(to: .current, forMode: .default)
     }
     
     func setupAgora() {
+        
         initializateAgoraEngine()
         joinChannel()
     }
     
     func prepareTableView() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         guard let table = tableView else { return }
         LobbyTableViewCell.registerNib(for: table)
+    }
+    
+    
+    /// Auxiliary method.
+    /// - Returns: The file names for all avatars avaliable.
+    static func getAvatarImagesNames() -> [String] {
+        
+        var n: Int = 1
+        var avatarAssetName = "Avatar\(n)"
+        
+        var avatarNames: [String] = []
+        
+        while UIImage(named: avatarAssetName) != nil{
+            
+            avatarNames.append(avatarAssetName)
+            
+            avatarAssetName = "Avatar\(n+1)"
+            n += 1
+        }
+        return avatarNames
+    }
+    
+    
+    /// Sends local player avatar image to be displayed to all remote players
+    func sendAvatarThroughMessageStream() {
+        let avatarNames = LobbyViewController.getAvatarImagesNames()
+        let avatarChosenName = avatarNames[self.currentAvatarIndex]
+        let dataAvatarName = Data(avatarChosenName.utf8)
+        
+        self.agoraKit.sendStreamMessage(self.avatarStreamId, data: dataAvatarName)
     }
     
     /// This method is responsible for initializing Agora framework
@@ -97,14 +116,17 @@ class LobbyViewController: UIViewController {
         agoraKit.enableWebSdkInteroperability(true)
     }
     
-    
     /// This method if for join the channel with some userAccount
     private func joinChannel() {
+        
         agoraKit.setDefaultAudioRouteToSpeakerphone(true)
         
         guard let name = incomingName else { return }
         
-        agoraKit.joinChannel(byUserAccount: name, token: nil, channelId: "channel1") { (sid, uid, elapsed) in
+        agoraKit.joinChannel(byUserAccount: name,
+                             token: nil,
+                             channelId: "channel1") { (sid, uid, elapsed) in
+                                
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
             self.tableView.reloadData()
@@ -122,19 +144,24 @@ class LobbyViewController: UIViewController {
     }
     
     // MARK: Players setup
-    
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
     private func createLocalPlayer(uid: UInt) {
+        
         self.localAgoraUserInfo.userAccount = incomingName
         self.localAgoraUserInfo.uid = uid
         self.UIDs.append(uid)
-        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo, type: .local)
+        self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo,
+                                  type: .local,
+                                  avatar: incomingAvatar!)
+        
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
+               
+        let startGamePointer = UnsafeMutablePointer<Int>(&startGameStreamId)
+        agoraKit.createDataStream(startGamePointer, reliable: true, ordered: true)
         
-        
-        let numberPointer = UnsafeMutablePointer<Int>(&streamID)
-        agoraKit.createDataStream(numberPointer , reliable: true, ordered: true)
+        let avatarPointer = UnsafeMutablePointer<Int>(&avatarStreamId)
+        agoraKit.createDataStream(avatarPointer , reliable: true, ordered: true)
     }
     
     /// Creating remote player and setting it to available
@@ -147,7 +174,6 @@ class LobbyViewController: UIViewController {
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
     }
-    
     
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
@@ -193,34 +219,79 @@ class LobbyViewController: UIViewController {
         return players
     }
     
+    /// mechanism to give a dismiss in a navegation
+    /// - Parameter animated: dismiss navigation
+    func pop(animated: Bool) {
+        self.navigationController?.popViewController(animated: animated)
+    }
+    
+    func checkReceivedAvatarForRemotePlayer(with uid: UInt, with name: String) {
+        
+        let avatarAssetsNames = LobbyViewController.getAvatarImagesNames()
+        
+        for avatarName in avatarAssetsNames{
+            if avatarName == name {
+                for remotePlayer in remotePlayers {
+                    if uid == remotePlayer.uid {
+                        remotePlayer.avatar = UIImage(named: avatarName)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
+        
         self.leaveChannel()
+        pop(animated: true)
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
-        agoraKit.sendStreamMessage(self.streamID, data: startGame)
+        
+        agoraKit.sendStreamMessage(self.startGameStreamId, data: startGame)
         self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
+        
         isMuted = !isMuted
         agoraKit.muteLocalAudioStream(isMuted)
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "startGame" {
+            if let gameVC = segue.destination as? GameViewController {
+                let game = Game(localPlayer: self.localPlayer,
+                                players: self.remotePlayers,
+                                uids: self.UIDs,
+                                totalTime: 60,
+                                currentPlayer: 0,
+                                wordCategory: .general)
+                gameVC.agoraKit = agoraKit
+                gameVC.game = game
+            }
+        }
     }
 }
 
 //MARK: TableView
 extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return getPlayersAtLobby()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         let cell = LobbyTableViewCell.dequeueCell(from: tableView)
         
         if indexPath.row == 0 {  // set local player
             cell.nameLbl.text = localPlayer.name
+            cell.userImg.image = incomingAvatar
             cell.userImg.borderColor = changeColorBorderWhenSpeaking(remotePlayer: localPlayer)
         } else {
             let remotePlayer = self.remotePlayers[indexPath.row - 1] // set remote player
@@ -228,6 +299,7 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
             // Verifying if remote player is available
             if remotePlayer.type == .available {
                 cell.nameLbl.text = remotePlayer.name
+                cell.userImg.image = remotePlayer.avatar
                 cell.userImg.borderColor = changeColorBorderWhenSpeaking(remotePlayer: remotePlayer)
             }
         }
@@ -239,10 +311,12 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
 extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteAudioFrameOfUid uid: UInt, elapsed: Int) {
+        self.sendAvatarThroughMessageStream()
         updateRemotePlayers(uid: uid)
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didUpdatedUserInfo userInfo: AgoraUserInfo, withUid uid: UInt) {
+        self.sendAvatarThroughMessageStream()
         self.createRemotePlayer(userInfo: userInfo)
     }
     
@@ -273,15 +347,25 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
-
+        
+        if streamId == startGameStreamId {
+            let startGameSegue = String(decoding: data, as: UTF8.self)
+            print("startGame")
+            self.performSegue(withIdentifier: startGameSegue, sender: self)
+        } else if streamId == avatarStreamId {
             let str = String(decoding: data, as: UTF8.self)
-            print("received from \(uid) data: \(str)")
-        self.performSegue(withIdentifier: str, sender: self)
+            print("avatar \(str)")
+            checkReceivedAvatarForRemotePlayer(with: uid, with: str)
+        }
     }
     
-    func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurStreamMessageErrorFromUid uid: UInt, streamId: Int, error: Int, missed: Int, cached: Int) {
+    func rtcEngine(_ engine: AgoraRtcEngineKit,
+                   didOccurStreamMessageErrorFromUid uid: UInt,
+                   streamId: Int,
+                   error: Int,
+                   missed: Int,
+                   cached: Int) {
         
         print("received from \(uid), streamID: \(streamId), error: \(error), missed \(missed), cached \(cached)")
     }
-
 }

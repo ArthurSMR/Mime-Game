@@ -11,6 +11,25 @@ import AgoraRtcKit
 
 class GameViewController: UIViewController {
     
+    //MARK: Outlets Diviner
+    @IBOutlet weak var divinerVideoView: UIView!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var pointLbl: UILabel!
+    @IBOutlet weak var reportBtn: UIButton!
+    @IBOutlet weak var infoBtn: UIButton!
+    @IBOutlet weak var muteBtn: UIButton!
+    @IBOutlet weak var textField: RoundTextField!
+    @IBOutlet weak var divinerView: UIView!
+    @IBOutlet weak var divinerTableView: UITableView!
+    
+    //MARK: Outlets Mimickr
+    @IBOutlet weak var mimickrVideoView: RoundView!
+    @IBOutlet weak var mimickrView: UIView!
+    @IBOutlet weak var wordThemeLbl: UILabel!
+    @IBOutlet weak var wordLbl: UILabel!
+    @IBOutlet weak var timerMimickr: UILabel!
+    @IBOutlet weak var mimickrTableView: UITableView!
+    
     //MARK: Variables
     var agoraKit: AgoraRtcEngineKit!
     
@@ -21,23 +40,16 @@ class GameViewController: UIViewController {
     var mimes: [Mime] = []
     var currentMime: Mime?
     var game: Game!
+    var chatStreamId = 3
     
-    //MARK: Outlets Diviner
-    @IBOutlet weak var divinerVideoView: UIView!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var pointLbl: UILabel!
-    @IBOutlet weak var reportBtn: UIButton!
-    @IBOutlet weak var infoBtn: UIButton!
-    @IBOutlet weak var muteBtn: UIButton!
-    @IBOutlet weak var textField: RoundTextField!
-    @IBOutlet weak var divinerView: UIView!
-    
-    //MARK: Outlets Mimickr
-    @IBOutlet weak var mimickrVideoView: RoundView!
-    @IBOutlet weak var mimickrView: UIView!
-    @IBOutlet weak var wordThemeLbl: UILabel!
-    @IBOutlet weak var wordLbl: UILabel!
-    @IBOutlet weak var timerMimickr: UILabel!
+    var messages: [Message] = [] {
+        didSet {
+            divinerTableView.reloadData()
+            divinerTableView.scrollToBottom()
+            mimickrTableView.reloadData()
+            mimickrTableView.scrollToBottom()
+        }
+    }
     
     var isMimickrView: Bool = false {
         didSet {
@@ -52,20 +64,44 @@ class GameViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAgora()
         setupLayout()
         fetchMimes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         startGame()
     }
     
     private func setupLayout() {
+        
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        
+        // Setting up diviner tableView
+        divinerTableView.delegate = self
+        divinerTableView.dataSource = self
+        guard let divinerTable = divinerTableView else { return }
+        ChatTableViewCell.registerNib(for: divinerTable)
+        MessageSystemGameTableViewCell.registerNib(for: divinerTable)
+        
+        // Setting up mimickr tableView
+        mimickrTableView.delegate = self
+        mimickrTableView.dataSource = self
+        guard let mimickrTable = mimickrTableView else { return }
+        ChatTableViewCell.registerNib(for: mimickrTable)
+        MessageSystemGameTableViewCell.registerNib(for: mimickrTable)
+        
+        
     }
     
     private func startGame() {
+        
         game.uids = game.uids.sorted()
         self.seconds = 10
         self.game.localPlayer.type = .diviner
@@ -77,11 +113,15 @@ class GameViewController: UIViewController {
     //MARK: Draw Modals
     func drawPlayerModal() {
         
+        
+        
+        let currentPlayer = getCurrentPlayer()
+        
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
-        alert.gamerLabel.text = getCurrentPlayerName()
+        alert.gamerLabel.text = currentPlayer.name
         alert.themeLabel.text = self.currentMime?.theme.rawValue
-        //alert.imageGame.image = UIImage(named: "")
+        alert.imageGame.image = currentPlayer.avatar
         alert.show(animated: true)
         alert.runTimer()
     }
@@ -96,28 +136,42 @@ class GameViewController: UIViewController {
     }
     
     // MARK: - Fetches
-    
     /// This method is for fetching mimes from the databse
     func fetchMimes() {
+        
         MimeServices.fetchMimes(for: game.wordCategory, completion: { (mimes, error) in
             if let error = error {
                 print(error)
             } else {
                 self.mimes = mimes
-                self.mimes.shuffle()
             }
         })
     }
     
-    // MARK: - Timer settings
+    // MARK: - Agora settings
+    func setupAgora() {
+        
+        agoraKit.delegate = self
+        let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
+        agoraKit.createDataStream(numberPointer ,
+                                  reliable: true,
+                                  ordered: true)
+    }
     
+    // MARK: - Timer settings
     /// This method is to start running the timer
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                     target: self,
+                                     selector: (#selector(updateTimer)),
+                                     userInfo: nil, repeats: true)
     }
     
     /// This method is for reseting the timer and increment the turn
     func resetTimer() {
+        
+        self.timer.invalidate()
         self.seconds = game.totalTime // Reseting timer
         runTimer()
     }
@@ -128,6 +182,7 @@ class GameViewController: UIViewController {
         self.seconds -= 1     //This will decrement the seconds.
         if self.seconds == 0 {
             self.timer.invalidate()
+            textField.resignFirstResponder()
             nextTurn()
         }
         self.timerMimickr.text = "\(self.seconds)s"
@@ -135,20 +190,21 @@ class GameViewController: UIViewController {
     }
     
     // MARK: Game Methods
-    
     /// This method is to change the mime and get another mime word
     func changeMime() {
-        
+                
         if self.turn == self.mimes.count {
             self.turn = 0
         }
         self.currentMime = self.mimes[self.turn]
         self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
         self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+        print("Deu change")
     }
     
     /// This method is to reset the turns, that is, the players "line" come back to the beginning
     private func resetTurn() {
+        
         game.currentPlayer = 0
     }
     
@@ -157,24 +213,26 @@ class GameViewController: UIViewController {
     /// This method has the logic to turn the round, if the player is available to play and which player will play the next roud
     private func nextTurn() {
         
-        print(game.currentPlayer)
         // if the current player reached the last uid element, it can reset the turn
         if self.game.currentPlayer >= self.game.uids.count {
+            
             self.resetTurn()
         }
         
         // if the current player is the mimickr, it can set the local video
         if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
+            
             self.game.localPlayer.type = .mimickr
             self.isMimickrView = true
             //self.modalTip()
-            
             self.setupLocalVideo()
         } else {
             
             // Used this for to validate if the user is available or not
             for remotePlayer in game.remotePlayers {
+                
                 if remotePlayer.uid == self.game.uids[self.game.currentPlayer] {
+                    
                     if remotePlayer.type == .unavailable { // Get the next player
                         game.currentPlayer += 1
                         nextTurn()
@@ -194,10 +252,15 @@ class GameViewController: UIViewController {
         game.currentPlayer += 1   // Turn next round
     }
     
-
+    
+    /// This method check is the message is correct comparing in a uppercased way
+    /// - Parameter word: the received word that will be checked with the right word
+    /// - Returns: return a boolean (true if is correct and false if is wrong)
+    private func isSentMessageCorrect(word: String) -> Bool {
+        return word.uppercased() == self.currentMime?.word.uppercased() ? true : false
+    }
     
     // MARK: - View/Videos Settings
-    
     /// This method is to change the mimickr and the diviver view
     /// - Parameter playerType: it can be mimickr or diviner
     private func changeView(playerType: PlayerType) {
@@ -216,16 +279,17 @@ class GameViewController: UIViewController {
     
     /// This method is to setup remotePlayer to the diviner video view
     private func setupRemotePlayer() {
+        
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.uids[game.currentPlayer]
         videoCanvas.view = self.divinerVideoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
-        print("Setup Remote Player with name \(getCurrentPlayerName())")
     }
     
     /// This method is to setup the local video to the mimickr video view
     private func setupLocalVideo() {
+        
         self.agoraKit.enableLocalVideo(true)
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = game.localPlayer.uid
@@ -237,12 +301,15 @@ class GameViewController: UIViewController {
         }
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
-        print("Setup Local Player")
     }
     
     private func setupVideo() {
         
-        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.mimickrVideoView.frame.size.width * 1.1, height: self.mimickrVideoView.frame.size.height * 1.1), frameRate: .fps30, bitrate: AgoraVideoBitrateStandard, orientationMode: .adaptative)
+        let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.mimickrVideoView.frame.size.width,
+                                                                        height: self.mimickrVideoView.frame.size.height + 40),
+                                                           frameRate: .fps30,
+                                                           bitrate: AgoraVideoBitrateStandard,
+                                                           orientationMode: .adaptative)
         
         agoraKit.enableVideo()
         agoraKit.setVideoEncoderConfiguration(configuration)
@@ -259,24 +326,36 @@ class GameViewController: UIViewController {
     @IBAction func reportBtn(_ sender: UIButton) {
     }
     
+    /// This method is called when the button did pressed, it will get the text on the text on text field and send stream
+    /// messege to all player that are on the game.
+    /// - Parameter sender: send messege button
+    @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
+        
+        guard let text = textField.text else { return }
+        let sendMessege = Data(text.utf8)
+        agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
+        let isCorrect = isSentMessageCorrect(word: text)
+        let message = Message(word: text, player: game.localPlayer, isCorrect: isCorrect)
+        self.messages.append(message)
+        divinerTableView.reloadData()
+        textField.text = ""
+    }
+    
     // MARK: - Player settings
-    
-    
-    /// Get the current player name, describing a string
-    /// - Returns: return the current player name as string
-    private func getCurrentPlayerName() -> String{
+    /// Get the current player
+    /// - Returns: return the current player
+    private func getCurrentPlayer() -> Player {
         
         if isMimickrView {
-            return game.localPlayer.name
+            return game.localPlayer
         } else {
             for player in game.remotePlayers {
                 if game.uids[game.currentPlayer] == player.uid {
-                    return player.name
+                    return player
                 }
             }
         }
-        
-        return ""
+        return Player()
     }
     
     /// Set the player type to unavailable  when he leaves
@@ -290,21 +369,70 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    private func getPlayer(with uid: UInt) -> Player {
+        
+        for remotePlayer in game.remotePlayers {
+            if remotePlayer.uid == uid {
+                return remotePlayer
+            }
+        }
+        return Player()
+    }
+}
+
+//MARK: TableView Delegate
+extension GameViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let message = messages[indexPath.row]
+        
+        if message.isCorrect {
+            let cell = MessageSystemGameTableViewCell.dequeueCell(from: tableView)
+            cell.messageLbl.text = "\(message.player.name) acertou! \(message.word.uppercased())"
+            return cell
+            
+        } else {
+            let cell = ChatTableViewCell.dequeueCell(from: tableView)
+            cell.playerName.text = message.player.name
+            cell.playerImage.image = message.player.avatar
+            cell.word.text = message.word
+            return cell
+        }
+    }
 }
 
 //MARK: Agora Delegate
 extension GameViewController: AgoraRtcEngineDelegate {
     
-    func rtcEngine(_ engine: AgoraRtcEngineKit, didReceive event: AgoraChannelMediaRelayEvent) {
+    func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
         
+        // checking if is the receive stream id is the chat stream ID
+        if streamId == self.chatStreamId {
+            let decodedMessage = String(decoding: data, as: UTF8.self)
+            
+            let isCorrect = isSentMessageCorrect(word: decodedMessage)
+            
+            let message = Message(word: decodedMessage, player: getPlayer(with: uid), isCorrect: isCorrect)
+
+            messages.append(message)
+        }
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
+        
         self.removeRemotePlayer(with: uid)
     }
 }
 
 extension GameViewController: ModalTipDelegate {
+    
     func okayBtn() {
         return
     }
