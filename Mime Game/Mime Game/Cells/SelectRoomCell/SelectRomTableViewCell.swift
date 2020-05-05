@@ -9,7 +9,9 @@
 import UIKit
 
 class SelectRomTableViewCell: UITableViewCell {
-
+    
+    var room: Room?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

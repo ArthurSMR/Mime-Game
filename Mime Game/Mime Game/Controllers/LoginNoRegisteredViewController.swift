@@ -105,11 +105,12 @@ class LoginNoRegisteredViewController: UIViewController {
         
         switch segue.identifier {
         case "playButtonSegue":
-            if let destinationVC = segue.destination as? LobbyViewController {
+            if let destinationVC = segue.destination as? SelectRoomViewController {
                 destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
                 destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
                 destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
                 
+                /// Saves on UserDefaults
                 let noRegisteredUser = NoRegisteredPlayerCodable()
                 noRegisteredUser.userName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
                 noRegisteredUser.avatarIndex = self.currentSelectedAvatarIndex

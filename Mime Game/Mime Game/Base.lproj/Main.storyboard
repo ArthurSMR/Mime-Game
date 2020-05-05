@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q50-Cc-qlk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0x-C9-Kb9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -166,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e4-Y8-oSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811.594202898551" y="-182.14285714285714"/>
+            <point key="canvasLocation" x="3817" y="-182"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="0ZZ-tT-WNX">
@@ -533,7 +533,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2S-l8-np3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cN4-e9-S4G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3697.1014492753625" y="-182.14285714285714"/>
+            <point key="canvasLocation" x="4997" y="-182"/>
         </scene>
         <!--Login No Registered View Controller-->
         <scene sceneID="hbm-GQ-Ui6">
@@ -650,7 +650,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="mfc-Vc-YaR" kind="show" identifier="playButtonSegue" id="KGc-dI-mm4"/>
+                                    <segue destination="q50-Cc-qlk" kind="show" identifier="playButtonSegue" id="DI2-kV-hSl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -720,13 +720,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selecione uma sala:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J0-tr-xYs">
-                                <rect key="frame" x="70.5" y="144" width="273" height="36"/>
+                                <rect key="frame" x="70.5" y="188" width="273" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" name="Azul mediano"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="76j-6K-l0D">
-                                <rect key="frame" x="60" y="196" width="294" height="666"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="76j-6K-l0D">
+                                <rect key="frame" x="60" y="240" width="294" height="622"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -745,13 +745,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YyP-8Q-LcJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uGB-Bz-ISO"/>
                     <connections>
                         <outlet property="tableView" destination="76j-6K-l0D" id="3Mz-0F-Qlq"/>
+                        <segue destination="mfc-Vc-YaR" kind="show" identifier="toLobby" id="NML-vg-3MR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8T-iw-BYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.75362318840587" y="486.83035714285711"/>
+            <point key="canvasLocation" x="2890" y="-179"/>
         </scene>
     </scenes>
     <resources>

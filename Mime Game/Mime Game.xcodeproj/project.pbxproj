@@ -44,10 +44,10 @@
 		3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */; };
 		3C553590245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */; };
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
-		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */; };
 		3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */; };
 		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
+		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
@@ -361,9 +361,9 @@
 			children = (
 				36BC0420243E1080005B753A /* ViewController.swift */,
 				9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */,
+				3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */,
 				3C36CFBD2450809F003648AE /* LobbyViewController.swift */,
 				3642AE0724520495004CBF76 /* GameViewController.swift */,
-				3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
