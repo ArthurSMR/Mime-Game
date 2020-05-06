@@ -69,6 +69,7 @@ class SelectRoomViewController: UIViewController {
 
 extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // aqui você pode colocar o número de app ids que temos
         return 6
     }
     
@@ -76,6 +77,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = SelectRomTableViewCell.dequeueCell(from: tableView)
         
+        // Essa comparação é desnecessária
         if indexPath.row < roomsAppIds.count {
             cell.room = Room(appId: roomsAppIds[indexPath.row])
         }
@@ -85,6 +87,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // Tente nao dar force pois pode vir nil qualquer hora e o app crashar
         let selectedCell = tableView.cellForRow(at: indexPath) as! SelectRomTableViewCell
         
         self.selectedRoomAppId = selectedCell.room?.appId
