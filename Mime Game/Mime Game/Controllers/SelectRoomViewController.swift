@@ -54,10 +54,6 @@ class SelectRoomViewController: UIViewController {
                 destinationVC.currentAvatarIndex = self.currentAvatarIndex
                 
                 destinationVC.AppID = selectedRoomAppId!
-
-//                if let selectedRoomAppId = self.selectedRoomAppId{
-//                    destinationVC.AppID = selectedRoomAppId
-//                }
             }
         default:
             print("No segue found")
@@ -69,23 +65,22 @@ class SelectRoomViewController: UIViewController {
 
 extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // aqui você pode colocar o número de app ids que temos
-        return 6
+        
+        return roomsAppIds.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = SelectRomTableViewCell.dequeueCell(from: tableView)
         
-        // Essa comparação é desnecessária
-        if indexPath.row < roomsAppIds.count {
-            cell.room = Room(appId: roomsAppIds[indexPath.row])
-        }
+        cell.room = Room(appId: roomsAppIds[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard (tableView.cellForRow(at: indexPath) != nil) else { return }
         
         // Tente nao dar force pois pode vir nil qualquer hora e o app crashar
         let selectedCell = tableView.cellForRow(at: indexPath) as! SelectRomTableViewCell
