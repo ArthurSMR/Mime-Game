@@ -354,7 +354,7 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
             self.performSegue(withIdentifier: startGameSegue, sender: self)
         } else if streamId == avatarStreamId {
             let str = String(decoding: data, as: UTF8.self)
-            print("avatar \(str)")
+//            print("avatar \(str)")
             checkReceivedAvatarForRemotePlayer(with: uid, with: str)
         }
     }

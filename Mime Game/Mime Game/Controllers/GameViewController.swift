@@ -107,6 +107,7 @@ class GameViewController: UIViewController {
         guard let firstUidSorted = game.uids.first else { return }
         self.currentMimickr = getPlayer(with: firstUidSorted)
         game.selectablePlayersWithUid = game.uids
+//        self.game.selectablePlayersWithUid.removeFirst()
         self.seconds = 5
         self.game.localPlayer.type = .diviner
         setupLocalVideo()

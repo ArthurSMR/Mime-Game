@@ -719,7 +719,7 @@
         <image name="Frame 4" width="215" height="55"/>
         <image name="Info" width="35" height="39"/>
         <image name="Moldura" width="332" height="483"/>
-        <image name="MuteLobbyOn" width="65" height="65"/>
+        <image name="MuteLobbyOn" width="62" height="62"/>
         <image name="Points" width="106" height="36"/>
         <image name="Report" width="35" height="39"/>
         <image name="Timer1" width="112" height="112"/>
