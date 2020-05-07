@@ -13,6 +13,7 @@ class Game {
     
     var localPlayer: Player
     var remotePlayers: [Player] = []
+    var selectablePlayersWithUid: [UInt] = []
     var uids: [UInt] = []
     var totalTime: Int
     var currentPlayer: Int

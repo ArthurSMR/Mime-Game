@@ -38,9 +38,13 @@ class GameViewController: UIViewController {
     var turn = -1
     
     var mimes: [Mime] = []
+    var selectableMimes: [Mime] = []
     var currentMime: Mime?
+    var currentMimickr: Player?
     var game: Game!
     var chatStreamId = 3
+    var indexStreamId = 4
+    var playerIndexStreamId = 5
     
     var messages: [Message] = [] {
         didSet {
@@ -70,7 +74,6 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         startGame()
     }
     
@@ -96,14 +99,15 @@ class GameViewController: UIViewController {
         guard let mimickrTable = mimickrTableView else { return }
         ChatTableViewCell.registerNib(for: mimickrTable)
         MessageSystemGameTableViewCell.registerNib(for: mimickrTable)
-        
-        
     }
     
     private func startGame() {
         
         game.uids = game.uids.sorted()
-        self.seconds = 10
+        guard let firstUidSorted = game.uids.first else { return }
+        self.currentMimickr = getPlayer(with: firstUidSorted)
+        game.selectablePlayersWithUid = game.uids
+        self.seconds = 5
         self.game.localPlayer.type = .diviner
         setupLocalVideo()
         isMimickrView = false
@@ -113,15 +117,13 @@ class GameViewController: UIViewController {
     //MARK: Draw Modals
     func drawPlayerModal() {
         
-        
-        
-        let currentPlayer = getCurrentPlayer()
+//        let currentPlayer = getCurrentPlayer()
         
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
-        alert.gamerLabel.text = currentPlayer.name
+        alert.gamerLabel.text = self.currentMimickr?.name
         alert.themeLabel.text = self.currentMime?.theme.rawValue
-        alert.imageGame.image = currentPlayer.avatar
+        alert.imageGame.image = self.currentMimickr?.avatar
         alert.show(animated: true)
         alert.runTimer()
     }
@@ -144,6 +146,7 @@ class GameViewController: UIViewController {
                 print(error)
             } else {
                 self.mimes = mimes
+                self.selectableMimes = self.mimes
             }
         })
     }
@@ -154,6 +157,16 @@ class GameViewController: UIViewController {
         agoraKit.delegate = self
         let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
         agoraKit.createDataStream(numberPointer ,
+                                  reliable: true,
+                                  ordered: true)
+        
+        let indexNumberPointer = UnsafeMutablePointer<Int>(&indexStreamId)
+        agoraKit.createDataStream(indexNumberPointer,
+                                  reliable: true,
+                                  ordered: true)
+        
+        let indexPlayerNumberPointer = UnsafeMutablePointer<Int>(&playerIndexStreamId)
+        agoraKit.createDataStream(indexPlayerNumberPointer,
                                   reliable: true,
                                   ordered: true)
     }
@@ -170,7 +183,6 @@ class GameViewController: UIViewController {
     
     /// This method is for reseting the timer and increment the turn
     func resetTimer() {
-        
         self.timer.invalidate()
         self.seconds = game.totalTime // Reseting timer
         runTimer()
@@ -183,23 +195,90 @@ class GameViewController: UIViewController {
         if self.seconds == 0 {
             self.timer.invalidate()
             textField.resignFirstResponder()
-            nextTurn()
+            turnRound()
         }
         self.timerMimickr.text = "\(self.seconds)s"
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
+    }
+    
+    // MARK: - Refactoring
+    
+    private func setToMimickr() {
+        self.game.localPlayer.type = .mimickr
+        self.isMimickrView = true
+        self.nextMime()
+        self.setupLocalVideo()
+        self.drawPlayerModal()
+    }
+    
+    private func divinerTurn() {
+        self.agoraKit.enableLocalVideo(false)
+        self.game.localPlayer.type = .diviner
+        self.isMimickrView = false
+        self.setupRemotePlayer()
+    }
+    
+    private func nextMimickr() {
+        
+        if game.selectablePlayersWithUid.isEmpty {
+            game.selectablePlayersWithUid = game.uids
+        }
+        
+        var selectedMimickrIndex = Int(arc4random()) % game.selectablePlayersWithUid.count
+        self.currentMimickr = getPlayer(with: game.uids[selectedMimickrIndex])
+        print(selectedMimickrIndex)
+        let dataSelectedPlayerIndex = Data(bytes: &selectedMimickrIndex, count: MemoryLayout.size(ofValue: selectedMimickrIndex))
+        agoraKit.sendStreamMessage(playerIndexStreamId, data: dataSelectedPlayerIndex)
+        self.game.selectablePlayersWithUid.remove(at: selectedMimickrIndex)
+    }
+    
+    private func nextMime() {
+        
+        var selectedMimeIndex = Int(arc4random()) % self.selectableMimes.count
+        let dataSelectedMimeIndex = Data(bytes: &selectedMimeIndex, count: MemoryLayout.size(ofValue: selectedMimeIndex))
+        agoraKit.sendStreamMessage(indexStreamId, data: dataSelectedMimeIndex)
+        self.currentMime = self.selectableMimes[selectedMimeIndex]
+        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
+        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+        self.selectableMimes.remove(at: selectedMimeIndex)
+    }
+    
+    private func getPlayer(with index: Int) -> Player {
+        
+        let playerUid = game.selectablePlayersWithUid[index]
+        let player = getPlayer(with: playerUid)
+        return player
+    }
+    
+    private func turnRound() {
+        
+        if self.currentMimickr?.uid == game.localPlayer.uid {
+            nextMimickr()
+            setToMimickr()
+        }
     }
     
     // MARK: Game Methods
     /// This method is to change the mime and get another mime word
     func changeMime() {
                 
+        self.turn += 1
+                
         if self.turn == self.mimes.count {
             self.turn = 0
         }
-        self.currentMime = self.mimes[self.turn]
-        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
-        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
-        print("Deu change")
+        var selectedMimeIndex = Int(arc4random()) % self.selectableMimes.count
+        let dataSelectedMimeIndex = Data(bytes: &selectedMimeIndex, count: MemoryLayout.size(ofValue: selectedMimeIndex))
+        agoraKit.sendStreamMessage(indexStreamId, data: dataSelectedMimeIndex)
+        
+        self.currentMime = self.selectableMimes[selectedMimeIndex]
+        
+        OperationQueue.main.addOperation {
+            self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
+            self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+        }
+
+        self.selectableMimes.remove(at: selectedMimeIndex)
     }
     
     /// This method is to reset the turns, that is, the players "line" come back to the beginning
@@ -221,11 +300,12 @@ class GameViewController: UIViewController {
         
         // if the current player is the mimickr, it can set the local video
         if self.game.uids[self.game.currentPlayer] == self.game.localPlayer.uid {
-            
+            self.currentMimickr = self.game.localPlayer
             self.game.localPlayer.type = .mimickr
             self.isMimickrView = true
-            //self.modalTip()
+            self.changeMime()
             self.setupLocalVideo()
+            self.drawPlayerModal()
         } else {
             
             // Used this for to validate if the user is available or not
@@ -245,10 +325,6 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        // Turning the round
-        self.turn += 1
-        changeMime()
-        drawPlayerModal()
         game.currentPlayer += 1   // Turn next round
     }
     
@@ -281,7 +357,9 @@ class GameViewController: UIViewController {
     private func setupRemotePlayer() {
         
         let videoCanvas = AgoraRtcVideoCanvas()
-        videoCanvas.uid = game.uids[game.currentPlayer]
+        
+        guard let currentMimickrUid = self.currentMimickr?.uid else { return }
+        videoCanvas.uid = currentMimickrUid
         videoCanvas.view = self.divinerVideoView
         videoCanvas.renderMode = .fit
         agoraKit.setupRemoteVideo(videoCanvas)
@@ -372,6 +450,10 @@ class GameViewController: UIViewController {
     
     private func getPlayer(with uid: UInt) -> Player {
         
+        if uid == self.game.localPlayer.uid {
+            return self.game.localPlayer
+        }
+        
         for remotePlayer in game.remotePlayers {
             if remotePlayer.uid == uid {
                 return remotePlayer
@@ -422,6 +504,29 @@ extension GameViewController: AgoraRtcEngineDelegate {
             let message = Message(word: decodedMessage, player: getPlayer(with: uid), isCorrect: isCorrect)
 
             messages.append(message)
+        } else if streamId == self.indexStreamId {
+            
+            divinerTurn()
+            
+            let selectedMimeIndex = data.withUnsafeBytes {
+                $0.load(as: Int.self)
+            }
+            self.currentMime = self.selectableMimes[selectedMimeIndex]
+            self.currentMimickr = getPlayer(with: uid)
+            OperationQueue.main.addOperation {
+                self.drawPlayerModal()
+            }
+            
+            self.selectableMimes.remove(at: selectedMimeIndex)
+        } else if streamId == self.playerIndexStreamId {
+            
+            let selectedPlayerIndex = data.withUnsafeBytes {
+                $0.load(as: Int.self)
+            }
+            self.currentMimickr = getPlayer(with: selectedPlayerIndex)
+            if self.currentMimickr?.uid == self.game.localPlayer.uid {
+                setToMimickr()
+            }
         }
     }
     
