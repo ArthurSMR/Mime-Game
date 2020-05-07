@@ -9,17 +9,17 @@
 import Foundation
 
 class Room {
-//    var name: String
+    var name: String
 //    var numberOfPlayers: Int
 //    var theme: Theme
     
     var appId: String
     
-    init(appId: String) {
+    init(appId: String, name: String) {
         self.appId = appId
         
 //        self.theme = theme
-//        self.name = name
+        self.name = name
 //        self.numberOfPlayers = numberOfPlayers
     }
     

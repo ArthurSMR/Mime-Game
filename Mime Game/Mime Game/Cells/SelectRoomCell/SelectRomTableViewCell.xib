@@ -157,6 +157,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="1hs-XX-MU6" id="P72-5x-c0b"/>
+                <outlet property="numberOfPlayerLabel" destination="xbO-1p-PkU" id="S5S-M4-x4J"/>
+            </connections>
             <point key="canvasLocation" x="255.79710144927537" y="122.87946428571428"/>
         </tableViewCell>
     </objects>

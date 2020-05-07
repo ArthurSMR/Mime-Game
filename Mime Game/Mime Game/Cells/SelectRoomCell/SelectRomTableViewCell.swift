@@ -10,6 +10,13 @@ import UIKit
 
 class SelectRomTableViewCell: UITableViewCell {
     
+    
+    //MARK: Outlets
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numberOfPlayerLabel: UILabel!
+    
+    
+    //MARK: Variables
     var room: Room?
     
     override func awakeFromNib() {

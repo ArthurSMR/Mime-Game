@@ -70,10 +70,13 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellRoomName = "Sala \(indexPath.row + 1)"
         
         let cell = SelectRomTableViewCell.dequeueCell(from: tableView)
         
-        cell.room = Room(appId: roomsAppIds[indexPath.row])
+        cell.room = Room(appId: roomsAppIds[indexPath.row], name: cellRoomName)
+        cell.nameLabel.text = cell.room?.name
+        
         
         return cell
     }
