@@ -44,7 +44,7 @@
 		3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */; };
 		3C553590245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */; };
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
-		3CE301A6246452CF0005BE0D /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameService.swift */; };
+		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
@@ -106,7 +106,7 @@
 		3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyTableViewCell.xib; sourceTree = "<group>"; };
 		3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSystemGameTableViewCell.swift; sourceTree = "<group>"; };
 		3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSystemGameTableViewCell.xib; sourceTree = "<group>"; };
-		3CE301A5246452CF0005BE0D /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +145,14 @@
 			path = ChatViewCell;
 			sourceTree = "<group>";
 		};
+		362F9BED246472F3008BE949 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3CE301A5246452CF0005BE0D /* GameEngine.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
 		3642AE1424524DC2004CBF76 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +166,6 @@
 			children = (
 				3695A91E24524FF700815617 /* MimeServices.swift */,
 				9AD2610D2458A2AE00E449A4 /* UserServices.swift */,
-				3CE301A5246452CF0005BE0D /* GameService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 		36BC041B243E1080005B753A /* Mime Game */ = {
 			isa = PBXGroup;
 			children = (
+				362F9BED246472F3008BE949 /* Engine */,
 				3695A91D24524FE600815617 /* Service */,
 				3642AE1424524DC2004CBF76 /* Database */,
 				36A8F93724508A9D008D0FD3 /* Models */,
@@ -551,7 +559,7 @@
 				36BC041D243E1080005B753A /* AppDelegate.swift in Sources */,
 				3C36CFDD2450856E003648AE /* ImagePicker.swift in Sources */,
 				368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */,
-				3CE301A6246452CF0005BE0D /* GameService.swift in Sources */,
+				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,

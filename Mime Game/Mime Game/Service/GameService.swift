@@ -8,10 +8,8 @@
 
 import Foundation
 
-class GameService {
+class GameEngine {
     
-    
-    //mark: Start
     func startTurn(player: Player) {
         selectWord()
     }

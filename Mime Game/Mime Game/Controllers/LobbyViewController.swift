@@ -265,14 +265,15 @@ class LobbyViewController: UIViewController {
         
         if segue.identifier == "startGame" {
             if let gameVC = segue.destination as? GameViewController {
-                let game = Game(localPlayer: self.localPlayer,
-                                players: self.remotePlayers,
-                                uids: self.UIDs,
-                                totalTime: 10,
-                                currentPlayer: 0,
-                                wordCategory: .general)
+//                let game = Game(localPlayer: self.localPlayer,
+//                                players: self.remotePlayers,
+//                                uids: self.UIDs,
+//                                totalTime: 10,
+//                                currentPlayer: 0,
+//                                wordCategory: .general)
+                let gameEngine = GameEngine(localPlayer: self.localPlayer, remotePlayers: self.remotePlayers)
                 gameVC.agoraKit = agoraKit
-                gameVC.game = game
+                gameVC.engine = gameEngine
             }
         }
     }
