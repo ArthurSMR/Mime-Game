@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>348016711385-qdqq3f449naa37b1229fmqm2clp9cj91.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.348016711385-qdqq3f449naa37b1229fmqm2clp9cj91</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAVZCzyL772OhFJz78xcGB7_MzvWWqBp7U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>348016711385</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>rodrigues.arthur.Mime-Game</string>
+	<key>PROJECT_ID</key>
+	<string>minegame-b8713</string>
+	<key>STORAGE_BUCKET</key>
+	<string>minegame-b8713.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:348016711385:ios:8157742307ea68b529d0c8</string>
+	<key>DATABASE_URL</key>
+	<string>https://minegame-b8713.firebaseio.com</string>
+</dict>
+</plist>

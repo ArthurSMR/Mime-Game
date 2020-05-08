@@ -7,6 +7,9 @@ target 'Mime Game' do
 	pod ‘AgoraRtcEngine_iOS’, '~> 3.0.0.1'
 	pod 'lottie-ios'
 	pod 'IQKeyboardManagerSwift'
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.14.0'
+  pod 'Firebase/Analytics'
 
   # Pods for Mime Game
 
