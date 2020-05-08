@@ -12,7 +12,8 @@ protocol GameEngineDelegate: class {
     func setupStartGame()
     func setupNextMimickr(nextMimickrIndex: Data)
     func setupToMimickr()
-    func setupNextMime(with index: Int, currentMime: Mime)
+    func setupToDiviner()
+    func setupChooseCurrentMime(with index: Int, currentMime: Mime)
 }
 
 class GameEngine {
@@ -55,50 +56,74 @@ class GameEngine {
     func startGame() {
         game.uids = game.uids.sorted()
         guard let firstUidSorted = game.uids.first else { return }
-        self.currentMimickr = getPlayer(with: firstUidSorted)
+        self.nextMimickr = getPlayer(with: firstUidSorted)
         game.selectablePlayersWithUid = game.uids
-//        self.game.selectablePlayersWithUid.removeFirst()
+        self.game.selectablePlayersWithUid.removeFirst()
         self.game.localPlayer.type = .diviner
         delegate?.setupStartGame()
     }
     
-    func turnRound() {
+    func startTurn() {
         
-        if self.currentMimickr?.uid == game.localPlayer.uid {
+        guard let nextMimickr = self.nextMimickr else { return }
+        
+        if nextMimickr.type == .unavailable {
+            chooseNextMimickr()
+            startTurn()
+        }
+        
+        if nextMimickr.uid == game.localPlayer.uid {
+            self.currentMimickr = self.nextMimickr
             chooseNextMimickr()
             setToMimickr()
+        } else {
+            self.game.localPlayer.type = .diviner
+            delegate?.setupToDiviner()
         }
     }
     
     private func setToMimickr() {
         self.game.localPlayer.type = .mimickr
-        self.nextMime()
+        self.chooseCurrentMime()
         delegate?.setupToMimickr()
     }
     
-    func nextMime() {
+    func chooseCurrentMime() {
         guard let selectableMimes = self.selectableMimes else { return }
         let selectedMimeIndex = Int(arc4random()) % selectableMimes.count
         let selectedMime = selectableMimes[selectedMimeIndex]
         self.selectableMimes?.remove(at: selectedMimeIndex)
-        delegate?.setupNextMime(with: selectedMimeIndex, currentMime: selectedMime)
+        delegate?.setupChooseCurrentMime(with: selectedMimeIndex, currentMime: selectedMime)
+    }
+    
+    func createNextMimickr(_ selectedMimickrIndex: Int) {
+        self.nextMimickr = getPlayer(with: game.selectablePlayersWithUid[selectedMimickrIndex])
+        self.game.selectablePlayersWithUid.remove(at: selectedMimickrIndex)
+    }
+    
+    func validateSelectablePlayers() {
+        if game.selectablePlayersWithUid.isEmpty {
+            game.selectablePlayersWithUid = game.uids
+        }
     }
     
     func chooseNextMimickr() {
         
-        if game.selectablePlayersWithUid.isEmpty {
-            game.selectablePlayersWithUid = game.uids
-        }
+        validateSelectablePlayers()
         
         var selectedMimickrIndex = Int(arc4random()) % game.selectablePlayersWithUid.count
-        self.nextMimickr = getPlayer(with: game.uids[selectedMimickrIndex])
-        print(self.nextMimickr?.name)
-        let dataSelectedPlayerIndex = Data(bytes: &selectedMimickrIndex, count: MemoryLayout.size(ofValue: selectedMimickrIndex))
-        self.game.selectablePlayersWithUid.remove(at: selectedMimickrIndex)
+        
+        createNextMimickr(selectedMimickrIndex)
+        
+         let dataSelectedPlayerIndex = Data(bytes: &selectedMimickrIndex, count: MemoryLayout.size(ofValue: selectedMimickrIndex))
         delegate?.setupNextMimickr(nextMimickrIndex: dataSelectedPlayerIndex)
     }
     
-    private func getPlayer(with uid: UInt) -> Player {
+    func getPlayer(with index: Int) -> Player {
+        return getPlayer(with: game.selectablePlayersWithUid[index])
+    }
+    
+    func getPlayer(with uid: UInt) -> Player {
         
         if uid == self.game.localPlayer.uid {
             return self.game.localPlayer
@@ -111,4 +136,22 @@ class GameEngine {
         }
         return Player()
     }
+    
+    func setNextMimickr(selectedNextPlayerIndex: Int) {
+        validateSelectablePlayers()
+        createNextMimickr(selectedNextPlayerIndex)
+    }
+    
+    /// Set the player type to unavailable  when he leaves
+    /// - Parameter uid: player leaving uid
+    func removeRemotePlayer(with uid: UInt) {
+    
+        for remotePlayer in game.remotePlayers {
+            if remotePlayer.uid == uid {
+                remotePlayer.type = .unavailable
+                print("\(remotePlayer.name) leave channel ")
+            }
+        }
+    }
+    
 }
