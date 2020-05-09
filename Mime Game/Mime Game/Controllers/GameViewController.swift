@@ -243,9 +243,6 @@ class GameViewController: UIViewController {
         
         self.engine?.setSentMessage(sentMessage: textWritten, currentMimeWord: currentMimeWord)
     }
-    
-    // MARK: - Player settings
-
 }
 
 //MARK: TableView Delegate
@@ -301,7 +298,6 @@ extension GameViewController: AgoraRtcEngineDelegate {
             OperationQueue.main.addOperation {
                 self.drawPlayerModal()
             }
-            
             
         } else if streamId == self.nextMimickrStreamId {
             
