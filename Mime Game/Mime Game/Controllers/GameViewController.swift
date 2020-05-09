@@ -32,29 +32,14 @@ class GameViewController: UIViewController {
     
     //MARK: Variables
     var agoraKit: AgoraRtcEngineKit!
-    
     var timer = Timer()
     var seconds = 20
-    var turn = -1
-    
-    var mimes: [Mime] = []
-    
     var currentMime: Mime?
-
     var game: Game!
     var engine: GameEngine?
     var chatStreamId = 3
     var currentMimeIndexStreamId = 4
     var nextMimickrStreamId = 5
-    
-    var messages: [Message] = [] {
-        didSet {
-            divinerTableView.reloadData()
-            divinerTableView.scrollToBottom()
-            mimickrTableView.reloadData()
-            mimickrTableView.scrollToBottom()
-        }
-    }
     
     var isMimickrView: Bool = false {
         didSet {
@@ -78,11 +63,10 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        startGame()
+        engine?.startGame()
     }
     
     private func setupLayout() {
-        
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
         setupTableView()
@@ -105,13 +89,8 @@ class GameViewController: UIViewController {
         MessageSystemGameTableViewCell.registerNib(for: mimickrTable)
     }
     
-    private func startGame() {
-        engine?.startGame()
-    }
-    
     //MARK: Draw Modals
     func drawPlayerModal() {
-        print("eai")
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
         alert.gamerLabel.text = engine?.currentMimickr?.name
@@ -122,7 +101,6 @@ class GameViewController: UIViewController {
     }
     
     func modalTip() {
-        
         guard let alert = ModalTip.create() else { return }
         alert.delegate = self
         alert.messageLabel.text = ""
@@ -132,7 +110,6 @@ class GameViewController: UIViewController {
     
     // MARK: - Agora settings
     func setupAgora() {
-        
         agoraKit.delegate = self
         let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
         agoraKit.createDataStream(numberPointer ,
@@ -181,14 +158,6 @@ class GameViewController: UIViewController {
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
     }
     
-    // MARK: Game Methods
-    
-    /// This method check is the message is correct comparing in a uppercased way
-    /// - Parameter word: the received word that will be checked with the right word
-    /// - Returns: return a boolean (true if is correct and false if is wrong)
-    private func isSentMessageCorrect(word: String) -> Bool {
-        return word.uppercased() == self.currentMime?.word.uppercased() ? true : false
-    }
     
     // MARK: - View/Videos Settings
     /// This method is to change the mimickr and the diviver view
@@ -236,6 +205,8 @@ class GameViewController: UIViewController {
         agoraKit.setupLocalVideo(videoCanvas)
     }
     
+    
+    /// Set a configuration to video and enable video
     private func setupVideo() {
         
         let configuration = AgoraVideoEncoderConfiguration(size: CGSize(width: self.mimickrVideoView.frame.size.width,
@@ -264,14 +235,13 @@ class GameViewController: UIViewController {
     /// - Parameter sender: send messege button
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
         
-        guard let text = textField.text else { return }
-        let sendMessege = Data(text.utf8)
+        guard let textWritten = textField.text else { return }
+        guard let currentMimeWord = self.currentMime?.word else { return }
+        
+        let sendMessege = Data(textWritten.utf8)
         agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
-        let isCorrect = isSentMessageCorrect(word: text)
-        let message = Message(word: text, player: game.localPlayer, isCorrect: isCorrect)
-        self.messages.append(message)
-        divinerTableView.reloadData()
-        textField.text = ""
+        
+        self.engine?.setSentMessage(sentMessage: textWritten, currentMimeWord: currentMimeWord)
     }
     
     // MARK: - Player settings
@@ -282,13 +252,12 @@ class GameViewController: UIViewController {
 extension GameViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return messages.count
+        return self.engine?.messages.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let message = messages[indexPath.row]
+        guard let message = self.engine?.messages[indexPath.row] else { return UITableViewCell() }
         
         if message.isCorrect {
             let cell = MessageSystemGameTableViewCell.dequeueCell(from: tableView)
@@ -312,28 +281,27 @@ extension GameViewController: AgoraRtcEngineDelegate {
         
         // checking if is the receive stream id is the chat stream ID
         if streamId == self.chatStreamId {
+            
             let decodedMessage = String(decoding: data, as: UTF8.self)
             
-            let isCorrect = isSentMessageCorrect(word: decodedMessage)
+            guard let currentMimeWord = self.currentMime?.word else { return }
             
-            guard let player = self.engine?.getPlayer(with: uid) else { return }
-            
-            let message = Message(word: decodedMessage, player: player, isCorrect: isCorrect)
-
-            messages.append(message)
+            self.engine?.setReceivedMessage(receivedMessage: decodedMessage, currentMimeWord: currentMimeWord, receivedMessegeFrom: uid)
             
         } else if streamId == self.currentMimeIndexStreamId {
             
             let selectedMimeIndex = data.withUnsafeBytes {
                 $0.load(as: Int.self)
             }
+            // Preciso refatorar aqui
             self.currentMime = self.engine?.selectableMimes?[selectedMimeIndex]
+            self.engine?.selectableMimes?.remove(at: selectedMimeIndex)
             self.engine?.currentMimickr = self.engine?.getPlayer(with: uid)
             
             OperationQueue.main.addOperation {
                 self.drawPlayerModal()
             }
-            self.engine?.selectableMimes?.remove(at: selectedMimeIndex)
+            
             
         } else if streamId == self.nextMimickrStreamId {
             
@@ -368,6 +336,23 @@ extension GameViewController: DrawPlayerDelegate {
 
 //MARK: - GameEngineDelegate
 extension GameViewController : GameEngineDelegate {
+    
+    func didReceiveMessage() {
+        self.divinerTableView.reloadData()
+        self.divinerTableView.scrollToBottom()
+        self.mimickrTableView.reloadData()
+        self.mimickrTableView.scrollToBottom()
+    }
+    
+    
+    func didSendMessage() {
+        self.textField.text = ""
+        self.divinerTableView.reloadData()
+        self.divinerTableView.scrollToBottom()
+        self.mimickrTableView.reloadData()
+        self.mimickrTableView.scrollToBottom()
+    }
+    
     
     func setupToDiviner() {
         self.agoraKit.enableLocalVideo(false)

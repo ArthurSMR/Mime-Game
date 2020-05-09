@@ -18,13 +18,15 @@ class Game {
     var totalTime: Int
     var currentPlayer: Int
     var wordCategory: Theme
+    var messages: [Message]
     
-    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: Theme) {
+    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: Theme, messages:  [Message]) {
         self.localPlayer = localPlayer
         self.remotePlayers = players
         self.uids = uids
         self.totalTime = totalTime
         self.currentPlayer = currentPlayer
         self.wordCategory = wordCategory
+        self.messages = messages
     }
 }
