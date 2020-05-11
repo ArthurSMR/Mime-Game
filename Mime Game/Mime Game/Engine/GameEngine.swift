@@ -179,6 +179,17 @@ class GameEngine {
         createNextMimickr(selectedNextPlayerIndex)
     }
     
+    
+    /// This method remove the mime the mime chosen with index received to no longer be selected and
+    /// set the current mimickr with uid
+    /// - Parameters:
+    ///   - index: mime index used on selectable mimes,  received from the mimickr.
+    ///   - uid: curent mimickr uid
+    func setCurrentMimickr(with index: Int, player uid: UInt) {
+        self.selectableMimes?.remove(at: index)
+        self.currentMimickr = getPlayer(with: uid)
+    }
+    
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
     func removeRemotePlayer(with uid: UInt) {
@@ -233,5 +244,4 @@ class GameEngine {
     func isMessegeCorrect(wordWritten: String, currentMime: String) -> Bool {
         return wordWritten.uppercased() == currentMime.uppercased() ? true : false
     }
-    
 }

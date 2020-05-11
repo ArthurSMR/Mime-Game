@@ -285,21 +285,20 @@ extension GameViewController: AgoraRtcEngineDelegate {
             
             self.engine?.setReceivedMessage(receivedMessage: decodedMessage, currentMimeWord: currentMimeWord, receivedMessegeFrom: uid)
             
-        } else if streamId == self.currentMimeIndexStreamId {
+        } else if streamId == self.currentMimeIndexStreamId { // Receive mime index
             
             let selectedMimeIndex = data.withUnsafeBytes {
                 $0.load(as: Int.self)
             }
-            // Preciso refatorar aqui
+            
             self.currentMime = self.engine?.selectableMimes?[selectedMimeIndex]
-            self.engine?.selectableMimes?.remove(at: selectedMimeIndex)
-            self.engine?.currentMimickr = self.engine?.getPlayer(with: uid)
+            self.engine?.setCurrentMimickr(with: selectedMimeIndex, player: uid)
             
             OperationQueue.main.addOperation {
                 self.drawPlayerModal()
             }
             
-        } else if streamId == self.nextMimickrStreamId {
+        } else if streamId == self.nextMimickrStreamId { // Receive the next mimickr
             
             let selectedNextPlayerIndex = data.withUnsafeBytes {
                 $0.load(as: Int.self)
