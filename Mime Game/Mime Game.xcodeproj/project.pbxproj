@@ -14,6 +14,7 @@
 		3642AE0C245241CA004CBF76 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0B245241CA004CBF76 /* Game.swift */; };
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
 		3642AE1624524DD8004CBF76 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1524524DD8004CBF76 /* MockDatabase.swift */; };
+		364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */ = {isa = PBXBuildFile; fileRef = 364DE99B2469886100449013 /* Sorteiojogador_Load.json */; };
 		3682147E2459B23200C6A254 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147D2459B23200C6A254 /* Message.swift */; };
 		368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */; };
 		368214862459F92E00C6A254 /* Lobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 368214852459F92E00C6A254 /* Lobby.json */; };
@@ -45,6 +46,8 @@
 		3C553590245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */; };
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
 		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
+		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
+		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
@@ -72,6 +75,7 @@
 		3642AE0B245241CA004CBF76 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
 		3642AE1524524DD8004CBF76 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
+		364DE99B2469886100449013 /* Sorteiojogador_Load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sorteiojogador_Load.json; sourceTree = "<group>"; };
 		3682147D2459B23200C6A254 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ScrollBottom.swift"; sourceTree = "<group>"; };
 		368214852459F92E00C6A254 /* Lobby.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lobby.json; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSystemGameTableViewCell.swift; sourceTree = "<group>"; };
 		3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSystemGameTableViewCell.xib; sourceTree = "<group>"; };
 		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
+		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +149,14 @@
 				360525422458A71600BEA330 /* ChatTableViewCell.xib */,
 			);
 			path = ChatViewCell;
+			sourceTree = "<group>";
+		};
+		362F9BED246472F3008BE949 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3CE301A5246452CF0005BE0D /* GameEngine.swift */,
+			);
+			path = Engine;
 			sourceTree = "<group>";
 		};
 		3642AE1424524DC2004CBF76 /* Database */ = {
@@ -196,6 +210,7 @@
 		36BC041B243E1080005B753A /* Mime Game */ = {
 			isa = PBXGroup;
 			children = (
+				362F9BED246472F3008BE949 /* Engine */,
 				3695A91D24524FE600815617 /* Service */,
 				3642AE1424524DC2004CBF76 /* Database */,
 				36A8F93724508A9D008D0FD3 /* Models */,
@@ -303,7 +318,9 @@
 				3C36CFD82450856E003648AE /* Views */,
 				3C36CFBF24508293003648AE /* Extensions */,
 				368214852459F92E00C6A254 /* Lobby.json */,
+				364DE99B2469886100449013 /* Sorteiojogador_Load.json */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
+				3C8926B124658C670029378E /* GoogleService-Info.plist */,
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
 				36BC041C243E1080005B753A /* AppDelegate.swift */,
 			);
@@ -389,6 +406,7 @@
 				36BC0416243E1080005B753A /* Frameworks */,
 				36BC0417243E1080005B753A /* Resources */,
 				798F1C77019DC4D1B6193B9E /* [CP] Embed Pods Frameworks */,
+				3C8926B324658D040029378E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -465,10 +483,12 @@
 				3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */,
 				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
+				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
 				3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
+				3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
 				368214862459F92E00C6A254 /* Lobby.json in Resources */,
 			);
@@ -505,6 +525,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3C8926B324658D040029378E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		798F1C77019DC4D1B6193B9E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -560,6 +597,7 @@
 				36BC041D243E1080005B753A /* AppDelegate.swift in Sources */,
 				3C36CFDD2450856E003648AE /* ImagePicker.swift in Sources */,
 				368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */,
+				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
@@ -743,7 +781,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B8QFK7C948;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9KU377264X;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -762,7 +801,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B8QFK7C948;
+				DEVELOPMENT_TEAM = 9KU377264X;
 				INFOPLIST_FILE = "Mime Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

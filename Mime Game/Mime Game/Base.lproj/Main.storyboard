@@ -383,6 +383,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xxa-Nk-ioS" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="6" y="92" width="404" height="550"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mM-Eb-kAI" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
                                         <rect key="frame" x="157" y="32" width="100" height="100"/>
                                         <subviews>
@@ -523,6 +528,7 @@
                         <outlet property="muteBtn" destination="pTs-Qi-bp6" id="BI8-bj-FCB"/>
                         <outlet property="pointLbl" destination="f6v-qA-K2h" id="aW2-Vi-VLc"/>
                         <outlet property="reportBtn" destination="30s-Wb-bJg" id="t0B-RZ-jAK"/>
+                        <outlet property="rightMimeView" destination="xxa-Nk-ioS" id="5Sa-eb-YcJ"/>
                         <outlet property="textField" destination="fJZ-tp-Ewd" id="z2B-BB-byA"/>
                         <outlet property="timerLabel" destination="0ep-l1-lEr" id="P7b-uT-gAF"/>
                         <outlet property="timerMimickr" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
@@ -719,7 +725,7 @@
         <image name="Frame 4" width="215" height="55"/>
         <image name="Info" width="35" height="39"/>
         <image name="Moldura" width="332" height="483"/>
-        <image name="MuteLobbyOn" width="65" height="65"/>
+        <image name="MuteLobbyOn" width="62" height="62"/>
         <image name="Points" width="106" height="36"/>
         <image name="Report" width="35" height="39"/>
         <image name="Timer1" width="112" height="112"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 protocol DrawPlayerDelegate {
     func resetTimerPrimary()

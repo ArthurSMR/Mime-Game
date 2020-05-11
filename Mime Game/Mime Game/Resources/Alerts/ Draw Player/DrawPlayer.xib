@@ -131,7 +131,7 @@
         <image name="BackgroundSortearJogador" width="375" height="812"/>
         <image name="img_user_placeholder" width="300" height="300"/>
         <namedColor name="Rosa respostas">
-            <color red="0.68199998140335083" green="0.41600000858306885" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92199999094009399" green="0.32499998807907104" blue="0.56499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
