@@ -166,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e4-Y8-oSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811.594202898551" y="-182.14285714285714"/>
+            <point key="canvasLocation" x="3817" y="-182"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="0ZZ-tT-WNX">
@@ -540,7 +540,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2S-l8-np3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cN4-e9-S4G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3697.1014492753625" y="-182.14285714285714"/>
+            <point key="canvasLocation" x="4997" y="-182"/>
         </scene>
         <!--Match Details View Controller-->
         <scene sceneID="8mf-zw-HOW">
@@ -691,7 +691,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="mfc-Vc-YaR" kind="show" identifier="playButtonSegue" id="KGc-dI-mm4"/>
+                                    <segue destination="q50-Cc-qlk" kind="show" identifier="playButtonSegue" id="DI2-kV-hSl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -749,11 +749,59 @@
             </objects>
             <point key="canvasLocation" x="1015.9420289855074" y="-182.14285714285714"/>
         </scene>
+        <!--Select Room View Controller-->
+        <scene sceneID="aoM-Ma-lO8">
+            <objects>
+                <viewController id="q50-Cc-qlk" customClass="SelectRoomViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mvy-hZ-cWp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Salas" translatesAutoresizingMaskIntoConstraints="NO" id="MgG-ag-UqG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selecione uma sala:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J0-tr-xYs">
+                                <rect key="frame" x="70.5" y="188" width="273" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" name="Azul mediano"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="76j-6K-l0D">
+                                <rect key="frame" x="60" y="240" width="294" height="622"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4J0-tr-xYs" firstAttribute="top" secondItem="YyP-8Q-LcJ" secondAttribute="top" constant="100" id="5wy-WD-y8M"/>
+                            <constraint firstItem="MgG-ag-UqG" firstAttribute="leading" secondItem="YyP-8Q-LcJ" secondAttribute="leading" id="9Ut-D5-se3"/>
+                            <constraint firstItem="YyP-8Q-LcJ" firstAttribute="bottom" secondItem="76j-6K-l0D" secondAttribute="bottom" id="EZ0-fn-Wfp"/>
+                            <constraint firstItem="76j-6K-l0D" firstAttribute="leading" secondItem="YyP-8Q-LcJ" secondAttribute="leading" constant="60" id="Lat-6I-en3"/>
+                            <constraint firstItem="MgG-ag-UqG" firstAttribute="top" secondItem="mvy-hZ-cWp" secondAttribute="top" id="OwF-dF-GgL"/>
+                            <constraint firstItem="76j-6K-l0D" firstAttribute="top" secondItem="4J0-tr-xYs" secondAttribute="bottom" constant="16" id="Z1f-7g-kDU"/>
+                            <constraint firstItem="4J0-tr-xYs" firstAttribute="centerX" secondItem="mvy-hZ-cWp" secondAttribute="centerX" id="bJG-sL-vom"/>
+                            <constraint firstItem="YyP-8Q-LcJ" firstAttribute="trailing" secondItem="76j-6K-l0D" secondAttribute="trailing" constant="60" id="mbd-Ko-kpY"/>
+                            <constraint firstItem="YyP-8Q-LcJ" firstAttribute="trailing" secondItem="MgG-ag-UqG" secondAttribute="trailing" id="pD3-1z-w57"/>
+                            <constraint firstAttribute="bottom" secondItem="MgG-ag-UqG" secondAttribute="bottom" id="uWF-De-57k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YyP-8Q-LcJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uGB-Bz-ISO"/>
+                    <connections>
+                        <outlet property="tableView" destination="76j-6K-l0D" id="3Mz-0F-Qlq"/>
+                        <segue destination="mfc-Vc-YaR" kind="show" identifier="toLobby" id="NML-vg-3MR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8T-iw-BYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2890" y="-179"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AudioOFF" width="35" height="39"/>
         <image name="BackgroundGame" width="375" height="812"/>
         <image name="BackgroundSortearJogador" width="375" height="812"/>
+        <image name="Background_Salas" width="375" height="812"/>
         <image name="Button_SelecionarTema" width="215" height="55"/>
         <image name="Button_Send" width="30" height="30"/>
         <image name="Frame 1" width="63" height="29"/>
@@ -766,6 +814,9 @@
         <image name="Timer1" width="112" height="112"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
+        <namedColor name="Azul mediano">
+            <color red="0.16899999976158142" green="0.33700001239776611" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Rosa respostas">
             <color red="0.92199999094009399" green="0.32499998807907104" blue="0.56499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

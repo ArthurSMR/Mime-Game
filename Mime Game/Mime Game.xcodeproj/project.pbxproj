@@ -51,6 +51,10 @@
 		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
 		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
 		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
+		3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */; };
+		3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */; };
+		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
+		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
@@ -119,9 +123,13 @@
 		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
 		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRomTableViewCell.swift; sourceTree = "<group>"; };
+		3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRomTableViewCell.xib; sourceTree = "<group>"; };
+		3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomViewController.swift; sourceTree = "<group>"; };
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A4077342461B29E00DC4D82 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRegisteredPlayerCodable.swift; sourceTree = "<group>"; };
 		9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
 		9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 			children = (
 				9A5E73A42459F27600911FEB /* Players */,
 				3642AE0B245241CA004CBF76 /* Game.swift */,
+				9A4077342461B29E00DC4D82 /* Room.swift */,
 				3642AE1024524CEF004CBF76 /* Mime.swift */,
 				3682147D2459B23200C6A254 /* Message.swift */,
 			);
@@ -350,6 +359,15 @@
 			path = Json;
 			sourceTree = "<group>";
 		};
+		3CFD2FE02461AF2400AE3926 /* SelectRoomCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */,
+				3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */,
+			);
+			path = SelectRoomCell;
+			sourceTree = "<group>";
+		};
 		71E4627A6CC6AFEE02425049 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				36E503432469D1F8006022DC /* PlayerRankingCell */,
+				3CFD2FE02461AF2400AE3926 /* SelectRoomCell */,
 				3C55358D245BAB9A00422CE0 /* MessageSystemGame */,
 				360525402458A6FC00BEA330 /* ChatViewCell */,
 				3C36CFE224508665003648AE /* LobbyTableViewCell */,
@@ -386,6 +405,7 @@
 			children = (
 				36BC0420243E1080005B753A /* ViewController.swift */,
 				9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */,
+				3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */,
 				3C36CFBD2450809F003648AE /* LobbyViewController.swift */,
 				3642AE0724520495004CBF76 /* GameViewController.swift */,
 				36E503482469D536006022DC /* MatchDetailsViewController.swift */,
@@ -498,6 +518,7 @@
 			files = (
 				3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */,
 				3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */,
+				3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */,
 				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
 				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
@@ -616,6 +637,8 @@
 				3C36CFDD2450856E003648AE /* ImagePicker.swift in Sources */,
 				368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */,
 				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
+				9A4077352461B29E00DC4D82 /* Room.swift in Sources */,
+				3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
@@ -631,6 +654,7 @@
 				3C36CFE5245086A0003648AE /* LobbyTableViewCell.swift in Sources */,
 				3642AE0824520495004CBF76 /* GameViewController.swift in Sources */,
 				3642AE1124524CEF004CBF76 /* Mime.swift in Sources */,
+				3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */,
 				3C36CFBE2450809F003648AE /* LobbyViewController.swift in Sources */,
 				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
 				3C36CFD124508441003648AE /* UIColor+Extension.swift in Sources */,
