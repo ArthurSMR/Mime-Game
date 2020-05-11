@@ -14,6 +14,7 @@
 		3642AE0C245241CA004CBF76 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0B245241CA004CBF76 /* Game.swift */; };
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
 		3642AE1624524DD8004CBF76 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1524524DD8004CBF76 /* MockDatabase.swift */; };
+		364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */ = {isa = PBXBuildFile; fileRef = 364DE99B2469886100449013 /* Sorteiojogador_Load.json */; };
 		3682147E2459B23200C6A254 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147D2459B23200C6A254 /* Message.swift */; };
 		368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */; };
 		368214862459F92E00C6A254 /* Lobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 368214852459F92E00C6A254 /* Lobby.json */; };
@@ -73,6 +74,7 @@
 		3642AE0B245241CA004CBF76 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
 		3642AE1524524DD8004CBF76 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
+		364DE99B2469886100449013 /* Sorteiojogador_Load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sorteiojogador_Load.json; sourceTree = "<group>"; };
 		3682147D2459B23200C6A254 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ScrollBottom.swift"; sourceTree = "<group>"; };
 		368214852459F92E00C6A254 /* Lobby.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lobby.json; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				3C36CFD82450856E003648AE /* Views */,
 				3C36CFBF24508293003648AE /* Extensions */,
 				368214852459F92E00C6A254 /* Lobby.json */,
+				364DE99B2469886100449013 /* Sorteiojogador_Load.json */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
 				3C8926B124658C670029378E /* GoogleService-Info.plist */,
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
@@ -469,6 +472,7 @@
 				3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */,
 				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
+				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,

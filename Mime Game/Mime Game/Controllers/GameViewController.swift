@@ -8,10 +8,12 @@
 
 import UIKit
 import AgoraRtcKit
+import Lottie
 
 class GameViewController: UIViewController {
     
     //MARK: Outlets Diviner
+    @IBOutlet weak var rightMimeView: AnimationView!
     @IBOutlet weak var divinerVideoView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var pointLbl: UILabel!
@@ -106,6 +108,14 @@ class GameViewController: UIViewController {
         alert.messageLabel.text = ""
         alert.titleLabel.text = ""
         alert.show(animated: true)
+    }
+    
+    func setupViewAnimation() {
+        
+        let animation = Animation.named("acerto_palavra")
+        rightMimeView.animation = animation
+        rightMimeView.loopMode = .playOnce
+        rightMimeView.play()
     }
     
     // MARK: - Agora settings
@@ -293,7 +303,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
             
             self.currentMime = self.engine?.selectableMimes?[selectedMimeIndex]
             self.engine?.setCurrentMimickr(with: selectedMimeIndex, player: uid)
-            
+    
             OperationQueue.main.addOperation {
                 self.drawPlayerModal()
             }
@@ -339,7 +349,6 @@ extension GameViewController : GameEngineDelegate {
         self.mimickrTableView.scrollToBottom()
     }
     
-    
     func didSendMessage() {
         self.textField.text = ""
         self.divinerTableView.reloadData()
@@ -347,7 +356,6 @@ extension GameViewController : GameEngineDelegate {
         self.mimickrTableView.reloadData()
         self.mimickrTableView.scrollToBottom()
     }
-    
     
     func setupToDiviner() {
         self.agoraKit.enableLocalVideo(false)

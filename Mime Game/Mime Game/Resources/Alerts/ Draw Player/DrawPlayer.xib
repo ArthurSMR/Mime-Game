@@ -75,11 +75,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6P9-LT-ZXT" customClass="AnimationView">
-                                    <rect key="frame" x="66" y="309" width="280" height="280"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -127,7 +122,6 @@
                 <outlet property="dialogIBView" destination="7sG-KS-403" id="9qU-SU-YfI"/>
                 <outlet property="gamerLabel" destination="6Gf-wc-bk3" id="kjQ-Be-tJs"/>
                 <outlet property="imageGame" destination="gVm-u1-t6x" id="8wv-5n-bft"/>
-                <outlet property="loadPlayerView" destination="6P9-LT-ZXT" id="Nkr-6i-Jun"/>
                 <outlet property="themeLabel" destination="YQ9-C9-0v6" id="8vG-t6-4ME"/>
             </connections>
             <point key="canvasLocation" x="-646.37681159420299" y="117.85714285714285"/>

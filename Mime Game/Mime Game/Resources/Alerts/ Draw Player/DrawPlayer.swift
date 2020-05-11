@@ -22,7 +22,6 @@ class DrawPlayer: UIView, Modal {
     var delegate: DrawPlayerDelegate?
     
     // MARK: - OUTLETS
-    @IBOutlet weak var loadPlayerView: AnimationView!
     @IBOutlet weak var dialogIBView: UIView!
     @IBOutlet var backgroundIBView: UIView!
     @IBOutlet weak var themeLabel: UILabel!
@@ -53,13 +52,6 @@ class DrawPlayer: UIView, Modal {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(dismissModal)), userInfo: nil, repeats: true)
     }
     
-    func setupAnimation() {
-        let animation = Animation.named("Lobby")
-        lobbyView.animation = animation
-        lobbyView.loopMode = .loop
-        lobbyView.play()
-    }
-    
     // MARK: - ACTIONS
 }
 
@@ -70,7 +62,6 @@ extension DrawPlayer {
         view?.frame = UIScreen.main.bounds
         view?.backgroundView = view?.backgroundIBView
         view?.dialogView = view?.dialogIBView
-        setupAnimation()
         return view
     }
 }
