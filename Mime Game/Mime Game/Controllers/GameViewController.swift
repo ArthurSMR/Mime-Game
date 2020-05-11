@@ -37,7 +37,6 @@ class GameViewController: UIViewController {
     var timer = Timer()
     var seconds = 20
     var currentMime: Mime?
-    var game: Game!
     var engine: GameEngine?
     var chatStreamId = 3
     var currentMimeIndexStreamId = 4
@@ -72,6 +71,16 @@ class GameViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
         setupTableView()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toDetail" {
+            if let destination = segue.destination as? MatchDetailsViewController {
+                destination.sortedPlayers = self.engine?.sortPlayers()
+            }
+            
+        }
     }
     
     private func setupTableView() {
@@ -240,6 +249,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func infoActionBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toDetail", sender: self)
     }
     
     @IBAction func reportBtn(_ sender: UIButton) {

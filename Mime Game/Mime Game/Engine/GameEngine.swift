@@ -199,6 +199,14 @@ class GameEngine {
         self.currentMimickr = getPlayer(with: uid)
     }
     
+    
+    /// This method will sort players by points
+    /// - Returns: sorted players aray by points
+    func sortPlayers() -> [Player] {
+        let players = [self.game.localPlayer] + self.game.remotePlayers
+        return players.sorted(by: { $0.points > $1.points })
+    }
+    
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
     func removeRemotePlayer(with uid: UInt) {

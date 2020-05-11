@@ -534,12 +534,47 @@
                         <outlet property="timerMimickr" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
                         <outlet property="wordLbl" destination="uIJ-ce-nQM" id="slV-HL-WEY"/>
                         <outlet property="wordThemeLbl" destination="efk-pv-Hks" id="6mE-F6-VoL"/>
+                        <segue destination="AvQ-re-xfj" kind="showDetail" identifier="toDetail" id="wHZ-uS-xBI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2S-l8-np3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cN4-e9-S4G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3697.1014492753625" y="-182.14285714285714"/>
+        </scene>
+        <!--Match Details View Controller-->
+        <scene sceneID="8mf-zw-HOW">
+            <objects>
+                <viewController id="AvQ-re-xfj" customClass="MatchDetailsViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z86-DK-tQi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ycw-p1-ute">
+                                <rect key="frame" x="0.0" y="387" width="414" height="421"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="AvQ-re-xfj" id="Gwk-2M-TIV"/>
+                                    <outlet property="delegate" destination="AvQ-re-xfj" id="CI3-Xl-8Cw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IMF-3d-1K8" firstAttribute="bottom" secondItem="Ycw-p1-ute" secondAttribute="bottom" id="1Fq-qD-4sE"/>
+                            <constraint firstItem="Ycw-p1-ute" firstAttribute="height" secondItem="z86-DK-tQi" secondAttribute="height" multiplier="0.5" id="6Mn-Wt-Kgo"/>
+                            <constraint firstItem="Ycw-p1-ute" firstAttribute="leading" secondItem="IMF-3d-1K8" secondAttribute="leading" id="GfA-1Z-Zge"/>
+                            <constraint firstItem="IMF-3d-1K8" firstAttribute="trailing" secondItem="Ycw-p1-ute" secondAttribute="trailing" id="rI6-1I-kAN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IMF-3d-1K8"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Ycw-p1-ute" id="LtJ-Cb-qar"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1G-9l-eiM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3704" y="560"/>
         </scene>
         <!--Login No Registered View Controller-->
         <scene sceneID="hbm-GQ-Ui6">
