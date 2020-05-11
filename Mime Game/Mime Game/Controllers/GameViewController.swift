@@ -186,6 +186,11 @@ class GameViewController: UIViewController {
         }
     }
     
+    private func updatePointsLabel() {
+        guard let selfPoints = self.engine?.game.localPlayer.points else { return }
+        self.pointLbl.text = String(selfPoints)
+    }
+    
     /// This method is to setup remotePlayer to the diviner video view
     private func setupRemotePlayer() {
         
@@ -301,7 +306,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
                 $0.load(as: Int.self)
             }
             
-            self.currentMime = self.engine?.selectableMimes?[selectedMimeIndex]
+            self.currentMime = self.engine?.selectableMimes[selectedMimeIndex]
             self.engine?.setCurrentMimickr(with: selectedMimeIndex, player: uid)
     
             OperationQueue.main.addOperation {
@@ -350,6 +355,7 @@ extension GameViewController : GameEngineDelegate {
     }
     
     func didSendMessage() {
+        self.updatePointsLabel()
         self.textField.text = ""
         self.divinerTableView.reloadData()
         self.divinerTableView.scrollToBottom()
