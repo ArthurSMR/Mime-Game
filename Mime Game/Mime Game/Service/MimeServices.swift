@@ -29,5 +29,20 @@ class MimeServices {
         }
         completion(mimes, nil)
     }
+    
+//    static func readLocalJsonFile() {
+//
+//        if let urlPath = Bundle.main.url(forResource: "themesAndWords", withExtension: "json") {
+//
+//            do {
+//                let jsonData = try Data(contentsOf: urlPath, options: .mappedIfSafe)
+//                let currentThemes = try JSONDecoder().decode(Themes.self, from: jsonData)
+//                
+//            }
+//            catch let jsonError {
+//                print(jsonError)
+//            }
+//        }
+//    }
 }
 
