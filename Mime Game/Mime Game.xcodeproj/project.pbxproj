@@ -28,6 +28,9 @@
 		36BC0429243E1083005B753A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BC0428243E1083005B753A /* Assets.xcassets */; };
 		36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BC042A243E1083005B753A /* LaunchScreen.storyboard */; };
 		36BC0437243E1083005B753A /* Mime_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0436243E1083005B753A /* Mime_GameTests.swift */; };
+		36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503442469D21A006022DC /* PlayerRankingTableViewCell.swift */; };
+		36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */; };
+		36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503482469D536006022DC /* MatchDetailsViewController.swift */; };
 		3C09D64D24570D0300849B83 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D63A24570D0300849B83 /* Modal.swift */; };
 		3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D65724570DA900849B83 /* DrawPlayer.swift */; };
 		3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65924570DB400849B83 /* DrawPlayer.xib */; };
@@ -93,6 +96,9 @@
 		36BC0432243E1083005B753A /* Mime GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mime GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BC0436243E1083005B753A /* Mime_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime_GameTests.swift; sourceTree = "<group>"; };
 		36BC0438243E1083005B753A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36E503442469D21A006022DC /* PlayerRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRankingTableViewCell.swift; sourceTree = "<group>"; };
+		36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerRankingTableViewCell.xib; sourceTree = "<group>"; };
+		36E503482469D536006022DC /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
 		3C09D63A24570D0300849B83 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		3C09D65724570DA900849B83 /* DrawPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawPlayer.swift; sourceTree = "<group>"; };
 		3C09D65924570DB400849B83 /* DrawPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawPlayer.xib; sourceTree = "<group>"; };
@@ -234,6 +240,15 @@
 			path = "Mime GameTests";
 			sourceTree = "<group>";
 		};
+		36E503432469D1F8006022DC /* PlayerRankingCell */ = {
+			isa = PBXGroup;
+			children = (
+				36E503442469D21A006022DC /* PlayerRankingTableViewCell.swift */,
+				36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */,
+			);
+			path = PlayerRankingCell;
+			sourceTree = "<group>";
+		};
 		3C09D63024570D0300849B83 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +364,7 @@
 		9A13FB08244EA0D600A74F6F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				36E503432469D1F8006022DC /* PlayerRankingCell */,
 				3C55358D245BAB9A00422CE0 /* MessageSystemGame */,
 				360525402458A6FC00BEA330 /* ChatViewCell */,
 				3C36CFE224508665003648AE /* LobbyTableViewCell */,
@@ -372,6 +388,7 @@
 				9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */,
 				3C36CFBD2450809F003648AE /* LobbyViewController.swift */,
 				3642AE0724520495004CBF76 /* GameViewController.swift */,
+				36E503482469D536006022DC /* MatchDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -484,6 +501,7 @@
 				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
 				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
+				36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */,
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
 				3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
@@ -599,12 +617,14 @@
 				368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */,
 				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
+				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
 				9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */,
 				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
 				3682147E2459B23200C6A254 /* Message.swift in Sources */,
+				36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */,
 				3C36CFDE2450856E003648AE /* CustomRoundViews.swift in Sources */,
 				3642AE1624524DD8004CBF76 /* MockDatabase.swift in Sources */,
 				3C36CFD024508441003648AE /* UITextField+Localization.swift in Sources */,

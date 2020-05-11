@@ -34,6 +34,7 @@ class Player: Codable {
     var avatar: UIImage?
     var avatarImagePath: String?
     var isSpeaking: Bool = false
+    var points: Int = 0
     
     convenience init(agoraUserInfo: AgoraUserInfo, type: PlayerType) {
         self.init()

@@ -23,14 +23,14 @@ class GameEngine {
     //MARK: - Variables
     
     var game: Game
-    let totalTurnTime = 10
+    let totalTurnTime = 5
     let startPlayer = 0
     let wordCategory: Theme = .general
     var delegate: GameEngineDelegate?
     var currentMimickr: Player?
     var nextMimickr: Player?
-    var mimes: [Mime]?
-    var selectableMimes: [Mime]?
+    var mimes: [Mime] = []
+    var selectableMimes: [Mime] = []
     var messages: [Message] = []
     
     init(localPlayer: Player, remotePlayers: [Player]) {
@@ -98,10 +98,12 @@ class GameEngine {
     
     /// This  method  choose the  current mime for the turn
     func chooseCurrentMime() {
-        guard let selectableMimes = self.selectableMimes else { return }
+        
+        validadeSelectableMimes()
+        
         let selectedMimeIndex = Int(arc4random()) % selectableMimes.count
         let selectedMime = selectableMimes[selectedMimeIndex]
-        self.selectableMimes?.remove(at: selectedMimeIndex)
+        self.selectableMimes.remove(at: selectedMimeIndex)
         delegate?.setupChooseCurrentMime(with: selectedMimeIndex, currentMime: selectedMime)
     }
     
@@ -131,6 +133,13 @@ class GameEngine {
     func validateSelectablePlayers() {
         if game.selectablePlayersWithUid.isEmpty {
             game.selectablePlayersWithUid = game.uids
+        }
+    }
+    
+    func validadeSelectableMimes() {
+        
+        if self.selectableMimes.isEmpty {
+            self.selectableMimes = self.mimes
         }
     }
     
@@ -186,8 +195,16 @@ class GameEngine {
     ///   - index: mime index used on selectable mimes,  received from the mimickr.
     ///   - uid: curent mimickr uid
     func setCurrentMimickr(with index: Int, player uid: UInt) {
-        self.selectableMimes?.remove(at: index)
+        self.selectableMimes.remove(at: index)
         self.currentMimickr = getPlayer(with: uid)
+    }
+    
+    
+    /// This method will sort players by points
+    /// - Returns: sorted players aray by points
+    func sortPlayers() -> [Player] {
+        let players = [self.game.localPlayer] + self.game.remotePlayers
+        return players.sorted(by: { $0.points > $1.points })
     }
     
     /// Set the player type to unavailable  when he leaves
@@ -211,9 +228,9 @@ class GameEngine {
     ///   - uid: uid from the player who sent the message
     func setReceivedMessage(receivedMessage: String, currentMimeWord: String, receivedMessegeFrom uid: UInt) {
         
-        let isCorrect = isMessegeCorrect(wordWritten: receivedMessage, currentMime: currentMimeWord)
-        
         let player = getPlayer(with: uid)
+        
+        let isCorrect = isMessegeCorrect(wordWritten: receivedMessage, currentMime: currentMimeWord, player: player)
         
         let message = Message(word: receivedMessage, player: player, isCorrect: isCorrect)
         
@@ -228,7 +245,7 @@ class GameEngine {
     ///   - currentMimeWord: current mime word
     func setSentMessage(sentMessage: String, currentMimeWord: String) {
         
-        let isCorrect = isMessegeCorrect(wordWritten: sentMessage, currentMime: currentMimeWord)
+        let isCorrect = isMessegeCorrect(wordWritten: sentMessage, currentMime: currentMimeWord, player: self.game.localPlayer)
         
         let message = Message(word: sentMessage, player: self.game.localPlayer, isCorrect: isCorrect)
         
@@ -241,7 +258,17 @@ class GameEngine {
     /// - Parameter wordWritten: the received word that will be checked with the right word
     /// - Parameter currentMime: Mime word that the people are trying to divine
     /// - Returns: return a boolean (true if is correct and false if is wrong)
-    func isMessegeCorrect(wordWritten: String, currentMime: String) -> Bool {
-        return wordWritten.uppercased() == currentMime.uppercased() ? true : false
+    func isMessegeCorrect(wordWritten: String, currentMime: String, player: Player) -> Bool {
+        let isCorrect = wordWritten.uppercased() == currentMime.uppercased() ? true : false
+        
+        if isCorrect {
+            givePoints(for: player)
+        }
+        
+        return isCorrect
+    }
+    
+    func givePoints(for player: Player) {
+        player.points += 10
     }
 }

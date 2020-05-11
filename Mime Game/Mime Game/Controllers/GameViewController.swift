@@ -37,7 +37,6 @@ class GameViewController: UIViewController {
     var timer = Timer()
     var seconds = 20
     var currentMime: Mime?
-    var game: Game!
     var engine: GameEngine?
     var chatStreamId = 3
     var currentMimeIndexStreamId = 4
@@ -72,6 +71,16 @@ class GameViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
         setupTableView()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toDetail" {
+            if let destination = segue.destination as? MatchDetailsViewController {
+                destination.sortedPlayers = self.engine?.sortPlayers()
+            }
+            
+        }
     }
     
     private func setupTableView() {
@@ -186,6 +195,11 @@ class GameViewController: UIViewController {
         }
     }
     
+    private func updatePointsLabel() {
+        guard let selfPoints = self.engine?.game.localPlayer.points else { return }
+        self.pointLbl.text = String(selfPoints)
+    }
+    
     /// This method is to setup remotePlayer to the diviner video view
     private func setupRemotePlayer() {
         
@@ -235,6 +249,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func infoActionBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toDetail", sender: self)
     }
     
     @IBAction func reportBtn(_ sender: UIButton) {
@@ -301,7 +316,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
                 $0.load(as: Int.self)
             }
             
-            self.currentMime = self.engine?.selectableMimes?[selectedMimeIndex]
+            self.currentMime = self.engine?.selectableMimes[selectedMimeIndex]
             self.engine?.setCurrentMimickr(with: selectedMimeIndex, player: uid)
     
             OperationQueue.main.addOperation {
@@ -350,6 +365,7 @@ extension GameViewController : GameEngineDelegate {
     }
     
     func didSendMessage() {
+        self.updatePointsLabel()
         self.textField.text = ""
         self.divinerTableView.reloadData()
         self.divinerTableView.scrollToBottom()
