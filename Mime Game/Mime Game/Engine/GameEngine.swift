@@ -13,7 +13,7 @@ protocol GameEngineDelegate: class {
     func setupNextMimickr(nextMimickrIndex: Data)
     func setupToMimickr()
     func setupToDiviner()
-    func setupChooseCurrentMime(with index: Int, currentMime: Mime)
+    func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int)
     func didSendMessage()
     func didReceiveMessage()
 }
@@ -23,7 +23,7 @@ class GameEngine {
     //MARK: - Variables
     
     var game: Game
-    let totalTurnTime = 5
+    let totalTurnTime = 20
     let startPlayer = 0
     let wordCategory: Theme = .general
     var delegate: GameEngineDelegate?
@@ -97,14 +97,15 @@ class GameEngine {
     //MARK: - Mimes configuration
     
     /// This  method  choose the  current mime for the turn
-    func chooseCurrentMime() {
+    func chooseCurrentMime(newTurn: Bool) {
         
         validadeSelectableMimes()
         
         let selectedMimeIndex = Int(arc4random()) % selectableMimes.count
         let selectedMime = selectableMimes[selectedMimeIndex]
+        
         self.selectableMimes.remove(at: selectedMimeIndex)
-        delegate?.setupChooseCurrentMime(with: selectedMimeIndex, currentMime: selectedMime)
+        delegate?.setupChooseCurrentMime(currentMime: selectedMime, isNewTurn: newTurn, mimeIndex: selectedMimeIndex)
     }
     
     //MARK: - Players configuration
@@ -112,7 +113,7 @@ class GameEngine {
     /// This method set the localPlayer to mimickr
     private func setToMimickr() {
         self.game.localPlayer.type = .mimickr
-        self.chooseCurrentMime()
+        self.chooseCurrentMime(newTurn: true)
         delegate?.setupToMimickr()
     }
     
@@ -189,14 +190,15 @@ class GameEngine {
     }
     
     
-    /// This method remove the mime the mime chosen with index received to no longer be selected and
-    /// set the current mimickr with uid
+    /// This method set the current mimickr with uid received
     /// - Parameters:
-    ///   - index: mime index used on selectable mimes,  received from the mimickr.
     ///   - uid: curent mimickr uid
-    func setCurrentMimickr(with index: Int, player uid: UInt) {
-        self.selectableMimes.remove(at: index)
+    func setCurrentMimickr(player uid: UInt) {
         self.currentMimickr = getPlayer(with: uid)
+    }
+    
+    func removeSelectableMime(with index: Int) {
+        self.selectableMimes.remove(at: index)
     }
     
     
@@ -232,6 +234,10 @@ class GameEngine {
         
         let isCorrect = isMessegeCorrect(wordWritten: receivedMessage, currentMime: currentMimeWord, player: player)
         
+        if isCorrect {
+            givePoints(for: player)
+        }
+        
         let message = Message(word: receivedMessage, player: player, isCorrect: isCorrect)
         
         self.messages.append(message)
@@ -246,6 +252,11 @@ class GameEngine {
     func setSentMessage(sentMessage: String, currentMimeWord: String) {
         
         let isCorrect = isMessegeCorrect(wordWritten: sentMessage, currentMime: currentMimeWord, player: self.game.localPlayer)
+        
+        if isCorrect {
+            chooseCurrentMime(newTurn: false)
+            givePoints(for: self.game.localPlayer)
+        }
         
         let message = Message(word: sentMessage, player: self.game.localPlayer, isCorrect: isCorrect)
         
@@ -269,10 +280,8 @@ class GameEngine {
         
         let isCorrect = wordDiacriticInsensitive.uppercased() == currentMimeDiacriticInsensitive.uppercased() ? true : false
         
-        if isCorrect {
-            givePoints(for: player)
-//            chooseCurrentMime()
-        }
+        print("currentMime: \(currentMimeDiacriticInsensitive)")
+        print("word: \(wordDiacriticInsensitive)")
         
         return isCorrect
     }

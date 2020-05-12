@@ -15,6 +15,7 @@
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
 		3642AE1624524DD8004CBF76 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1524524DD8004CBF76 /* MockDatabase.swift */; };
 		364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */ = {isa = PBXBuildFile; fileRef = 364DE99B2469886100449013 /* Sorteiojogador_Load.json */; };
+		365411C7246B11E600F1F63E /* MimeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365411C6246B11E600F1F63E /* MimeMessage.swift */; };
 		3682147E2459B23200C6A254 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147D2459B23200C6A254 /* Message.swift */; };
 		368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */; };
 		368214862459F92E00C6A254 /* Lobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 368214852459F92E00C6A254 /* Lobby.json */; };
@@ -48,9 +49,9 @@
 		3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */; };
 		3C553590245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */; };
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
-		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
 		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
 		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
+		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
 		3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */; };
 		3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */; };
 		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
@@ -83,6 +84,7 @@
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
 		3642AE1524524DD8004CBF76 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		364DE99B2469886100449013 /* Sorteiojogador_Load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sorteiojogador_Load.json; sourceTree = "<group>"; };
+		365411C6246B11E600F1F63E /* MimeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimeMessage.swift; sourceTree = "<group>"; };
 		3682147D2459B23200C6A254 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ScrollBottom.swift"; sourceTree = "<group>"; };
 		368214852459F92E00C6A254 /* Lobby.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lobby.json; sourceTree = "<group>"; };
@@ -120,9 +122,9 @@
 		3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyTableViewCell.xib; sourceTree = "<group>"; };
 		3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSystemGameTableViewCell.swift; sourceTree = "<group>"; };
 		3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSystemGameTableViewCell.xib; sourceTree = "<group>"; };
-		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
 		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
 		3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRomTableViewCell.swift; sourceTree = "<group>"; };
 		3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRomTableViewCell.xib; sourceTree = "<group>"; };
 		3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				9A4077342461B29E00DC4D82 /* Room.swift */,
 				3642AE1024524CEF004CBF76 /* Mime.swift */,
 				3682147D2459B23200C6A254 /* Message.swift */,
+				365411C6246B11E600F1F63E /* MimeMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			files = (
 				36A8F93924508AB4008D0FD3 /* Player.swift in Sources */,
 				3C36CFE124508617003648AE /* ReusableCells.swift in Sources */,
+				365411C7246B11E600F1F63E /* MimeMessage.swift in Sources */,
 				36BC0421243E1080005B753A /* ViewController.swift in Sources */,
 				3C09D65D2457128000849B83 /* ModalTip.swift in Sources */,
 				9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */,

@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum Theme: String {
+enum Theme: String, Codable {
     case general = "Geral"
     case animal = "Animal"
     case object = "Objeto"
 }
 
-struct Mime {
+struct Mime: Codable {
     var word: String
     var theme: Theme
 }

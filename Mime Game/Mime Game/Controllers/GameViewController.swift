@@ -312,23 +312,28 @@ extension GameViewController: AgoraRtcEngineDelegate {
             
         } else if streamId == self.currentMimeIndexStreamId { // Receive mime index
             
-            let selectedMimeIndex = data.withUnsafeBytes {
-                $0.load(as: Int.self)
+            do {
+                let decoder = JSONDecoder()
+                let mime = try decoder.decode(MimeMessage.self, from: data)
+                self.currentMime = mime.newMime
+                self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
+                self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+                self.engine?.removeSelectableMime(with: mime.index)
+                
+                if mime.isNewRound {
+                    OperationQueue.main.addOperation {
+                        self.engine?.setCurrentMimickr(player: uid)
+                        self.drawPlayerModal()
+                    }
+                }
+            } catch {
+                print("error decoding current mime")
             }
-            
-            self.currentMime = self.engine?.selectableMimes[selectedMimeIndex]
-            self.engine?.setCurrentMimickr(with: selectedMimeIndex, player: uid)
-    
-            OperationQueue.main.addOperation {
-                self.drawPlayerModal()
-            }
-            
         } else if streamId == self.nextMimickrStreamId { // Receive the next mimickr
             
             let selectedNextPlayerIndex = data.withUnsafeBytes {
                 $0.load(as: Int.self)
             }
-            
             self.engine?.setNextMimickr(selectedNextPlayerIndex: selectedNextPlayerIndex)
         }
     }
@@ -379,14 +384,20 @@ extension GameViewController : GameEngineDelegate {
         self.setupRemotePlayer()
     }
     
-    func setupChooseCurrentMime(with index: Int, currentMime: Mime) {
-        
-        var index = index
+    func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int) {
         self.currentMime = currentMime
         self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
         self.wordLbl.text = "\(self.currentMime?.word ?? "")"
-        let dataSelectedMimeIndex = Data(bytes: &index, count: MemoryLayout.size(ofValue: index))
-        agoraKit.sendStreamMessage(currentMimeIndexStreamId, data: dataSelectedMimeIndex)
+        
+        do {
+            // encoding mimeMessege object to send as a message the new mime
+            guard let currentMime = self.currentMime else { return }
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(MimeMessage(newMime: currentMime, isNewRound: isNewTurn, index: mimeIndex))
+            agoraKit.sendStreamMessage(currentMimeIndexStreamId, data: data)
+        } catch {
+            print("error trying to encode mime message")
+        }
     }
     
     func setupToMimickr() {
