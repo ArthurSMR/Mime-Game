@@ -586,7 +586,7 @@
                                                             <real key="value" value="105"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                            <real key="value" value="4"/>
+                                                            <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" name="Rosa respostas"/>
@@ -610,7 +610,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDi-Ut-rW6">
                                 <rect key="frame" x="50" y="655" width="314" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite seu Nome" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uz2-Lb-Ogx">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Seu Nome" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uz2-Lb-Ogx">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -647,7 +647,7 @@
                                     <constraint firstAttribute="height" constant="55" id="7Df-51-FkT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Entrar na sala" backgroundImage="Button_SelecionarTema">
+                                <state key="normal" title="Selecionar Tema" backgroundImage="Button_SelecionarTema">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -714,11 +714,67 @@
             </objects>
             <point key="canvasLocation" x="1015.9420289855074" y="-182.14285714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="lEB-an-AOZ">
+            <objects>
+                <viewController id="5ia-Vo-hi3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qJo-cJ-4ca">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_UserID" translatesAutoresizingMaskIntoConstraints="NO" id="hie-a3-nUe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NDq-xO-fEw">
+                                <rect key="frame" x="99.5" y="359.5" width="215" height="177"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Y5-Hg-RO8">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="55"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Fazer Login" backgroundImage="Button_Cancelar">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2y-jf-da5">
+                                        <rect key="frame" x="0.0" y="71" width="215" height="55"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Sem Cadastro" backgroundImage="Button_Cancelar">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvA-8n-9fZ">
+                                        <rect key="frame" x="33.5" y="142" width="148" height="35"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="Criar uma Conta">
+                                            <color key="titleColor" name="Azul mediano"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nMc-4e-nDw" firstAttribute="trailing" secondItem="hie-a3-nUe" secondAttribute="trailing" id="01c-gq-K7h"/>
+                            <constraint firstItem="NDq-xO-fEw" firstAttribute="centerY" secondItem="qJo-cJ-4ca" secondAttribute="centerY" id="D76-3S-1YG"/>
+                            <constraint firstAttribute="bottom" secondItem="hie-a3-nUe" secondAttribute="bottom" id="clV-rG-lda"/>
+                            <constraint firstItem="NDq-xO-fEw" firstAttribute="centerX" secondItem="qJo-cJ-4ca" secondAttribute="centerX" id="ef8-p5-XtO"/>
+                            <constraint firstItem="hie-a3-nUe" firstAttribute="leading" secondItem="nMc-4e-nDw" secondAttribute="leading" id="wtg-pj-6MI"/>
+                            <constraint firstItem="hie-a3-nUe" firstAttribute="top" secondItem="qJo-cJ-4ca" secondAttribute="top" id="xCw-vS-csO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nMc-4e-nDw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sgO-ac-gYU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016" y="575"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AudioOFF" width="35" height="39"/>
         <image name="BackgroundGame" width="375" height="812"/>
         <image name="BackgroundSortearJogador" width="375" height="812"/>
+        <image name="Background_UserID" width="375" height="812"/>
+        <image name="Button_Cancelar" width="215" height="55"/>
         <image name="Button_SelecionarTema" width="215" height="55"/>
         <image name="Button_Send" width="30" height="30"/>
         <image name="Frame 1" width="63" height="29"/>
@@ -731,6 +787,9 @@
         <image name="Timer1" width="112" height="112"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
+        <namedColor name="Azul mediano">
+            <color red="0.16899999976158142" green="0.33700001239776611" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Rosa respostas">
             <color red="0.92199999094009399" green="0.32499998807907104" blue="0.56499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
