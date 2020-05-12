@@ -12,7 +12,7 @@ class MatchDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var sortedPlayers: [Player]?
+    var sortedPlayers: [Player] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +31,19 @@ class MatchDetailsViewController: UIViewController {
 extension MatchDetailsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedPlayers?.count ?? 0
+        return sortedPlayers.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let player = sortedPlayers?[indexPath.row]
+        let player = sortedPlayers[indexPath.row]
         
         let rankingCell = PlayerRankingTableViewCell.dequeueCell(from: tableView)
         rankingCell.ranking.text = String(indexPath.row + 1)
-        rankingCell.playerName.text = player?.name
-        rankingCell.playerPoints.text = "\(player?.points) pts"
-        rankingCell.playerAvatar.image = player?.avatar
+        rankingCell.playerName.text = player.name
+        
+        rankingCell.playerPoints.text = "\(player.points) pts"
+        rankingCell.playerAvatar.image = player.avatar
         
         return rankingCell
     }

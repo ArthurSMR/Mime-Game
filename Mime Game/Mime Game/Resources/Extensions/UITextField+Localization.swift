@@ -20,7 +20,7 @@ extension UITextField {
     }
     
     func checkIfAchieveTheLimitName() -> Bool {
-        if (text?.count == 200) {
+        if (text?.count == 20) {
             return false
         }
         return true

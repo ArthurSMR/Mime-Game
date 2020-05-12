@@ -14,6 +14,7 @@ class PlayerRankingTableViewCell: UITableViewCell {
     @IBOutlet weak var playerAvatar: UIImageView!
     @IBOutlet weak var playerName: UILabel!
     @IBOutlet weak var playerPoints: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
