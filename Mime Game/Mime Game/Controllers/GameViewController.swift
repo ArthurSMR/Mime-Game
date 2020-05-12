@@ -77,7 +77,8 @@ class GameViewController: UIViewController {
         
         if segue.identifier == "toDetail" {
             if let destination = segue.destination as? MatchDetailsViewController {
-                destination.sortedPlayers = self.engine?.sortPlayers()
+                guard let sortedPlayers = self.engine?.sortPlayers() else { return }
+                destination.sortedPlayers = sortedPlayers
             }
             
         }

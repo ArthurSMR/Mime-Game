@@ -13,7 +13,7 @@ class LoginNoRegisteredViewController: UIViewController {
     
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     
     //MARK: Variables
     var avaliableAvatars: [UIImage] = []
@@ -61,7 +61,7 @@ class LoginNoRegisteredViewController: UIViewController {
     }
     
     func prepareTextField() {
-        self.textField.delegate = self
+        self.nameTextField.delegate = self
     }
     
     /// Initialize avatar images avaliable for the player based on image's names on xcAssets
@@ -106,13 +106,13 @@ class LoginNoRegisteredViewController: UIViewController {
         switch segue.identifier {
         case "playButtonSegue":
             if let destinationVC = segue.destination as? SelectRoomViewController {
-                destinationVC.incomingName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+                destinationVC.incomingName = self.nameTextField.text ?? "UNI a.k.a Usuário não identificado"
                 destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
                 destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
                 
                 /// Saves on UserDefaults
                 let noRegisteredUser = NoRegisteredPlayerCodable()
-                noRegisteredUser.userName = self.textField.text ?? "UNI a.k.a Usuário não identificado"
+                noRegisteredUser.userName = self.nameTextField.text ?? "UNI a.k.a Usuário não identificado"
                 noRegisteredUser.avatarIndex = self.currentSelectedAvatarIndex
                 UserServices.saveCurrentUser(user: noRegisteredUser)
             }
@@ -206,12 +206,27 @@ extension LoginNoRegisteredViewController:  UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
     }
     
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        if string.isEmpty {
+            return true
+        }
+        switch textField {
+        case nameTextField:
+            return textField.checkIfAchieveTheLimitName()
+        default:
+            return textField.checkIfAchieveTheLimitDefault()
+        }
+    }
+    
     //MARK: - Returning Player
     func setupReturningPlayerInfo(){
         
         if let returningNotRegisteredPlayer = UserServices.retrieveCurrentUser() {
             
-            self.textField.text = returningNotRegisteredPlayer.userName!
+            self.nameTextField.text = returningNotRegisteredPlayer.userName!
             
             DispatchQueue.main.async {
                 self.currentSelectedAvatarIndex = returningNotRegisteredPlayer.avatarIndex!
