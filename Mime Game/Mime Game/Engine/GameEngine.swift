@@ -254,20 +254,31 @@ class GameEngine {
         delegate?.didSendMessage()
     }
     
-    /// This method check is the message is correct comparing in a uppercased way
+    /// This method check is the message is correct comparing in a uppercased way and ignoring diacritics
     /// - Parameter wordWritten: the received word that will be checked with the right word
     /// - Parameter currentMime: Mime word that the people are trying to divine
+    /// - Parameter player: Player that wrote the message
     /// - Returns: return a boolean (true if is correct and false if is wrong)
     func isMessegeCorrect(wordWritten: String, currentMime: String, player: Player) -> Bool {
-        let isCorrect = wordWritten.uppercased() == currentMime.uppercased() ? true : false
+        
+        // We ignore diacritics and set to uppercased
+        // to compare the the word written and the current mime
+        
+        let wordDiacriticInsensitive = wordWritten.folding(options: .diacriticInsensitive, locale: .current)
+        let currentMimeDiacriticInsensitive = currentMime.folding(options: .diacriticInsensitive, locale: .current)
+        
+        let isCorrect = wordDiacriticInsensitive.uppercased() == currentMimeDiacriticInsensitive.uppercased() ? true : false
         
         if isCorrect {
             givePoints(for: player)
+//            chooseCurrentMime()
         }
         
         return isCorrect
     }
     
+    /// This method will increase the points for determined player
+    /// - Parameter player: player that scored
     func givePoints(for player: Player) {
         player.points += 10
     }
