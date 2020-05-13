@@ -147,12 +147,14 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    
+    /// ThIs method will update the players quantity label
     private func updatePlayersQuantity() {
         
-        var playerQuantity = 1
+        var playerQuantity = 1 // it starts with 1 counting the local player
         
         for player in self.remotePlayers {
-            if player.type != .unavailable {
+            if player.type != .unavailable { // it will not count the unavailable players
                 playerQuantity += 1
             }
         }
