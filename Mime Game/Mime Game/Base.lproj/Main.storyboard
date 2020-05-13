@@ -211,6 +211,7 @@
                         <outlet property="muteBtn" destination="IOO-i5-8fW" id="fKe-8i-yWV"/>
                         <outlet property="playersQuantityLbl" destination="yHO-Ru-8iz" id="BM2-z5-LaN"/>
                         <outlet property="roomName" destination="1TP-Hd-QxI" id="S9c-PT-jBd"/>
+                        <outlet property="startGameBtn" destination="vCr-64-I7a" id="LWs-sA-ggW"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
                         <segue destination="wo4-Pi-ajL" kind="show" identifier="startGame" id="MBy-jB-Rz7"/>
                     </connections>
@@ -628,6 +629,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txr-eU-qBe">
                                         <rect key="frame" x="315" y="16" width="35" height="35"/>
                                         <state key="normal" backgroundImage="ExitModal"/>
+                                        <connections>
+                                            <action selector="dismissModalAction:" destination="AvQ-re-xfj" eventType="touchUpInside" id="wYf-bv-Y60"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sala:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yC-9b-0Zg">
                                         <rect key="frame" x="24" y="143" width="54" height="31.5"/>
@@ -743,7 +747,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1G-9l-eiM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3702.898550724638" y="559.82142857142856"/>
+            <point key="canvasLocation" x="4106" y="534"/>
         </scene>
         <!--Login No Registered View Controller-->
         <scene sceneID="hbm-GQ-Ui6">
@@ -984,11 +988,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="76j-6K-l0D">
-                                <rect key="frame" x="60" y="225" width="294" height="637"/>
+                                <rect key="frame" x="60" y="273" width="294" height="589"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RiL-WO-Kvp">
-                                <rect key="frame" x="60" y="136" width="294" height="73"/>
+                                <rect key="frame" x="60" y="184" width="294" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tema: Animais" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZR-sq-gTe">
                                         <rect key="frame" x="0.0" y="0.0" width="150.5" height="29"/>
@@ -1004,17 +1008,35 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4E-Ia-bYY">
+                                <rect key="frame" x="27" y="128" width="63" height="29"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Frame 1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressExitLobbyBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="Dyo-NH-X05"/>
+                                    <action selector="exitSelectRoomAction:" destination="q50-Cc-qlk" eventType="touchUpInside" id="Ml7-tO-6Tb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="k4E-Ia-bYY" firstAttribute="leading" secondItem="YyP-8Q-LcJ" secondAttribute="leading" constant="27" id="1e5-vT-JN6"/>
                             <constraint firstItem="RiL-WO-Kvp" firstAttribute="leading" secondItem="76j-6K-l0D" secondAttribute="leading" id="1f1-69-pUK"/>
                             <constraint firstItem="76j-6K-l0D" firstAttribute="top" secondItem="RiL-WO-Kvp" secondAttribute="bottom" constant="16" id="4Bm-9Q-w3B"/>
                             <constraint firstItem="MgG-ag-UqG" firstAttribute="leading" secondItem="YyP-8Q-LcJ" secondAttribute="leading" id="9Ut-D5-se3"/>
-                            <constraint firstItem="RiL-WO-Kvp" firstAttribute="top" secondItem="YyP-8Q-LcJ" secondAttribute="top" constant="48" id="9qn-E0-jii"/>
+                            <constraint firstItem="RiL-WO-Kvp" firstAttribute="top" secondItem="YyP-8Q-LcJ" secondAttribute="top" constant="96" id="9qn-E0-jii"/>
                             <constraint firstItem="YyP-8Q-LcJ" firstAttribute="bottom" secondItem="76j-6K-l0D" secondAttribute="bottom" id="EZ0-fn-Wfp"/>
                             <constraint firstItem="76j-6K-l0D" firstAttribute="leading" secondItem="YyP-8Q-LcJ" secondAttribute="leading" constant="60" id="Lat-6I-en3"/>
                             <constraint firstItem="MgG-ag-UqG" firstAttribute="top" secondItem="mvy-hZ-cWp" secondAttribute="top" id="OwF-dF-GgL"/>
                             <constraint firstItem="RiL-WO-Kvp" firstAttribute="trailing" secondItem="76j-6K-l0D" secondAttribute="trailing" id="SRS-wx-Xlz"/>
+                            <constraint firstItem="k4E-Ia-bYY" firstAttribute="top" secondItem="YyP-8Q-LcJ" secondAttribute="top" constant="40" id="eDH-jD-w5z"/>
                             <constraint firstItem="YyP-8Q-LcJ" firstAttribute="trailing" secondItem="76j-6K-l0D" secondAttribute="trailing" constant="60" id="mbd-Ko-kpY"/>
                             <constraint firstItem="YyP-8Q-LcJ" firstAttribute="trailing" secondItem="MgG-ag-UqG" secondAttribute="trailing" id="pD3-1z-w57"/>
                             <constraint firstAttribute="bottom" secondItem="MgG-ag-UqG" secondAttribute="bottom" id="uWF-De-57k"/>

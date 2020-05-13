@@ -46,6 +46,12 @@ class SelectRoomViewController: UIViewController {
         SelectRomTableViewCell.registerNib(for: table)
     }
     
+    @IBAction func exitSelectRoomAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "toLobby":
