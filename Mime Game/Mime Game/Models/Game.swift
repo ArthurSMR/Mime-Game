@@ -19,6 +19,7 @@ class Game {
     var currentPlayer: Int
     var wordCategory: Theme
     var messages: [Message]
+    var totalTurns = 2
     
     init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, wordCategory: Theme, messages:  [Message]) {
         self.localPlayer = localPlayer

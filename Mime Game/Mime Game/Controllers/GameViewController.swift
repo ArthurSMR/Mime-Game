@@ -381,6 +381,10 @@ extension GameViewController: DrawPlayerDelegate {
 //MARK: - GameEngineDelegate
 extension GameViewController : GameEngineDelegate {
     
+    func endGame() {
+        // perform segue to ranking final
+    }
+    
     func didReceiveMessage() {
         self.updateChatMessage()
     }

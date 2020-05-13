@@ -16,6 +16,7 @@ protocol GameEngineDelegate: class {
     func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int)
     func didSendMessage()
     func didReceiveMessage()
+    func endGame()
 }
 
 class GameEngine {
@@ -24,6 +25,7 @@ class GameEngine {
     
     var game: Game
     let totalTurnTime = 20
+    var currentTurn = 0
     let startPlayer = 0
     let wordCategory: Theme = .general
     var delegate: GameEngineDelegate?
@@ -76,6 +78,8 @@ class GameEngine {
     
     /// This method start the turn setting to mimickr or diviner a player
     func startTurn() {
+        
+        self.currentTurn += 1
         
         guard let nextMimickr = self.nextMimickr else { return }
         
@@ -133,7 +137,12 @@ class GameEngine {
     /// To continue  the gameplay
     func validateSelectablePlayers() {
         if game.selectablePlayersWithUid.isEmpty {
+            
             game.selectablePlayersWithUid = game.uids
+            
+            if self.currentTurn == self.game.totalTurns {
+                delegate?.endGame()
+            }
         }
     }
     
