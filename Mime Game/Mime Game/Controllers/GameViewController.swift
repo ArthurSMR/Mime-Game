@@ -102,6 +102,9 @@ class GameViewController: UIViewController {
     }
     
     //MARK: Draw Modals
+    
+    
+    /// This method will draw a modal showing what is the next player and the next mime theme
     func drawPlayerModal() {
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
@@ -120,7 +123,9 @@ class GameViewController: UIViewController {
         alert.show(animated: true)
     }
     
-    func setupViewAnimation() {
+    
+    /// This method will show the right mime animation
+    func setupRightMimeAnimation() {
         textField.resignFirstResponder()
         let animation = Animation.named("acerto_palavra")
         rightMimeView.animation = animation
@@ -191,8 +196,7 @@ class GameViewController: UIViewController {
         self.wordLbl.text = "\(self.currentMime?.word ?? "")"
     }
     
-    
-    /// This method is to reload and scroll to bottom the tableview
+    /// This method is to reload and scroll to bottom the diviner and mimickr tableView
     private func updateChatMessage() {
         self.divinerTableView.reloadData()
         self.divinerTableView.scrollToBottom()
@@ -407,8 +411,10 @@ extension GameViewController : GameEngineDelegate {
             print("error trying to encode mime message")
         }
         
+        // if it's not the new turn, the local player wrote the correct mime
+        // then, it shows the animation
         if !isNewTurn {
-            setupViewAnimation()
+            setupRightMimeAnimation()
         }
     }
     
