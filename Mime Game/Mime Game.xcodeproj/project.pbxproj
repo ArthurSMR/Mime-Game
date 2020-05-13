@@ -53,6 +53,7 @@
 		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
 		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
 		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
+		3CE92CBB246C37DD007113DA /* RankingFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE92CBA246C37DD007113DA /* RankingFinalViewController.swift */; };
 		3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */; };
 		3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */; };
 		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
@@ -127,6 +128,7 @@
 		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
+		3CE92CBA246C37DD007113DA /* RankingFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFinalViewController.swift; sourceTree = "<group>"; };
 		3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRomTableViewCell.swift; sourceTree = "<group>"; };
 		3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRomTableViewCell.xib; sourceTree = "<group>"; };
 		3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				3C36CFBD2450809F003648AE /* LobbyViewController.swift */,
 				3642AE0724520495004CBF76 /* GameViewController.swift */,
 				36E503482469D536006022DC /* MatchDetailsViewController.swift */,
+				3CE92CBA246C37DD007113DA /* RankingFinalViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
 				9A4077352461B29E00DC4D82 /* Room.swift in Sources */,
 				3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */,
+				3CE92CBB246C37DD007113DA /* RankingFinalViewController.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,

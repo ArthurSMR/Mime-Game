@@ -1,14 +1,14 @@
 //
-//  MatchDetailsViewController.swift
+//  RankingFinalViewController.swift
 //  Mime Game
 //
-//  Created by Arthur Rodrigues on 11/05/20.
+//  Created by anthony gianeli on 13/05/20.
 //  Copyright © 2020 Arthur Rodrigues. All rights reserved.
 //
 
 import UIKit
 
-class MatchDetailsViewController: UIViewController {
+class RankingFinalViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,12 +26,15 @@ class MatchDetailsViewController: UIViewController {
         guard let rankingTableView = self.tableView else { return }
         PlayerRankingTableViewCell.registerNib(for: rankingTableView)
     }
+
+    @IBAction func navigateToLobbyAction(_ sender: UIButton) {
+    }
 }
 
-extension MatchDetailsViewController : UITableViewDelegate, UITableViewDataSource {
+extension RankingFinalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedPlayers.count 
+        return sortedPlayers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
