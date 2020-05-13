@@ -17,11 +17,15 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var exitLobby: UIButton!
     @IBOutlet weak var muteBtn: RoundButton!
     @IBOutlet weak var lobbyView: AnimationView!
+    @IBOutlet weak var roomName: UILabel!
+    @IBOutlet weak var playersQuantityLbl: UILabel!
     
     //MARK: Variables
     var incomingName: String?
     var incomingAvatar: UIImage?
     var currentAvatarIndex: Int = 0
+    var roomNameStr: String?
+    var totalPlayers = 10
 
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
@@ -51,8 +55,8 @@ class LobbyViewController: UIViewController {
     
     //MARK: Methods
     func setupLayout() {
-        
         self.navigationController?.isNavigationBarHidden = true
+        self.roomName.text = self.roomNameStr
         setupViewAnimation()
         changeMuteButtonState()
         setupAgora()
@@ -143,6 +147,21 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    
+    /// ThIs method will update the players quantity label
+    private func updatePlayersQuantity() {
+        
+        var playerQuantity = 1 // it starts with 1 counting the local player
+        
+        for player in self.remotePlayers {
+            if player.type != .unavailable { // it will not count the unavailable players
+                playerQuantity += 1
+            }
+        }
+        
+        self.playersQuantityLbl.text = "\(playerQuantity)/\(self.totalPlayers)"
+    }
+    
     // MARK: Players setup
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
@@ -162,6 +181,7 @@ class LobbyViewController: UIViewController {
         
         let avatarPointer = UnsafeMutablePointer<Int>(&avatarStreamId)
         agoraKit.createDataStream(avatarPointer , reliable: true, ordered: true)
+        self.updatePlayersQuantity()
     }
     
     /// Creating remote player and setting it to available
@@ -173,6 +193,7 @@ class LobbyViewController: UIViewController {
         self.UIDs.append(remote.uid)
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
+        self.updatePlayersQuantity()
     }
     
     /// Set the player type to unavailable  when he leaves
@@ -199,6 +220,7 @@ class LobbyViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        self.updatePlayersQuantity()
     }
     
     /// This method for leaving the channel
@@ -323,6 +345,7 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         self.removeRemotePlayer(with: uid)
+        self.updatePlayersQuantity()
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, audioTransportStatsOfUid uid: UInt, delay: UInt, lost: UInt, rxKBitRate: UInt) {

@@ -67,7 +67,7 @@
                                             <constraint firstAttribute="height" constant="32" id="zDU-lx-We5"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-Ru-8iz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-Ru-8iz">
                                         <rect key="frame" x="353" y="8" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="Rosa respostas"/>
@@ -209,6 +209,8 @@
                         <outlet property="exitLobby" destination="0S3-2j-mzT" id="VKB-W7-1dT"/>
                         <outlet property="lobbyView" destination="Ni4-kL-dJM" id="1Wz-h6-Wl8"/>
                         <outlet property="muteBtn" destination="IOO-i5-8fW" id="fKe-8i-yWV"/>
+                        <outlet property="playersQuantityLbl" destination="yHO-Ru-8iz" id="BM2-z5-LaN"/>
+                        <outlet property="roomName" destination="1TP-Hd-QxI" id="S9c-PT-jBd"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
                         <segue destination="wo4-Pi-ajL" kind="show" identifier="startGame" id="MBy-jB-Rz7"/>
                     </connections>

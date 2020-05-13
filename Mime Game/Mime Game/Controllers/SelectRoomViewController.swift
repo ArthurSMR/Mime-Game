@@ -26,6 +26,7 @@ class SelectRoomViewController: UIViewController {
     var currentAvatarIndex: Int = 0
     
     var selectedRoomAppId: String?
+    var selectedRoomName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class SelectRoomViewController: UIViewController {
                 destinationVC.incomingName = self.incomingName
                 destinationVC.incomingAvatar = self.incomingAvatar
                 destinationVC.currentAvatarIndex = self.currentAvatarIndex
-                
+                destinationVC.roomNameStr = self.selectedRoomName
                 destinationVC.AppID = selectedRoomAppId!
             }
         default:
@@ -60,8 +61,6 @@ class SelectRoomViewController: UIViewController {
         }
     }
 }
-
-
 
 extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,6 +88,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedCell = tableView.cellForRow(at: indexPath) as! SelectRomTableViewCell
         
         self.selectedRoomAppId = selectedCell.room?.appId
+        self.selectedRoomName = selectedCell.nameLabel.text
         performSegue(withIdentifier: "toLobby", sender: self)
         
         
