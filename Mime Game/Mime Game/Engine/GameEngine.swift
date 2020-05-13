@@ -79,7 +79,6 @@ class GameEngine {
     /// This method start the turn setting to mimickr or diviner a player
     func startTurn() {
         
-        self.currentTurn += 1
         
         guard let nextMimickr = self.nextMimickr else { return }
         
@@ -136,13 +135,16 @@ class GameEngine {
     /// This method will set it to the full and first array: selectablePlayer receive [Arthur, Anthony, Jesse, Lucas]
     /// To continue  the gameplay
     func validateSelectablePlayers() {
+        
         if game.selectablePlayersWithUid.isEmpty {
             
-            game.selectablePlayersWithUid = game.uids
+            self.currentTurn += 1
             
             if self.currentTurn == self.game.totalTurns {
                 delegate?.endGame()
             }
+            
+            game.selectablePlayersWithUid = game.uids
         }
     }
     
