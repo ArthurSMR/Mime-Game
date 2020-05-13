@@ -41,6 +41,8 @@ class GameViewController: UIViewController {
     var chatStreamId = 3
     var currentMimeIndexStreamId = 4
     var nextMimickrStreamId = 5
+    var segueToRankingFinal = "toRankingFinal"
+    var segueToRankingFinalData = Data("toRankingFinal".utf8)
     
     var isMimickrView: Bool = false {
         didSet {
@@ -80,7 +82,12 @@ class GameViewController: UIViewController {
                 guard let sortedPlayers = self.engine?.sortPlayers() else { return }
                 destination.sortedPlayers = sortedPlayers
             }
-            
+        }
+        else if segue.identifier == segueToRankingFinal {
+            if let destination = segue.destination as? RankingFinalViewController {
+                guard let sortedPlayers = self.engine?.sortPlayers() else { return }
+                destination.sortedPlayers = sortedPlayers
+            }
         }
     }
     
@@ -381,8 +388,11 @@ extension GameViewController: DrawPlayerDelegate {
 //MARK: - GameEngineDelegate
 extension GameViewController : GameEngineDelegate {
     
+    
+    /// Called when it need to end game and the game turns finished.
     func endGame() {
-        // perform segue to ranking final
+        self.timer.invalidate()
+        self.performSegue(withIdentifier: segueToRankingFinal, sender: self) // show ranking
     }
     
     func didReceiveMessage() {

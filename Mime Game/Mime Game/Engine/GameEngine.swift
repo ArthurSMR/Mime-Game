@@ -24,7 +24,7 @@ class GameEngine {
     //MARK: - Variables
     
     var game: Game
-    let totalTurnTime = 20
+    let totalTurnTime = 10
     var currentTurn = 0
     let startPlayer = 0
     let wordCategory: Theme = .general
@@ -67,7 +67,7 @@ class GameEngine {
     
     /// This method start the game
     func startGame() {
-        game.uids = game.uids.sorted()
+        game.uids = game.uids.sorted() //the first uid will be the first mimickr
         guard let firstUidSorted = game.uids.first else { return }
         self.nextMimickr = getPlayer(with: firstUidSorted)
         game.selectablePlayersWithUid = game.uids
@@ -79,21 +79,27 @@ class GameEngine {
     /// This method start the turn setting to mimickr or diviner a player
     func startTurn() {
         
+        self.currentTurn += 1
         
-        guard let nextMimickr = self.nextMimickr else { return }
-        
-        if nextMimickr.type == .unavailable { // Testar com mais pessoas numa partida...
-            chooseNextMimickr()
-            startTurn()
-        }
-        
-        if nextMimickr.uid == game.localPlayer.uid {
-            self.currentMimickr = self.nextMimickr
-            chooseNextMimickr()
-            setToMimickr()
-        } else {
-            self.game.localPlayer.type = .diviner
-            delegate?.setupToDiviner()
+        // Validate if we can start the turn
+        if canStartTurn() {
+            
+            guard let nextMimickr = self.nextMimickr else { return }
+            
+            // Validade if the next player is unavailable
+            if nextMimickr.type == .unavailable { // Testar com mais pessoas numa partida...
+                chooseNextMimickr()
+                startTurn()
+            }
+            // The next player is available to play
+            if nextMimickr.uid == game.localPlayer.uid {
+                self.currentMimickr = self.nextMimickr  // the queue goes on
+                chooseNextMimickr()
+                setToMimickr()
+            } else {
+                self.game.localPlayer.type = .diviner
+                delegate?.setupToDiviner()
+            }
         }
     }
     
@@ -102,11 +108,14 @@ class GameEngine {
     /// This  method  choose the  current mime for the turn
     func chooseCurrentMime(newTurn: Bool) {
         
-        validadeSelectableMimes()
+        // Check if there is selectable mimes
+        validateSelectableMimes()
         
+        // it will select a number between 0 and the selectable mimes count
         let selectedMimeIndex = Int(arc4random()) % selectableMimes.count
         let selectedMime = selectableMimes[selectedMimeIndex]
         
+        // we have chosen a mime, so we can remove it from the selectableMimes
         self.selectableMimes.remove(at: selectedMimeIndex)
         delegate?.setupChooseCurrentMime(currentMime: selectedMime, isNewTurn: newTurn, mimeIndex: selectedMimeIndex)
     }
@@ -127,34 +136,6 @@ class GameEngine {
         self.game.selectablePlayersWithUid.remove(at: selectedMimickrIndex)
     }
     
-    /// This method will validade if the selectable to see if it is empty or not
-    /// If selectablePlayers is empty, it will reset it to the initial selectable players
-    ///
-    /// Example: First selectable player array:  selectablePlayer = [Arthur, Anthony, Jesse, Lucas]
-    /// If all people from the array already played, the array should be empty: selectablePlayer = []
-    /// This method will set it to the full and first array: selectablePlayer receive [Arthur, Anthony, Jesse, Lucas]
-    /// To continue  the gameplay
-    func validateSelectablePlayers() {
-        
-        if game.selectablePlayersWithUid.isEmpty {
-            
-            self.currentTurn += 1
-            
-            if self.currentTurn == self.game.totalTurns {
-                delegate?.endGame()
-            }
-            
-            game.selectablePlayersWithUid = game.uids
-        }
-    }
-    
-    func validadeSelectableMimes() {
-        
-        if self.selectableMimes.isEmpty {
-            self.selectableMimes = self.mimes
-        }
-    }
-    
     /// This method, the current mimickr will choose the next mimickr to play and set its index for the others players using the delegate
     func chooseNextMimickr() {
         
@@ -164,7 +145,7 @@ class GameEngine {
         
         createNextMimickr(selectedMimickrIndex)
         
-         let dataSelectedPlayerIndex = Data(bytes: &selectedMimickrIndex, count: MemoryLayout.size(ofValue: selectedMimickrIndex))
+        let dataSelectedPlayerIndex = Data(bytes: &selectedMimickrIndex, count: MemoryLayout.size(ofValue: selectedMimickrIndex))
         delegate?.setupNextMimickr(nextMimickrIndex: dataSelectedPlayerIndex)
     }
     
@@ -212,7 +193,6 @@ class GameEngine {
         self.selectableMimes.remove(at: index)
     }
     
-    
     /// This method will sort players by points
     /// - Returns: sorted players aray by points
     func sortPlayers() -> [Player] {
@@ -223,7 +203,7 @@ class GameEngine {
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
     func removeRemotePlayer(with uid: UInt) {
-    
+        
         for remotePlayer in game.remotePlayers {
             if remotePlayer.uid == uid {
                 remotePlayer.type = .unavailable
@@ -276,6 +256,14 @@ class GameEngine {
         delegate?.didSendMessage()
     }
     
+    /// This method will increase the points for determined player
+    /// - Parameter player: player that scored
+    func givePoints(for player: Player) {
+        player.points += 10
+    }
+    
+    // MARK: - Validators
+    
     /// This method check is the message is correct comparing in a uppercased way and ignoring diacritics
     /// - Parameter wordWritten: the received word that will be checked with the right word
     /// - Parameter currentMime: Mime word that the people are trying to divine
@@ -291,15 +279,39 @@ class GameEngine {
         
         let isCorrect = wordDiacriticInsensitive.uppercased() == currentMimeDiacriticInsensitive.uppercased() ? true : false
         
-        print("currentMime: \(currentMimeDiacriticInsensitive)")
-        print("word: \(wordDiacriticInsensitive)")
-        
         return isCorrect
     }
     
-    /// This method will increase the points for determined player
-    /// - Parameter player: player that scored
-    func givePoints(for player: Player) {
-        player.points += 10
+    /// This method will validade if the selectable to see if it is empty or not
+    /// If selectablePlayers is empty, it will reset it to the initial selectable players
+    ///
+    /// Example: First selectable player array:  selectablePlayer = [Arthur, Anthony, Jesse, Lucas]
+    /// If all people from the array already played, the array should be empty: selectablePlayer = []
+    /// This method will set it to the full and first array: selectablePlayer receive [Arthur, Anthony, Jesse, Lucas]
+    /// To continue  the gameplay
+    func validateSelectablePlayers() {
+        
+        if game.selectablePlayersWithUid.isEmpty {
+            game.selectablePlayersWithUid = game.uids // populating selectableplayers
+        }
+    }
+    
+    /// Validade if there is selectableMimes, if there is no mimes left, it will populate with the initial mimes
+    func validateSelectableMimes() {
+        
+        if self.selectableMimes.isEmpty {
+            self.selectableMimes = self.mimes
+        }
+    }
+    
+    /// Method to validate if can start the new turn
+    /// It wiil compare iif the current turn is > than the total game urns
+    /// - Returns: return a boolean indicating if can start or not
+    func canStartTurn() -> Bool {
+        if self.currentTurn > self.game.totalTurns {
+            delegate?.endGame()
+            return false
+        }
+        return true
     }
 }

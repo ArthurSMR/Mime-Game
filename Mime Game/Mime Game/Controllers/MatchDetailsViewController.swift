@@ -17,6 +17,7 @@ class MatchDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func setupTableView() {

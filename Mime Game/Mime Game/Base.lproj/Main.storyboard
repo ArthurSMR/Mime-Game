@@ -591,7 +591,8 @@
                         <outlet property="timerMimickr" destination="Afy-Kf-you" id="6EW-aA-bAC"/>
                         <outlet property="wordLbl" destination="uIJ-ce-nQM" id="slV-HL-WEY"/>
                         <outlet property="wordThemeLbl" destination="efk-pv-Hks" id="6mE-F6-VoL"/>
-                        <segue destination="AvQ-re-xfj" kind="showDetail" identifier="toDetail" id="wHZ-uS-xBI"/>
+                        <segue destination="AvQ-re-xfj" kind="show" identifier="toDetail" id="wHZ-uS-xBI"/>
+                        <segue destination="ObD-HM-kOc" kind="show" identifier="toRankingFinal" id="LEq-Fb-fiN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2S-l8-np3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -604,14 +605,14 @@
             <objects>
                 <viewController id="AvQ-re-xfj" customClass="MatchDetailsViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z86-DK-tQi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bup-QP-xAY">
-                                <rect key="frame" x="24" y="48" width="366" height="701"/>
+                                <rect key="frame" x="24" y="136" width="366" height="667"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Modal" translatesAutoresizingMaskIntoConstraints="NO" id="dPv-zK-f6z">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="701"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="667"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detalhes da Partida" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6J-LK-mz5">
                                         <rect key="frame" x="24" y="75" width="318" height="36"/>
@@ -679,7 +680,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ycw-p1-ute">
-                                        <rect key="frame" x="24" y="383" width="318" height="286"/>
+                                        <rect key="frame" x="24" y="383" width="318" height="252"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="AvQ-re-xfj" id="Gwk-2M-TIV"/>
@@ -737,6 +738,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IMF-3d-1K8"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DFR-DZ-QJj"/>
                     <connections>
                         <outlet property="tableView" destination="Ycw-p1-ute" id="LtJ-Cb-qar"/>
                     </connections>
@@ -836,13 +838,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uQc-Mz-vkC"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5wp-kC-hza"/>
                     <connections>
                         <outlet property="tableView" destination="s34-B6-3Pg" id="tqr-iM-ik1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFM-7s-JsZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5015.9420289855079" y="545.75892857142856"/>
+            <point key="canvasLocation" x="4993" y="546"/>
         </scene>
         <!--Login No Registered View Controller-->
         <scene sceneID="hbm-GQ-Ui6">

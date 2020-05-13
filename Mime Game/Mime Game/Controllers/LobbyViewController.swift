@@ -129,7 +129,7 @@ class LobbyViewController: UIViewController {
         
         agoraKit.joinChannel(byUserAccount: name,
                              token: nil,
-                             channelId: "channel1") { (sid, uid, elapsed) in
+                             channelId: self.AppID) { (sid, uid, elapsed) in
                                 
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
