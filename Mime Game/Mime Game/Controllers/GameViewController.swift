@@ -121,7 +121,7 @@ class GameViewController: UIViewController {
     }
     
     func setupViewAnimation() {
-        
+        textField.resignFirstResponder()
         let animation = Animation.named("acerto_palavra")
         rightMimeView.animation = animation
         rightMimeView.loopMode = .playOnce
@@ -178,6 +178,28 @@ class GameViewController: UIViewController {
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
     }
     
+    // MARK: - Update labels
+    
+    private func updatePointsLabel() {
+        guard let selfPoints = self.engine?.game.localPlayer.points else { return }
+        self.pointLbl.text = String(selfPoints)
+    }
+    
+    private func updateMimeLabel(currentMime: Mime) {
+        self.currentMime = currentMime
+        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
+        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+    }
+    
+    
+    /// This method is to reload and scroll to bottom the tableview
+    private func updateChatMessage() {
+        self.divinerTableView.reloadData()
+        self.divinerTableView.scrollToBottom()
+        self.mimickrTableView.reloadData()
+        self.mimickrTableView.scrollToBottom()
+    }
+    
     
     // MARK: - View/Videos Settings
     /// This method is to change the mimickr and the diviver view
@@ -194,11 +216,6 @@ class GameViewController: UIViewController {
         default:
             print("can not load view to player with type \(playerType), just to mimickr and diviner")
         }
-    }
-    
-    private func updatePointsLabel() {
-        guard let selfPoints = self.engine?.game.localPlayer.points else { return }
-        self.pointLbl.text = String(selfPoints)
     }
     
     /// This method is to setup remotePlayer to the diviner video view
@@ -229,7 +246,6 @@ class GameViewController: UIViewController {
         videoCanvas.renderMode = .fit
         agoraKit.setupLocalVideo(videoCanvas)
     }
-    
     
     /// Set a configuration to video and enable video
     private func setupVideo() {
@@ -316,9 +332,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
             do {
                 let decoder = JSONDecoder()
                 let mime = try decoder.decode(MimeMessage.self, from: data)
-                self.currentMime = mime.newMime
-                self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
-                self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+                self.updateMimeLabel(currentMime: mime.newMime)
                 self.engine?.removeSelectableMime(with: mime.index)
                 
                 if mime.isNewRound {
@@ -364,19 +378,13 @@ extension GameViewController: DrawPlayerDelegate {
 extension GameViewController : GameEngineDelegate {
     
     func didReceiveMessage() {
-        self.divinerTableView.reloadData()
-        self.divinerTableView.scrollToBottom()
-        self.mimickrTableView.reloadData()
-        self.mimickrTableView.scrollToBottom()
+        self.updateChatMessage()
     }
     
     func didSendMessage() {
         self.updatePointsLabel()
+        self.updateChatMessage()
         self.textField.text = ""
-        self.divinerTableView.reloadData()
-        self.divinerTableView.scrollToBottom()
-        self.mimickrTableView.reloadData()
-        self.mimickrTableView.scrollToBottom()
     }
     
     func setupToDiviner() {
@@ -386,9 +394,8 @@ extension GameViewController : GameEngineDelegate {
     }
     
     func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int) {
-        self.currentMime = currentMime
-        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
-        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+
+        updateMimeLabel(currentMime: currentMime)
         
         do {
             // encoding mimeMessege object to send as a message the new mime
@@ -398,6 +405,10 @@ extension GameViewController : GameEngineDelegate {
             agoraKit.sendStreamMessage(currentMimeIndexStreamId, data: data)
         } catch {
             print("error trying to encode mime message")
+        }
+        
+        if !isNewTurn {
+            setupViewAnimation()
         }
     }
     

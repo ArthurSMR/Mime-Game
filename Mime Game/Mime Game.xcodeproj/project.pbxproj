@@ -10,6 +10,7 @@
 		0591916A56CB56AF7985E723 /* Pods_Mime_GameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */; };
 		360525432458A71600BEA330 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360525412458A71600BEA330 /* ChatTableViewCell.swift */; };
 		360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360525422458A71600BEA330 /* ChatTableViewCell.xib */; };
+		3637831E246C1E6E005F7423 /* acerto_palavra.json in Resources */ = {isa = PBXBuildFile; fileRef = 3637831D246C1E6E005F7423 /* acerto_palavra.json */; };
 		3642AE0824520495004CBF76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0724520495004CBF76 /* GameViewController.swift */; };
 		3642AE0C245241CA004CBF76 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0B245241CA004CBF76 /* Game.swift */; };
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
@@ -79,6 +80,7 @@
 		2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.release.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.release.xcconfig"; sourceTree = "<group>"; };
 		360525412458A71600BEA330 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		360525422458A71600BEA330 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		3637831D246C1E6E005F7423 /* acerto_palavra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acerto_palavra.json; sourceTree = "<group>"; };
 		3642AE0724520495004CBF76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3642AE0B245241CA004CBF76 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				3C36CFBF24508293003648AE /* Extensions */,
 				368214852459F92E00C6A254 /* Lobby.json */,
 				364DE99B2469886100449013 /* Sorteiojogador_Load.json */,
+				3637831D246C1E6E005F7423 /* acerto_palavra.json */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
 				3C8926B124658C670029378E /* GoogleService-Info.plist */,
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
@@ -523,6 +526,7 @@
 				3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */,
 				3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */,
 				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
+				3637831E246C1E6E005F7423 /* acerto_palavra.json in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
 				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
 				36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */,
