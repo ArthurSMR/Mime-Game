@@ -148,7 +148,16 @@ class LobbyViewController: UIViewController {
     }
     
     private func updatePlayersQuantity() {
-        self.playersQuantityLbl.text = "\(self.UIDs.count)/\(self.totalPlayers)"
+        
+        var playerQuantity = 1
+        
+        for player in self.remotePlayers {
+            if player.type != .unavailable {
+                playerQuantity += 1
+            }
+        }
+        
+        self.playersQuantityLbl.text = "\(playerQuantity)/\(self.totalPlayers)"
     }
     
     // MARK: Players setup
@@ -209,6 +218,7 @@ class LobbyViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        self.updatePlayersQuantity()
     }
     
     /// This method for leaving the channel
@@ -333,6 +343,7 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         self.removeRemotePlayer(with: uid)
+        self.updatePlayersQuantity()
     }
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, audioTransportStatsOfUid uid: UInt, delay: UInt, lost: UInt, rxKBitRate: UInt) {
