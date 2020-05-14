@@ -1,4 +1,4 @@
-//
+x//
 //  LobbyViewController.swift
 //  Mime Game
 //
@@ -19,6 +19,7 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var lobbyView: AnimationView!
     @IBOutlet weak var roomName: UILabel!
     @IBOutlet weak var playersQuantityLbl: UILabel!
+    @IBOutlet weak var startGameBtn: UIButton!
     
     //MARK: Variables
     var incomingName: String?
@@ -82,13 +83,19 @@ class LobbyViewController: UIViewController {
         tableView.dataSource = self
         guard let table = tableView else { return }
         LobbyTableViewCell.registerNib(for: table)
+        
+//        let firstIndexPath = IndexPath(row: 0, section: 0)
+//        let firstCell = tableView.cellForRow(at: firstIndexPath) as! LobbyTableViewCell as LobbyTableViewCell
+//
+        
+        
     }
     
     
     /// Auxiliary method.
     /// - Returns: The file names for all avatars avaliable.
     static func getAvatarImagesNames() -> [String] {
-        
+        c
         var n: Int = 1
         var avatarAssetName = "Avatar\(n)"
         
@@ -120,6 +127,13 @@ class LobbyViewController: UIViewController {
         agoraKit.enableWebSdkInteroperability(true)
     }
     
+//    private func validateHost() {
+//        if remotePlayers.count == 0 {
+//            localPlayer.isHost = true
+//            self.startGameBtn.isHidden = false
+//        }
+//    }
+    
     /// This method if for join the channel with some userAccount
     private func joinChannel() {
         
@@ -127,7 +141,7 @@ class LobbyViewController: UIViewController {
         
         guard let name = incomingName else { return }
         
-        agoraKit.joinChannel(byUserAccount: name,
+        agoraKit.joinChannel(byUserAccount: name,changeColorBorderWhenSpeaking
                              token: nil,
                              channelId: self.AppID) { (sid, uid, elapsed) in
                                 
@@ -135,6 +149,8 @@ class LobbyViewController: UIViewController {
             self.prepareTableView()
             self.tableView.reloadData()
         }
+        
+        
     }
     
     /// This method is to change the button image and background color when is muted or not
@@ -194,6 +210,10 @@ class LobbyViewController: UIViewController {
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
         self.updatePlayersQuantity()
+    }
+    
+    private func setHost(){
+        
     }
     
     /// Set the player type to unavailable  when he leaves
@@ -287,12 +307,6 @@ class LobbyViewController: UIViewController {
         
         if segue.identifier == "startGame" {
             if let gameVC = segue.destination as? GameViewController {
-//                let game = Game(localPlayer: self.localPlayer,
-//                                players: self.remotePlayers,
-//                                uids: self.UIDs,
-//                                totalTime: 10,
-//                                currentPlayer: 0,
-//                                wordCategory: .general)
                 let gameEngine = GameEngine(localPlayer: self.localPlayer, remotePlayers: self.remotePlayers)
                 gameVC.agoraKit = agoraKit
                 gameVC.engine = gameEngine
@@ -376,9 +390,9 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
             let startGameSegue = String(decoding: data, as: UTF8.self)
             print("startGame")
             self.performSegue(withIdentifier: startGameSegue, sender: self)
-        } else if streamId == avatarStreamId {
+        }
+        else if streamId == avatarStreamId {
             let str = String(decoding: data, as: UTF8.self)
-//            print("avatar \(str)")
             checkReceivedAvatarForRemotePlayer(with: uid, with: str)
         }
     }

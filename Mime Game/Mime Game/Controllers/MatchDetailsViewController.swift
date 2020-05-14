@@ -27,6 +27,11 @@ class MatchDetailsViewController: UIViewController {
         guard let rankingTableView = self.tableView else { return }
         PlayerRankingTableViewCell.registerNib(for: rankingTableView)
     }
+    
+    @IBAction func dismissModalAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
 }
 
 extension MatchDetailsViewController : UITableViewDelegate, UITableViewDataSource {
