@@ -127,12 +127,12 @@ class LobbyViewController: UIViewController {
         agoraKit.enableWebSdkInteroperability(true)
     }
     
-    private func validateHost() {
-        if remotePlayers.count == 0 {
-            localPlayer.isHost = true
-            self.startGameBtn.isHidden = false
-        }
-    }
+//    private func validateHost() {
+//        if remotePlayers.count == 0 {
+//            localPlayer.isHost = true
+//            self.startGameBtn.isHidden = false
+//        }
+//    }
     
     /// This method if for join the channel with some userAccount
     private func joinChannel() {
@@ -143,7 +143,7 @@ class LobbyViewController: UIViewController {
         
         agoraKit.joinChannel(byUserAccount: name,
                              token: nil,
-                             channelId: "channel1") { (sid, uid, elapsed) in
+                             channelId: AppID) { (sid, uid, elapsed) in
                                 
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
