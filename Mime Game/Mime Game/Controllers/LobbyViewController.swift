@@ -1,4 +1,4 @@
-x//
+//
 //  LobbyViewController.swift
 //  Mime Game
 //
@@ -95,7 +95,7 @@ class LobbyViewController: UIViewController {
     /// Auxiliary method.
     /// - Returns: The file names for all avatars avaliable.
     static func getAvatarImagesNames() -> [String] {
-        c
+
         var n: Int = 1
         var avatarAssetName = "Avatar\(n)"
         
@@ -141,7 +141,7 @@ class LobbyViewController: UIViewController {
         
         guard let name = incomingName else { return }
         
-        agoraKit.joinChannel(byUserAccount: name,changeColorBorderWhenSpeaking
+        agoraKit.joinChannel(byUserAccount: name,
                              token: nil,
                              channelId: self.AppID) { (sid, uid, elapsed) in
                                 
