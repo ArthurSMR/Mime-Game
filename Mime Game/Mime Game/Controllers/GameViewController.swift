@@ -75,6 +75,7 @@ class GameViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setupVideo()
         setupTableView()
+        changeMuteButtonState()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -286,6 +287,7 @@ class GameViewController: UIViewController {
     
     @IBAction func quitActionBtnAction(_ sender: Any) {
         self.agoraKit.leaveChannel()
+        self.timer.invalidate()
         DeepLink.shared.shouldNavigateToLobby = false
         performSegue(withIdentifier: "backToLoginNoRegistered", sender: nil)
     }
