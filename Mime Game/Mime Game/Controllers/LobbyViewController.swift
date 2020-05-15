@@ -308,6 +308,7 @@ class LobbyViewController: UIViewController {
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
         self.leaveChannel()
         DeepLink.shared.shouldNavigateToLobby = false
+        pop(animated: true)
     }
     
     @IBAction func didPressShareRoom(_ sender: UIButton) {
