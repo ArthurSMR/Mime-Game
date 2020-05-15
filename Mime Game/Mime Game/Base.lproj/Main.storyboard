@@ -80,6 +80,14 @@
                                             <constraint firstAttribute="height" constant="32" id="rMJ-LO-kRE"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-qo-iY1">
+                                        <rect key="frame" x="317" y="48" width="90" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Compartilhar"/>
+                                        <connections>
+                                            <action selector="didPressShareRoom:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="dSa-ct-8aC"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -962,7 +970,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="q50-Cc-qlk" kind="show" identifier="playButtonSegue" id="DI2-kV-hSl"/>
+                                    <action selector="confirmButtonDidPressed:" destination="EmN-KB-pVX" eventType="touchUpInside" id="4M4-RA-PRv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -995,7 +1003,10 @@
                     <navigationItem key="navigationItem" id="afH-pJ-xix"/>
                     <connections>
                         <outlet property="collectionView" destination="H3m-Mk-1YH" id="OLo-NF-IpO"/>
+                        <outlet property="confirmButton" destination="SIJ-Ew-82T" id="ce9-Ej-SR4"/>
                         <outlet property="nameTextField" destination="Uz2-Lb-Ogx" id="E74-hp-fzQ"/>
+                        <segue destination="q50-Cc-qlk" kind="show" identifier="goToThemes" id="pF5-qf-kgt"/>
+                        <segue destination="mfc-Vc-YaR" kind="show" identifier="goToRoomWithLink" id="M3A-SR-UAl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU3-hm-0zY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1131,9 +1142,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8T-iw-BYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2890" y="-179"/>
+            <point key="canvasLocation" x="2889.8550724637685" y="-179.46428571428569"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="M3A-SR-UAl"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="AudioOFF" width="35" height="39"/>
         <image name="BackgroundGame" width="375" height="812"/>

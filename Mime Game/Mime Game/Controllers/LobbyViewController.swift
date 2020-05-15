@@ -28,7 +28,7 @@ class LobbyViewController: UIViewController {
     var totalPlayers = 10
 
     private var agoraKit: AgoraRtcEngineKit!
-    var AppID: String = "e6bf51d4429d49eb9b973a0f9b396efd"
+    var AppID: String = ""
     
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
@@ -162,6 +162,14 @@ class LobbyViewController: UIViewController {
         self.playersQuantityLbl.text = "\(playerQuantity)/\(self.totalPlayers)"
     }
     
+    func shareRoom(with shareText: String) {
+        // criar link
+//        let shareContent: [Any] = [shareText, url]
+//        let activityController = UIActivityViewController(activityItems: shareContent,
+//                                                          applicationActivities: nil)
+//        self.present(activityController, animated: true, completion: nil)
+    }
+    
     // MARK: Players setup
     /// This method is for creating a local player
     /// - Parameter uid: uid from the local player
@@ -268,6 +276,27 @@ class LobbyViewController: UIViewController {
         
         self.leaveChannel()
         pop(animated: true)
+    }
+    @IBAction func didPressShareRoom(_ sender: UIButton) {
+        // room name
+        // app id
+        // text
+//        let shareText = "Venha jogar Mimiqueiros comigo 🎭"
+//        self.shareRoom(with: shareText)
+        
+        let message = "Venha jogar Mimiqueiros comigo".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        let application = UIApplication.shared
+        
+        let openAppPath = "letsplay://appId=\(self.AppID)"
+        
+        guard let appURL = URL(string: openAppPath) else { return }
+        
+        if application.canOpenURL(appURL) {
+            application.open(appURL, options: [:], completionHandler: nil)
+        } else {
+            print("else")
+        }
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
