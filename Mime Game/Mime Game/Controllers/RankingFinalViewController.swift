@@ -28,8 +28,10 @@ class RankingFinalViewController: UIViewController {
         PlayerRankingTableViewCell.registerNib(for: rankingTableView)
     }
 
-    @IBAction func navigateToLobbyAction(_ sender: UIButton) {
+    @IBAction func playAgainBtnDidPress(_ sender: Any) {
+        performSegue(withIdentifier: "backToLobby", sender: nil)
     }
+    
 }
 
 extension RankingFinalViewController: UITableViewDelegate, UITableViewDataSource {
