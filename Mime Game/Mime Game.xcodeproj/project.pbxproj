@@ -62,6 +62,8 @@
 		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
 		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
+		9A9EED3F246F352A004DF8DA /* SOUNDS_EFFECTS in Resources */ = {isa = PBXBuildFile; fileRef = 9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */; };
+		9A9EED41246F3836004DF8DA /* SoundFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EED40246F3836004DF8DA /* SoundFX.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
 		9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */; };
 		9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2610D2458A2AE00E449A4 /* UserServices.swift */; };
@@ -143,6 +145,8 @@
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4077342461B29E00DC4D82 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRegisteredPlayerCodable.swift; sourceTree = "<group>"; };
+		9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOUNDS_EFFECTS; sourceTree = "<group>"; };
+		9A9EED40246F3836004DF8DA /* SoundFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFX.swift; sourceTree = "<group>"; };
 		9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
 		9AD2610B2457A6CA00E449A4 /* AvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		9AD2610D2458A2AE00E449A4 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 			children = (
 				3695A91E24524FF700815617 /* MimeServices.swift */,
 				9AD2610D2458A2AE00E449A4 /* UserServices.swift */,
+				9A9EED40246F3836004DF8DA /* SoundFX.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 		3C553592245BB64100422CE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */,
 				3CE7E5312469B54E00686C44 /* Json */,
 				3C09D63024570D0300849B83 /* Alerts */,
 				3C36CFDF24508617003648AE /* Protocols */,
@@ -543,6 +549,7 @@
 				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
 				36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */,
 				3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */,
+				9A9EED3F246F352A004DF8DA /* SOUNDS_EFFECTS in Resources */,
 				3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
@@ -660,6 +667,7 @@
 				9A4077352461B29E00DC4D82 /* Room.swift in Sources */,
 				3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */,
 				36CAA779246E0E4F00F4847B /* URL+QueryParameters.swift in Sources */,
+				9A9EED41246F3836004DF8DA /* SoundFX.swift in Sources */,
 				3CE92CBB246C37DD007113DA /* RankingFinalViewController.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
