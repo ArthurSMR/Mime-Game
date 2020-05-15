@@ -193,7 +193,7 @@ class LobbyViewController: UIViewController {
         
         guard let appURL = URL(string: openAppPath) else { return }
         
-        let shareContent: [Any] = [message, appURL]
+        let shareContent: [Any] = [self.message, appURL]
         let activityController = UIActivityViewController(activityItems: shareContent,
                                                           applicationActivities: nil)
         self.present(activityController, animated: true, completion: nil)
