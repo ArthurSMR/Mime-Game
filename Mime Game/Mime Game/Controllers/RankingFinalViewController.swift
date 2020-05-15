@@ -76,8 +76,10 @@ class RankingFinalViewController: UIViewController {
         thirdStack.alpha = 1.0
     }
 
-    @IBAction func navigateToLobbyAction(_ sender: UIButton) {
+    @IBAction func playAgainBtnDidPress(_ sender: Any) {
+        performSegue(withIdentifier: "backToLobby", sender: nil)
     }
+    
 }
 
 extension RankingFinalViewController: UITableViewDelegate, UITableViewDataSource {

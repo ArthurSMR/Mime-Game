@@ -308,7 +308,6 @@ class LobbyViewController: UIViewController {
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
         self.leaveChannel()
         DeepLink.shared.shouldNavigateToLobby = false
-        pop(animated: true)
     }
     
     @IBAction func didPressShareRoom(_ sender: UIButton) {
@@ -326,6 +325,11 @@ class LobbyViewController: UIViewController {
         agoraKit.muteLocalAudioStream(isMuted)
     }
     
+    //Unwind action
+    @IBAction func backToLobby(_segue: UIStoryboardSegue){
+        
+    }
+    
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -334,6 +338,7 @@ class LobbyViewController: UIViewController {
                 let gameEngine = GameEngine(localPlayer: self.localPlayer, remotePlayers: self.remotePlayers)
                 gameVC.agoraKit = agoraKit
                 gameVC.engine = gameEngine
+                gameVC.isMuted = isMuted
             }
         }
     }

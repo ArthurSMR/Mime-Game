@@ -134,6 +134,11 @@ class LoginNoRegisteredViewController: UIViewController {
         }
     }
     
+    //Unwind action
+    @IBAction func backToLoginNoRegistered(_ segue: UIStoryboardSegue){
+        
+    }
+    
     
     // MARK: - Navigation
     

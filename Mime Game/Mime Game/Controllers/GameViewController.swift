@@ -44,6 +44,8 @@ class GameViewController: UIViewController {
     var segueToRankingFinal = "toRankingFinal"
     var segueToRankingFinalData = Data("toRankingFinal".utf8)
     
+    var isMuted: Bool = false
+    
     var isMimickrView: Bool = false {
         didSet {
             if isMimickrView == false {
@@ -271,9 +273,27 @@ class GameViewController: UIViewController {
         agoraKit.setVideoEncoderConfiguration(configuration)
     }
     
+    func changeMuteButtonState() {
+        if isMuted {
+            muteBtn.setImage(UIImage(named: "AudioOFF"), for: .normal)
+        } else {
+            muteBtn.setImage(UIImage(named: "AudioON"), for: .normal)
+        }
+    }
+    
     //MARK: Actions
     
+    
+    @IBAction func quitActionBtnAction(_ sender: Any) {
+        self.agoraKit.leaveChannel()
+        DeepLink.shared.shouldNavigateToLobby = false
+        performSegue(withIdentifier: "backToLoginNoRegistered", sender: nil)
+    }
+    
     @IBAction func muteActionBtn(_ sender: UIButton) {
+        isMuted = !isMuted
+        self.changeMuteButtonState()
+        self.agoraKit.muteLocalAudioStream(isMuted)
     }
     
     @IBAction func infoActionBtn(_ sender: UIButton) {
