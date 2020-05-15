@@ -55,11 +55,14 @@ class LobbyViewController: UIViewController {
         setupLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupViewAnimation()
+    }
+    
     //MARK: Methods
     func setupLayout() {
         self.navigationController?.isNavigationBarHidden = true
         self.roomName.text = self.roomNameStr
-        setupViewAnimation()
         changeMuteButtonState()
         setupAgora()
     }

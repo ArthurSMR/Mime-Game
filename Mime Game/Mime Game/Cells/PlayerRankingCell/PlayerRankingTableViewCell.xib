@@ -20,19 +20,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KJ-3B-5Dp">
-                                <rect key="frame" x="32" y="22" width="9" height="22"/>
+                                <rect key="frame" x="0.0" y="22" width="9" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" name="Rosa respostas"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Jogador" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-5a-k7P">
-                                <rect key="frame" x="107" y="24.5" width="201.5" height="17"/>
+                                <rect key="frame" x="75" y="24.5" width="241.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="Azul mais escuro"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="U7r-ph-hKY" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
-                                <rect key="frame" x="316.5" y="19.5" width="89.5" height="27"/>
+                                <rect key="frame" x="324.5" y="19.5" width="89.5" height="27"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-cl-KRS">
                                         <rect key="frame" x="5" y="5" width="79.5" height="17"/>
@@ -60,7 +60,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-aT-02h" customClass="RoundImage" customModule="Mime_Game" customModuleProvider="target">
-                                <rect key="frame" x="49" y="8" width="50" height="50"/>
+                                <rect key="frame" x="17" y="8" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="l56-rg-H7j"/>
                                     <constraint firstAttribute="height" constant="50" id="xPu-FL-CO6"/>
@@ -83,12 +83,12 @@
                             <constraint firstItem="0Os-aT-02h" firstAttribute="leading" secondItem="5KJ-3B-5Dp" secondAttribute="trailing" constant="8" id="19d-xl-8qM"/>
                             <constraint firstItem="5KJ-3B-5Dp" firstAttribute="centerY" secondItem="0Os-aT-02h" secondAttribute="centerY" id="1Ju-XA-PWu"/>
                             <constraint firstAttribute="bottom" secondItem="0Os-aT-02h" secondAttribute="bottom" constant="8" id="2P0-3r-yuf"/>
-                            <constraint firstItem="5KJ-3B-5Dp" firstAttribute="leading" secondItem="zMw-ox-elN" secondAttribute="leading" constant="32" id="7oY-Bs-X8U"/>
+                            <constraint firstItem="5KJ-3B-5Dp" firstAttribute="leading" secondItem="zMw-ox-elN" secondAttribute="leading" id="7oY-Bs-X8U"/>
                             <constraint firstItem="U7r-ph-hKY" firstAttribute="centerY" secondItem="0Os-aT-02h" secondAttribute="centerY" id="LVW-MH-5Qt"/>
                             <constraint firstItem="Zan-5a-k7P" firstAttribute="leading" secondItem="0Os-aT-02h" secondAttribute="trailing" constant="8" id="PfA-sT-07s"/>
                             <constraint firstItem="U7r-ph-hKY" firstAttribute="leading" secondItem="Zan-5a-k7P" secondAttribute="trailing" constant="8" id="Thz-iy-FcX"/>
                             <constraint firstItem="Zan-5a-k7P" firstAttribute="centerY" secondItem="0Os-aT-02h" secondAttribute="centerY" id="Y4r-nm-XTM"/>
-                            <constraint firstAttribute="trailing" secondItem="U7r-ph-hKY" secondAttribute="trailing" constant="8" id="dI7-Ma-1FX"/>
+                            <constraint firstAttribute="trailing" secondItem="U7r-ph-hKY" secondAttribute="trailing" id="dI7-Ma-1FX"/>
                             <constraint firstItem="0Os-aT-02h" firstAttribute="top" secondItem="zMw-ox-elN" secondAttribute="top" constant="8" id="jMa-xi-UIa"/>
                         </constraints>
                     </view>
