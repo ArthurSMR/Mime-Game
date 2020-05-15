@@ -21,6 +21,9 @@ class LoginNoRegisteredViewController: UIViewController {
     var avaliableAvatars: [UIImage] = []
     var currentSelectedAvatarIndex: Int = 0
     
+    var soundFXManager = SoundFX()
+    
+    
     /// Percentage factor of scaling.
     /// Used on calculating collectionView insets and cell size.
     let cellScaling: CGFloat = 0.5
@@ -126,6 +129,8 @@ class LoginNoRegisteredViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func confirmButtonDidPressed(_ sender: UIButton) {
+        
+        soundFXManager.playFX(named: "ClickButton")
         
         if DeepLink.shared.shouldNavigateToLobby {
             self.performSegue(withIdentifier: "goToRoomWithLink", sender: self)

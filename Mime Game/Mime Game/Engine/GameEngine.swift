@@ -35,6 +35,8 @@ class GameEngine {
     var selectableMimes: [Mime] = []
     var messages: [Message] = []
     
+    var soundFXManager = SoundFX()
+    
     init(localPlayer: Player, remotePlayers: [Player]) {
         
         let uids = [localPlayer.uid] + remotePlayers.map { $0.uid }
@@ -225,15 +227,17 @@ class GameEngine {
         
         let isCorrect = isMessegeCorrect(wordWritten: receivedMessage, currentMime: currentMimeWord, player: player)
         
-        if isCorrect {
-            givePoints(for: player)
-        }
         
         let message = Message(word: receivedMessage, player: player, isCorrect: isCorrect)
         
         self.messages.append(message)
         
         delegate?.didReceiveMessage()
+        
+        if isCorrect {
+            givePoints(for: player)
+            soundFXManager.playFX(named: "Mensagem_sistema")
+        }
     }
     
     /// This method will be called when the local player send a message, and check if it is correct or not
@@ -244,16 +248,17 @@ class GameEngine {
         
         let isCorrect = isMessegeCorrect(wordWritten: sentMessage, currentMime: currentMimeWord, player: self.game.localPlayer)
         
-        if isCorrect {
-            chooseCurrentMime(newTurn: false)
-            givePoints(for: self.game.localPlayer)
-        }
-        
         let message = Message(word: sentMessage, player: self.game.localPlayer, isCorrect: isCorrect)
         
         self.messages.append(message)
         
         delegate?.didSendMessage()
+        
+        if isCorrect {
+            chooseCurrentMime(newTurn: false)
+            givePoints(for: self.game.localPlayer)
+            soundFXManager.playFX(named: "Acerto_palavra")
+        }
     }
     
     /// This method will increase the points for determined player

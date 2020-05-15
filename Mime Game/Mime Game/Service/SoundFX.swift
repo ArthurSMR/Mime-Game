@@ -10,21 +10,16 @@ import UIKit
 import AVFoundation
 
 class SoundFX {
-    var audioPlayer: AVAudioPlayer
-    
-    init() {
-        self.audioPlayer = AVAudioPlayer()
-    }
     
     func playFX(named: String){
-        let path = Bundle.main.path(forResource: "\(named).mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-
+        
+        let url = Bundle.main.url(forResource: named, withExtension: "mp3", subdirectory: "SOUNDS_EFFECTS")!
+        
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            let audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer.play()
         } catch {
-            // couldn't load file :(
+            print("couldn't load file :(")
         }
-    
+    }
 }

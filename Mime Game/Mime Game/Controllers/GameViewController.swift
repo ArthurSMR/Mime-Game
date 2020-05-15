@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
     var seconds = 20
     var currentMime: Mime?
     var engine: GameEngine?
+    var soundFXManager = SoundFX()
     var chatStreamId = 3
     var currentMimeIndexStreamId = 4
     var nextMimickrStreamId = 5
@@ -76,6 +77,7 @@ class GameViewController: UIViewController {
         setupVideo()
         setupTableView()
         changeMuteButtonState()
+        soundFXManager.playFX(named: "EntrarJogo")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -286,6 +288,8 @@ class GameViewController: UIViewController {
     
     
     @IBAction func quitActionBtnAction(_ sender: Any) {
+        soundFXManager.playFX(named: "ClickButton")
+        
         self.agoraKit.leaveChannel()
         self.timer.invalidate()
         DeepLink.shared.shouldNavigateToLobby = false
@@ -293,22 +297,28 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
+        soundFXManager.playFX(named: "ClickButton")
+        
         isMuted = !isMuted
         self.changeMuteButtonState()
         self.agoraKit.muteLocalAudioStream(isMuted)
     }
     
     @IBAction func infoActionBtn(_ sender: UIButton) {
+        soundFXManager.playFX(named: "ClickButton")
+        
         self.performSegue(withIdentifier: "toDetail", sender: self)
     }
     
     @IBAction func reportBtn(_ sender: UIButton) {
+        soundFXManager.playFX(named: "ClickButton")
     }
     
     /// This method is called when the button did pressed, it will get the text on the text on text field and send stream
     /// messege to all player that are on the game.
     /// - Parameter sender: send messege button
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
+        soundFXManager.playFX(named: "ClickButton")
         
         guard let textWritten = textField.text else { return }
         guard let currentMimeWord = self.currentMime?.word else { return }
