@@ -23,6 +23,8 @@ class SelectRoomViewController: UIViewController {
     var selectedRoomAppId: String?
     var selectedRoomName: String?
     
+    var soundFXManager = SoundFX()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -90,8 +92,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.selectedRoomAppId = selectedCell.room?.appId
         self.selectedRoomName = selectedCell.nameLabel.text
+        soundFXManager.playFX(named: "Lobby")
         performSegue(withIdentifier: "toLobby", sender: self)
-        
-        
     }
 }

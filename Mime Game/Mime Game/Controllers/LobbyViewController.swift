@@ -36,7 +36,6 @@ class LobbyViewController: UIViewController {
     var localPlayer: Player!
     var remotePlayers: [Player] = []
     var startGame = Data("startGame".utf8)
-    
     var startGameStreamId = 1
     var avatarStreamId = 2
     
@@ -319,7 +318,6 @@ class LobbyViewController: UIViewController {
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
-        
         agoraKit.sendStreamMessage(self.startGameStreamId, data: startGame)
         self.performSegue(withIdentifier: "startGame", sender: self)
     }

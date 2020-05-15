@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 class LoginNoRegisteredViewController: UIViewController {
     
@@ -22,7 +21,6 @@ class LoginNoRegisteredViewController: UIViewController {
     var currentSelectedAvatarIndex: Int = 0
     
     var soundFXManager = SoundFX()
-    
     
     /// Percentage factor of scaling.
     /// Used on calculating collectionView insets and cell size.
@@ -130,11 +128,11 @@ class LoginNoRegisteredViewController: UIViewController {
     
     @IBAction func confirmButtonDidPressed(_ sender: UIButton) {
         
-        soundFXManager.playFX(named: "ClickButton")
-        
         if DeepLink.shared.shouldNavigateToLobby {
+            soundFXManager.playFX(named: "Lobby")
             self.performSegue(withIdentifier: "goToRoomWithLink", sender: self)
         } else {
+            soundFXManager.playFX(named: "ClickButton")
             self.performSegue(withIdentifier: "goToThemes", sender: self)
         }
     }

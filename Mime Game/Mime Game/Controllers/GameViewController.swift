@@ -60,6 +60,7 @@ class GameViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundFXManager.playFX(named: "EntrarJogo")
         engine?.delegate = self
         setupAgora()
         setupLayout()
@@ -77,7 +78,6 @@ class GameViewController: UIViewController {
         setupVideo()
         setupTableView()
         changeMuteButtonState()
-        soundFXManager.playFX(named: "EntrarJogo")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,6 +118,7 @@ class GameViewController: UIViewController {
     
     /// This method will draw a modal showing what is the next player and the next mime theme
     func drawPlayerModal() {
+        soundFXManager.playFX(named: "Notification")
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
         alert.gamerLabel.text = engine?.currentMimickr?.name
@@ -318,7 +319,6 @@ class GameViewController: UIViewController {
     /// messege to all player that are on the game.
     /// - Parameter sender: send messege button
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
-        soundFXManager.playFX(named: "ClickButton")
         
         guard let textWritten = textField.text else { return }
         guard let currentMimeWord = self.currentMime?.word else { return }

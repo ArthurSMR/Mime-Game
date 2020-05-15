@@ -11,13 +11,15 @@ import AVFoundation
 
 class SoundFX {
     
-    func playFX(named: String){
+    var audioPlayer: AVAudioPlayer?
+    
+    func playFX(named: String) {
         
-        let url = Bundle.main.url(forResource: named, withExtension: "mp3", subdirectory: "SOUNDS_EFFECTS")!
+        guard let url = Bundle.main.url(forResource: named, withExtension: "mp3", subdirectory: "SOUNDS_EFFECTS") else { return }
         
         do {
-            let audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer.play()
+            self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+            self.audioPlayer?.play()
         } catch {
             print("couldn't load file :(")
         }

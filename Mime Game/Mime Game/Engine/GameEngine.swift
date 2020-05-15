@@ -24,7 +24,7 @@ class GameEngine {
     //MARK: - Variables
     
     var game: Game
-    let totalTurnTime = 10
+    let totalTurnTime = 20
     var currentTurn = 0
     let startPlayer = 0
     let wordCategory: Theme = .general
@@ -95,6 +95,7 @@ class GameEngine {
             }
             // The next player is available to play
             if nextMimickr.uid == game.localPlayer.uid {
+                
                 self.currentMimickr = self.nextMimickr  // the queue goes on
                 chooseNextMimickr()
                 setToMimickr()
@@ -109,6 +110,8 @@ class GameEngine {
     
     /// This  method  choose the  current mime for the turn
     func chooseCurrentMime(newTurn: Bool) {
+        
+        
         
         // Check if there is selectable mimes
         validateSelectableMimes()
@@ -226,7 +229,6 @@ class GameEngine {
         let player = getPlayer(with: uid)
         
         let isCorrect = isMessegeCorrect(wordWritten: receivedMessage, currentMime: currentMimeWord, player: player)
-        
         
         let message = Message(word: receivedMessage, player: player, isCorrect: isCorrect)
         
