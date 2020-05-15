@@ -30,6 +30,9 @@
 		36BC0429243E1083005B753A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BC0428243E1083005B753A /* Assets.xcassets */; };
 		36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BC042A243E1083005B753A /* LaunchScreen.storyboard */; };
 		36BC0437243E1083005B753A /* Mime_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC0436243E1083005B753A /* Mime_GameTests.swift */; };
+		36CAA777246DC45500F4847B /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CAA776246DC45500F4847B /* DeepLink.swift */; };
+		36CAA779246E0E4F00F4847B /* URL+QueryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CAA778246E0E4F00F4847B /* URL+QueryParameters.swift */; };
+		36CAA77B246E18B600F4847B /* AppIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CAA77A246E18B600F4847B /* AppIDs.swift */; };
 		36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503442469D21A006022DC /* PlayerRankingTableViewCell.swift */; };
 		36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */; };
 		36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503482469D536006022DC /* MatchDetailsViewController.swift */; };
@@ -105,6 +108,9 @@
 		36BC0432243E1083005B753A /* Mime GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mime GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BC0436243E1083005B753A /* Mime_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime_GameTests.swift; sourceTree = "<group>"; };
 		36BC0438243E1083005B753A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36CAA776246DC45500F4847B /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		36CAA778246E0E4F00F4847B /* URL+QueryParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+QueryParameters.swift"; sourceTree = "<group>"; };
+		36CAA77A246E18B600F4847B /* AppIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIDs.swift; sourceTree = "<group>"; };
 		36E503442469D21A006022DC /* PlayerRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRankingTableViewCell.swift; sourceTree = "<group>"; };
 		36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerRankingTableViewCell.xib; sourceTree = "<group>"; };
 		36E503482469D536006022DC /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +306,7 @@
 				3C36CFC524508440003648AE /* UIColor+Extension.swift */,
 				3C36CFC424508440003648AE /* UITextField+Localization.swift */,
 				3C36CFC224508440003648AE /* UserDefaults+Extensions.swift */,
+				36CAA778246E0E4F00F4847B /* URL+QueryParameters.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -355,6 +362,8 @@
 				3C8926B124658C670029378E /* GoogleService-Info.plist */,
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
 				36BC041C243E1080005B753A /* AppDelegate.swift */,
+				36CAA77A246E18B600F4847B /* AppIDs.swift */,
+				36CAA776246DC45500F4847B /* DeepLink.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -650,6 +659,7 @@
 				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
 				9A4077352461B29E00DC4D82 /* Room.swift in Sources */,
 				3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */,
+				36CAA779246E0E4F00F4847B /* URL+QueryParameters.swift in Sources */,
 				3CE92CBB246C37DD007113DA /* RankingFinalViewController.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
@@ -657,6 +667,7 @@
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
 				9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */,
 				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
+				36CAA77B246E18B600F4847B /* AppIDs.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
 				3682147E2459B23200C6A254 /* Message.swift in Sources */,
 				36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */,
@@ -669,6 +680,7 @@
 				3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */,
 				3C36CFBE2450809F003648AE /* LobbyViewController.swift in Sources */,
 				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
+				36CAA777246DC45500F4847B /* DeepLink.swift in Sources */,
 				3C36CFD124508441003648AE /* UIColor+Extension.swift in Sources */,
 				360525432458A71600BEA330 /* ChatTableViewCell.swift in Sources */,
 				3C36CFCE24508441003648AE /* UserDefaults+Extensions.swift in Sources */,

@@ -12,12 +12,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        //LINK: mime://invite-mime-game?appID=973c32ecfb4e497a9024240f3126d67f&roomName=Sala-1
+        
+        for urlContext in connectionOptions.urlContexts {
+            let url = urlContext.url
+
+            guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
+
+            let host = urlComponents.host
+
+            if host == "invite-mime-game" {
+                DeepLink.shared.appID = url.getQueryStringParameter(url: url.absoluteString, param: "appID") ?? ""
+                DeepLink.shared.roomName = url.getQueryStringParameter(url: url.absoluteString, param: "roomName") ?? ""
+                
+                if DeepLink.shared.appID.isEmpty && DeepLink.shared.roomName.isEmpty {
+                    DeepLink.shared.shouldNavigateToLobby = false
+                } else {
+                    DeepLink.shared.shouldNavigateToLobby = true
+                }
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

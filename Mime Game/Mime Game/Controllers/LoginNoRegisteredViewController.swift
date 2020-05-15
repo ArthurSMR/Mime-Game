@@ -15,6 +15,8 @@ class LoginNoRegisteredViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameTextField: UITextField!
     
+    @IBOutlet weak var confirmButton: UIButton!
+    
     //MARK: Variables
     var avaliableAvatars: [UIImage] = []
     var currentSelectedAvatarIndex: Int = 0
@@ -22,17 +24,17 @@ class LoginNoRegisteredViewController: UIViewController {
     /// Percentage factor of scaling.
     /// Used on calculating collectionView insets and cell size.
     let cellScaling: CGFloat = 0.5
+    let roomsAppIds = AppIDs.shared.ids
     
     //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        validatingDeepLink()
         //Calculates AvatarCell visibility (review)
         OperationQueue.main.addOperation {
             self.collectionView.reloadData()
@@ -43,6 +45,19 @@ class LoginNoRegisteredViewController: UIViewController {
     }
     
     //MARK: Methods
+    
+    /// If the incoming  appID from  the link is valid and should navigate  to lobby, button is set as "Jogar"
+    /// and segue will directly to lobby.
+    /// Otherwise, it will set the common flow
+    func validatingDeepLink()  {
+        if roomsAppIds.contains(DeepLink.shared.appID) &&
+            DeepLink.shared.shouldNavigateToLobby {
+            confirmButton.setTitle("Jogar", for: .normal)
+        } else {
+            confirmButton.setTitle("Selecionar tema", for: .normal)
+        }
+    }
+    
     func setupLayout() {
         self.navigationController?.isNavigationBarHidden = true
         self.avaliableAvatars = LoginNoRegisteredViewController.createAvaliableAvatarsArray()
@@ -100,26 +115,56 @@ class LoginNoRegisteredViewController: UIViewController {
         }
     }
     
+    fileprivate func saveAvatarToUserDefault() {
+        /// Saves on UserDefaults
+        let noRegisteredUser = NoRegisteredPlayerCodable()
+        noRegisteredUser.userName = self.nameTextField.text ?? "UNI a.k.a Usuário não identificado"
+        noRegisteredUser.avatarIndex = self.currentSelectedAvatarIndex
+        UserServices.saveCurrentUser(user: noRegisteredUser)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func confirmButtonDidPressed(_ sender: UIButton) {
+        
+        if DeepLink.shared.shouldNavigateToLobby {
+            self.performSegue(withIdentifier: "goToRoomWithLink", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "goToThemes", sender: self)
+        }
+    }
+    
+    
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
-        case "playButtonSegue":
+        case "goToThemes":
             if let destinationVC = segue.destination as? SelectRoomViewController {
                 destinationVC.incomingName = self.nameTextField.text ?? "UNI a.k.a Usuário não identificado"
                 destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
                 destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
                 
-                /// Saves on UserDefaults
-                let noRegisteredUser = NoRegisteredPlayerCodable()
-                noRegisteredUser.userName = self.nameTextField.text ?? "UNI a.k.a Usuário não identificado"
-                noRegisteredUser.avatarIndex = self.currentSelectedAvatarIndex
-                UserServices.saveCurrentUser(user: noRegisteredUser)
+                saveAvatarToUserDefault()
             }
+        case "goToRoomWithLink":
+            if let destinationVC = segue.destination as? LobbyViewController {
+                destinationVC.incomingName = self.nameTextField.text ?? ""
+                destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
+                destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
+                destinationVC.roomNameStr = DeepLink.shared.roomName
+                destinationVC.AppID = DeepLink.shared.appID
+
+                saveAvatarToUserDefault()
+            }
+            
         default:
             print("No segue found")
         }
     }
+    
+    
 }
 
 //MARK: CollectionView

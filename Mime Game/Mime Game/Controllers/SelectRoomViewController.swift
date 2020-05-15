@@ -14,12 +14,7 @@ class SelectRoomViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: Variables
-    var roomsAppIds: [String] = ["973c32ecfb4e497a9024240f3126d67f",
-                                 "8bc5c63598e44fb4b1d225e428d989b1",
-                                 "4e590bda48e241eaae94e5bbe82c24f5",
-                                 "2e17ed61f4304738900d390f1822570d",
-                                 "c319e187413e4d95804246e3afb30612",
-                                 "82211513b49b434cb90b63ba7001c407"]
+    var roomsAppIds: [String] = AppIDs.shared.ids
     
     var incomingName: String?
     var incomingAvatar: UIImage?
