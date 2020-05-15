@@ -990,10 +990,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="477"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKi-DR-Pg5">
+                                <rect key="frame" x="27" y="128" width="63" height="29"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Frame 1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressExitLobbyBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="y4p-G7-gkP"/>
+                                    <action selector="exitBtnDidPress:" destination="ObD-HM-kOc" eventType="touchUpInside" id="Tep-9I-HeI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="yDn-wm-UsV" firstAttribute="leading" secondItem="wMC-AG-ZTh" secondAttribute="leading" id="0LI-eA-veX"/>
+                            <constraint firstItem="IKi-DR-Pg5" firstAttribute="top" secondItem="uQc-Mz-vkC" secondAttribute="top" constant="40" id="0uH-Fw-wfo"/>
                             <constraint firstItem="QEy-zK-4W1" firstAttribute="centerY" secondItem="wMC-AG-ZTh" secondAttribute="centerY" multiplier="1.2" id="1J4-Ej-ooK"/>
                             <constraint firstItem="yDn-wm-UsV" firstAttribute="trailing" secondItem="wMC-AG-ZTh" secondAttribute="trailing" id="2qR-sb-A7D"/>
                             <constraint firstItem="wMC-AG-ZTh" firstAttribute="top" secondItem="6qa-gF-k6v" secondAttribute="top" id="2rR-kb-y9b"/>
@@ -1005,6 +1022,7 @@
                             <constraint firstItem="niR-t8-Fdm" firstAttribute="leading" secondItem="uQc-Mz-vkC" secondAttribute="leading" id="FrP-if-KCW"/>
                             <constraint firstItem="97J-Zl-16E" firstAttribute="top" secondItem="wMC-AG-ZTh" secondAttribute="bottom" constant="-32" id="HTI-jx-sHF"/>
                             <constraint firstItem="bMv-oY-TjE" firstAttribute="centerX" secondItem="wMC-AG-ZTh" secondAttribute="centerX" multiplier="1.65" id="LLK-Y0-uMN"/>
+                            <constraint firstItem="IKi-DR-Pg5" firstAttribute="leading" secondItem="uQc-Mz-vkC" secondAttribute="leading" constant="27" id="N4J-LI-GK3"/>
                             <constraint firstItem="Xee-0A-PBP" firstAttribute="top" secondItem="97J-Zl-16E" secondAttribute="bottom" id="Njz-4D-XkN"/>
                             <constraint firstAttribute="trailing" secondItem="97J-Zl-16E" secondAttribute="trailing" id="ObK-dr-KCL"/>
                             <constraint firstItem="wMC-AG-ZTh" firstAttribute="height" secondItem="6qa-gF-k6v" secondAttribute="height" multiplier="0.532366" id="OeB-gg-Bt3"/>
@@ -1040,6 +1058,7 @@
                         <outlet property="thirdPoints" destination="1gs-r3-mlq" id="5d9-qK-cXa"/>
                         <outlet property="thirdStack" destination="bMv-oY-TjE" id="Sml-Fn-ba2"/>
                         <segue destination="BpT-7Z-JnC" kind="unwind" identifier="backToLobby" unwindAction="backToLobbyWith_segue:" id="mnx-O3-FLz"/>
+                        <segue destination="BpT-7Z-JnC" kind="unwind" identifier="backToLoginNoRegistered" unwindAction="backToLoginNoRegistered:" id="gN0-bz-B83"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFM-7s-JsZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

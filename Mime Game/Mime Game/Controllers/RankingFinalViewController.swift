@@ -75,7 +75,13 @@ class RankingFinalViewController: UIViewController {
         thirdPoints.text = String(sortedPlayers[2].points) + "pts"
         thirdStack.alpha = 1.0
     }
+    
+    //MARK: - Actions
 
+    @IBAction func exitBtnDidPress(_ sender: Any) {
+        performSegue(withIdentifier: "backToLoginNoRegistered", sender: nil)
+    }
+    
     @IBAction func playAgainBtnDidPress(_ sender: Any) {
         performSegue(withIdentifier: "backToLobby", sender: nil)
     }
