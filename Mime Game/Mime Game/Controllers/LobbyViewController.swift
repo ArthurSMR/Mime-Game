@@ -26,6 +26,7 @@ class LobbyViewController: UIViewController {
     var currentAvatarIndex: Int = 0
     var roomNameStr: String?
     var totalPlayers = 10
+    let message = "Venha jogar Mimiqueiros comigo 🎭"
 
     private var agoraKit: AgoraRtcEngineKit!
     var AppID: String = ""
@@ -162,12 +163,24 @@ class LobbyViewController: UIViewController {
         self.playersQuantityLbl.text = "\(playerQuantity)/\(self.totalPlayers)"
     }
     
-    func shareRoom(with shareText: String) {
-        // criar link
-//        let shareContent: [Any] = [shareText, url]
-//        let activityController = UIActivityViewController(activityItems: shareContent,
-//                                                          applicationActivities: nil)
-//        self.present(activityController, animated: true, completion: nil)
+    /// This method will create a message  and a link to share with activityController
+    func shareLink() {
+        
+        guard let roomName = self.roomNameStr else { return }
+        
+        //Enconding room name as url and with query allowed
+        guard let roomNameAsURL = roomName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        
+        // Link example:
+        // mime://invite-mime-game?appID=973c32ecfb4e497a9024240f3126d67f&roomName=Sala-1
+        let openAppPath = "mime://invite-mime-game?appID=\(self.AppID)&roomName=\(roomNameAsURL)"
+        
+        guard let appURL = URL(string: openAppPath) else { return }
+        
+        let shareContent: [Any] = [message, appURL]
+        let activityController = UIActivityViewController(activityItems: shareContent,
+                                                          applicationActivities: nil)
+        self.present(activityController, animated: true, completion: nil)
     }
     
     // MARK: Players setup
@@ -273,33 +286,13 @@ class LobbyViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func didPressExitLobbyBtn(_ sender: UIButton) {
-        
         self.leaveChannel()
+        DeepLink.shared.shouldNavigateToLobby = false
         pop(animated: true)
     }
     
     @IBAction func didPressShareRoom(_ sender: UIButton) {
-        let message = "Venha jogar Mimiqueiros comigo 🎭"
-        shareLink(with: message)
-    }
-    
-    func shareLink(with message: String) {
-        
-        guard let roomName = self.roomNameStr else { return }
-        
-        //Enconding room name as url and with query allowed
-        guard let roomNameAsURL = roomName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        
-        // Link example:
-        // mime://invite-mime-game?appID=973c32ecfb4e497a9024240f3126d67f&roomName=Sala-1
-        let openAppPath = "mime://invite-mime-game?appID=\(self.AppID)&roomName=\(roomNameAsURL)"
-        
-        guard let appURL = URL(string: openAppPath) else { return }
-        
-        let shareContent: [Any] = [message, appURL]
-        let activityController = UIActivityViewController(activityItems: shareContent,
-                                                          applicationActivities: nil)
-        self.present(activityController, animated: true, completion: nil)
+        shareLink()
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
@@ -309,7 +302,6 @@ class LobbyViewController: UIViewController {
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
-        
         isMuted = !isMuted
         agoraKit.muteLocalAudioStream(isMuted)
     }
@@ -319,12 +311,6 @@ class LobbyViewController: UIViewController {
         
         if segue.identifier == "startGame" {
             if let gameVC = segue.destination as? GameViewController {
-//                let game = Game(localPlayer: self.localPlayer,
-//                                players: self.remotePlayers,
-//                                uids: self.UIDs,
-//                                totalTime: 10,
-//                                currentPlayer: 0,
-//                                wordCategory: .general)
                 let gameEngine = GameEngine(localPlayer: self.localPlayer, remotePlayers: self.remotePlayers)
                 gameVC.agoraKit = agoraKit
                 gameVC.engine = gameEngine
