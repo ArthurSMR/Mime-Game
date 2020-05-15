@@ -277,26 +277,29 @@ class LobbyViewController: UIViewController {
         self.leaveChannel()
         pop(animated: true)
     }
+    
     @IBAction func didPressShareRoom(_ sender: UIButton) {
-        // room name
-        // app id
-        // text
-//        let shareText = "Venha jogar Mimiqueiros comigo 🎭"
-//        self.shareRoom(with: shareText)
+        let message = "Venha jogar Mimiqueiros comigo 🎭"
+        shareLink(with: message)
+    }
+    
+    func shareLink(with message: String) {
         
-        let message = "Venha jogar Mimiqueiros comigo".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let roomName = self.roomNameStr else { return }
         
-        let application = UIApplication.shared
+        //Enconding room name as url and with query allowed
+        guard let roomNameAsURL = roomName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         
-        let openAppPath = "letsplay://appId=\(self.AppID)"
+        // Link example:
+        // mime://invite-mime-game?appID=973c32ecfb4e497a9024240f3126d67f&roomName=Sala-1
+        let openAppPath = "mime://invite-mime-game?appID=\(self.AppID)&roomName=\(roomNameAsURL)"
         
         guard let appURL = URL(string: openAppPath) else { return }
         
-        if application.canOpenURL(appURL) {
-            application.open(appURL, options: [:], completionHandler: nil)
-        } else {
-            print("else")
-        }
+        let shareContent: [Any] = [message, appURL]
+        let activityController = UIActivityViewController(activityItems: shareContent,
+                                                          applicationActivities: nil)
+        self.present(activityController, animated: true, completion: nil)
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
