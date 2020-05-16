@@ -44,46 +44,46 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CHR-7B-Gxn">
-                                        <rect key="frame" x="32" y="8" width="275" height="73"/>
+                                        <rect key="frame" x="32" y="8" width="243" height="73"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome SALA  A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TP-Hd-QxI">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="36"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <color key="textColor" name="Azul mais escuro"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jogadores:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYG-Dq-SSo">
-                                                <rect key="frame" x="0.0" y="44" width="275" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <color key="textColor" name="Azul mais escuro"/>
+                                                <rect key="frame" x="0.0" y="44" width="243" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quadro-pessoas" translatesAutoresizingMaskIntoConstraints="NO" id="Tii-bV-uF4">
-                                        <rect key="frame" x="323" y="8" width="75" height="32"/>
+                                        <rect key="frame" x="323" y="50.5" width="75" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tii-bV-uF4" secondAttribute="height" multiplier="75:32" id="nFJ-aO-VXC"/>
                                             <constraint firstAttribute="height" constant="32" id="zDU-lx-We5"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-Ru-8iz">
-                                        <rect key="frame" x="353" y="8" width="33" height="32"/>
+                                        <rect key="frame" x="353.5" y="58" width="28.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="Rosa respostas"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icone_pessoas" translatesAutoresizingMaskIntoConstraints="NO" id="CmD-mW-yGw">
-                                        <rect key="frame" x="333" y="8" width="15" height="32"/>
+                                        <rect key="frame" x="333" y="50.5" width="15" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="QvX-6h-yDz"/>
                                             <constraint firstAttribute="height" constant="32" id="rMJ-LO-kRE"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-qo-iY1">
-                                        <rect key="frame" x="317" y="48" width="90" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Compartilhar"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-qo-iY1">
+                                        <rect key="frame" x="284" y="10" width="114" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Compartilhar" backgroundImage="Button_compartilhar"/>
                                         <connections>
                                             <action selector="didPressShareRoom:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="dSa-ct-8aC"/>
                                         </connections>
@@ -91,21 +91,22 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="jyC-qo-iY1" firstAttribute="centerY" secondItem="1TP-Hd-QxI" secondAttribute="centerY" id="0Um-02-6s2"/>
                                     <constraint firstItem="ptJ-XD-LZv" firstAttribute="top" secondItem="CHR-7B-Gxn" secondAttribute="bottom" constant="8" id="1nm-IA-Nln"/>
-                                    <constraint firstItem="yHO-Ru-8iz" firstAttribute="leading" secondItem="CmD-mW-yGw" secondAttribute="trailing" constant="5" id="2C2-At-R5A"/>
                                     <constraint firstAttribute="trailing" secondItem="ptJ-XD-LZv" secondAttribute="trailing" id="4Ky-OX-43x"/>
                                     <constraint firstAttribute="height" constant="320" id="4pu-JL-tM1"/>
+                                    <constraint firstItem="yHO-Ru-8iz" firstAttribute="trailing" secondItem="Tii-bV-uF4" secondAttribute="trailing" constant="-16" id="5Z2-9U-tTb"/>
                                     <constraint firstAttribute="bottom" secondItem="ptJ-XD-LZv" secondAttribute="bottom" id="7EG-E3-CAh"/>
                                     <constraint firstItem="CHR-7B-Gxn" firstAttribute="leading" secondItem="cVy-dd-be5" secondAttribute="leading" constant="32" id="DrO-ak-wtr"/>
-                                    <constraint firstItem="yHO-Ru-8iz" firstAttribute="bottom" secondItem="Tii-bV-uF4" secondAttribute="bottom" id="Heo-TY-0aq"/>
-                                    <constraint firstItem="Tii-bV-uF4" firstAttribute="leading" secondItem="CHR-7B-Gxn" secondAttribute="trailing" constant="16" id="NJc-cm-YR9"/>
-                                    <constraint firstItem="yHO-Ru-8iz" firstAttribute="trailing" secondItem="Tii-bV-uF4" secondAttribute="trailing" constant="-12" id="OJ5-fB-S7q"/>
+                                    <constraint firstAttribute="trailing" secondItem="jyC-qo-iY1" secondAttribute="trailing" constant="16" id="MkC-TB-kdq"/>
+                                    <constraint firstItem="Tii-bV-uF4" firstAttribute="leading" secondItem="CHR-7B-Gxn" secondAttribute="trailing" constant="48" id="NJc-cm-YR9"/>
+                                    <constraint firstItem="yHO-Ru-8iz" firstAttribute="centerY" secondItem="Tii-bV-uF4" secondAttribute="centerY" id="T5i-08-gJd"/>
                                     <constraint firstItem="CmD-mW-yGw" firstAttribute="bottom" secondItem="Tii-bV-uF4" secondAttribute="bottom" id="Vdv-24-3lv"/>
+                                    <constraint firstItem="Tii-bV-uF4" firstAttribute="centerY" secondItem="JYG-Dq-SSo" secondAttribute="centerY" id="btO-Sk-FIQ"/>
                                     <constraint firstItem="ptJ-XD-LZv" firstAttribute="leading" secondItem="cVy-dd-be5" secondAttribute="leading" id="dVP-1M-7BR"/>
                                     <constraint firstItem="CHR-7B-Gxn" firstAttribute="top" secondItem="cVy-dd-be5" secondAttribute="top" constant="8" id="eiz-6W-5ns"/>
-                                    <constraint firstItem="yHO-Ru-8iz" firstAttribute="top" secondItem="Tii-bV-uF4" secondAttribute="top" id="guX-kv-eQK"/>
+                                    <constraint firstItem="jyC-qo-iY1" firstAttribute="trailing" secondItem="Tii-bV-uF4" secondAttribute="trailing" id="kHG-qE-ujM"/>
                                     <constraint firstItem="CmD-mW-yGw" firstAttribute="leading" secondItem="Tii-bV-uF4" secondAttribute="leading" constant="10" id="lP3-Pc-GVz"/>
-                                    <constraint firstItem="Tii-bV-uF4" firstAttribute="top" secondItem="cVy-dd-be5" secondAttribute="top" constant="8" id="m1N-Ba-cBI"/>
                                     <constraint firstItem="CmD-mW-yGw" firstAttribute="top" secondItem="Tii-bV-uF4" secondAttribute="top" id="mgW-wT-F0o"/>
                                     <constraint firstAttribute="trailing" secondItem="Tii-bV-uF4" secondAttribute="trailing" constant="16" id="t1g-KW-GJL"/>
                                 </constraints>
@@ -1420,6 +1421,7 @@
         <image name="Button_Cancelar" width="215" height="55"/>
         <image name="Button_SelecionarTema" width="215" height="55"/>
         <image name="Button_Send" width="30" height="30"/>
+        <image name="Button_compartilhar" width="114" height="32"/>
         <image name="Exit" width="35" height="39"/>
         <image name="ExitModal" width="35" height="35"/>
         <image name="Frame 1" width="63" height="29"/>
