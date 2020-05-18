@@ -1,7 +1,7 @@
 {
   "themes": [
     {
-      "theme": "Aleatorio",
+      "name": "Geral",
       "words": [
         "Bailarina",
         "Estátua",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "theme": "Filmes",
+      "name": "Filme",
       "words": [
         "O Poderoso Chefão",
         "Pulp Fiction",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "theme": "Animais",
+      "name": "Animal",
       "words": [
         "Borboleta",
         "Cavalo",
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "theme": "Profissões",
+      "name": "Profissão",
       "words": [
         "Administrador",
         "Arquiteto",

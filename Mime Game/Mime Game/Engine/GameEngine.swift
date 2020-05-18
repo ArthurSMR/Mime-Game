@@ -27,7 +27,6 @@ class GameEngine {
     let totalTurnTime = 20
     var currentTurn = 0
     let startPlayer = 0
-    let wordCategory: Theme = .general
     var delegate: GameEngineDelegate?
     var currentMimickr: Player?
     var nextMimickr: Player?
@@ -41,7 +40,7 @@ class GameEngine {
         
         let uids = [localPlayer.uid] + remotePlayers.map { $0.uid }
         
-        self.game = Game(localPlayer: localPlayer, players: remotePlayers, uids: uids, totalTime: self.totalTurnTime, currentPlayer: self.startPlayer, wordCategory: self.wordCategory, messages: self.messages)
+        self.game = Game(localPlayer: localPlayer, players: remotePlayers, uids: uids, totalTime: self.totalTurnTime, currentPlayer: self.startPlayer, messages: self.messages)
     }
     
     /// This method is to setup all the game configurations before it starts
@@ -54,7 +53,7 @@ class GameEngine {
     /// - Parameter completion: completion when the fetch is completed
     func fetchMimes(completion: @escaping() -> Void) {
         
-        MimeServices.fetchMimes(for: game.wordCategory, completion: { (mimes, error) in
+        MimeServices.fetchMimes(completion: { (mimes, error) in
             if let error = error {
                 print(error)
             } else {

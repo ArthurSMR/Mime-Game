@@ -122,7 +122,7 @@ class GameViewController: UIViewController {
         guard let alert = DrawPlayer.create() else { return }
         alert.delegate = self
         alert.gamerLabel.text = engine?.currentMimickr?.name
-        alert.themeLabel.text = self.currentMime?.theme.rawValue
+        alert.themeLabel.text = self.currentMime?.theme
         alert.imageGame.image = engine?.currentMimickr?.avatar
         alert.show(animated: true)
         alert.runTimer()
@@ -205,8 +205,8 @@ class GameViewController: UIViewController {
     
     private func updateMimeLabel(currentMime: Mime) {
         self.currentMime = currentMime
-        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme.rawValue ?? "")"
-        self.wordLbl.text = "\(self.currentMime?.word ?? "")"
+        self.wordThemeLbl.text = "Tema: \(self.currentMime?.theme ?? "")"
+        self.wordLbl.text = "\(self.currentMime?.name ?? "")"
     }
     
     /// This method is to reload and scroll to bottom the diviner and mimickr tableView
@@ -321,7 +321,7 @@ class GameViewController: UIViewController {
     @IBAction func sendMsgBtnDidPressed(_ sender: UIButton) {
         
         guard let textWritten = textField.text else { return }
-        guard let currentMimeWord = self.currentMime?.word else { return }
+        guard let currentMimeWord = self.currentMime?.name else { return }
         
         let sendMessege = Data(textWritten.utf8)
         agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
@@ -366,7 +366,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
             
             let decodedMessage = String(decoding: data, as: UTF8.self)
             
-            guard let currentMimeWord = self.currentMime?.word else { return }
+            guard let currentMimeWord = self.currentMime?.name else { return }
             
             self.engine?.setReceivedMessage(receivedMessage: decodedMessage, currentMimeWord: currentMimeWord, receivedMessegeFrom: uid)
             
