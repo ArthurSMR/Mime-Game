@@ -24,7 +24,7 @@ class GameEngine {
     //MARK: - Variables
     
     var game: Game
-    let totalTurnTime = 20
+    let totalTurnTime = 60
     var currentTurn = 0
     let startPlayer = 0
     var delegate: GameEngineDelegate?
