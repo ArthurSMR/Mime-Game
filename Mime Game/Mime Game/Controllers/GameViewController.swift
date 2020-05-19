@@ -104,6 +104,7 @@ class GameViewController: UIViewController {
         guard let divinerTable = divinerTableView else { return }
         ChatTableViewCell.registerNib(for: divinerTable)
         MessageSystemGameTableViewCell.registerNib(for: divinerTable)
+        CorrectMimeTableViewCell.registerNib(for: divinerTable)
         
         // Setting up mimickr tableView
         mimickrTableView.delegate = self
@@ -111,6 +112,7 @@ class GameViewController: UIViewController {
         guard let mimickrTable = mimickrTableView else { return }
         ChatTableViewCell.registerNib(for: mimickrTable)
         MessageSystemGameTableViewCell.registerNib(for: mimickrTable)
+        CorrectMimeTableViewCell.registerNib(for: mimickrTable)
     }
     
     //MARK: Draw Modals
@@ -190,7 +192,8 @@ class GameViewController: UIViewController {
         if self.seconds == 0 {
             self.timer.invalidate()
             textField.resignFirstResponder()
-            engine?.startTurn()
+            showLastMime()
+            self.engine?.startTurn()
         }
         self.timerMimickr.text = "\(self.seconds)s"
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
@@ -215,6 +218,12 @@ class GameViewController: UIViewController {
         self.divinerTableView.scrollToBottom()
         self.mimickrTableView.reloadData()
         self.mimickrTableView.scrollToBottom()
+    }
+    
+    /// This method will call showCorrectMime at Game Engine to show the last mime
+    func showLastMime() {
+        guard let lastMime = self.currentMime else { return }
+        self.engine?.showCorrectMime(lastMime: lastMime)
     }
     
     
@@ -340,6 +349,13 @@ extension GameViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let message = self.engine?.messages[indexPath.row] else { return UITableViewCell() }
+        
+        if message.showCorrectMime {
+            let cell = CorrectMimeTableViewCell.dequeueCell(from: tableView)
+            
+            cell.correctMime.text = "Resposta correta: \(message.word)"
+            return cell
+        }
         
         if message.isCorrect {
             let cell = MessageSystemGameTableViewCell.dequeueCell(from: tableView)

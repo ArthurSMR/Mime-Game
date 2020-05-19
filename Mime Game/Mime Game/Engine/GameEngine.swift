@@ -33,7 +33,7 @@ class GameEngine {
     var mimes: [Mime] = []
     var selectableMimes: [Mime] = []
     var messages: [Message] = []
-    
+    var chosenMimes: [Mime] = []
     var soundFXManager = SoundFX()
     
     init(localPlayer: Player, remotePlayers: [Player]) {
@@ -110,8 +110,6 @@ class GameEngine {
     /// This  method  choose the  current mime for the turn
     func chooseCurrentMime(newTurn: Bool) {
         
-        
-        
         // Check if there is selectable mimes
         validateSelectableMimes()
         
@@ -121,6 +119,7 @@ class GameEngine {
         
         // we have chosen a mime, so we can remove it from the selectableMimes
         self.selectableMimes.remove(at: selectedMimeIndex)
+        
         delegate?.setupChooseCurrentMime(currentMime: selectedMime, isNewTurn: newTurn, mimeIndex: selectedMimeIndex)
     }
     
@@ -216,6 +215,12 @@ class GameEngine {
         }
     }
     
+    /// This method will increase the points for determined player
+    /// - Parameter player: player that scored
+    func givePoints(for player: Player) {
+        player.points += 10
+    }
+    
     //MARK: - Messages configuration
     
     /// This method set the received message with the player who sent it and if it is correct or not
@@ -262,10 +267,15 @@ class GameEngine {
         }
     }
     
-    /// This method will increase the points for determined player
-    /// - Parameter player: player that scored
-    func givePoints(for player: Player) {
-        player.points += 10
+    /// This method is to create a message as the right last mime
+    /// - Parameter lastMime: the last mime that the turn ended
+    func showCorrectMime(lastMime: Mime) {
+        
+        let correctMime = Message(word: lastMime.name, player: Player(), isCorrect: false, showCorrectMime: true)
+    
+        self.messages.append(correctMime)
+        
+        delegate?.didReceiveMessage()
     }
     
     // MARK: - Validators

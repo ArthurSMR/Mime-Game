@@ -35,6 +35,8 @@
 		36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */; };
 		36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503482469D536006022DC /* MatchDetailsViewController.swift */; };
 		36F0F78F246F0F5400E36B14 /* acerto_palavra.json in Resources */ = {isa = PBXBuildFile; fileRef = 36F0F78E246F0F5400E36B14 /* acerto_palavra.json */; };
+		36FAC5F22474231E00A87ED6 /* CorrectMimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FAC5F02474231E00A87ED6 /* CorrectMimeTableViewCell.swift */; };
+		36FAC5F32474231E00A87ED6 /* CorrectMimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FAC5F12474231E00A87ED6 /* CorrectMimeTableViewCell.xib */; };
 		3C09D64D24570D0300849B83 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D63A24570D0300849B83 /* Modal.swift */; };
 		3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D65724570DA900849B83 /* DrawPlayer.swift */; };
 		3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65924570DB400849B83 /* DrawPlayer.xib */; };
@@ -114,6 +116,8 @@
 		36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerRankingTableViewCell.xib; sourceTree = "<group>"; };
 		36E503482469D536006022DC /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
 		36F0F78E246F0F5400E36B14 /* acerto_palavra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acerto_palavra.json; sourceTree = "<group>"; };
+		36FAC5F02474231E00A87ED6 /* CorrectMimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectMimeTableViewCell.swift; sourceTree = "<group>"; };
+		36FAC5F12474231E00A87ED6 /* CorrectMimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectMimeTableViewCell.xib; sourceTree = "<group>"; };
 		3C09D63A24570D0300849B83 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		3C09D65724570DA900849B83 /* DrawPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawPlayer.swift; sourceTree = "<group>"; };
 		3C09D65924570DB400849B83 /* DrawPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawPlayer.xib; sourceTree = "<group>"; };
@@ -265,6 +269,15 @@
 			path = PlayerRankingCell;
 			sourceTree = "<group>";
 		};
+		36FAC5EF247422FD00A87ED6 /* CorrectMime */ = {
+			isa = PBXGroup;
+			children = (
+				36FAC5F02474231E00A87ED6 /* CorrectMimeTableViewCell.swift */,
+				36FAC5F12474231E00A87ED6 /* CorrectMimeTableViewCell.xib */,
+			);
+			path = CorrectMime;
+			sourceTree = "<group>";
+		};
 		3C09D63024570D0300849B83 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +407,7 @@
 		9A13FB08244EA0D600A74F6F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				36FAC5EF247422FD00A87ED6 /* CorrectMime */,
 				36E503432469D1F8006022DC /* PlayerRankingCell */,
 				3CFD2FE02461AF2400AE3926 /* SelectRoomCell */,
 				3C55358D245BAB9A00422CE0 /* MessageSystemGame */,
@@ -544,6 +558,7 @@
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
 				3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
+				36FAC5F32474231E00A87ED6 /* CorrectMimeTableViewCell.xib in Resources */,
 				368214862459F92E00C6A254 /* Lobby.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +662,7 @@
 				3C36CFE124508617003648AE /* ReusableCells.swift in Sources */,
 				365411C7246B11E600F1F63E /* MimeMessage.swift in Sources */,
 				36BC0421243E1080005B753A /* ViewController.swift in Sources */,
+				36FAC5F22474231E00A87ED6 /* CorrectMimeTableViewCell.swift in Sources */,
 				3C09D65D2457128000849B83 /* ModalTip.swift in Sources */,
 				9AD2610C2457A6CA00E449A4 /* AvatarCell.swift in Sources */,
 				36BC041D243E1080005B753A /* AppDelegate.swift in Sources */,

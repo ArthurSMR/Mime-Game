@@ -12,11 +12,20 @@ class Message {
     var word: String
     var player: Player
     var isCorrect: Bool
+    var showCorrectMime: Bool
     
     init(word: String, player: Player, isCorrect: Bool) {
         self.word = word
         self.player = player
         self.isCorrect = isCorrect
+        self.showCorrectMime = false
+    }
+    
+    init(word: String, player: Player, isCorrect: Bool, showCorrectMime: Bool) {
+        self.word = word
+        self.player = player
+        self.isCorrect = isCorrect
+        self.showCorrectMime = showCorrectMime
     }
     
 }
