@@ -381,6 +381,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
                 if mime.isNewRound {
                     OperationQueue.main.addOperation {
                         self.engine?.setCurrentMimickr(player: uid)
+                        self.setupRemotePlayer()
                         self.drawPlayerModal()
                     }
                 }
@@ -440,7 +441,6 @@ extension GameViewController : GameEngineDelegate {
     func setupToDiviner() {
         self.agoraKit.enableLocalVideo(false)
         self.isMimickrView = false
-        self.setupRemotePlayer()
     }
     
     func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int) {
