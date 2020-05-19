@@ -35,6 +35,7 @@
 		36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */; };
 		36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503482469D536006022DC /* MatchDetailsViewController.swift */; };
 		36F0F78F246F0F5400E36B14 /* acerto_palavra.json in Resources */ = {isa = PBXBuildFile; fileRef = 36F0F78E246F0F5400E36B14 /* acerto_palavra.json */; };
+		36FAC5F9247467BC00A87ED6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FAC5F8247467BC00A87ED6 /* CloudKit.framework */; };
 		3C09D64D24570D0300849B83 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D63A24570D0300849B83 /* Modal.swift */; };
 		3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D65724570DA900849B83 /* DrawPlayer.swift */; };
 		3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65924570DB400849B83 /* DrawPlayer.xib */; };
@@ -114,6 +115,8 @@
 		36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerRankingTableViewCell.xib; sourceTree = "<group>"; };
 		36E503482469D536006022DC /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
 		36F0F78E246F0F5400E36B14 /* acerto_palavra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acerto_palavra.json; sourceTree = "<group>"; };
+		36FAC5F7247467B900A87ED6 /* Mime Game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Mime Game.entitlements"; sourceTree = "<group>"; };
+		36FAC5F8247467BC00A87ED6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3C09D63A24570D0300849B83 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		3C09D65724570DA900849B83 /* DrawPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawPlayer.swift; sourceTree = "<group>"; };
 		3C09D65924570DB400849B83 /* DrawPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawPlayer.xib; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */,
+				36FAC5F9247467BC00A87ED6 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +237,7 @@
 		36BC041B243E1080005B753A /* Mime Game */ = {
 			isa = PBXGroup;
 			children = (
+				36FAC5F7247467B900A87ED6 /* Mime Game.entitlements */,
 				362F9BED246472F3008BE949 /* Engine */,
 				3695A91D24524FE600815617 /* Service */,
 				36A8F93724508A9D008D0FD3 /* Models */,
@@ -438,6 +443,7 @@
 		C08ADCE8D6EA85BB448FFF3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36FAC5F8247467BC00A87ED6 /* CloudKit.framework */,
 				8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */,
 				513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */,
 			);
@@ -844,6 +850,7 @@
 			baseConfigurationReference = 88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mime Game/Mime Game.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -866,6 +873,7 @@
 			baseConfigurationReference = 2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mime Game/Mime Game.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9KU377264X;
