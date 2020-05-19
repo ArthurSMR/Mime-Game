@@ -52,6 +52,9 @@ class LobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        let app = UIApplication.shared.delegate as! AppDelegate
+        app.requestCameraPermisson()
+        app.requestMicrophonePermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {

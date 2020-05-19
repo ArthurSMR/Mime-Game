@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.setup()
+        
         return true
     }
 
@@ -85,6 +87,24 @@ extension AppDelegate {
     func setup() {
         //KEYBOARD LISTENER
         IQKeyboardManager.shared.enable = true
+    }
+    
+    func requestMicrophonePermission() {
+        try? AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        AVAudioSession.sharedInstance().requestRecordPermission() { allowed in print("audio: \(allowed)") }
+    }
+    
+    func requestCameraPermisson() {
+        
+        //Camera
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+            if response {
+                //access granted
+            } else {
+
+            }
+        }
     }
 }
 
