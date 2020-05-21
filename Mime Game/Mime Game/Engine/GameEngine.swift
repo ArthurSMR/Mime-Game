@@ -17,6 +17,7 @@ protocol GameEngineDelegate: class {
     func didSendMessage()
     func didReceiveMessage()
     func endGame()
+    func startTurn()
 }
 
 class GameEngine {
@@ -71,38 +72,51 @@ class GameEngine {
         game.uids = game.uids.sorted() //the first uid will be the first mimickr
         guard let firstUidSorted = game.uids.first else { return }
         self.nextMimickr = getPlayer(with: firstUidSorted)
+        self.currentMimickr = getPlayer(with: firstUidSorted)
         game.selectablePlayersWithUid = game.uids
         self.game.selectablePlayersWithUid.removeFirst()
         self.game.localPlayer.type = .diviner
         delegate?.setupStartGame()
     }
     
+    func mimickrStartTurn() {
+        
+        // Mimickr start next turn
+        if currentMimickr?.uid == game.localPlayer.uid {
+            if canStartTurn() {
+                delegate?.startTurn()
+                self.startTurn()
+            }
+        }
+    }
+    
     /// This method start the turn setting to mimickr or diviner a player
     func startTurn() {
+        
+        print("vrau: startTurn")
         
         self.currentTurn += 1
         
         // Validate if we can start the turn
-        if canStartTurn() {
+        
+        guard let nextMimickr = self.nextMimickr else { return }
+        
+        //            // Validade if the next player is unavailable
+        //            if nextMimickr.type == .unavailable { // Testar com mais pessoas numa partida...
+        //                chooseNextMimickr()
+        //                startTurn()
+        //            }
+        // The next player is available to play
+        if nextMimickr.uid == game.localPlayer.uid {
             
-            guard let nextMimickr = self.nextMimickr else { return }
-            
-            // Validade if the next player is unavailable
-            if nextMimickr.type == .unavailable { // Testar com mais pessoas numa partida...
-                chooseNextMimickr()
-                startTurn()
-            }
-            // The next player is available to play
-            if nextMimickr.uid == game.localPlayer.uid {
-                
-                self.currentMimickr = self.nextMimickr  // the queue goes on
-                chooseNextMimickr()
-                setToMimickr()
-            } else {
-                self.game.localPlayer.type = .diviner
-                delegate?.setupToDiviner()
-            }
+            self.currentMimickr = self.nextMimickr  // the queue goes on
+            chooseNextMimickr()
+            setToMimickr()
+        } else {
+            self.game.localPlayer.type = .diviner
+            delegate?.setupToDiviner()
         }
+        
     }
     
     //MARK: - Mimes configuration
@@ -183,7 +197,6 @@ class GameEngine {
         validateSelectablePlayers()
         createNextMimickr(selectedNextPlayerIndex)
     }
-    
     
     /// This method set the current mimickr with uid received
     /// - Parameters:
@@ -272,7 +285,7 @@ class GameEngine {
     func showCorrectMime(lastMime: Mime) {
         
         let correctMime = Message(word: lastMime.name, player: Player(), isCorrect: false, showCorrectMime: true)
-    
+        
         self.messages.append(correctMime)
         
         delegate?.didReceiveMessage()

@@ -39,12 +39,13 @@ class GameViewController: UIViewController {
     var currentMime: Mime?
     var engine: GameEngine?
     var soundFXManager = SoundFX()
-    var chatStreamId = 3
-    var currentMimeIndexStreamId = 4
-    var nextMimickrStreamId = 5
+    var messageStreamId = 3
+//    var chatStreamId = 3
+//    var currentMimeIndexStreamId = 4
+//    var nextMimickrStreamId = 5
+//    var startTurnStreamId = 6
     var segueToRankingFinal = "toRankingFinal"
     var segueToRankingFinalData = Data("toRankingFinal".utf8)
-    
     var isMuted: Bool = false
     
     var isMimickrView: Bool = false {
@@ -151,18 +152,8 @@ class GameViewController: UIViewController {
     // MARK: - Agora settings
     func setupAgora() {
         agoraKit.delegate = self
-        let numberPointer = UnsafeMutablePointer<Int>(&chatStreamId)
-        agoraKit.createDataStream(numberPointer ,
-                                  reliable: true,
-                                  ordered: true)
-        
-        let indexNumberPointer = UnsafeMutablePointer<Int>(&currentMimeIndexStreamId)
-        agoraKit.createDataStream(indexNumberPointer,
-                                  reliable: true,
-                                  ordered: true)
-        
-        let indexPlayerNumberPointer = UnsafeMutablePointer<Int>(&nextMimickrStreamId)
-        agoraKit.createDataStream(indexPlayerNumberPointer,
+        let numberPointer = UnsafeMutablePointer<Int>(&messageStreamId)
+        agoraKit.createDataStream(numberPointer,
                                   reliable: true,
                                   ordered: true)
     }
@@ -193,7 +184,7 @@ class GameViewController: UIViewController {
             self.timer.invalidate()
             textField.resignFirstResponder()
             showLastMime()
-            self.engine?.startTurn()
+            self.engine?.mimickrStartTurn()
         }
         self.timerMimickr.text = "\(self.seconds)s"
         self.timerLabel.text = "\(self.seconds)s" //This will update the label.
@@ -332,8 +323,13 @@ class GameViewController: UIViewController {
         guard let textWritten = textField.text else { return }
         guard let currentMimeWord = self.currentMime?.name else { return }
         
-        let sendMessege = Data(textWritten.utf8)
-        agoraKit.sendStreamMessage(self.chatStreamId, data: sendMessege)
+        let sendMessegeData = Data(textWritten.utf8)
+        
+        let encoder = JSONEncoder()
+        
+        guard let data = try? encoder.encode(MessageStream(data: sendMessegeData, streamType: .chatMessage)) else { return }
+        
+        agoraKit.sendStreamMessage(self.messageStreamId, data: data)
         
         self.engine?.setSentMessage(sentMessage: textWritten, currentMimeWord: currentMimeWord)
     }
@@ -377,39 +373,52 @@ extension GameViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
         
-        // checking if is the receive stream id is the chat stream ID
-        if streamId == self.chatStreamId {
+        do {
+            let decoder = JSONDecoder()
+            let messageStream = try decoder.decode(MessageStream.self, from: data)
             
-            let decodedMessage = String(decoding: data, as: UTF8.self)
-            
-            guard let currentMimeWord = self.currentMime?.name else { return }
-            
-            self.engine?.setReceivedMessage(receivedMessage: decodedMessage, currentMimeWord: currentMimeWord, receivedMessegeFrom: uid)
-            
-        } else if streamId == self.currentMimeIndexStreamId { // Receive mime index
-            
-            do {
-                let decoder = JSONDecoder()
-                let mime = try decoder.decode(MimeMessage.self, from: data)
-                self.updateMimeLabel(currentMime: mime.newMime)
-                self.engine?.removeSelectableMime(with: mime.index)
+            switch messageStream.streamType {
                 
-                if mime.isNewRound {
-                    OperationQueue.main.addOperation {
-                        self.engine?.setCurrentMimickr(player: uid)
-                        self.setupRemotePlayer()
-                        self.drawPlayerModal()
+            case .chatMessage:
+                print("vrau: chat message Recebida")
+                let decodedMessage = String(decoding: messageStream.data, as: UTF8.self)
+                
+                guard let currentMimeWord = self.currentMime?.name else { return }
+                
+                self.engine?.setReceivedMessage(receivedMessage: decodedMessage, currentMimeWord: currentMimeWord, receivedMessegeFrom: uid)
+                
+            case .currentMimeIndex:
+                do {
+                    print("vrau: Nova mimica recebida")
+                    let mime = try decoder.decode(MimeMessage.self, from: messageStream.data)
+                    self.updateMimeLabel(currentMime: mime.newMime)
+                    self.engine?.removeSelectableMime(with: mime.index)
+                    
+                    if mime.isNewRound {
+                        OperationQueue.main.addOperation {
+                            self.engine?.setCurrentMimickr(player: uid)
+                            self.setupRemotePlayer()
+                            self.drawPlayerModal()
+                        }
                     }
+                } catch {
+                    print("error decoding current mime")
                 }
-            } catch {
-                print("error decoding current mime")
+                
+            case .nextMimickrIndex:
+                
+                let selectedNextPlayerIndex = messageStream.data.withUnsafeBytes {
+                    $0.load(as: Int.self)
+                }
+                
+                self.engine?.setNextMimickr(selectedNextPlayerIndex: selectedNextPlayerIndex)
+            case .startTurn:
+                print("vrau: comeca partida agora Delegate")
+                self.engine?.startTurn()
             }
-        } else if streamId == self.nextMimickrStreamId { // Receive the next mimickr
             
-            let selectedNextPlayerIndex = data.withUnsafeBytes {
-                $0.load(as: Int.self)
-            }
-            self.engine?.setNextMimickr(selectedNextPlayerIndex: selectedNextPlayerIndex)
+        } catch {
+            print("type message not found at agora delegate")
         }
     }
     
@@ -437,6 +446,17 @@ extension GameViewController: DrawPlayerDelegate {
 //MARK: - GameEngineDelegate
 extension GameViewController : GameEngineDelegate {
     
+    func startTurn() {
+        
+        let canStartGame = true
+        guard let canStartGameData = try? JSONEncoder().encode(canStartGame) else { return }
+        
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(MessageStream(data: canStartGameData, streamType: .startTurn)) else { return }
+        
+        print("vrau: mimickr mandou comecar partida")
+        self.agoraKit.sendStreamMessage(self.messageStreamId, data: data)
+    }
     
     /// Called when it need to end game and the game turns finished.
     func endGame() {
@@ -460,18 +480,20 @@ extension GameViewController : GameEngineDelegate {
     }
     
     func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int) {
-
-        updateMimeLabel(currentMime: currentMime)
         
-        do {
-            // encoding mimeMessege object to send as a message the new mime
-            guard let currentMime = self.currentMime else { return }
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(MimeMessage(newMime: currentMime, isNewRound: isNewTurn, index: mimeIndex))
-            agoraKit.sendStreamMessage(currentMimeIndexStreamId, data: data)
-        } catch {
-            print("error trying to encode mime message")
-        }
+        updateMimeLabel(currentMime: currentMime)
+    
+        // encoding mimeMessege object to send as a message the new mime
+        guard let currentMime = self.currentMime else { return }
+        
+        let encoder = JSONEncoder()
+        guard let mimeMessageData = try? encoder.encode(MimeMessage(newMime: currentMime, isNewRound: isNewTurn, index: mimeIndex)) else { return }
+        
+        guard let data = try? encoder.encode(MessageStream(data: mimeMessageData, streamType: .currentMimeIndex)) else { return }
+        
+        print("vrau: mimickr mandou nova mimica")
+        
+        agoraKit.sendStreamMessage(self.messageStreamId, data: data)
         
         // if it's not the new turn, the local player wrote the correct mime
         // then, it shows the animation
@@ -481,13 +503,18 @@ extension GameViewController : GameEngineDelegate {
     }
     
     func setupToMimickr() {
+        print("vrau: setup mimickr")
         self.isMimickrView = true
         self.setupLocalVideo()
-        self.drawPlayerModal()
     }
     
     func setupNextMimickr(nextMimickrIndex: Data) {
-        agoraKit.sendStreamMessage(nextMimickrStreamId, data: nextMimickrIndex)
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(MessageStream(data: nextMimickrIndex, streamType: .nextMimickrIndex)) else { return }
+        
+        print("vrau: mimickr mandou proximo mimickr")
+        
+        agoraKit.sendStreamMessage(self.messageStreamId, data: data)
     }
     
     func setupStartGame() {

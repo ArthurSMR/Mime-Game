@@ -422,8 +422,9 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
         
         if streamId == startGameStreamId {
             let startGameSegue = String(decoding: data, as: UTF8.self)
-            print("startGame")
-            self.performSegue(withIdentifier: startGameSegue, sender: self)
+            if startGameSegue == "startGame" {
+                self.performSegue(withIdentifier: startGameSegue, sender: self)
+            }
         }
         else if streamId == avatarStreamId {
             let str = String(decoding: data, as: UTF8.self)
