@@ -63,6 +63,7 @@
 		9A2FD18324774EB5008D5447 /* RoomServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FD18224774EB5008D5447 /* RoomServices.swift */; };
 		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
+		9A73829724784F3B00FB3ADD /* DatabaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A73829624784F3B00FB3ADD /* DatabaseContainer.swift */; };
 		9A9EED3F246F352A004DF8DA /* SOUNDS_EFFECTS in Resources */ = {isa = PBXBuildFile; fileRef = 9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */; };
 		9A9EED41246F3836004DF8DA /* SoundFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EED40246F3836004DF8DA /* SoundFX.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
@@ -148,6 +149,7 @@
 		9A2FD18224774EB5008D5447 /* RoomServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomServices.swift; sourceTree = "<group>"; };
 		9A4077342461B29E00DC4D82 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRegisteredPlayerCodable.swift; sourceTree = "<group>"; };
+		9A73829624784F3B00FB3ADD /* DatabaseContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseContainer.swift; sourceTree = "<group>"; };
 		9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOUNDS_EFFECTS; sourceTree = "<group>"; };
 		9A9EED40246F3836004DF8DA /* SoundFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFX.swift; sourceTree = "<group>"; };
 		9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
 				36BC041C243E1080005B753A /* AppDelegate.swift */,
 				36CAA77A246E18B600F4847B /* AppIDs.swift */,
+				9A73829624784F3B00FB3ADD /* DatabaseContainer.swift */,
 				36CAA776246DC45500F4847B /* DeepLink.swift */,
 			);
 			path = Resources;
@@ -685,6 +688,7 @@
 				3642AE1124524CEF004CBF76 /* Mime.swift in Sources */,
 				3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */,
 				3C36CFBE2450809F003648AE /* LobbyViewController.swift in Sources */,
+				9A73829724784F3B00FB3ADD /* DatabaseContainer.swift in Sources */,
 				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
 				36CAA777246DC45500F4847B /* DeepLink.swift in Sources */,
 				3C36CFD124508441003648AE /* UIColor+Extension.swift in Sources */,

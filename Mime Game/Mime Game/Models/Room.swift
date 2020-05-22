@@ -6,21 +6,22 @@
 //  Copyright © 2020 Arthur Rodrigues. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CloudKit
 
-class Room {
+class Room: NSObject {
     var name: String
     var numberOfPlayers: Int
-//    var theme: Theme
-    
     var appId: String
     
-    init(appId: String, name: String) {
+    var themeName: String?
+    
+    var recordID: CKRecord.ID!
+    
+    
+    init(appId: String, name: String, numberOfPlayers: Int) {
         self.appId = appId
-        
-//        self.theme = theme
         self.name = name
         self.numberOfPlayers = numberOfPlayers
     }
-    
 }

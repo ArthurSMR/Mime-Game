@@ -16,23 +16,47 @@ class SelectRoomViewController: UIViewController {
     //MARK: Variables
     var roomsAppIds: [String] = AppIDs.shared.ids
     
+    var rooms: [Room] = [Room]()
+    
     var incomingName: String?
     var incomingAvatar: UIImage?
     var currentAvatarIndex: Int = 0
     
-    var selectedRoomAppId: String?
-    var selectedRoomName: String?
+    var selectedRoom: Room?
     
     var soundFXManager = SoundFX()
+    
+    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        loadRoomFromCloud()
+        
         // Do any additional setup after loading the view.
     }
     
     func setupLayout() {
         prepareTableView()
+        setupActivityIndicator()
+        indicator.startAnimating()
+    }
+    
+    fileprivate func loadRoomFromCloud() {
+        RoomServices.loadRooms(completionHandler: { (rooms, error) in
+            if let error = error{
+                let failedFetchAlert = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error.localizedDescription)", preferredStyle: .alert)
+                failedFetchAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(failedFetchAlert, animated: true)
+            }
+            else if let rooms = rooms {
+                self.rooms = rooms
+                OperationQueue.main.addOperation {
+                    self.indicator.stopAnimating()
+                    self.tableView.reloadData()
+                }
+            }
+        })
     }
     
     func prepareTableView() {
@@ -41,6 +65,13 @@ class SelectRoomViewController: UIViewController {
         tableView.dataSource = self
         guard let table = tableView else { return }
         SelectRomTableViewCell.registerNib(for: table)
+    }
+    
+    func setupActivityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = UIActivityIndicatorView.Style.large
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
     }
     
     @IBAction func exitSelectRoomAction(_ sender: Any) {
@@ -53,11 +84,12 @@ class SelectRoomViewController: UIViewController {
         switch segue.identifier {
         case "toLobby":
             if let destinationVC = segue.destination as? LobbyViewController {
+                guard let selectedRoom = self.selectedRoom else { return }
                 destinationVC.incomingName = self.incomingName
                 destinationVC.incomingAvatar = self.incomingAvatar
                 destinationVC.currentAvatarIndex = self.currentAvatarIndex
-                destinationVC.roomNameStr = self.selectedRoomName
-                destinationVC.AppID = selectedRoomAppId!
+                destinationVC.roomNameStr = selectedRoom.name
+                destinationVC.AppID = selectedRoom.appId
             }
         default:
             print("No segue found")
@@ -68,15 +100,14 @@ class SelectRoomViewController: UIViewController {
 extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return roomsAppIds.count
+        return rooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellRoomName = "Sala \(indexPath.row + 1)"
         
         let cell = SelectRomTableViewCell.dequeueCell(from: tableView)
         
-        cell.room = Room(appId: roomsAppIds[indexPath.row], name: cellRoomName)
+        cell.room = rooms[indexPath.row]
         cell.nameLabel.text = cell.room?.name
         
         
@@ -87,11 +118,10 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard (tableView.cellForRow(at: indexPath) != nil) else { return }
         
-        // Tente nao dar force pois pode vir nil qualquer hora e o app crashar
-        let selectedCell = tableView.cellForRow(at: indexPath) as! SelectRomTableViewCell
+        if let selectedCell = tableView.cellForRow(at: indexPath) as? SelectRomTableViewCell {
+            self.selectedRoom = selectedCell.room
+        }
         
-        self.selectedRoomAppId = selectedCell.room?.appId
-        self.selectedRoomName = selectedCell.nameLabel.text
         soundFXManager.playFX(named: "Lobby")
         performSegue(withIdentifier: "toLobby", sender: self)
     }
