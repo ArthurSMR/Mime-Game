@@ -10,7 +10,7 @@ import Foundation
 
 class Room {
     var name: String
-//    var numberOfPlayers: Int
+    var numberOfPlayers: Int
 //    var theme: Theme
     
     var appId: String
@@ -20,7 +20,7 @@ class Room {
         
 //        self.theme = theme
         self.name = name
-//        self.numberOfPlayers = numberOfPlayers
+        self.numberOfPlayers = numberOfPlayers
     }
     
 }

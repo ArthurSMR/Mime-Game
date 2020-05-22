@@ -60,6 +60,7 @@
 		3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */; };
 		3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */; };
 		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
+		9A2FD18324774EB5008D5447 /* RoomServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FD18224774EB5008D5447 /* RoomServices.swift */; };
 		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
 		9A9EED3F246F352A004DF8DA /* SOUNDS_EFFECTS in Resources */ = {isa = PBXBuildFile; fileRef = 9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */; };
@@ -144,6 +145,7 @@
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2FD18224774EB5008D5447 /* RoomServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomServices.swift; sourceTree = "<group>"; };
 		9A4077342461B29E00DC4D82 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRegisteredPlayerCodable.swift; sourceTree = "<group>"; };
 		9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOUNDS_EFFECTS; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				3695A91E24524FF700815617 /* MimeServices.swift */,
+				9A2FD18224774EB5008D5447 /* RoomServices.swift */,
 				9AD2610D2458A2AE00E449A4 /* UserServices.swift */,
 				9A9EED40246F3836004DF8DA /* SoundFX.swift */,
 			);
@@ -673,6 +676,7 @@
 				36CAA77B246E18B600F4847B /* AppIDs.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
 				3682147E2459B23200C6A254 /* Message.swift in Sources */,
+				9A2FD18324774EB5008D5447 /* RoomServices.swift in Sources */,
 				36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */,
 				3C36CFDE2450856E003648AE /* CustomRoundViews.swift in Sources */,
 				3C36CFD024508441003648AE /* UITextField+Localization.swift in Sources */,
