@@ -380,7 +380,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
             switch messageStream.streamType {
                 
             case .chatMessage:
-                print("vrau: chat message Recebida")
+                
                 let decodedMessage = String(decoding: messageStream.data, as: UTF8.self)
                 
                 guard let currentMimeWord = self.currentMime?.name else { return }
@@ -389,7 +389,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
                 
             case .currentMimeIndex:
                 do {
-                    print("vrau: Nova mimica recebida")
+                    
                     let mime = try decoder.decode(MimeMessage.self, from: messageStream.data)
                     self.updateMimeLabel(currentMime: mime.newMime)
                     self.engine?.removeSelectableMime(with: mime.index)
@@ -413,8 +413,11 @@ extension GameViewController: AgoraRtcEngineDelegate {
                 
                 self.engine?.setNextMimickr(selectedNextPlayerIndex: selectedNextPlayerIndex)
             case .startTurn:
-                print("vrau: comeca partida agora Delegate")
+                print("vrau: diviner recebeu comecar partida")
                 self.engine?.startTurn()
+            case .endGame:
+                self.timer.invalidate()
+                self.performSegue(withIdentifier: segueToRankingFinal, sender: self)
             }
             
         } catch {
@@ -460,8 +463,15 @@ extension GameViewController : GameEngineDelegate {
     
     /// Called when it need to end game and the game turns finished.
     func endGame() {
+        
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(MessageStream(data: segueToRankingFinalData, streamType: .endGame)) else { return }
+        
+        self.agoraKit.sendStreamMessage(messageStreamId, data: data)
+        
         self.timer.invalidate()
-        self.performSegue(withIdentifier: segueToRankingFinal, sender: self) // show ranking
+        
+        self.performSegue(withIdentifier: segueToRankingFinal, sender: self)
     }
     
     func didReceiveMessage() {
@@ -491,7 +501,7 @@ extension GameViewController : GameEngineDelegate {
         
         guard let data = try? encoder.encode(MessageStream(data: mimeMessageData, streamType: .currentMimeIndex)) else { return }
         
-        print("vrau: mimickr mandou nova mimica")
+        
         
         agoraKit.sendStreamMessage(self.messageStreamId, data: data)
         
@@ -503,17 +513,16 @@ extension GameViewController : GameEngineDelegate {
     }
     
     func setupToMimickr() {
-        print("vrau: setup mimickr")
+        
         self.isMimickrView = true
         self.setupLocalVideo()
+        self.drawPlayerModal()
     }
     
     func setupNextMimickr(nextMimickrIndex: Data) {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(MessageStream(data: nextMimickrIndex, streamType: .nextMimickrIndex)) else { return }
-        
-        print("vrau: mimickr mandou proximo mimickr")
-        
+
         agoraKit.sendStreamMessage(self.messageStreamId, data: data)
     }
     

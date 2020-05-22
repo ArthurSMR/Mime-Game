@@ -13,6 +13,7 @@ enum StreamType: Int, Codable {
     case currentMimeIndex = 2
     case nextMimickrIndex = 3
     case startTurn = 4
+    case endGame = 5
     
     init (withId id: Int) {
         switch id {
@@ -20,6 +21,7 @@ enum StreamType: Int, Codable {
         case 2: self = .currentMimeIndex
         case 3: self = .nextMimickrIndex
         case 4: self = .startTurn
+        case 5: self = .endGame
         default:
             self = .chatMessage
         }
@@ -35,6 +37,8 @@ enum StreamType: Int, Codable {
             return 3
         case .startTurn:
             return 4
+        case .endGame:
+            return 5
         }
     }
 }

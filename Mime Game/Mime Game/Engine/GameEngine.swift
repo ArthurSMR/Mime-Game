@@ -81,6 +81,8 @@ class GameEngine {
     
     func mimickrStartTurn() {
         
+        self.currentTurn += 1
+        
         // Mimickr start next turn
         if currentMimickr?.uid == game.localPlayer.uid {
             if canStartTurn() {
@@ -93,10 +95,6 @@ class GameEngine {
     /// This method start the turn setting to mimickr or diviner a player
     func startTurn() {
         
-        print("vrau: startTurn")
-        
-        self.currentTurn += 1
-        
         // Validate if we can start the turn
         
         guard let nextMimickr = self.nextMimickr else { return }
@@ -107,16 +105,20 @@ class GameEngine {
         //                startTurn()
         //            }
         // The next player is available to play
+        
+        
         if nextMimickr.uid == game.localPlayer.uid {
-            
+            print("vrau: sou mimickr")
             self.currentMimickr = self.nextMimickr  // the queue goes on
             chooseNextMimickr()
             setToMimickr()
-        } else {
-            self.game.localPlayer.type = .diviner
-            delegate?.setupToDiviner()
         }
         
+    }
+    
+    func divinerSetup() {
+        self.game.localPlayer.type = .diviner
+        delegate?.setupToDiviner()
     }
     
     //MARK: - Mimes configuration
