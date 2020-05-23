@@ -28,8 +28,9 @@ class LobbyViewController: UIViewController {
     var roomNameStr: String?
     var totalPlayers = 10
     let message = "Venha jogar Mimiqueiros comigo 🎭"
-
+    
     private var agoraKit: AgoraRtcEngineKit!
+    var room: Room?
     var AppID: String = ""
     
     var localAgoraUserInfo = AgoraUserInfo()
@@ -271,6 +272,8 @@ class LobbyViewController: UIViewController {
     
     /// This method for leaving the channel
     private func leaveChannel() {
+        guard let room = self.room else { print("No room passed on segue"); return }
+        RoomServices.userLeft(room: room)
         agoraKit.leaveChannel(nil)
     }
     

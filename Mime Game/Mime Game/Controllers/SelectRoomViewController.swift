@@ -53,6 +53,7 @@ class SelectRoomViewController: UIViewController {
                 self.rooms = rooms
                 OperationQueue.main.addOperation {
                     self.indicator.stopAnimating()
+                    self.indicator.hidesWhenStopped = true
                     self.tableView.reloadData()
                 }
             }
@@ -90,6 +91,7 @@ class SelectRoomViewController: UIViewController {
                 destinationVC.currentAvatarIndex = self.currentAvatarIndex
                 destinationVC.roomNameStr = selectedRoom.name
                 destinationVC.AppID = selectedRoom.appId
+                destinationVC.room = selectedRoom
             }
         default:
             print("No segue found")
@@ -117,12 +119,16 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard (tableView.cellForRow(at: indexPath) != nil) else { return }
+        guard let selectedCell = tableView.cellForRow(at: indexPath) as? SelectRomTableViewCell else { return }
         
-        if let selectedCell = tableView.cellForRow(at: indexPath) as? SelectRomTableViewCell {
-            self.selectedRoom = selectedCell.room
+        self.selectedRoom = selectedCell.room
+        
+        if let selected = selectedRoom {
+            
+            RoomServices.userEntered(room: selected)
+    
+            soundFXManager.playFX(named: "Lobby")
+            performSegue(withIdentifier: "toLobby", sender: self)
         }
-        
-        soundFXManager.playFX(named: "Lobby")
-        performSegue(withIdentifier: "toLobby", sender: self)
     }
 }

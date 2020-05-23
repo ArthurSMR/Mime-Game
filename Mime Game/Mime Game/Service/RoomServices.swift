@@ -12,12 +12,53 @@ import CloudKit
 class RoomServices {
     
     
-    static func userEntered(room: Room, database: CKDatabase){
+    static func userEntered(room: Room){
+        let database = DatabaseContainer.shared.publicCloudDatabase
+        room.numberOfPlayers += 1
         
+        database.fetch(withRecordID: room.recordID, completionHandler: {(record, error) in
+            if let error = error {
+                print("Error on fetching room witch user entered: \(error.localizedDescription)")
+            }
+            else if let record = record{
+                record.setValue(room.numberOfPlayers, forKey: "numberOfPlayers")
+                database.save(record) {(record, error) in
+                guard let _ = record else { return }
+                
+                if let error = error {
+                    print("Error on saving(updating) room witch user entered: \(error.localizedDescription)")
+                }
+                }
+            }
+        })
         
     }
     
-    static func saveToCloud(room: Room, database: CKDatabase){
+    static func userLeft(room: Room){
+        let database = DatabaseContainer.shared.publicCloudDatabase
+        room.numberOfPlayers -= 1
+        
+        database.fetch(withRecordID: room.recordID, completionHandler: {(record, error) in
+            if let error = error {
+                print("Error on fetching room witch user left: \(error.localizedDescription)")
+            }
+            else if let record = record{
+                record.setValue(room.numberOfPlayers, forKey: "numberOfPlayers")
+                database.save(record) {(record, error) in
+                guard let _ = record else { return }
+                
+                if let error = error {
+                    print("Error on saving(updating) room witch user left: \(error.localizedDescription)")
+                }
+                }
+            }
+        })
+        
+    }
+    
+    static func saveToCloud(room: Room){
+        let database = DatabaseContainer.shared.publicCloudDatabase
+        
         let newRoom = CKRecord(recordType: "Room")
         newRoom.setValue(room.name, forKey: "name")
         newRoom.setValue(room.appId, forKey: "appId")
@@ -47,23 +88,19 @@ class RoomServices {
         var newRooms = [Room]()
 
         operation.recordFetchedBlock = { record in
-            
             guard let appId = record["appId"] as? String else { print("appId is nil or not String"); return }
             guard let name = record["name"] as? String else { print("name is nil or not String"); return }
 //            guard let themeName = record["themeName"] as? String else { print("themeName is nil or not String"); return }
             guard let numberOfPlayers = record["numberOfPlayers"] as? Int else { print("numberOfPlayers is nil or not Int"); return }
             
             let room = Room(appId: appId, name: name, numberOfPlayers: numberOfPlayers)
-            
             room.recordID = record.recordID
-            
 //            room.themeName = themeName
             
             newRooms.append(room)
         }
         
         operation.queryCompletionBlock = { (cursor, error) in
-    
             if error == nil {
                 completionHandler(newRooms, nil)
             } else {
