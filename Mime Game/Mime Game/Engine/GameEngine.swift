@@ -10,7 +10,7 @@ import Foundation
 
 protocol GameEngineDelegate: class {
     func setupStartGame()
-    func setupNextMimickr(nextMimickrIndex: Data)
+    func setupNextMimickr(nextMimickrIndex: Int)
     func setupToMimickr()
     func setupToDiviner()
     func setupChooseCurrentMime(currentMime: Mime, isNewTurn: Bool, mimeIndex: Int)
@@ -84,7 +84,7 @@ class GameEngine {
         self.currentTurn += 1
         
         // Mimickr start next turn
-        if currentMimickr?.uid == game.localPlayer.uid {
+        if nextMimickr?.uid == game.localPlayer.uid {
             if canStartTurn() {
                 delegate?.startTurn()
                 self.startTurn()
@@ -94,29 +94,12 @@ class GameEngine {
     
     /// This method start the turn setting to mimickr or diviner a player
     func startTurn() {
-        
-        // Validate if we can start the turn
-        
-        guard let nextMimickr = self.nextMimickr else { return }
-        
-        //            // Validade if the next player is unavailable
-        //            if nextMimickr.type == .unavailable { // Testar com mais pessoas numa partida...
-        //                chooseNextMimickr()
-        //                startTurn()
-        //            }
-        // The next player is available to play
-        
-        
-        if nextMimickr.uid == game.localPlayer.uid {
-            print("vrau: sou mimickr")
-            self.currentMimickr = self.nextMimickr  // the queue goes on
-            chooseNextMimickr()
-            setToMimickr()
-        }
-        
+        self.currentMimickr = self.nextMimickr  // the queue goes on
+        chooseNextMimickr()
+        setToMimickr()
     }
     
-    func divinerSetup() {
+    func setupToDiviner() {
         self.game.localPlayer.type = .diviner
         delegate?.setupToDiviner()
     }
@@ -160,12 +143,11 @@ class GameEngine {
         
         validateSelectablePlayers()
         
-        var selectedMimickrIndex = Int(arc4random()) % game.selectablePlayersWithUid.count
+        let selectedMimickrIndex = Int(arc4random()) % game.selectablePlayersWithUid.count
         
         createNextMimickr(selectedMimickrIndex)
         
-        let dataSelectedPlayerIndex = Data(bytes: &selectedMimickrIndex, count: MemoryLayout.size(ofValue: selectedMimickrIndex))
-        delegate?.setupNextMimickr(nextMimickrIndex: dataSelectedPlayerIndex)
+        delegate?.setupNextMimickr(nextMimickrIndex: selectedMimickrIndex)
     }
     
     /// This method is to get player using its index

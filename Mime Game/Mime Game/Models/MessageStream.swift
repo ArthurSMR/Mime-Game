@@ -9,6 +9,7 @@
 import Foundation
 
 enum StreamType: Int, Codable {
+    case none = 0
     case chatMessage = 1
     case currentMimeIndex = 2
     case nextMimickrIndex = 3
@@ -17,6 +18,7 @@ enum StreamType: Int, Codable {
     
     init (withId id: Int) {
         switch id {
+        case 0: self = .none
         case 1: self = .chatMessage
         case 2: self = .currentMimeIndex
         case 3: self = .nextMimickrIndex
@@ -29,16 +31,12 @@ enum StreamType: Int, Codable {
     
     func getValue() -> Int {
         switch self {
-        case .chatMessage:
-            return 1
-        case .currentMimeIndex:
-            return 2
-        case .nextMimickrIndex:
-            return 3
-        case .startTurn:
-            return 4
-        case .endGame:
-            return 5
+            case .none: return 0
+            case .chatMessage: return 1
+            case .currentMimeIndex: return 2
+            case .nextMimickrIndex:return 3
+            case .startTurn: return 4
+            case .endGame: return 5
         }
     }
 }
@@ -50,5 +48,10 @@ class MessageStream: Codable {
     init(data: Data, streamType: StreamType) {
         self.data = data
         self.streamType = streamType
+    }
+    
+    init() {
+        self.data = Data()
+        self.streamType = .none
     }
 }
