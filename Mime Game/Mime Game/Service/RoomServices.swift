@@ -16,7 +16,34 @@ class RoomServices {
         let database = DatabaseContainer.shared.publicCloudDatabase
         room.numberOfPlayers += 1
         
-        var roomsFound = [Room]()
+        var predicate = NSPredicate(format: "name == %@", room.name)
+        var query = CKQuery(recordType: "Room", predicate: predicate)
+        
+        database.perform(query, inZoneWith: .default) { (results, error) -> Void in
+            if error != nil {
+                print("error performing query to find \(room.name) when entering...")
+            }
+            if let roomsFound = results{
+                if roomsFound.count != 0 {
+                    guard let roomFound = roomsFound.first else { return }
+                    roomFound["numberOfPlayers"] = room.numberOfPlayers
+                    
+                    database.save(roomFound, completionHandler: { record, error in
+                        
+                        if error == nil {
+                            print("user enter update on \(room.name). It now has \(room.numberOfPlayers) players")
+                        }
+                        
+                    })
+                }
+            }
+        }
+    }
+    
+    
+    static func userLeft(room: Room){
+        let database = DatabaseContainer.shared.publicCloudDatabase
+        room.numberOfPlayers -= 1
         
         var predicate = NSPredicate(format: "name == %@", room.name)
         var query = CKQuery(recordType: "Room", predicate: predicate)
@@ -32,38 +59,14 @@ class RoomServices {
                     
                     database.save(roomFound, completionHandler: { record, error in
                         
-                        if error != nil {
-                            print(error?.localizedDescription)
-//                            print("user enter update on \(room.name)")
+                        if error == nil {
+                            print("user left update on \(room.name). It now has \(room.numberOfPlayers) players")
                         }
-                        
                         
                     })
                 }
             }
         }
-    }
-    
-    
-    static func userLeft(room: Room){
-        let database = DatabaseContainer.shared.publicCloudDatabase
-        room.numberOfPlayers -= 1
-        
-        database.fetch(withRecordID: room.recordID, completionHandler: {(record, error) in
-            if let error = error {
-                print("Error on fetching room witch user left: \(error.localizedDescription)")
-            }
-            else if let record = record{
-                record.setValue(room.numberOfPlayers, forKey: "numberOfPlayers")
-                database.save(record) {(record, error) in
-                guard let _ = record else { return }
-                
-                if let error = error {
-                    print("Error on saving(updating) room witch user left: \(error.localizedDescription)")
-                }
-                }
-            }
-        })
         
     }
     
