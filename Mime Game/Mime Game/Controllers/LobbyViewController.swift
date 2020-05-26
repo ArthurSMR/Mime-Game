@@ -59,7 +59,14 @@ class LobbyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupViewAnimation()
+        RoomServices.userEntered(room: self.room!)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        RoomServices.userLeft(room: self.room!)
     }
     
     //MARK: Methods

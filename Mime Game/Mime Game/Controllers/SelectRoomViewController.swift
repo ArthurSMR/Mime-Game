@@ -124,8 +124,6 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
         self.selectedRoom = selectedCell.room
         
         if let selected = selectedRoom {
-            
-            RoomServices.userEntered(room: selected)
     
             soundFXManager.playFX(named: "Lobby")
             performSegue(withIdentifier: "toLobby", sender: self)
