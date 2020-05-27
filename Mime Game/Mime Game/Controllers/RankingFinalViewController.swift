@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AgoraRtcKit
 
 class RankingFinalViewController: UIViewController {
 
@@ -28,6 +29,7 @@ class RankingFinalViewController: UIViewController {
     @IBOutlet weak var thirdPoints: UILabel!
     
     var sortedPlayers: [Player] = []
+    var agoraKit: AgoraRtcEngineKit!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,7 @@ class RankingFinalViewController: UIViewController {
     //MARK: - Actions
 
     @IBAction func exitBtnDidPress(_ sender: Any) {
+        agoraKit.leaveChannel(nil)
         performSegue(withIdentifier: "backToLoginNoRegistered", sender: nil)
     }
     

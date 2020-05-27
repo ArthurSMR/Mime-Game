@@ -92,6 +92,7 @@ class GameViewController: UIViewController {
         else if segue.identifier == segueToRankingFinal {
             if let destination = segue.destination as? RankingFinalViewController {
                 guard let sortedPlayers = self.engine?.sortPlayers() else { return }
+                destination.agoraKit = self.agoraKit
                 destination.sortedPlayers = sortedPlayers
             }
         }
