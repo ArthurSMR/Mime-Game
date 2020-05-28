@@ -55,7 +55,7 @@ class LoginNoRegisteredViewController: UIViewController {
             DeepLink.shared.shouldNavigateToLobby {
             confirmButton.setTitle("Jogar", for: .normal)
         } else {
-            confirmButton.setTitle("Selecionar tema", for: .normal)
+            confirmButton.setTitle("Selecionar Sala", for: .normal)
         }
     }
     
