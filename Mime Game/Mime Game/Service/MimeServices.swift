@@ -68,5 +68,22 @@ class MimeServices {
             }
         }
     }
+    
+    static func fetchThemes(completion: @escaping(_ themes: Themes, _ error: MimesError?) -> Void) {
+
+        if let urlPath = Bundle.main.url(forResource: "themesAndWords", withExtension: "json") {
+
+            do {
+                let jsonData = try Data(contentsOf: urlPath, options: .mappedIfSafe)
+                let themes = try JSONDecoder().decode(Themes.self, from: jsonData)
+                
+                completion(themes, nil)
+            }
+            catch let jsonError {
+                print(jsonError)
+                completion(Themes(themes: []), .canNotProcessData)
+            }
+        }
+    }
 }
 
