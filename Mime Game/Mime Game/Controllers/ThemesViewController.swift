@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum TextFieldType {
+enum TextFieldType: Int, CaseIterable {
     case time
     case theme
     case rounds
@@ -25,6 +25,7 @@ class ThemesViewController: UIViewController {
     var textFieldType: TextFieldType?
     var times = [30, 60, 90, 120]
     var rounds = [1, 2, 3, 4, 5]
+    var selectedIndexForPicker: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class ThemesViewController: UIViewController {
     }
     
     func setup() {
+        
+        creatingSelectIndexForPicker()
         
         MimeServices.fetchThemes { (themes, error) in
             if let error = error {
@@ -44,8 +47,14 @@ class ThemesViewController: UIViewController {
     }
     
     func setupLayout() {
-        setupKeyboard()
         setupPickerView()
+    }
+    
+    /// This method will create the index for all cases for text field type
+    private func creatingSelectIndexForPicker() {
+        for _ in TextFieldType.allCases {
+            selectedIndexForPicker.append(0)
+        }
     }
     
     func setupPickerView() {
@@ -68,32 +77,12 @@ class ThemesViewController: UIViewController {
         toolBar.setItems([flexibleSpace, doneButton], animated: false)
     }
     
-    func setupKeyboard() {
-        //keyboard notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
     @objc func donePicker() {
         self.view.endEditing(true)
     }
     
-    //Scroll when keyboard activates
-    @objc func keyboardWillShow(notification:NSNotification){
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height/3
-            }
-        }
-    }
-    
-    //scrolls back when keyboard is dismissed
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
+    /// This method will check what text field was pressed. Using did begin editing.
+    /// - Parameter sender: textField pressed
     @IBAction func assignPickerViewToTextField(_ sender: UITextField) {
         
         switch sender {
@@ -108,6 +97,25 @@ class ThemesViewController: UIViewController {
         }
         sender.inputView = pickerView
         pickerView.reloadAllComponents()
+        pickerView.selectRow(selectedIndexForPicker[textFieldType?.rawValue ?? 0], inComponent: 0, animated: false)
+        
+        // Set a value when is first responder
+        if sender.isFirstResponder {
+            guard let textFieldType = textFieldType else { return }
+            sender.text = updateLabelAt(textField: sender, for: textFieldType)
+        }
+    }
+    
+    private func updateLabelAt(textField: UITextField, for type: TextFieldType) -> String {
+        
+        switch type {
+        case .time:
+            return String(times[pickerView.selectedRow(inComponent: 0)])
+        case .theme:
+            return themes.themes[pickerView.selectedRow(inComponent: 0)].name
+        case .rounds:
+            return String(rounds[pickerView.selectedRow(inComponent: 0)])
+        }
     }
 }
 
@@ -115,6 +123,22 @@ extension ThemesViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        switch textFieldType {
+        case .time:
+            timeTxtField.text = String(times[row])
+        case .theme:
+            themeTxtField.text = themes.themes[row].name
+        case .rounds:
+            roundsTxtField.text = String(rounds[row])
+        default:
+            print("text field not found")
+        }
+        
+        selectedIndexForPicker[textFieldType?.rawValue ?? 0] = row
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
