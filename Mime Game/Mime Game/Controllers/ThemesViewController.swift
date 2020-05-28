@@ -8,47 +8,143 @@
 
 import UIKit
 
-class ThemesViewController: UIViewController {
+enum TextFieldType {
+    case time
+    case theme
+    case rounds
+}
 
-    @IBOutlet weak var tableView: UITableView!
+class ThemesViewController: UIViewController {
     
+    @IBOutlet weak var timeTxtField: UITextField!
+    @IBOutlet weak var themeTxtField: UITextField!
+    @IBOutlet weak var roundsTxtField: UITextField!
+    
+    var pickerView = UIPickerView()
     var themes: Themes!
+    var textFieldType: TextFieldType?
+    var times = [30, 60, 90, 120]
+    var rounds = [1, 2, 3, 4, 5]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
-        // Do any additional setup after loading the view.
+        setup()
     }
     
-    func setupLayout() {
+    func setup() {
+        
         MimeServices.fetchThemes { (themes, error) in
             if let error = error {
                 print(error)
+            } else {
+                self.themes = themes
+                self.setupLayout()
             }
-            self.themes = themes
         }
-        self.prepareTableView()
     }
     
-    func prepareTableView() {
+    func setupLayout() {
+        setupKeyboard()
+        setupPickerView()
+    }
+    
+    func setupPickerView() {
+        pickerView.dataSource = self
+        pickerView.delegate = self
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        guard let table = tableView else { return }
-        ThemeTableViewCell.registerNib(for: table)
+        //creating a toolbar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        
+        //creating a flexible space to put the done button on the toolbar's right side
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        //creating done button
+        let doneButton = UIBarButtonItem(title: "Concluido", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        
+        //putting the flexible space and the done button into the toolbar
+        toolBar.setItems([flexibleSpace, doneButton], animated: false)
+    }
+    
+    func setupKeyboard() {
+        //keyboard notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func donePicker() {
+        self.view.endEditing(true)
+    }
+    
+    //Scroll when keyboard activates
+    @objc func keyboardWillShow(notification:NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height/3
+            }
+        }
+    }
+    
+    //scrolls back when keyboard is dismissed
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @IBAction func assignPickerViewToTextField(_ sender: UITextField) {
+        
+        switch sender {
+        case timeTxtField:
+            textFieldType = .time
+        case themeTxtField:
+            textFieldType = .theme
+        case roundsTxtField:
+            textFieldType = .rounds
+        default:
+            print("text field not found")
+        }
+        sender.inputView = pickerView
+        pickerView.reloadAllComponents()
     }
 }
 
-extension ThemesViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return themes.themes.count
+extension ThemesViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ThemeTableViewCell.dequeueCell(from: tableView)
-        let theme = self.themes.themes[indexPath.row]
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        cell.themeLbl.text = theme.name
-        return cell
+        switch textFieldType {
+        case .time:
+            return times.count
+        case .theme:
+            return themes.themes.count
+        case .rounds:
+            return rounds.count
+        default:
+            print("text field not found")
+            return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        switch textFieldType {
+        case .time:
+            return String(times[row])
+        case .theme:
+            return themes.themes[row].name
+        case .rounds:
+            return String(rounds[row])
+        default:
+            print("text field not found")
+            return ""
+        }
+        
     }
 }
