@@ -47,8 +47,13 @@ class SelectRomTableViewCell: UITableViewCell {
         let numberOfPlayerAsString = String(room.numberOfPlayers)
         self.numberOfPlayerLabel.text = "\(numberOfPlayerAsString)/\(room.totalPlayers)"
         
-        for count in 0 ..< room.numberOfPlayers {
-            self.userCountBox[count].image = UIImage(named: "Pessoa_ON")
+        for userCount in userCountBox {
+            
+            if userCount.tag < room.numberOfPlayers {
+                userCount.image = UIImage(named: "Pessoa_ON")
+            } else {
+                userCount.image = UIImage(named: "Pessoa_OFF")
+            }
         }
     }
     

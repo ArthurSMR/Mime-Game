@@ -72,55 +72,55 @@
                                                     <constraint firstAttribute="width" secondItem="91E-AC-kkd" secondAttribute="height" multiplier="55:23" id="JMP-XU-7Ti"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="Lpk-YV-mlf">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="Lpk-YV-mlf">
                                                 <rect key="frame" x="25.5" y="0.0" width="25" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Lpk-YV-mlf" secondAttribute="height" multiplier="55:23" id="mEp-YM-UUA"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="qKG-eR-xbT">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="qKG-eR-xbT">
                                                 <rect key="frame" x="50.5" y="0.0" width="25.5" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="qKG-eR-xbT" secondAttribute="height" multiplier="55:23" id="OOr-Ue-Mdt"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="vJ6-xk-oRw">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="vJ6-xk-oRw">
                                                 <rect key="frame" x="76" y="0.0" width="25" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="vJ6-xk-oRw" secondAttribute="height" multiplier="55:23" id="r7N-mB-R0K"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="JAH-dp-D1f">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="JAH-dp-D1f">
                                                 <rect key="frame" x="101" y="0.0" width="25.5" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="JAH-dp-D1f" secondAttribute="height" multiplier="55:23" id="ADu-87-5hG"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="VhO-7O-Nlb">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="VhO-7O-Nlb">
                                                 <rect key="frame" x="126.5" y="0.0" width="25.5" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="VhO-7O-Nlb" secondAttribute="height" multiplier="55:23" id="arg-fy-WxL"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="cFU-A2-02z">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="cFU-A2-02z">
                                                 <rect key="frame" x="152" y="0.0" width="25" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="cFU-A2-02z" secondAttribute="height" multiplier="55:23" id="sZ8-LC-0Bz"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="76g-uO-K5B">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="76g-uO-K5B">
                                                 <rect key="frame" x="177" y="0.0" width="25.5" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="76g-uO-K5B" secondAttribute="height" multiplier="55:23" id="Rms-b0-3JK"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="V2t-VW-Ee8">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="V2t-VW-Ee8">
                                                 <rect key="frame" x="202.5" y="0.0" width="25" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="V2t-VW-Ee8" secondAttribute="height" multiplier="55:23" id="dIy-4A-nGl"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="Peb-pF-6Jt">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="Peb-pF-6Jt">
                                                 <rect key="frame" x="227.5" y="0.0" width="25.5" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Peb-pF-6Jt" secondAttribute="height" multiplier="55:23" id="vQm-Wi-PzK"/>
