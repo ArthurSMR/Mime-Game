@@ -27,23 +27,28 @@ class SelectRomTableViewCell: UITableViewCell {
     @IBOutlet weak var userNine: UIImageView!
     @IBOutlet weak var userTen: UIImageView!
     
+    
+    @IBOutlet var userCountBox: [UIImageView]!
+    
     //MARK: Variables
-    var roomm: Room?
+    var room: Room?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setupRoom(room: Room) {
-        if room.numberOfPlayers == 1 {
-            self.userOne.image = UIImage(named: "Pessoa_ON")
+        
+        self.nameLabel.text = room.name
+        let numberOfPlayerAsString = String(room.numberOfPlayers)
+        self.numberOfPlayerLabel.text = "\(numberOfPlayerAsString)/\(room.totalPlayers)"
+        
+        for count in 0 ..< room.numberOfPlayers {
+            self.userCountBox[count].image = UIImage(named: "Pessoa_ON")
         }
     }
     

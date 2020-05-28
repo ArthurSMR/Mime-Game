@@ -66,13 +66,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgM-Nk-w5Q">
                                         <rect key="frame" x="0.0" y="23" width="253" height="11"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_ON" translatesAutoresizingMaskIntoConstraints="NO" id="91E-AC-kkd">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="91E-AC-kkd">
                                                 <rect key="frame" x="0.0" y="0.0" width="25.5" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="91E-AC-kkd" secondAttribute="height" multiplier="55:23" id="JMP-XU-7Ti"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_ON" translatesAutoresizingMaskIntoConstraints="NO" id="Lpk-YV-mlf">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pessoa_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="Lpk-YV-mlf">
                                                 <rect key="frame" x="25.5" y="0.0" width="25" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Lpk-YV-mlf" secondAttribute="height" multiplier="55:23" id="mEp-YM-UUA"/>
@@ -156,16 +156,16 @@
             <connections>
                 <outlet property="nameLabel" destination="1hs-XX-MU6" id="P72-5x-c0b"/>
                 <outlet property="numberOfPlayerLabel" destination="csc-ph-xg9" id="E21-bL-K22"/>
-                <outlet property="userEight" destination="76g-uO-K5B" id="inp-95-z3T"/>
-                <outlet property="userFive" destination="JAH-dp-D1f" id="eYP-eA-3ft"/>
-                <outlet property="userFour" destination="vJ6-xk-oRw" id="UIF-Vz-fca"/>
-                <outlet property="userNine" destination="V2t-VW-Ee8" id="H6I-IP-GYS"/>
-                <outlet property="userOne" destination="91E-AC-kkd" id="DVW-fI-Nfq"/>
-                <outlet property="userSeven" destination="cFU-A2-02z" id="ozy-nS-O6Y"/>
-                <outlet property="userSix" destination="VhO-7O-Nlb" id="99U-e3-aW3"/>
-                <outlet property="userTen" destination="Peb-pF-6Jt" id="S70-LB-y01"/>
-                <outlet property="userThree" destination="qKG-eR-xbT" id="Cyd-WC-1N6"/>
-                <outlet property="userTwo" destination="Lpk-YV-mlf" id="mKn-jM-dTN"/>
+                <outletCollection property="userCountBox" destination="91E-AC-kkd" collectionClass="NSMutableArray" id="rH2-kI-Lhm"/>
+                <outletCollection property="userCountBox" destination="Lpk-YV-mlf" collectionClass="NSMutableArray" id="S7y-d0-b0K"/>
+                <outletCollection property="userCountBox" destination="qKG-eR-xbT" collectionClass="NSMutableArray" id="09i-XA-e95"/>
+                <outletCollection property="userCountBox" destination="vJ6-xk-oRw" collectionClass="NSMutableArray" id="MJs-z8-73x"/>
+                <outletCollection property="userCountBox" destination="JAH-dp-D1f" collectionClass="NSMutableArray" id="SDY-k2-CVO"/>
+                <outletCollection property="userCountBox" destination="VhO-7O-Nlb" collectionClass="NSMutableArray" id="Z8w-XO-vom"/>
+                <outletCollection property="userCountBox" destination="cFU-A2-02z" collectionClass="NSMutableArray" id="kXW-mN-IVs"/>
+                <outletCollection property="userCountBox" destination="76g-uO-K5B" collectionClass="NSMutableArray" id="GDo-jG-JuW"/>
+                <outletCollection property="userCountBox" destination="V2t-VW-Ee8" collectionClass="NSMutableArray" id="rJQ-5y-61C"/>
+                <outletCollection property="userCountBox" destination="Peb-pF-6Jt" collectionClass="NSMutableArray" id="cQT-UX-q5T"/>
             </connections>
             <point key="canvasLocation" x="255.79710144927537" y="122.87946428571428"/>
         </tableViewCell>
@@ -174,6 +174,5 @@
         <image name="BackButton_ON" width="294" height="75"/>
         <image name="Pessoa" width="15" height="15"/>
         <image name="Pessoa_OFF" width="21" height="10"/>
-        <image name="Pessoa_ON" width="21" height="10"/>
     </resources>
 </document>
