@@ -14,20 +14,30 @@ class SelectRomTableViewCell: UITableViewCell {
     //MARK: Outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberOfPlayerLabel: UILabel!
-    
-    
-    //MARK: Variables
-    var room: Room?
+    @IBOutlet var userCountBox: [UIImageView]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func setupRoom(room: Room) {
+        
+        self.nameLabel.text = room.name
+        let numberOfPlayerAsString = String(room.numberOfPlayers)
+        self.numberOfPlayerLabel.text = "\(numberOfPlayerAsString)/\(room.totalPlayers)"
+        
+        for userCount in userCountBox {
+            
+            if userCount.tag < room.numberOfPlayers {
+                userCount.image = UIImage(named: "Pessoa_ON")
+            } else {
+                userCount.image = UIImage(named: "Pessoa_OFF")
+            }
+        }
     }
     
 }

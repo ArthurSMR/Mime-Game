@@ -102,7 +102,6 @@ class GameViewController: UIViewController {
         guard let divinerTable = divinerTableView else { return }
         ChatTableViewCell.registerNib(for: divinerTable)
         MessageSystemGameTableViewCell.registerNib(for: divinerTable)
-        CorrectMimeTableViewCell.registerNib(for: divinerTable)
         
         // Setting up mimickr tableView
         mimickrTableView.delegate = self
@@ -110,7 +109,6 @@ class GameViewController: UIViewController {
         guard let mimickrTable = mimickrTableView else { return }
         ChatTableViewCell.registerNib(for: mimickrTable)
         MessageSystemGameTableViewCell.registerNib(for: mimickrTable)
-        CorrectMimeTableViewCell.registerNib(for: mimickrTable)
     }
     
     //MARK: Draw Modals
@@ -340,18 +338,19 @@ extension GameViewController : UITableViewDelegate, UITableViewDataSource {
         guard let message = self.engine?.messages[indexPath.row] else { return UITableViewCell() }
         
         if message.showCorrectMime {
-            let cell = CorrectMimeTableViewCell.dequeueCell(from: tableView)
             
-            cell.correctMime.text = "Resposta correta: \(message.word)"
+            let cell = MessageSystemGameTableViewCell.dequeueCell(from: tableView)
+            cell.messageLbl.text = "Resposta correta: \(message.word)"
+            cell.messageLbl.tintColor = .mediumBlue
             return cell
-        }
-        
-        if message.isCorrect {
+        } else if message.isCorrect {
+            
             let cell = MessageSystemGameTableViewCell.dequeueCell(from: tableView)
             cell.messageLbl.text = "\(message.player.name) acertou! \(message.word.uppercased())"
+            cell.messageLbl.tintColor = .pinkReply
             return cell
-            
         } else {
+            
             let cell = ChatTableViewCell.dequeueCell(from: tableView)
             cell.playerName.text = message.player.name
             cell.playerImage.image = message.player.avatar
