@@ -39,6 +39,7 @@
 		36E503472469D21A006022DC /* PlayerRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */; };
 		36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E503482469D536006022DC /* MatchDetailsViewController.swift */; };
 		36F0F78F246F0F5400E36B14 /* acerto_palavra.json in Resources */ = {isa = PBXBuildFile; fileRef = 36F0F78E246F0F5400E36B14 /* acerto_palavra.json */; };
+		36FAC5F9247467BC00A87ED6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FAC5F8247467BC00A87ED6 /* CloudKit.framework */; };
 		3C09D64D24570D0300849B83 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D63A24570D0300849B83 /* Modal.swift */; };
 		3C09D65824570DA900849B83 /* DrawPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D65724570DA900849B83 /* DrawPlayer.swift */; };
 		3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65924570DB400849B83 /* DrawPlayer.xib */; };
@@ -66,8 +67,10 @@
 		3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE12461AF4E00AE3926 /* SelectRomTableViewCell.swift */; };
 		3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD2FE22461AF4E00AE3926 /* SelectRomTableViewCell.xib */; };
 		3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDB82C2461ACCE00648D31 /* SelectRoomViewController.swift */; };
+		9A2FD18324774EB5008D5447 /* RoomServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FD18224774EB5008D5447 /* RoomServices.swift */; };
 		9A4077352461B29E00DC4D82 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4077342461B29E00DC4D82 /* Room.swift */; };
 		9A5E73A32459E81800911FEB /* NoRegisteredPlayerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */; };
+		9A73829724784F3B00FB3ADD /* DatabaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A73829624784F3B00FB3ADD /* DatabaseContainer.swift */; };
 		9A9EED3F246F352A004DF8DA /* SOUNDS_EFFECTS in Resources */ = {isa = PBXBuildFile; fileRef = 9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */; };
 		9A9EED41246F3836004DF8DA /* SoundFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EED40246F3836004DF8DA /* SoundFX.swift */; };
 		9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */; };
@@ -125,6 +128,8 @@
 		36E503452469D21A006022DC /* PlayerRankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerRankingTableViewCell.xib; sourceTree = "<group>"; };
 		36E503482469D536006022DC /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
 		36F0F78E246F0F5400E36B14 /* acerto_palavra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acerto_palavra.json; sourceTree = "<group>"; };
+		36FAC5F7247467B900A87ED6 /* Mime Game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Mime Game.entitlements"; sourceTree = "<group>"; };
+		36FAC5F8247467BC00A87ED6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3C09D63A24570D0300849B83 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		3C09D65724570DA900849B83 /* DrawPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawPlayer.swift; sourceTree = "<group>"; };
 		3C09D65924570DB400849B83 /* DrawPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawPlayer.xib; sourceTree = "<group>"; };
@@ -155,8 +160,10 @@
 		513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_GameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.debug.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.debug.xcconfig"; sourceTree = "<group>"; };
 		8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mime_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2FD18224774EB5008D5447 /* RoomServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomServices.swift; sourceTree = "<group>"; };
 		9A4077342461B29E00DC4D82 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		9A5E73A22459E81800911FEB /* NoRegisteredPlayerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRegisteredPlayerCodable.swift; sourceTree = "<group>"; };
+		9A73829624784F3B00FB3ADD /* DatabaseContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseContainer.swift; sourceTree = "<group>"; };
 		9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOUNDS_EFFECTS; sourceTree = "<group>"; };
 		9A9EED40246F3836004DF8DA /* SoundFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFX.swift; sourceTree = "<group>"; };
 		9AD261092457A6B800E449A4 /* LoginNoRegisteredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNoRegisteredViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F472E01669DF60F31CF63AD3 /* Pods_Mime_Game.framework in Frameworks */,
+				36FAC5F9247467BC00A87ED6 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				3695A91E24524FF700815617 /* MimeServices.swift */,
+				9A2FD18224774EB5008D5447 /* RoomServices.swift */,
 				9AD2610D2458A2AE00E449A4 /* UserServices.swift */,
 				9A9EED40246F3836004DF8DA /* SoundFX.swift */,
 				36AA37832478437A00AB7BBE /* DataServices.swift */,
@@ -266,6 +275,7 @@
 		36BC041B243E1080005B753A /* Mime Game */ = {
 			isa = PBXGroup;
 			children = (
+				36FAC5F7247467B900A87ED6 /* Mime Game.entitlements */,
 				362F9BED246472F3008BE949 /* Engine */,
 				3695A91D24524FE600815617 /* Service */,
 				36A8F93724508A9D008D0FD3 /* Models */,
@@ -392,6 +402,7 @@
 				36BC041E243E1080005B753A /* SceneDelegate.swift */,
 				36BC041C243E1080005B753A /* AppDelegate.swift */,
 				36CAA77A246E18B600F4847B /* AppIDs.swift */,
+				9A73829624784F3B00FB3ADD /* DatabaseContainer.swift */,
 				36CAA776246DC45500F4847B /* DeepLink.swift */,
 			);
 			path = Resources;
@@ -483,6 +494,7 @@
 		C08ADCE8D6EA85BB448FFF3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36FAC5F8247467BC00A87ED6 /* CloudKit.framework */,
 				8FBD52D6FC5F03212F0AD4C9 /* Pods_Mime_Game.framework */,
 				513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */,
 			);
@@ -718,6 +730,7 @@
 				36CAA77B246E18B600F4847B /* AppIDs.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
 				3682147E2459B23200C6A254 /* Message.swift in Sources */,
+				9A2FD18324774EB5008D5447 /* RoomServices.swift in Sources */,
 				36E503492469D536006022DC /* MatchDetailsViewController.swift in Sources */,
 				36AA37842478437A00AB7BBE /* DataServices.swift in Sources */,
 				3C36CFDE2450856E003648AE /* CustomRoundViews.swift in Sources */,
@@ -727,6 +740,7 @@
 				3642AE1124524CEF004CBF76 /* Mime.swift in Sources */,
 				3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */,
 				3C36CFBE2450809F003648AE /* LobbyViewController.swift in Sources */,
+				9A73829724784F3B00FB3ADD /* DatabaseContainer.swift in Sources */,
 				36BC0427243E1081005B753A /* Mime_Game.xcdatamodeld in Sources */,
 				36CAA777246DC45500F4847B /* DeepLink.swift in Sources */,
 				3C36CFD124508441003648AE /* UIColor+Extension.swift in Sources */,
@@ -896,6 +910,7 @@
 			baseConfigurationReference = 88FAB1BFD40E81622ED4EC07 /* Pods-Mime Game.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mime Game/Mime Game.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -918,6 +933,7 @@
 			baseConfigurationReference = 2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mime Game/Mime Game.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9KU377264X;

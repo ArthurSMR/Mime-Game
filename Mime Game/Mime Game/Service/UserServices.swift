@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class UserServices {
     
@@ -27,5 +28,6 @@ class UserServices {
         }
         return nil
     }
+    
     
 }

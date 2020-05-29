@@ -28,8 +28,9 @@ class LobbyViewController: UIViewController {
     var roomNameStr: String?
     var totalPlayers = 10
     let message = "Venha jogar Mimiqueiros comigo 🎭"
-
+    
     private var agoraKit: AgoraRtcEngineKit!
+    var room: Room?
     var AppID: String = ""
     
     var localAgoraUserInfo = AgoraUserInfo()
@@ -39,6 +40,8 @@ class LobbyViewController: UIViewController {
     var startGameStreamId = 1
     var avatarStreamId = 2
     var gameSettings: GameSettings?
+    
+    var localIsRoomHost = false
     
     var isMuted: Bool = false {
         didSet {
@@ -59,7 +62,22 @@ class LobbyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupViewAnimation()
+        RoomServices.userEntered(room: self.room!) { error in
+            print(error)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        RoomServices.userLeft(room: self.room!){ error in
+            if self.localPlayer.isHost {
+                if self.remotePlayers.count != 0{
+                    self.remotePlayers[0].isHost = true
+                }
+            }
+        }
     }
     
     //MARK: Methods
@@ -68,6 +86,7 @@ class LobbyViewController: UIViewController {
         self.roomName.text = self.roomNameStr
         changeMuteButtonState()
         setupAgora()
+        
     }
     
     func setupViewAnimation() {
@@ -182,6 +201,8 @@ class LobbyViewController: UIViewController {
             }
         }
         
+        RoomServices.updateNumberOfPlayersTo(number: playerQuantity, room: self.room!)
+        
         self.playersQuantityLbl.text = "\(playerQuantity)/\(self.totalPlayers)"
     }
     
@@ -216,6 +237,11 @@ class LobbyViewController: UIViewController {
         self.localPlayer = Player(agoraUserInfo: self.localAgoraUserInfo,
                                   type: .local,
                                   avatar: incomingAvatar!)
+        
+        if self.localIsRoomHost == true{
+            self.localPlayer.isHost = true
+        }
+        
         
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
                
@@ -272,6 +298,7 @@ class LobbyViewController: UIViewController {
     
     /// This method for leaving the channel
     private func leaveChannel() {
+        guard let room = self.room else { print("No room passed on segue"); return }
         agoraKit.leaveChannel(nil)
     }
     
