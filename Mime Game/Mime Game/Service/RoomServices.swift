@@ -12,7 +12,9 @@ import CloudKit
 class RoomServices {
     
     
-    static func userEntered(room: Room){
+    /// Method called to update the number of players on a room when a user enter it.
+    /// - Parameter room: the room object witch user is entering, used to query de public database to find equivalent.
+    static func userEntered(room: Room, completionHandler:@escaping (Error?) -> Void){
         let database = DatabaseContainer.shared.publicCloudDatabase
         room.numberOfPlayers += 1
         
@@ -27,26 +29,55 @@ class RoomServices {
                 if roomsFound.count != 0 {
                     guard let roomFound = roomsFound.first else { return }
                     roomFound["numberOfPlayers"] = room.numberOfPlayers
-                    
                     database.save(roomFound, completionHandler: { record, error in
                         
                         if error == nil {
                             print("user enter update on \(room.name). It now has \(room.numberOfPlayers) players")
                         }
+                    })
+                    completionHandler(error)
+                }
+            }
+            
+        }
+    }
+    
+    static func updateNumberOfPlayersTo(number: Int, room: Room){
+        let database = DatabaseContainer.shared.publicCloudDatabase
+        room.numberOfPlayers = number
+        
+        var predicate = NSPredicate(format: "name == %@", room.name)
+        var query = CKQuery(recordType: "Room", predicate: predicate)
+        
+        database.perform(query, inZoneWith: .default) { (results, error) -> Void in
+            if error != nil {
+                print("error performing query to find \(room.name) when entering...")
+            }
+            if let roomsFound = results{
+                if roomsFound.count != 0 {
+                    guard let roomFound = roomsFound.first else { return }
+                    roomFound["numberOfPlayers"] = room.numberOfPlayers
+                    database.save(roomFound, completionHandler: { record, error in
                         
+                        if error == nil {
+                            print("user enter update on \(room.name). It now has \(room.numberOfPlayers) players")
+                        }
                     })
                 }
             }
+            
         }
     }
     
     
-    static func userLeft(room: Room){
+    /// Method called to update the number of players on a room when a user leaves it
+    /// - Parameter room: the room object witch user is leaving, used to query de public database to find equivalent.
+    static func userLeft(room: Room, completionHandler:@escaping (Error?) -> Void){
         let database = DatabaseContainer.shared.publicCloudDatabase
         room.numberOfPlayers -= 1
         
-        var predicate = NSPredicate(format: "name == %@", room.name)
-        var query = CKQuery(recordType: "Room", predicate: predicate)
+        let predicate = NSPredicate(format: "name == %@", room.name)
+        let query = CKQuery(recordType: "Room", predicate: predicate)
         
         database.perform(query, inZoneWith: .default) { (results, error) -> Void in
             if error != nil {
@@ -62,12 +93,11 @@ class RoomServices {
                         if error == nil {
                             print("user left update on \(room.name). It now has \(room.numberOfPlayers) players")
                         }
-                        
                     })
+                    completionHandler(error)
                 }
             }
         }
-        
     }
     
     static func saveToCloud(room: Room){
@@ -88,6 +118,9 @@ class RoomServices {
     }
     
     
+    
+    /// Load rooms from Cloud public database
+    /// - Parameter completionHandler: Responsible to fill local Room Array based on info loaded from cloud.
     static func loadRooms(completionHandler:@escaping ([Room]?,Error?) -> Void)  {
         let pred = NSPredicate(value: true)
         let sort = NSSortDescriptor(key: "name", ascending: true)
@@ -95,6 +128,7 @@ class RoomServices {
         query.sortDescriptors = [sort]
 
         let operation = CKQueryOperation(query: query)
+        //will query for all keys
         operation.desiredKeys = nil
         //because now we have 6 rooms
         operation.resultsLimit = 6

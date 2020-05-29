@@ -92,6 +92,11 @@ class SelectRoomViewController: UIViewController {
                 destinationVC.roomNameStr = selectedRoom.name
                 destinationVC.AppID = selectedRoom.appId
                 destinationVC.room = selectedRoom
+                
+                if selectedRoom.numberOfPlayers == 0{
+                    destinationVC.localIsRoomHost = true
+                }
+                
             }
         default:
             print("No segue found")
