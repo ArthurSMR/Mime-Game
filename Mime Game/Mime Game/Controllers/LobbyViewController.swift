@@ -38,6 +38,7 @@ class LobbyViewController: UIViewController {
     var startGame = Data("startGame".utf8)
     var startGameStreamId = 1
     var avatarStreamId = 2
+    var gameSettings: GameSettings?
     
     var isMuted: Bool = false {
         didSet {
@@ -346,6 +347,12 @@ class LobbyViewController: UIViewController {
                 gameVC.isMuted = isMuted
             }
         }
+        
+        else if segue.identifier == "setupRoom" {
+            if let setupVC = segue.destination as? SetupRoomViewController {
+                setupVC.delegate = self
+            }
+        }
     }
 }
 
@@ -440,5 +447,12 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
                    cached: Int) {
         
         print("received from \(uid), streamID: \(streamId), error: \(error), missed \(missed), cached \(cached)")
+    }
+}
+
+extension LobbyViewController : SetupRoomDelegate {
+    
+    func didChangeRoomSettings(gameSettings: GameSettings) {
+        self.gameSettings = gameSettings
     }
 }

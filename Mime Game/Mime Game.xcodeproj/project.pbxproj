@@ -10,6 +10,8 @@
 		0591916A56CB56AF7985E723 /* Pods_Mime_GameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513669330DE62FFB18B2B3BA /* Pods_Mime_GameTests.framework */; };
 		360525432458A71600BEA330 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360525412458A71600BEA330 /* ChatTableViewCell.swift */; };
 		360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360525422458A71600BEA330 /* ChatTableViewCell.xib */; };
+		363D101A248144F500E9B881 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D1019248144F500E9B881 /* GameSettings.swift */; };
+		363D101E248149EF00E9B881 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D101D248149EF00E9B881 /* Validator.swift */; };
 		3642AE0824520495004CBF76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0724520495004CBF76 /* GameViewController.swift */; };
 		3642AE0C245241CA004CBF76 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE0B245241CA004CBF76 /* Game.swift */; };
 		3642AE1124524CEF004CBF76 /* Mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3642AE1024524CEF004CBF76 /* Mime.swift */; };
@@ -58,7 +60,7 @@
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
 		3C642B93247ED1D000FC7DB1 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C642B91247ED1D000FC7DB1 /* ThemeTableViewCell.swift */; };
 		3C642B94247ED1D000FC7DB1 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C642B92247ED1D000FC7DB1 /* ThemeTableViewCell.xib */; };
-		3C642B96247F26A100FC7DB1 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C642B95247F26A100FC7DB1 /* ThemesViewController.swift */; };
+		3C642B96247F26A100FC7DB1 /* SetupRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */; };
 		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
 		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
 		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
@@ -92,6 +94,8 @@
 		2AEE905823EEF06BA96F3C9B /* Pods-Mime Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mime Game.release.xcconfig"; path = "Target Support Files/Pods-Mime Game/Pods-Mime Game.release.xcconfig"; sourceTree = "<group>"; };
 		360525412458A71600BEA330 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		360525422458A71600BEA330 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		363D1019248144F500E9B881 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		363D101D248149EF00E9B881 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		3642AE0724520495004CBF76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3642AE0B245241CA004CBF76 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3642AE1024524CEF004CBF76 /* Mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mime.swift; sourceTree = "<group>"; };
@@ -144,7 +148,7 @@
 		3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSystemGameTableViewCell.xib; sourceTree = "<group>"; };
 		3C642B91247ED1D000FC7DB1 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		3C642B92247ED1D000FC7DB1 /* ThemeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeTableViewCell.xib; sourceTree = "<group>"; };
-		3C642B95247F26A100FC7DB1 /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
+		3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRoomViewController.swift; sourceTree = "<group>"; };
 		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
@@ -201,6 +205,22 @@
 			path = Engine;
 			sourceTree = "<group>";
 		};
+		363D1018248144E700E9B881 /* GameSettings */ = {
+			isa = PBXGroup;
+			children = (
+				363D1019248144F500E9B881 /* GameSettings.swift */,
+			);
+			path = GameSettings;
+			sourceTree = "<group>";
+		};
+		363D101C248149DC00E9B881 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				363D101D248149EF00E9B881 /* Validator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		3695A91D24524FE600815617 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +242,7 @@
 				3682147D2459B23200C6A254 /* Message.swift */,
 				365411C6246B11E600F1F63E /* MimeMessage.swift */,
 				36AA377F247703C600AB7BBE /* MessageStream.swift */,
+				363D1018248144E700E9B881 /* GameSettings */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,6 +390,7 @@
 		3C553592245BB64100422CE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				363D101C248149DC00E9B881 /* Helpers */,
 				9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */,
 				3CE7E5312469B54E00686C44 /* Json */,
 				3C09D63024570D0300849B83 /* Alerts */,
@@ -458,7 +480,7 @@
 				3642AE0724520495004CBF76 /* GameViewController.swift */,
 				36E503482469D536006022DC /* MatchDetailsViewController.swift */,
 				3CE92CBA246C37DD007113DA /* RankingFinalViewController.swift */,
-				3C642B95247F26A100FC7DB1 /* ThemesViewController.swift */,
+				3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -694,14 +716,16 @@
 				3C36CFDD2450856E003648AE /* ImagePicker.swift in Sources */,
 				368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */,
 				3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */,
-				3C642B96247F26A100FC7DB1 /* ThemesViewController.swift in Sources */,
+				3C642B96247F26A100FC7DB1 /* SetupRoomViewController.swift in Sources */,
 				9A4077352461B29E00DC4D82 /* Room.swift in Sources */,
 				3CFD2FE32461AF4E00AE3926 /* SelectRomTableViewCell.swift in Sources */,
 				36CAA779246E0E4F00F4847B /* URL+QueryParameters.swift in Sources */,
+				363D101E248149EF00E9B881 /* Validator.swift in Sources */,
 				9A9EED41246F3836004DF8DA /* SoundFX.swift in Sources */,
 				3CE92CBB246C37DD007113DA /* RankingFinalViewController.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
 				3C642B93247ED1D000FC7DB1 /* ThemeTableViewCell.swift in Sources */,
+				363D101A248144F500E9B881 /* GameSettings.swift in Sources */,
 				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,

@@ -40,10 +40,6 @@ class GameViewController: UIViewController {
     var engine: GameEngine?
     var soundFXManager = SoundFX()
     var messageStreamId = 3
-    //    var chatStreamId = 3
-    //    var currentMimeIndexStreamId = 4
-    //    var nextMimickrStreamId = 5
-    //    var startTurnStreamId = 6
     var segueToRankingFinal = "toRankingFinal"
     var segueToRankingFinalData = Data("toRankingFinal".utf8)
     var isMuted: Bool = false

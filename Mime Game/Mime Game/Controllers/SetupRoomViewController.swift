@@ -14,8 +14,8 @@ enum TextFieldType: Int, CaseIterable {
     case rounds
 }
 
-protocol <#name#> {
-    <#requirements#>
+protocol SetupRoomDelegate: class {
+    func didChangeRoomSettings(gameSettings: GameSettings)
 }
 
 class SetupRoomViewController: UIViewController {
@@ -25,16 +25,24 @@ class SetupRoomViewController: UIViewController {
     @IBOutlet weak var roundsTxtField: UITextField!
     
     var pickerView = UIPickerView()
+    var selectedTheme: Theme?
     var themes: Themes!
     var textFieldType: TextFieldType?
+    var selectedTime: Int?
     var times = [30, 60, 90, 120]
+    var selectedRound: Int?
     var rounds = [1, 2, 3, 4, 5]
     var selectedIndexForPicker: [Int] = []
+    var delegate: SetupRoomDelegate?
+    var gameSettings: GameSettings!
+    var validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
+    
+    //MARK: - Setups
     
     func setup() {
         
@@ -85,6 +93,8 @@ class SetupRoomViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    //MARK: - Methods
+    
     /// This method will check what text field was pressed. Using did begin editing.
     /// - Parameter sender: textField pressed
     @IBAction func assignPickerViewToTextField(_ sender: UITextField) {
@@ -122,14 +132,53 @@ class SetupRoomViewController: UIViewController {
         
         switch type {
         case .time:
+            self.selectedTime = times[pickerView.selectedRow(inComponent: 0)]
             return String(times[pickerView.selectedRow(inComponent: 0)])
         case .theme:
+            self.selectedTheme = themes.themes[pickerView.selectedRow(inComponent: 0)]
             return themes.themes[pickerView.selectedRow(inComponent: 0)].name
         case .rounds:
+            self.selectedRound = rounds[pickerView.selectedRow(inComponent: 0)]
             return String(rounds[pickerView.selectedRow(inComponent: 0)])
         }
     }
+    
+    private func canSetRoom() -> Bool {
+        
+        self.gameSettings = GameSettings(quantityPlayedWithMimickr: selectedRound ?? 0, totalTurnTime: selectedTime ?? 0, theme: selectedTheme ?? Theme(name: "", words: []))
+        
+        // Trying to validate game settings
+        do {
+            if try validator.validateGameSettings(gameSettings: self.gameSettings) {
+                return true
+            }
+        } catch (let error as GameSettingsErrors) { // if returns any error, it will be handled here
+            
+            switch error {
+            case .quantityPlayersWithMimickrOutOfRange:
+                print("quantityPlayersWithMimickrOutOfRange")
+            case .themeNameIsEmpty:
+                print("themeNameIsEmpty")
+            case .totalTurnTimeOutOfRange:
+                print("totalTurnTimeOutOfRange")
+            }
+        } catch { // if there is no error to handle, it will print this
+            print("Ocorreu algum erro ao confirmar as suas configurações")
+        }
+        return false
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func didConfirmButtonPressed(_ sender: UIButton) {
+        
+        if canSetRoom() {
+            delegate?.didChangeRoomSettings(gameSettings: self.gameSettings)
+        }
+    }
 }
+
+//MARK: - Picker View Delegate
 
 extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -141,10 +190,13 @@ extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         
         switch textFieldType {
         case .time:
+            self.selectedTime = times[row]
             timeTxtField.text = String(times[row])
         case .theme:
+            self.selectedTheme = themes.themes[row]
             themeTxtField.text = themes.themes[row].name
         case .rounds:
+            self.selectedRound = rounds[row]
             roundsTxtField.text = String(rounds[row])
         default:
             print("text field not found")

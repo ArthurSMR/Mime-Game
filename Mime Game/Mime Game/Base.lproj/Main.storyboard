@@ -1389,10 +1389,10 @@
             </objects>
             <point key="canvasLocation" x="2890" y="-160"/>
         </scene>
-        <!--Themes View Controller-->
+        <!--Setup Room View Controller-->
         <scene sceneID="arV-2d-BS1">
             <objects>
-                <viewController id="dUq-V7-mMH" customClass="ThemesViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dUq-V7-mMH" customClass="SetupRoomViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dbe-Cw-2yk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1471,6 +1471,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="confirmButtonDidPressed:" destination="EmN-KB-pVX" eventType="touchUpInside" id="SDc-hV-Ogr"/>
+                                    <action selector="didConfirmButtonPressed:" destination="dUq-V7-mMH" eventType="touchUpInside" id="SHW-sL-fCq"/>
                                 </connections>
                             </button>
                         </subviews>
