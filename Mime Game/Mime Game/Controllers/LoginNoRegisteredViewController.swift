@@ -161,9 +161,7 @@ class LoginNoRegisteredViewController: UIViewController {
                 destinationVC.incomingName = self.nameTextField.text ?? ""
                 destinationVC.incomingAvatar = self.avaliableAvatars[currentSelectedAvatarIndex]
                 destinationVC.currentAvatarIndex = self.currentSelectedAvatarIndex
-                destinationVC.roomNameStr = DeepLink.shared.roomName
-                destinationVC.AppID = DeepLink.shared.appID
-
+                destinationVC.room = Room(appId: DeepLink.shared.appID, name: DeepLink.shared.roomName, numberOfPlayers: 1)
                 saveAvatarToUserDefault()
             }
             

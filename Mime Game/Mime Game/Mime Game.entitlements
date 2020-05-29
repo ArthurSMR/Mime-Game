@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
-	<string></string>
+	<string>iCloud.rodrigues.arthur.Mime-Game</string>
 	<key>aps-environment</key>
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>

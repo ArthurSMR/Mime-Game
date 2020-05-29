@@ -25,13 +25,11 @@ class LobbyViewController: UIViewController {
     var incomingName: String?
     var incomingAvatar: UIImage?
     var currentAvatarIndex: Int = 0
-    var roomNameStr: String?
     var totalPlayers = 10
     let message = "Venha jogar Mimiqueiros comigo 🎭"
     
     private var agoraKit: AgoraRtcEngineKit!
     var room: Room?
-    var AppID: String = ""
     
     var localAgoraUserInfo = AgoraUserInfo()
     var localPlayer: Player!
@@ -65,7 +63,7 @@ class LobbyViewController: UIViewController {
         super.viewWillAppear(animated)
         setupViewAnimation()
         RoomServices.userEntered(room: self.room!) { error in
-            print(error)
+            print(error?.localizedDescription)
         }
     }
     
@@ -83,7 +81,7 @@ class LobbyViewController: UIViewController {
     //MARK: Methods
     func setupLayout() {
         self.navigationController?.isNavigationBarHidden = true
-        self.roomName.text = self.roomNameStr
+        self.roomName.text = self.room?.name
         changeMuteButtonState()
         setupAgora()
         
@@ -149,7 +147,8 @@ class LobbyViewController: UIViewController {
     
     /// This method is responsible for initializing Agora framework
     private func initializateAgoraEngine() {
-        agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
+        guard let appId = self.room?.appId else { return }
+        agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: appId, delegate: self)
         agoraKit.enableWebSdkInteroperability(true)
     }
     
@@ -167,9 +166,11 @@ class LobbyViewController: UIViewController {
         
         guard let name = incomingName else { return }
         
+        guard let appId = self.room?.appId else { return }
+        
         agoraKit.joinChannel(byUserAccount: name,
                              token: nil,
-                             channelId: self.AppID) { (sid, uid, elapsed) in
+                             channelId: appId) { (sid, uid, elapsed) in
                                 
             self.createLocalPlayer(uid: uid)
             self.prepareTableView()
@@ -209,14 +210,14 @@ class LobbyViewController: UIViewController {
     /// This method will create a message  and a link to share with activityController
     func shareLink() {
         
-        guard let roomName = self.roomNameStr else { return }
+        guard let appId = self.room?.appId else { return }
         
         //Enconding room name as url and with query allowed
-        guard let roomNameAsURL = roomName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let roomNameAsURL = self.room?.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         
         // Link example:
         // mime://invite-mime-game?appID=973c32ecfb4e497a9024240f3126d67f&roomName=Sala-1
-        let openAppPath = "mime://invite-mime-game?appID=\(self.AppID)&roomName=\(roomNameAsURL)"
+        let openAppPath = "mime://invite-mime-game?appID=\(appId)&roomName=\(roomNameAsURL)"
         
         guard let appURL = URL(string: openAppPath) else { return }
         

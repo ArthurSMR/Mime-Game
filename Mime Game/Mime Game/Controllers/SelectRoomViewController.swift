@@ -22,9 +22,6 @@ class SelectRoomViewController: UIViewController {
     var incomingAvatar: UIImage?
     var currentAvatarIndex: Int = 0
     var numberOfPlayers = [5, 10, 0, 4, 10, 6]
-    
-    var selectedRoomAppId: String?
-    var selectedRoomName: String?
     var roomsName: [String] = []
     var selectedRoom: Room?
     
@@ -83,8 +80,6 @@ class SelectRoomViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "toLobby":
@@ -93,8 +88,6 @@ class SelectRoomViewController: UIViewController {
                 destinationVC.incomingName = self.incomingName
                 destinationVC.incomingAvatar = self.incomingAvatar
                 destinationVC.currentAvatarIndex = self.currentAvatarIndex
-                destinationVC.roomNameStr = selectedRoom.name
-                destinationVC.AppID = selectedRoom.appId
                 destinationVC.room = selectedRoom
                 
                 if selectedRoom.numberOfPlayers == 0{
@@ -127,9 +120,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.selectedRoomAppId = self.roomsAppIds[indexPath.row]
-        self.selectedRoomName = self.roomsName[indexPath.row]
+        self.selectedRoom = self.rooms[indexPath.row]
         soundFXManager.playFX(named: "Lobby")
         performSegue(withIdentifier: "toLobby", sender: self)
     }
