@@ -450,6 +450,8 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     }
 }
 
+// MARK: - SetupRoomDelegate
+
 extension LobbyViewController : SetupRoomDelegate {
     
     func didChangeRoomSettings(gameSettings: GameSettings) {
