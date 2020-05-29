@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -25,7 +25,7 @@
                                 <color key="textColor" name="Rosa respostas"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Jogador" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-5a-k7P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Jogador" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-5a-k7P">
                                 <rect key="frame" x="75" y="24.5" width="241.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="Azul mais escuro"/>
@@ -34,7 +34,7 @@
                             <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="U7r-ph-hKY" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
                                 <rect key="frame" x="324.5" y="19.5" width="89.5" height="27"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-cl-KRS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-cl-KRS">
                                         <rect key="frame" x="5" y="5" width="79.5" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,7 +62,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-aT-02h" customClass="RoundImage" customModule="Mime_Game" customModuleProvider="target">
                                 <rect key="frame" x="17" y="8" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="l56-rg-H7j"/>
+                                    <constraint firstAttribute="width" secondItem="0Os-aT-02h" secondAttribute="height" multiplier="1:1" id="pYI-hh-KSk"/>
                                     <constraint firstAttribute="height" constant="50" id="xPu-FL-CO6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -97,7 +97,10 @@
                 <constraints>
                     <constraint firstItem="zMw-ox-elN" firstAttribute="leading" secondItem="WIY-xe-YO9" secondAttribute="leading" id="2nD-iO-acY"/>
                     <constraint firstAttribute="trailing" secondItem="zMw-ox-elN" secondAttribute="trailing" id="AHE-5I-Hai"/>
+                    <constraint firstItem="U7r-ph-hKY" firstAttribute="width" secondItem="WIY-xe-YO9" secondAttribute="width" multiplier="0.216184" id="BEC-hg-NSN"/>
                     <constraint firstItem="zMw-ox-elN" firstAttribute="centerY" secondItem="WIY-xe-YO9" secondAttribute="centerY" id="HRa-Yp-2Kr"/>
+                    <constraint firstItem="Zan-5a-k7P" firstAttribute="width" secondItem="WIY-xe-YO9" secondAttribute="width" multiplier="0.583333" id="ffy-7M-7mm"/>
+                    <constraint firstItem="0Os-aT-02h" firstAttribute="width" secondItem="WIY-xe-YO9" secondAttribute="width" multiplier="0.120773" id="gDe-mo-uJ5"/>
                     <constraint firstItem="zMw-ox-elN" firstAttribute="top" secondItem="WIY-xe-YO9" secondAttribute="top" id="lK6-Te-twy"/>
                     <constraint firstAttribute="bottom" secondItem="zMw-ox-elN" secondAttribute="bottom" id="uOa-Yj-m9s"/>
                 </constraints>

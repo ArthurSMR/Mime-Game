@@ -16,9 +16,6 @@ class SelectRomTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfPlayerLabel: UILabel!
     @IBOutlet var userCountBox: [UIImageView]!
     
-    //MARK: Variables
-    var room: Room?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

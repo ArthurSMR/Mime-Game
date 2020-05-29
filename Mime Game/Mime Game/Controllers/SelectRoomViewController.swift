@@ -23,6 +23,7 @@ class SelectRoomViewController: UIViewController {
     
     var selectedRoomAppId: String?
     var selectedRoomName: String?
+    var roomsName: [String] = []
     
     var soundFXManager = SoundFX()
     
@@ -74,7 +75,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellRoomName = "Sala \(indexPath.row + 1)"
-        
+        self.roomsName.append(cellRoomName)
         let cell = SelectRomTableViewCell.dequeueCell(from: tableView)
         
         let room = Room(appId: roomsAppIds[indexPath.row], name: cellRoomName, numberOfPlayers: numberOfPlayers[indexPath.row])
@@ -86,13 +87,8 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard (tableView.cellForRow(at: indexPath) != nil) else { return }
-        
-        // Tente nao dar force pois pode vir nil qualquer hora e o app crashar
-        let selectedCell = tableView.cellForRow(at: indexPath) as! SelectRomTableViewCell
-        
-        self.selectedRoomAppId = selectedCell.room?.appId
-        self.selectedRoomName = selectedCell.nameLabel.text
+        self.selectedRoomAppId = self.roomsAppIds[indexPath.row]
+        self.selectedRoomName = self.roomsName[indexPath.row]
         soundFXManager.playFX(named: "Lobby")
         performSegue(withIdentifier: "toLobby", sender: self)
     }
