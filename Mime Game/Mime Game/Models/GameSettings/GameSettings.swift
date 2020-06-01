@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameSettings {
+class GameSettings: Codable {
     var quantityPlayedWithMimickr: Int
     var totalTurnTime: Int
     var theme: Theme

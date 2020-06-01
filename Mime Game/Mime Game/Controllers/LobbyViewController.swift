@@ -35,8 +35,7 @@ class LobbyViewController: UIViewController {
     var localPlayer: Player!
     var remotePlayers: [Player] = []
     var startGame = Data("startGame".utf8)
-    var startGameStreamId = 1
-    var avatarStreamId = 2
+    var messageStreamId = 1
     var gameSettings: GameSettings?
     
     var localIsRoomHost = false
@@ -140,9 +139,8 @@ class LobbyViewController: UIViewController {
     func sendAvatarThroughMessageStream() {
         let avatarNames = LobbyViewController.getAvatarImagesNames()
         let avatarChosenName = avatarNames[self.currentAvatarIndex]
-        let dataAvatarName = Data(avatarChosenName.utf8)
-        
-        self.agoraKit.sendStreamMessage(self.avatarStreamId, data: dataAvatarName)
+        let data = DataServices.encode(avatarChosenName: avatarChosenName)
+        self.agoraKit.sendStreamMessage(self.messageStreamId, data: data)
     }
     
     /// This method is responsible for initializing Agora framework
@@ -246,11 +244,9 @@ class LobbyViewController: UIViewController {
         
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
                
-        let startGamePointer = UnsafeMutablePointer<Int>(&startGameStreamId)
-        agoraKit.createDataStream(startGamePointer, reliable: true, ordered: true)
+        let messageStreamIdPointer = UnsafeMutablePointer<Int>(&messageStreamId)
+        agoraKit.createDataStream(messageStreamIdPointer, reliable: true, ordered: true)
         
-        let avatarPointer = UnsafeMutablePointer<Int>(&avatarStreamId)
-        agoraKit.createDataStream(avatarPointer , reliable: true, ordered: true)
         self.updatePlayersQuantity()
     }
     
@@ -345,12 +341,17 @@ class LobbyViewController: UIViewController {
         pop(animated: true)
     }
     
+    @IBAction func didSettingsButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "configSegue", sender: self)
+    }
+    
     @IBAction func didPressShareRoom(_ sender: UIButton) {
         shareLink()
     }
     
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
-        agoraKit.sendStreamMessage(self.startGameStreamId, data: startGame)
+        let startData = DataServices.encode(canStartGame: true)
+        agoraKit.sendStreamMessage(messageStreamId, data: startData)
         self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
@@ -455,15 +456,23 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
         
-        if streamId == startGameStreamId {
-            let startGameSegue = String(decoding: data, as: UTF8.self)
-            if startGameSegue == "startGame" {
-                self.performSegue(withIdentifier: startGameSegue, sender: self)
-            }
-        }
-        else if streamId == avatarStreamId {
-            let str = String(decoding: data, as: UTF8.self)
+        let messageStream = DataServices.decode(messageStreamData: data) // decoding the message received
+        
+        switch messageStream.streamType {
+        case .gameSettings:
+            self.gameSettings = DataServices.decode(gameSettingsData: messageStream.data)
+            print(gameSettings?.theme)
+            print(gameSettings?.quantityPlayedWithMimickr)
+            print(gameSettings?.totalTurnTime)
+            
+        case .startGame:
+            self.performSegue(withIdentifier: "startGame", sender: self)
+            
+        case .avatar:
+            let str = String(decoding: messageStream.data, as: UTF8.self)
             checkReceivedAvatarForRemotePlayer(with: uid, with: str)
+            
+        default: print("message not found")
         }
     }
     
@@ -484,5 +493,7 @@ extension LobbyViewController : SetupRoomDelegate {
     
     func didChangeRoomSettings(gameSettings: GameSettings) {
         self.gameSettings = gameSettings
+        let messageStreamData = DataServices.encode(gameSettings: gameSettings)
+        self.agoraKit.sendStreamMessage(self.messageStreamId, data: messageStreamData)
     }
 }

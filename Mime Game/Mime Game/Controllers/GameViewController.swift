@@ -412,6 +412,7 @@ extension GameViewController: AgoraRtcEngineDelegate {
             
         case .none:
             print("Message not identified")
+        default: print("\(messageStream.streamType) not found")
         }
     }
     
@@ -441,9 +442,9 @@ extension GameViewController : GameEngineDelegate {
     
     func startTurn() {
         
-        let canStartGame = true
+        let canStartTurn = true
         
-        let data = DataServices.encode(canStartGame: canStartGame)
+        let data = DataServices.encode(canStartTurn: canStartTurn)
         
         print("vrau: mimickr mandou comecar partida")
         

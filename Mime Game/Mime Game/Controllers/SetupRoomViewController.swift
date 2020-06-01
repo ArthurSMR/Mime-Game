@@ -174,6 +174,7 @@ class SetupRoomViewController: UIViewController {
         
         if canSetRoom() {
             delegate?.didChangeRoomSettings(gameSettings: self.gameSettings)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
