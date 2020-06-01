@@ -342,7 +342,7 @@ class LobbyViewController: UIViewController {
     }
     
     @IBAction func didSettingsButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "configSegue", sender: self)
+        self.performSegue(withIdentifier: "setupRoom", sender: self)
     }
     
     @IBAction func didPressShareRoom(_ sender: UIButton) {

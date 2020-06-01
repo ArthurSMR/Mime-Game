@@ -221,7 +221,7 @@
                         <outlet property="startGameBtn" destination="vCr-64-I7a" id="LWs-sA-ggW"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
                         <segue destination="wo4-Pi-ajL" kind="show" identifier="startGame" id="MBy-jB-Rz7"/>
-                        <segue destination="dUq-V7-mMH" kind="showDetail" identifier="configSegue" id="Ahu-Dn-2D9"/>
+                        <segue destination="dUq-V7-mMH" kind="showDetail" identifier="setupRoom" id="Ahu-Dn-2D9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e4-Y8-oSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
