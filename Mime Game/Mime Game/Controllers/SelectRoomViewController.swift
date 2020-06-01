@@ -31,9 +31,12 @@ class SelectRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        loadRoomFromCloud()
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadRoomFromCloud()
     }
     
     func setupLayout() {

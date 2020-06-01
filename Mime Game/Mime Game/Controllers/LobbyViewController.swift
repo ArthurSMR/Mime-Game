@@ -21,6 +21,10 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var playersQuantityLbl: UILabel!
     @IBOutlet weak var startGameBtn: UIButton!
     
+    @IBOutlet weak var startGameHostView: UIView!
+    @IBOutlet weak var _view: UIView!
+    
+    
     //MARK: Variables
     var incomingName: String?
     var incomingAvatar: UIImage?
@@ -239,6 +243,8 @@ class LobbyViewController: UIViewController {
         
         if self.localIsRoomHost == true{
             self.localPlayer.isHost = true
+            self._view.isHidden = false
+            self.startGameHostView.isHidden = false
         }
         
         
@@ -269,6 +275,7 @@ class LobbyViewController: UIViewController {
     /// Set the player type to unavailable  when he leaves
     /// - Parameter uid: player leaving uid
     private func removeRemotePlayer(with uid: UInt) {
+        guard let room = self.room else { return }
         
         for remotePlayer in self.remotePlayers {
             if remotePlayer.uid == uid {
@@ -429,6 +436,7 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         self.removeRemotePlayer(with: uid)
+//        self.updateNumberOfPlayersOnCloud()
         self.updatePlayersQuantity()
     }
     
