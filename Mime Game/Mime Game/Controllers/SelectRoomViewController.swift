@@ -21,7 +21,6 @@ class SelectRoomViewController: UIViewController {
     var incomingName: String?
     var incomingAvatar: UIImage?
     var currentAvatarIndex: Int = 0
-    var numberOfPlayers = [5, 10, 0, 4, 10, 6]
     var roomsName: [String] = []
     var selectedRoom: Room?
     
@@ -112,7 +111,7 @@ extension SelectRoomViewController: UITableViewDelegate, UITableViewDataSource {
         self.roomsName.append(cellRoomName)
         let cell = SelectRomTableViewCell.dequeueCell(from: tableView)
         
-        let room = Room(appId: roomsAppIds[indexPath.row], name: cellRoomName, numberOfPlayers: numberOfPlayers[indexPath.row])
+        let room = Room(appId: roomsAppIds[indexPath.row], name: cellRoomName, numberOfPlayers: self.rooms[indexPath.row].numberOfPlayers)
         
         cell.setupRoom(room: room)
         
