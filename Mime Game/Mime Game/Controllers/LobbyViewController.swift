@@ -108,6 +108,7 @@ class LobbyViewController: UIViewController {
         indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         indicator.style = UIActivityIndicatorView.Style.large
         indicator.center = self.view.center
+        indicator.color = .pinkReply
         self.view.addSubview(indicator)
     }
     
