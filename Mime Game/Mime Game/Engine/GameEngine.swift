@@ -60,7 +60,13 @@ class GameEngine {
             if let error = error {
                 print(error)
             } else {
-                self.mimes = mimes.filter { $0.theme.contains(self.gameTheme) } // filtering by the game theme
+                
+                if self.gameTheme == "Aleatório" {
+                    self.mimes = mimes
+                } else {
+                    self.mimes = mimes.filter { $0.theme.contains(self.gameTheme) } // filtering by the game theme
+                }
+                
                 self.selectableMimes = self.mimes
                 completion()
             }

@@ -36,7 +36,7 @@ class LobbyViewController: UIViewController {
     var remotePlayers: [Player] = []
     var startGame = Data("startGame".utf8)
     var messageStreamId = 1
-    var gameSettings: GameSettings = GameSettings(quantityPlayedWithMimickr: 2, totalTurnTime: 20, theme: "Geral")
+    var gameSettings: GameSettings = GameSettings(quantityPlayedWithMimickr: 2, totalTurnTime: 20)
     
     var localIsRoomHost = false
     var indicator = UIActivityIndicatorView()
@@ -86,6 +86,7 @@ class LobbyViewController: UIViewController {
         changeMuteButtonState()
         setupAgora()
         setupActivityIndicator()
+        startGameBtn.isHidden = true
         self.tableView.backgroundView = indicator
         indicator.startAnimating()
     }
@@ -190,6 +191,7 @@ class LobbyViewController: UIViewController {
                                 self.indicator.stopAnimating()
                                 self.indicator.hidesWhenStopped = true
                                 self.tableView.reloadData()
+                                self.startGameBtn.isHidden = false
         }
         
         

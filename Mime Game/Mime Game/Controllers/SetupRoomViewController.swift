@@ -52,7 +52,9 @@ class SetupRoomViewController: UIViewController {
             if let error = error {
                 print(error)
             } else {
+                
                 self.themes = themes?.keys.map { $0 }
+                self.themes.insert("Aleatório", at: 0)
                 self.setupLayout()
             }
         }
