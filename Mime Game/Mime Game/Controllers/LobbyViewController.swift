@@ -69,7 +69,8 @@ class LobbyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         RoomServices.userLeft(room: self.room!){ error in
-            if self.localPlayer.isHost {
+            guard let playerHost = self.localPlayer else { return }
+            if playerHost.isHost {
                 if self.remotePlayers.count != 0{
                     self.remotePlayers[0].isHost = true
                 }
