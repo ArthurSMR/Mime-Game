@@ -20,13 +20,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KJ-3B-5Dp">
-                                <rect key="frame" x="0.0" y="22" width="9" height="22"/>
+                                <rect key="frame" x="3" y="22" width="9" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" name="Rosa respostas"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Jogador" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-5a-k7P">
-                                <rect key="frame" x="75" y="24.5" width="241.5" height="17"/>
+                                <rect key="frame" x="78" y="24.5" width="238.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="Azul mais escuro"/>
                                 <nil key="highlightedColor"/>
@@ -59,8 +59,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-aT-02h" customClass="RoundImage" customModule="Mime_Game" customModuleProvider="target">
-                                <rect key="frame" x="17" y="8" width="50" height="50"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-aT-02h">
+                                <rect key="frame" x="20" y="8" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0Os-aT-02h" secondAttribute="height" multiplier="1:1" id="pYI-hh-KSk"/>
                                     <constraint firstAttribute="height" constant="50" id="xPu-FL-CO6"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="0Os-aT-02h" firstAttribute="leading" secondItem="5KJ-3B-5Dp" secondAttribute="trailing" constant="8" id="19d-xl-8qM"/>
                             <constraint firstItem="5KJ-3B-5Dp" firstAttribute="centerY" secondItem="0Os-aT-02h" secondAttribute="centerY" id="1Ju-XA-PWu"/>
                             <constraint firstAttribute="bottom" secondItem="0Os-aT-02h" secondAttribute="bottom" constant="8" id="2P0-3r-yuf"/>
-                            <constraint firstItem="5KJ-3B-5Dp" firstAttribute="leading" secondItem="zMw-ox-elN" secondAttribute="leading" id="7oY-Bs-X8U"/>
+                            <constraint firstItem="5KJ-3B-5Dp" firstAttribute="leading" secondItem="zMw-ox-elN" secondAttribute="leading" constant="3" id="7oY-Bs-X8U"/>
                             <constraint firstItem="U7r-ph-hKY" firstAttribute="centerY" secondItem="0Os-aT-02h" secondAttribute="centerY" id="LVW-MH-5Qt"/>
                             <constraint firstItem="Zan-5a-k7P" firstAttribute="leading" secondItem="0Os-aT-02h" secondAttribute="trailing" constant="8" id="PfA-sT-07s"/>
                             <constraint firstItem="U7r-ph-hKY" firstAttribute="leading" secondItem="Zan-5a-k7P" secondAttribute="trailing" constant="8" id="Thz-iy-FcX"/>
@@ -97,9 +97,7 @@
                 <constraints>
                     <constraint firstItem="zMw-ox-elN" firstAttribute="leading" secondItem="WIY-xe-YO9" secondAttribute="leading" id="2nD-iO-acY"/>
                     <constraint firstAttribute="trailing" secondItem="zMw-ox-elN" secondAttribute="trailing" id="AHE-5I-Hai"/>
-                    <constraint firstItem="U7r-ph-hKY" firstAttribute="width" secondItem="WIY-xe-YO9" secondAttribute="width" multiplier="0.216184" id="BEC-hg-NSN"/>
                     <constraint firstItem="zMw-ox-elN" firstAttribute="centerY" secondItem="WIY-xe-YO9" secondAttribute="centerY" id="HRa-Yp-2Kr"/>
-                    <constraint firstItem="Zan-5a-k7P" firstAttribute="width" secondItem="WIY-xe-YO9" secondAttribute="width" multiplier="0.583333" id="ffy-7M-7mm"/>
                     <constraint firstItem="0Os-aT-02h" firstAttribute="width" secondItem="WIY-xe-YO9" secondAttribute="width" multiplier="0.120773" id="gDe-mo-uJ5"/>
                     <constraint firstItem="zMw-ox-elN" firstAttribute="top" secondItem="WIY-xe-YO9" secondAttribute="top" id="lK6-Te-twy"/>
                     <constraint firstAttribute="bottom" secondItem="zMw-ox-elN" secondAttribute="bottom" id="uOa-Yj-m9s"/>
