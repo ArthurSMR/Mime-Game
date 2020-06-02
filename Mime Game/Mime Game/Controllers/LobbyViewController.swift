@@ -36,7 +36,7 @@ class LobbyViewController: UIViewController {
     var remotePlayers: [Player] = []
     var startGame = Data("startGame".utf8)
     var messageStreamId = 1
-    var gameSettings: GameSettings?
+    var gameSettings: GameSettings = GameSettings(quantityPlayedWithMimickr: 2, totalTurnTime: 20, theme: "Geral")
     
     var localIsRoomHost = false
     
@@ -352,6 +352,10 @@ class LobbyViewController: UIViewController {
     @IBAction func startButtonDidPressed(_ sender: UIButton) {
         let startData = DataServices.encode(canStartGame: true)
         agoraKit.sendStreamMessage(messageStreamId, data: startData)
+        
+        let messageStreamData = DataServices.encode(gameSettings: self.gameSettings)
+        self.agoraKit.sendStreamMessage(self.messageStreamId, data: messageStreamData)
+        
         self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
@@ -370,7 +374,8 @@ class LobbyViewController: UIViewController {
         
         if segue.identifier == "startGame" {
             if let gameVC = segue.destination as? GameViewController {
-                let gameEngine = GameEngine(localPlayer: self.localPlayer, remotePlayers: self.remotePlayers)
+                
+                let gameEngine = GameEngine(localPlayer: self.localPlayer, remotePlayers: self.remotePlayers, with: gameSettings)
                 gameVC.agoraKit = agoraKit
                 gameVC.engine = gameEngine
                 gameVC.isMuted = isMuted
@@ -461,9 +466,6 @@ extension LobbyViewController: AgoraRtcEngineDelegate {
         switch messageStream.streamType {
         case .gameSettings:
             self.gameSettings = DataServices.decode(gameSettingsData: messageStream.data)
-            print(gameSettings?.theme)
-            print(gameSettings?.quantityPlayedWithMimickr)
-            print(gameSettings?.totalTurnTime)
             
         case .startGame:
             self.performSegue(withIdentifier: "startGame", sender: self)

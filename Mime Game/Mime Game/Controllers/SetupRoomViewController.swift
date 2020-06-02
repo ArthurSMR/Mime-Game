@@ -25,8 +25,8 @@ class SetupRoomViewController: UIViewController {
     @IBOutlet weak var roundsTxtField: UITextField!
     
     var pickerView = UIPickerView()
-    var selectedTheme: Theme?
-    var themes: Themes!
+    var selectedTheme: String?
+    var themes: [String]!
     var textFieldType: TextFieldType?
     var selectedTime: Int?
     var times = [30, 60, 90, 120]
@@ -52,7 +52,7 @@ class SetupRoomViewController: UIViewController {
             if let error = error {
                 print(error)
             } else {
-                self.themes = themes
+                self.themes = themes?.keys.map { $0 }
                 self.setupLayout()
             }
         }
@@ -135,8 +135,8 @@ class SetupRoomViewController: UIViewController {
             self.selectedTime = times[pickerView.selectedRow(inComponent: 0)]
             return String(times[pickerView.selectedRow(inComponent: 0)])
         case .theme:
-            self.selectedTheme = themes.themes[pickerView.selectedRow(inComponent: 0)]
-            return themes.themes[pickerView.selectedRow(inComponent: 0)].name
+            self.selectedTheme = themes[pickerView.selectedRow(inComponent: 0)]
+            return themes[pickerView.selectedRow(inComponent: 0)]
         case .rounds:
             self.selectedRound = rounds[pickerView.selectedRow(inComponent: 0)]
             return String(rounds[pickerView.selectedRow(inComponent: 0)])
@@ -145,7 +145,7 @@ class SetupRoomViewController: UIViewController {
     
     private func canSetRoom() -> Bool {
         
-        self.gameSettings = GameSettings(quantityPlayedWithMimickr: selectedRound ?? 0, totalTurnTime: selectedTime ?? 0, theme: selectedTheme ?? Theme(name: "", words: []))
+        self.gameSettings = GameSettings(quantityPlayedWithMimickr: selectedRound ?? 0, totalTurnTime: selectedTime ?? 0, theme: selectedTheme ?? "")
         
         // Trying to validate game settings
         do {
@@ -194,8 +194,8 @@ extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource 
             self.selectedTime = times[row]
             timeTxtField.text = String(times[row])
         case .theme:
-            self.selectedTheme = themes.themes[row]
-            themeTxtField.text = themes.themes[row].name
+            self.selectedTheme = themes[row]
+            themeTxtField.text = themes[row]
         case .rounds:
             self.selectedRound = rounds[row]
             roundsTxtField.text = String(rounds[row])
@@ -213,7 +213,7 @@ extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         case .time:
             return times.count
         case .theme:
-            return themes.themes.count
+            return themes.count
         case .rounds:
             return rounds.count
         default:
@@ -228,7 +228,7 @@ extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         case .time:
             return String(times[row])
         case .theme:
-            return themes.themes[row].name
+            return themes[row]
         case .rounds:
             return String(rounds[row])
         default:

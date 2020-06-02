@@ -39,20 +39,37 @@ class MimeServices {
                 let jsonData = try Data(contentsOf: urlPath, options: .mappedIfSafe)
                 let allMimes = try JSONDecoder().decode(Themes.self, from: jsonData)
                 
+                // Word (String) -> Mime
+                // Theme.words ([String]) -> [Mime]
+                // Themes ([Theme]) -->  Theme -> [mime] --> [Theme] -> [[Mime]] !!
+                
+                //3
                 let wrongMimes = allMimes.themes.map { (theme) -> [Mime] in
+                    //1
                     return theme.words.map { (word) -> Mime in
+                      //2 -
                         return Mime(name: word, theme: theme.name)
                     }
                 }
                 
                 // Themes dictionary with its name and the words in it
+                // [:]
+                // [:] + [theme.name: [theme.words]]
                 let themes = allMimes.themes.reduce([:]) { (partial, theme) -> [String:[String]] in
                     var newDict = partial
                     newDict[theme.name] = theme.words
                     return newDict
                 }
                 
+                
+                let themeNames :[String] = themes.keys.map { $0 }
+                let words: [String] = themes["Geral"] ?? []
+                
                 // mimes with its name and its theme
+                // WORD(STRING) -> Mime
+                // [String] -> [Mime]
+                // [Theme] --> Theme -> [Mime] --> [[Mime]] flatMap --> [Mime]
+                // Flat Map  [[1,2],[3,4]]  ==> [1,2,3,4]
                 let mimes = allMimes.themes.flatMap { (theme) -> [Mime] in
                     return theme.words.map { (word) -> Mime in
                         return Mime(name: word, theme: theme.name)
@@ -69,19 +86,25 @@ class MimeServices {
         }
     }
     
-    static func fetchThemes(completion: @escaping(_ themes: Themes, _ error: MimesError?) -> Void) {
+    static func fetchThemes(completion: @escaping(_ themes: [String:[String]]?, _ error: MimesError?) -> Void) {
 
         if let urlPath = Bundle.main.url(forResource: "themesAndWords", withExtension: "json") {
 
             do {
                 let jsonData = try Data(contentsOf: urlPath, options: .mappedIfSafe)
-                let themes = try JSONDecoder().decode(Themes.self, from: jsonData)
+                let allThemes = try JSONDecoder().decode(Themes.self, from: jsonData)
+                
+                let themes = allThemes.themes.reduce([:]) { (partial, theme) -> [String:[String]] in
+                    var newDict = partial
+                    newDict[theme.name] = theme.words
+                    return newDict
+                }
                 
                 completion(themes, nil)
             }
             catch let jsonError {
                 print(jsonError)
-                completion(Themes(themes: []), .canNotProcessData)
+                completion(nil, .canNotProcessData)
             }
         }
     }

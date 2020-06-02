@@ -20,8 +20,8 @@ class Validator {
         
         guard 30...120 ~= gameSettings.totalTurnTime else { throw GameSettingsErrors.totalTurnTimeOutOfRange }
         
-        guard !gameSettings.theme.name.isEmpty else { throw GameSettingsErrors.themeNameIsEmpty }
-        
+        guard !(gameSettings.theme.isEmpty) else { throw GameSettingsErrors.themeNameIsEmpty }
+
         guard 1...5 ~=  gameSettings.quantityPlayedWithMimickr else { throw GameSettingsErrors.quantityPlayersWithMimickrOutOfRange }
         
         return true

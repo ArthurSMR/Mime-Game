@@ -11,9 +11,9 @@ import Foundation
 class GameSettings: Codable {
     var quantityPlayedWithMimickr: Int
     var totalTurnTime: Int
-    var theme: Theme
+    var theme: String
     
-    init(quantityPlayedWithMimickr: Int, totalTurnTime: Int, theme: Theme) {
+    init(quantityPlayedWithMimickr: Int, totalTurnTime: Int, theme: String) {
         self.quantityPlayedWithMimickr = quantityPlayedWithMimickr
         self.totalTurnTime = totalTurnTime
         self.theme = theme

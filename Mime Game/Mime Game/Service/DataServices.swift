@@ -154,7 +154,7 @@ class DataServices {
         
         let decoder = JSONDecoder()
         
-        guard let gameSettings = try? decoder.decode(GameSettings.self, from: gameSettingsData) else { return GameSettings(quantityPlayedWithMimickr: 0, totalTurnTime: 0, theme: Theme(name: "", words: []))}
+        guard let gameSettings = try? decoder.decode(GameSettings.self, from: gameSettingsData) else { return GameSettings(quantityPlayedWithMimickr: 0, totalTurnTime: 0, theme: "")}
         
         return gameSettings
     }

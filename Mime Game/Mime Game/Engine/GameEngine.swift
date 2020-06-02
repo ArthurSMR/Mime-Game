@@ -36,12 +36,15 @@ class GameEngine {
     var messages: [Message] = []
     var chosenMimes: [Mime] = []
     var soundFXManager = SoundFX()
+    var gameTheme: String
     
-    init(localPlayer: Player, remotePlayers: [Player]) {
+    init(localPlayer: Player, remotePlayers: [Player], with settings: GameSettings) {
         
         let uids = [localPlayer.uid] + remotePlayers.map { $0.uid }
         
-        self.game = Game(localPlayer: localPlayer, players: remotePlayers, uids: uids, totalTime: self.totalTurnTime, currentPlayer: self.startPlayer, messages: self.messages)
+        self.game = Game(localPlayer: localPlayer, players: remotePlayers, uids: uids, totalTime: settings.totalTurnTime, currentPlayer: self.startPlayer, messages: self.messages, quantityPlayedWithMimickr: settings.quantityPlayedWithMimickr)
+        
+        self.gameTheme = settings.theme
     }
     
     /// This method is to setup all the game configurations before it starts
@@ -58,8 +61,8 @@ class GameEngine {
             if let error = error {
                 print(error)
             } else {
-                self.mimes = mimes
-                self.selectableMimes = mimes
+                self.mimes = mimes.filter { $0.theme.contains(self.gameTheme) } // filtering by the game theme
+                self.selectableMimes = self.mimes
                 completion()
             }
         })
