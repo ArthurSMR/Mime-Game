@@ -39,6 +39,7 @@ class LobbyViewController: UIViewController {
     var gameSettings: GameSettings = GameSettings(quantityPlayedWithMimickr: 2, totalTurnTime: 20, theme: "Geral")
     
     var localIsRoomHost = false
+    var indicator = UIActivityIndicatorView()
     
     var isMuted: Bool = false {
         didSet {
@@ -78,13 +79,15 @@ class LobbyViewController: UIViewController {
         }
     }
     
-    //MARK: Methods
+    //MARK: Setups
     func setupLayout() {
         self.navigationController?.isNavigationBarHidden = true
         self.roomName.text = self.room?.name
         changeMuteButtonState()
         setupAgora()
-        
+        setupActivityIndicator()
+        self.tableView.backgroundView = indicator
+        indicator.startAnimating()
     }
     
     func setupViewAnimation() {
@@ -101,6 +104,15 @@ class LobbyViewController: UIViewController {
         joinChannel()
     }
     
+    func setupActivityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = UIActivityIndicatorView.Style.large
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+    }
+    
+    //MARK: Methods
+    
     func prepareTableView() {
         
         tableView.delegate = self
@@ -108,9 +120,9 @@ class LobbyViewController: UIViewController {
         guard let table = tableView else { return }
         LobbyTableViewCell.registerNib(for: table)
         
-//        let firstIndexPath = IndexPath(row: 0, section: 0)
-//        let firstCell = tableView.cellForRow(at: firstIndexPath) as! LobbyTableViewCell as LobbyTableViewCell
-//
+        //        let firstIndexPath = IndexPath(row: 0, section: 0)
+        //        let firstCell = tableView.cellForRow(at: firstIndexPath) as! LobbyTableViewCell as LobbyTableViewCell
+        //
         
         
     }
@@ -119,7 +131,7 @@ class LobbyViewController: UIViewController {
     /// Auxiliary method.
     /// - Returns: The file names for all avatars avaliable.
     static func getAvatarImagesNames() -> [String] {
-
+        
         var n: Int = 1
         var avatarAssetName = "Avatar\(n)"
         
@@ -151,12 +163,12 @@ class LobbyViewController: UIViewController {
         agoraKit.enableWebSdkInteroperability(true)
     }
     
-//    private func validateHost() {
-//        if remotePlayers.count == 0 {
-//            localPlayer.isHost = true
-//            self.startGameBtn.isHidden = false
-//        }
-//    }
+    //    private func validateHost() {
+    //        if remotePlayers.count == 0 {
+    //            localPlayer.isHost = true
+    //            self.startGameBtn.isHidden = false
+    //        }
+    //    }
     
     /// This method if for join the channel with some userAccount
     private func joinChannel() {
@@ -171,9 +183,12 @@ class LobbyViewController: UIViewController {
                              token: nil,
                              channelId: appId) { (sid, uid, elapsed) in
                                 
-            self.createLocalPlayer(uid: uid)
-            self.prepareTableView()
-            self.tableView.reloadData()
+                                self.createLocalPlayer(uid: uid)
+                                self.prepareTableView()
+                                self.tableView.reloadData()
+                                self.indicator.stopAnimating()
+                                self.indicator.hidesWhenStopped = true
+                                self.tableView.reloadData()
         }
         
         
@@ -244,7 +259,7 @@ class LobbyViewController: UIViewController {
         
         
         print("Player \(self.localPlayer.name) with ID: \(self.localPlayer.uid) joined")
-               
+        
         let messageStreamIdPointer = UnsafeMutablePointer<Int>(&messageStreamId)
         agoraKit.createDataStream(messageStreamIdPointer, reliable: true, ordered: true)
         
@@ -382,7 +397,7 @@ class LobbyViewController: UIViewController {
                 gameVC.isMuted = isMuted
             }
         }
-        
+            
         else if segue.identifier == "setupRoom" {
             if let setupVC = segue.destination as? SetupRoomViewController {
                 setupVC.delegate = self
@@ -399,7 +414,7 @@ extension LobbyViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         let cell = LobbyTableViewCell.dequeueCell(from: tableView)
         
         if indexPath.row == 0 {  // set local player
