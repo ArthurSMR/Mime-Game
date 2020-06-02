@@ -1417,6 +1417,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Temas" translatesAutoresizingMaskIntoConstraints="NO" id="QGu-FN-WHt">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BU-E1-Mr8">
+                                <rect key="frame" x="363" y="16" width="35" height="35"/>
+                                <state key="normal" backgroundImage="ExitModal"/>
+                                <connections>
+                                    <action selector="didPressedExitButton:" destination="dUq-V7-mMH" eventType="touchUpInside" id="2Wj-15-F4j"/>
+                                    <action selector="dismissModalAction:" destination="AvQ-re-xfj" eventType="touchUpInside" id="3lY-WE-A68"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="60 segundos" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SeH-Bt-KvN">
                                 <rect key="frame" x="60" y="287" width="294" height="30.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -1531,6 +1539,7 @@
                             <constraint firstItem="hFu-0t-eIq" firstAttribute="top" secondItem="NCV-Zv-Yps" secondAttribute="bottom" constant="48" id="0vt-fI-Bxb"/>
                             <constraint firstItem="TwR-m5-2BW" firstAttribute="top" secondItem="ioH-5t-hM6" secondAttribute="bottom" constant="8" id="2bC-Xz-Ufr"/>
                             <constraint firstItem="LSg-HL-qR9" firstAttribute="top" secondItem="7KY-2l-QKx" secondAttribute="bottom" constant="8" id="38U-4o-Zdq"/>
+                            <constraint firstItem="6BU-E1-Mr8" firstAttribute="top" secondItem="Fjc-GH-Jy6" secondAttribute="top" constant="16" id="3Lj-bz-aVv"/>
                             <constraint firstItem="TwR-m5-2BW" firstAttribute="leading" secondItem="Fjc-GH-Jy6" secondAttribute="leading" constant="60" id="3Zk-Od-slF"/>
                             <constraint firstItem="huq-8h-GUg" firstAttribute="top" secondItem="hFu-0t-eIq" secondAttribute="bottom" constant="8" id="7z4-BF-zDb"/>
                             <constraint firstItem="Nn6-32-KDT" firstAttribute="top" secondItem="huq-8h-GUg" secondAttribute="bottom" constant="16" id="BBJ-kU-h7O"/>
@@ -1567,6 +1576,7 @@
                             <constraint firstItem="Fjc-GH-Jy6" firstAttribute="trailing" secondItem="LSg-HL-qR9" secondAttribute="trailing" constant="60" id="sRU-7J-zAS"/>
                             <constraint firstItem="Fjc-GH-Jy6" firstAttribute="trailing" secondItem="QGu-FN-WHt" secondAttribute="trailing" id="snb-zM-lap"/>
                             <constraint firstItem="XhI-eU-jtX" firstAttribute="leading" secondItem="dbe-Cw-2yk" secondAttribute="leading" constant="60" id="uVv-7F-cAF"/>
+                            <constraint firstItem="Fjc-GH-Jy6" firstAttribute="trailing" secondItem="6BU-E1-Mr8" secondAttribute="trailing" constant="16" id="uXQ-qT-Pwr"/>
                             <constraint firstItem="XhI-eU-jtX" firstAttribute="top" secondItem="Nn6-32-KDT" secondAttribute="bottom" id="uaH-Zx-CX7"/>
                             <constraint firstItem="huq-8h-GUg" firstAttribute="leading" secondItem="Fjc-GH-Jy6" secondAttribute="leading" constant="60" id="unn-Wf-UPl"/>
                             <constraint firstItem="Fjc-GH-Jy6" firstAttribute="trailing" secondItem="2Bl-GS-lcX" secondAttribute="trailing" constant="60" id="w5S-yY-ECh"/>

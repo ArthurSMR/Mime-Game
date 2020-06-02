@@ -60,6 +60,13 @@ class SetupRoomViewController: UIViewController {
     
     func setupLayout() {
         setupPickerView()
+        setupTextField()
+    }
+    
+    func setupTextField() {
+        roundsTxtField.textColor = .lightGray
+        themeTxtField.textColor = .lightGray
+        timeTxtField.textColor = .lightGray
     }
     
     /// This method will create the index for all text field type
@@ -133,13 +140,13 @@ class SetupRoomViewController: UIViewController {
         switch type {
         case .time:
             self.selectedTime = times[pickerView.selectedRow(inComponent: 0)]
-            return String(times[pickerView.selectedRow(inComponent: 0)])
+            return String(times[pickerView.selectedRow(inComponent: 0)]) + " segundos"
         case .theme:
             self.selectedTheme = themes[pickerView.selectedRow(inComponent: 0)]
             return themes[pickerView.selectedRow(inComponent: 0)]
         case .rounds:
             self.selectedRound = rounds[pickerView.selectedRow(inComponent: 0)]
-            return String(rounds[pickerView.selectedRow(inComponent: 0)])
+            return String(rounds[pickerView.selectedRow(inComponent: 0)]) + " vezes"
         }
     }
     
@@ -177,6 +184,10 @@ class SetupRoomViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
+    @IBAction func didPressedExitButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: - Picker View Delegate
@@ -192,13 +203,13 @@ extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         switch textFieldType {
         case .time:
             self.selectedTime = times[row]
-            timeTxtField.text = String(times[row])
+            timeTxtField.text = String(times[row]) + " segundos"
         case .theme:
             self.selectedTheme = themes[row]
             themeTxtField.text = themes[row]
         case .rounds:
             self.selectedRound = rounds[row]
-            roundsTxtField.text = String(rounds[row])
+            roundsTxtField.text = String(rounds[row]) + " vezes"
         default:
             print("text field not found")
         }
