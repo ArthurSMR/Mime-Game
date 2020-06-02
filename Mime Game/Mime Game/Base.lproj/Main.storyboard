@@ -1577,6 +1577,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="pfg-R6-xHB"/>
                     <connections>
+                        <outlet property="roundsTxtField" destination="Nn6-32-KDT" id="Fz9-9V-KQa"/>
+                        <outlet property="themeTxtField" destination="2Bl-GS-lcX" id="S6D-Ts-eeU"/>
                         <outlet property="timeTxtField" destination="SeH-Bt-KvN" id="Mrb-BB-3eM"/>
                     </connections>
                 </viewController>
