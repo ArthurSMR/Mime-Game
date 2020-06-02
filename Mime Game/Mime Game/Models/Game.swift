@@ -15,18 +15,18 @@ class Game {
     var remotePlayers: [Player] = []
     var selectablePlayersWithUid: [UInt] = []
     var uids: [UInt] = []
-    var totalTime: Int
+    var totalTurnTime: Int
     var currentPlayer: Int
     var messages: [Message]
     var totalTurns: Int
     var quantityPlayedWithMimickr : Int   // how many each player will be set as with mimickr
                                         // it will determine how much turns the game will have
     
-    init(localPlayer: Player, players: [Player], uids: [UInt], totalTime: Int, currentPlayer: Int, messages:  [Message], quantityPlayedWithMimickr: Int) {
+    init(localPlayer: Player, players: [Player], uids: [UInt], totalTurnTime: Int, currentPlayer: Int, messages:  [Message], quantityPlayedWithMimickr: Int) {
         self.localPlayer = localPlayer
         self.remotePlayers = players
         self.uids = uids
-        self.totalTime = totalTime
+        self.totalTurnTime = totalTurnTime
         self.currentPlayer = currentPlayer
         self.messages = messages
         self.quantityPlayedWithMimickr = quantityPlayedWithMimickr

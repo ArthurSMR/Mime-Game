@@ -25,7 +25,6 @@ class GameEngine {
     //MARK: - Variables
     
     var game: Game
-    let totalTurnTime = 10 // tenho que mudar isso
     var currentTurn = 0
     let startPlayer = 0
     var delegate: GameEngineDelegate?
@@ -42,7 +41,7 @@ class GameEngine {
         
         let uids = [localPlayer.uid] + remotePlayers.map { $0.uid }
         
-        self.game = Game(localPlayer: localPlayer, players: remotePlayers, uids: uids, totalTime: settings.totalTurnTime, currentPlayer: self.startPlayer, messages: self.messages, quantityPlayedWithMimickr: settings.quantityPlayedWithMimickr)
+        self.game = Game(localPlayer: localPlayer, players: remotePlayers, uids: uids, totalTurnTime: settings.totalTurnTime, currentPlayer: self.startPlayer, messages: self.messages, quantityPlayedWithMimickr: settings.quantityPlayedWithMimickr)
         
         self.gameTheme = settings.theme
     }

@@ -166,7 +166,7 @@ class GameViewController: UIViewController {
     /// This method is for reseting the timer and increment the turn
     func resetTimer() {
         self.timer.invalidate()
-        guard let totalTurnTime = self.engine?.totalTurnTime else { return }
+        guard let totalTurnTime = self.engine?.game.totalTurnTime else { return }
         self.seconds = totalTurnTime // Reseting timer
         runTimer()
     }
