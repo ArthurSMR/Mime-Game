@@ -126,11 +126,10 @@ class GameViewController: UIViewController {
         alert.runTimer()
     }
     
-    func modalTip() {
-        guard let alert = ModalTip.create() else { return }
+    
+    func exitModal() {
+        guard let alert = ExitModal.create() else { return }
         alert.delegate = self
-        alert.messageLabel.text = ""
-        alert.titleLabel.text = ""
         alert.show(animated: true)
     }
     
@@ -285,11 +284,7 @@ class GameViewController: UIViewController {
     
     @IBAction func quitActionBtnAction(_ sender: Any) {
         soundFXManager.playFX(named: "ClickButton")
-        
-        self.agoraKit.leaveChannel()
-        self.timer.invalidate()
-        DeepLink.shared.shouldNavigateToLobby = false
-        performSegue(withIdentifier: "backToLoginNoRegistered", sender: nil)
+        exitModal()
     }
     
     @IBAction func muteActionBtn(_ sender: UIButton) {
@@ -421,14 +416,6 @@ extension GameViewController: AgoraRtcEngineDelegate {
     }
 }
 
-//MARK: - ModalTipDelegate
-extension GameViewController: ModalTipDelegate {
-    
-    func okayBtn() {
-        return
-    }
-}
-
 //MARK: - DrawPlayerDelegate
 extension GameViewController: DrawPlayerDelegate {
     
@@ -515,5 +502,18 @@ extension GameViewController : GameEngineDelegate {
         setupLocalVideo()
         isMimickrView = false
         runTimer()
+    }
+}
+
+extension GameViewController: ExitModalDelegate {
+    func okBtn() {
+        self.agoraKit.leaveChannel()
+        self.timer.invalidate()
+        DeepLink.shared.shouldNavigateToLobby = false
+        performSegue(withIdentifier: "backToLoginNoRegistered", sender: nil)
+    }
+    
+    func cancelBtn() {
+        return
     }
 }

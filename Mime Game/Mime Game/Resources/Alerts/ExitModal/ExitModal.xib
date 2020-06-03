@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fkN-7s-Asx" customClass="ExitModal" customModule="Mime_Game" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-lN-xiJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGn-T9-r1C">
+                            <rect key="frame" x="24" y="134.5" width="366" height="627"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 58" translatesAutoresizingMaskIntoConstraints="NO" id="aaK-zA-csh">
+                                    <rect key="frame" x="0.0" y="0.0" width="366" height="627"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alert" translatesAutoresizingMaskIntoConstraints="NO" id="Uej-d7-9DQ">
+                                    <rect key="frame" x="149" y="80" width="68" height="62"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Uej-d7-9DQ" secondAttribute="height" multiplier="34:31" id="HNW-ex-QP5"/>
+                                        <constraint firstAttribute="height" constant="62" id="vRi-oJ-0An"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Aviso" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXN-Ej-fkp">
+                                    <rect key="frame" x="127" y="174" width="112" height="53"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
+                                    <color key="textColor" name="Rosa respostas"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja realmente sair dessa partida?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqy-on-DRD">
+                                    <rect key="frame" x="48" y="277" width="270" height="72"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <color key="textColor" name="Azul mais escuro"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8ur-IG-P7K">
+                                    <rect key="frame" x="75.5" y="437" width="215" height="130"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1g3-UX-FY4">
+                                            <rect key="frame" x="0.0" y="0.0" width="215" height="55"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="RKn-Pd-5le"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="Sim" backgroundImage="Button_OK">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="okActionButton:" destination="fkN-7s-Asx" eventType="touchUpInside" id="XwC-i3-kyu"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlI-5i-6TV">
+                                            <rect key="frame" x="0.0" y="75" width="215" height="55"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="Cancelar" backgroundImage="Button_Cancelar">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cancelActionButon:" destination="fkN-7s-Asx" eventType="touchUpInside" id="cpR-a1-bEB"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="8ur-IG-P7K" firstAttribute="top" secondItem="Uqy-on-DRD" secondAttribute="bottom" constant="88" id="2uh-SF-7a0"/>
+                                <constraint firstItem="Uej-d7-9DQ" firstAttribute="top" secondItem="WGn-T9-r1C" secondAttribute="top" constant="80" id="CP1-pE-9cD"/>
+                                <constraint firstItem="aaK-zA-csh" firstAttribute="top" secondItem="WGn-T9-r1C" secondAttribute="top" id="HKv-1j-Uuu"/>
+                                <constraint firstItem="KXN-Ej-fkp" firstAttribute="centerX" secondItem="Uej-d7-9DQ" secondAttribute="centerX" id="Lrd-5V-aLJ"/>
+                                <constraint firstAttribute="bottom" secondItem="aaK-zA-csh" secondAttribute="bottom" id="NfN-zy-EWf"/>
+                                <constraint firstItem="KXN-Ej-fkp" firstAttribute="top" secondItem="Uej-d7-9DQ" secondAttribute="bottom" constant="32" id="VTR-fS-H61"/>
+                                <constraint firstItem="Uqy-on-DRD" firstAttribute="top" secondItem="KXN-Ej-fkp" secondAttribute="bottom" constant="50" id="ach-To-mKJ"/>
+                                <constraint firstAttribute="trailing" secondItem="aaK-zA-csh" secondAttribute="trailing" id="arv-mu-kXD"/>
+                                <constraint firstAttribute="bottom" secondItem="8ur-IG-P7K" secondAttribute="bottom" constant="60" id="bKG-L0-fIa"/>
+                                <constraint firstItem="Uqy-on-DRD" firstAttribute="leading" secondItem="WGn-T9-r1C" secondAttribute="leading" constant="48" id="bbv-Hl-jcE"/>
+                                <constraint firstItem="Uqy-on-DRD" firstAttribute="centerX" secondItem="Uej-d7-9DQ" secondAttribute="centerX" id="gfw-oy-BhG"/>
+                                <constraint firstItem="8ur-IG-P7K" firstAttribute="centerX" secondItem="Uej-d7-9DQ" secondAttribute="centerX" id="he4-9Q-CYU"/>
+                                <constraint firstItem="Uej-d7-9DQ" firstAttribute="centerX" secondItem="WGn-T9-r1C" secondAttribute="centerX" id="iVU-d1-5lR"/>
+                                <constraint firstItem="aaK-zA-csh" firstAttribute="leading" secondItem="WGn-T9-r1C" secondAttribute="leading" id="rUf-LB-iIZ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.096359111009999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="WGn-T9-r1C" secondAttribute="trailing" constant="24" id="Ub3-tD-IpM"/>
+                        <constraint firstItem="WGn-T9-r1C" firstAttribute="centerY" secondItem="eyt-lN-xiJ" secondAttribute="centerY" id="X4n-S2-cOC"/>
+                        <constraint firstItem="WGn-T9-r1C" firstAttribute="leading" secondItem="eyt-lN-xiJ" secondAttribute="leading" constant="24" id="oUT-MH-y07"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="eyt-lN-xiJ" firstAttribute="height" secondItem="fkN-7s-Asx" secondAttribute="height" id="1rN-Qj-wuu"/>
+                <constraint firstItem="eyt-lN-xiJ" firstAttribute="width" secondItem="fkN-7s-Asx" secondAttribute="width" id="6gs-vF-WEW"/>
+                <constraint firstItem="eyt-lN-xiJ" firstAttribute="centerY" secondItem="fkN-7s-Asx" secondAttribute="centerY" id="MRq-By-1gu"/>
+                <constraint firstItem="eyt-lN-xiJ" firstAttribute="centerX" secondItem="fkN-7s-Asx" secondAttribute="centerX" id="oyF-XR-WSq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="L6c-hS-Kr0"/>
+            <connections>
+                <outlet property="backgroundIBView" destination="eyt-lN-xiJ" id="ny2-jZ-o7V"/>
+                <outlet property="cancelButton" destination="vlI-5i-6TV" id="cNK-YT-EOm"/>
+                <outlet property="dialogIBView" destination="WGn-T9-r1C" id="fdU-kC-5Nu"/>
+                <outlet property="okButton" destination="1g3-UX-FY4" id="92j-4D-vB6"/>
+            </connections>
+            <point key="canvasLocation" x="-646.37681159420299" y="117.85714285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Alert" width="68" height="62"/>
+        <image name="Button_Cancelar" width="215" height="55"/>
+        <image name="Button_OK" width="215" height="55"/>
+        <image name="Group 58" width="331" height="545"/>
+        <namedColor name="Azul mais escuro">
+            <color red="0.11400000005960464" green="0.22699999809265137" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Rosa respostas">
+            <color red="0.92199999094009399" green="0.32499998807907104" blue="0.56499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
