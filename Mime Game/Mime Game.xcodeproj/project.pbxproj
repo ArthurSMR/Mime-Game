@@ -18,6 +18,7 @@
 		364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */ = {isa = PBXBuildFile; fileRef = 364DE99B2469886100449013 /* Sorteiojogador_Load.json */; };
 		365411C7246B11E600F1F63E /* MimeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365411C6246B11E600F1F63E /* MimeMessage.swift */; };
 		368009EA2487DD10001817D6 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368009E92487DD10001817D6 /* InitialViewController.swift */; };
+		368009EC2487E56C001817D6 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368009EB2487E56C001817D6 /* TipsViewController.swift */; };
 		3682147E2459B23200C6A254 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147D2459B23200C6A254 /* Message.swift */; };
 		368214802459CA2D00C6A254 /* UITableView+ScrollBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */; };
 		368214862459F92E00C6A254 /* Lobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 368214852459F92E00C6A254 /* Lobby.json */; };
@@ -102,6 +103,7 @@
 		364DE99B2469886100449013 /* Sorteiojogador_Load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sorteiojogador_Load.json; sourceTree = "<group>"; };
 		365411C6246B11E600F1F63E /* MimeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimeMessage.swift; sourceTree = "<group>"; };
 		368009E92487DD10001817D6 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		368009EB2487E56C001817D6 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		3682147D2459B23200C6A254 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3682147F2459CA2D00C6A254 /* UITableView+ScrollBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ScrollBottom.swift"; sourceTree = "<group>"; };
 		368214852459F92E00C6A254 /* Lobby.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lobby.json; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 				3CE92CBA246C37DD007113DA /* RankingFinalViewController.swift */,
 				3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */,
 				368009E92487DD10001817D6 /* InitialViewController.swift */,
+				368009EB2487E56C001817D6 /* TipsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				3C36CFD024508441003648AE /* UITextField+Localization.swift in Sources */,
 				3C36CFE5245086A0003648AE /* LobbyTableViewCell.swift in Sources */,
 				3642AE0824520495004CBF76 /* GameViewController.swift in Sources */,
+				368009EC2487E56C001817D6 /* TipsViewController.swift in Sources */,
 				3642AE1124524CEF004CBF76 /* Mime.swift in Sources */,
 				3CFDB82D2461ACCE00648D31 /* SelectRoomViewController.swift in Sources */,
 				3C36CFBE2450809F003648AE /* LobbyViewController.swift in Sources */,

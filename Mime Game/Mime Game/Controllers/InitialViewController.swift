@@ -15,6 +15,10 @@ class InitialViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    @IBAction func didTipButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "seeTips", sender: self)
+    }
+    
     @IBAction func didStartGameButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToSelectAvatar", sender: self)
     }

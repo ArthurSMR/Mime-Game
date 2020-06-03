@@ -126,6 +126,11 @@ class LoginNoRegisteredViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func didBackButtonPressed(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     @IBAction func confirmButtonDidPressed(_ sender: UIButton) {
         
         if DeepLink.shared.shouldNavigateToLobby {
