@@ -1225,6 +1225,60 @@
             <point key="canvasLocation" x="1926.0869565217392" y="-182.14285714285714"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="TMC-CP-X7R">
+            <objects>
+                <viewController id="x4L-92-WxS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t3m-qV-lfB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="PNE-bL-lR3">
+                                <rect key="frame" x="131" y="192.5" width="152" height="152.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PNE-bL-lR3" secondAttribute="height" id="oSc-wy-g5b"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-oj-zhY">
+                                <rect key="frame" x="119" y="502" width="176" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ymg-oj-zhY" secondAttribute="height" multiplier="176:71" id="33E-G0-JEk"/>
+                                </constraints>
+                                <state key="normal" image="Botao_jogar"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jogar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beU-MI-boy">
+                                <rect key="frame" x="182" y="585" width="50" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="Azul  claro"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versão 1.1.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JS-bX-YzF">
+                                <rect key="frame" x="164.5" y="832.5" width="85.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="Azul mediano"/>
+                        <constraints>
+                            <constraint firstItem="PNE-bL-lR3" firstAttribute="height" secondItem="t3m-qV-lfB" secondAttribute="height" multiplier="0.17" id="05m-fP-SfQ"/>
+                            <constraint firstItem="ymg-oj-zhY" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="1.2" id="1Em-ef-kna"/>
+                            <constraint firstItem="6JS-bX-YzF" firstAttribute="centerX" secondItem="t3m-qV-lfB" secondAttribute="centerX" id="4Dg-aP-Skd"/>
+                            <constraint firstItem="ymg-oj-zhY" firstAttribute="height" secondItem="t3m-qV-lfB" secondAttribute="height" multiplier="0.0792411" id="Cop-71-D9p"/>
+                            <constraint firstItem="6JS-bX-YzF" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="1.88" id="R35-UF-KKV"/>
+                            <constraint firstItem="beU-MI-boy" firstAttribute="centerX" secondItem="ymg-oj-zhY" secondAttribute="centerX" id="Tn0-ij-QQH"/>
+                            <constraint firstItem="beU-MI-boy" firstAttribute="top" secondItem="ymg-oj-zhY" secondAttribute="bottom" constant="12" id="d0h-JD-msK"/>
+                            <constraint firstItem="ymg-oj-zhY" firstAttribute="centerX" secondItem="t3m-qV-lfB" secondAttribute="centerX" id="egV-5v-P37"/>
+                            <constraint firstItem="PNE-bL-lR3" firstAttribute="centerX" secondItem="t3m-qV-lfB" secondAttribute="centerX" id="v09-kO-Rrb"/>
+                            <constraint firstItem="PNE-bL-lR3" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="0.6" id="wa5-Qm-y7Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bjs-Zm-DuG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ao7-VY-uAT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991.304347826087" y="527.67857142857144"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="aJR-9C-CaP">
             <objects>
                 <viewController id="c52-Nz-qwJ" sceneMemberID="viewController">
@@ -1611,6 +1665,7 @@
         <image name="Background_Salas" width="375" height="812"/>
         <image name="Background_Temas" width="375" height="812"/>
         <image name="Background_UserID" width="375" height="812"/>
+        <image name="Botao_jogar" width="176" height="71"/>
         <image name="Button_Cancelar" width="215" height="55"/>
         <image name="Button_SelecionarTema" width="215" height="55"/>
         <image name="Button_Send" width="30" height="30"/>
@@ -1629,8 +1684,12 @@
         <image name="RankingFinal_background" width="552" height="636"/>
         <image name="Report-1" width="36" height="35"/>
         <image name="Timer1" width="112" height="112"/>
+        <image name="img_user_placeholder" width="300" height="300"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
+        <namedColor name="Azul  claro">
+            <color red="0.54900002479553223" green="0.77600002288818359" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Azul mais escuro">
             <color red="0.11400000005960464" green="0.22699999809265137" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
