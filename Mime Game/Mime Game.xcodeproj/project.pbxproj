@@ -59,6 +59,8 @@
 		3C553590245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */; };
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
 		3C642B96247F26A100FC7DB1 /* SetupRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */; };
+		3C86FF1F2487E19000CEF33F /* ExitModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C86FF1E2487E19000CEF33F /* ExitModal.xib */; };
+		3C86FF212487E1C700CEF33F /* ExitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C86FF202487E1C700CEF33F /* ExitModal.swift */; };
 		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
 		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
 		3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7E5322469B54E00686C44 /* themesAndWords.json */; };
@@ -148,6 +150,8 @@
 		3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSystemGameTableViewCell.swift; sourceTree = "<group>"; };
 		3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSystemGameTableViewCell.xib; sourceTree = "<group>"; };
 		3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRoomViewController.swift; sourceTree = "<group>"; };
+		3C86FF1E2487E19000CEF33F /* ExitModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitModal.xib; sourceTree = "<group>"; };
+		3C86FF202487E1C700CEF33F /* ExitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitModal.swift; sourceTree = "<group>"; };
 		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		3CE7E5322469B54E00686C44 /* themesAndWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themesAndWords.json; sourceTree = "<group>"; };
@@ -309,7 +313,7 @@
 		3C09D63024570D0300849B83 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				3C09D63A24570D0300849B83 /* Modal.swift */,
+				3C86FF1D2487E11000CEF33F /* ExitModal */,
 				3C09D65B2457124F00849B83 /*  Modal Tip */,
 				3C09D65624570D4D00849B83 /*  Draw Player */,
 			);
@@ -389,6 +393,7 @@
 				9A9EED3E246F352A004DF8DA /* SOUNDS_EFFECTS */,
 				3CE7E5312469B54E00686C44 /* Json */,
 				3C09D63024570D0300849B83 /* Alerts */,
+				3C09D63A24570D0300849B83 /* Modal.swift */,
 				3C36CFDF24508617003648AE /* Protocols */,
 				3C36CFD82450856E003648AE /* Views */,
 				3C36CFBF24508293003648AE /* Extensions */,
@@ -404,6 +409,15 @@
 				36CAA776246DC45500F4847B /* DeepLink.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C86FF1D2487E11000CEF33F /* ExitModal */ = {
+			isa = PBXGroup;
+			children = (
+				3C86FF1E2487E19000CEF33F /* ExitModal.xib */,
+				3C86FF202487E1C700CEF33F /* ExitModal.swift */,
+			);
+			path = ExitModal;
 			sourceTree = "<group>";
 		};
 		3CE7E5312469B54E00686C44 /* Json */ = {
@@ -575,6 +589,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C86FF1F2487E19000CEF33F /* ExitModal.xib in Resources */,
 				3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */,
 				3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */,
 				3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */,
@@ -714,6 +729,7 @@
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
 				3642AE0C245241CA004CBF76 /* Game.swift in Sources */,
 				9AD2610E2458A2AE00E449A4 /* UserServices.swift in Sources */,
+				3C86FF212487E1C700CEF33F /* ExitModal.swift in Sources */,
 				36BC041F243E1080005B753A /* SceneDelegate.swift in Sources */,
 				36CAA77B246E18B600F4847B /* AppIDs.swift in Sources */,
 				9AD2610A2457A6B800E449A4 /* LoginNoRegisteredViewController.swift in Sources */,
