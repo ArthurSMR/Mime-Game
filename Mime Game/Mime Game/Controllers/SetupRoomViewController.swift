@@ -152,39 +152,15 @@ class SetupRoomViewController: UIViewController {
         }
     }
     
-    private func canSetRoom() -> Bool {
-        
-        self.gameSettings = GameSettings(quantityPlayedWithMimickr: selectedRound ?? 0, totalTurnTime: selectedTime ?? 0, theme: selectedTheme ?? "")
-        
-        // Trying to validate game settings
-        do {
-            if try validator.validateGameSettings(gameSettings: self.gameSettings) {
-                return true
-            }
-        } catch (let error as GameSettingsErrors) { // if returns any error, it will be handled here
-            
-            switch error {
-            case .quantityPlayersWithMimickrOutOfRange:
-                print("quantityPlayersWithMimickrOutOfRange")
-            case .themeNameIsEmpty:
-                print("themeNameIsEmpty")
-            case .totalTurnTimeOutOfRange:
-                print("totalTurnTimeOutOfRange")
-            }
-        } catch { // if there is no error to handle, it will print this
-            print("Ocorreu algum erro ao confirmar as suas configurações")
-        }
-        return false
-    }
-    
     //MARK: - Actions
     
     @IBAction func didConfirmButtonPressed(_ sender: UIButton) {
         
-        if canSetRoom() {
-            delegate?.didChangeRoomSettings(gameSettings: self.gameSettings)
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.gameSettings = GameSettings(quantityPlayedWithMimickr: selectedRound ?? 2, totalTurnTime: selectedTime ?? 60, theme: selectedTheme ?? "Aleatório")
+        
+        delegate?.didChangeRoomSettings(gameSettings: self.gameSettings)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didPressedExitButton(_ sender: UIButton) {

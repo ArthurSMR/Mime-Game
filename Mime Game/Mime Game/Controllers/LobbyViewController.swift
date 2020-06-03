@@ -36,7 +36,7 @@ class LobbyViewController: UIViewController {
     var remotePlayers: [Player] = []
     var startGame = Data("startGame".utf8)
     var messageStreamId = 1
-    var gameSettings: GameSettings = GameSettings(quantityPlayedWithMimickr: 2, totalTurnTime: 20)
+    var gameSettings: GameSettings = GameSettings(quantityPlayedWithMimickr: 2, totalTurnTime: 60)
     
     var localIsRoomHost = false
     var indicator = UIActivityIndicatorView()
