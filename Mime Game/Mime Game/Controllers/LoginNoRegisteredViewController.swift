@@ -87,7 +87,7 @@ class LoginNoRegisteredViewController: UIViewController {
         var avatarsImages: [UIImage] = []
         var n: Int = 1
         
-        while let avatarImage = UIImage(named: "Avatar\(n)"){
+        while let avatarImage = UIImage(named: "Avatar_cborda\(n)"){
             avatarsImages.append(avatarImage)
             n += 1
         }

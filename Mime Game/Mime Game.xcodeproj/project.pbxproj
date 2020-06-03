@@ -57,8 +57,6 @@
 		3C36CFE6245086A0003648AE /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */; };
 		3C553590245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */; };
 		3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */; };
-		3C642B93247ED1D000FC7DB1 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C642B91247ED1D000FC7DB1 /* ThemeTableViewCell.swift */; };
-		3C642B94247ED1D000FC7DB1 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C642B92247ED1D000FC7DB1 /* ThemeTableViewCell.xib */; };
 		3C642B96247F26A100FC7DB1 /* SetupRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */; };
 		3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C8926B124658C670029378E /* GoogleService-Info.plist */; };
 		3CE301A6246452CF0005BE0D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE301A5246452CF0005BE0D /* GameEngine.swift */; };
@@ -147,8 +145,6 @@
 		3C36CFE4245086A0003648AE /* LobbyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyTableViewCell.xib; sourceTree = "<group>"; };
 		3C55358E245BABDF00422CE0 /* MessageSystemGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSystemGameTableViewCell.swift; sourceTree = "<group>"; };
 		3C55358F245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSystemGameTableViewCell.xib; sourceTree = "<group>"; };
-		3C642B91247ED1D000FC7DB1 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
-		3C642B92247ED1D000FC7DB1 /* ThemeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeTableViewCell.xib; sourceTree = "<group>"; };
 		3C642B95247F26A100FC7DB1 /* SetupRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRoomViewController.swift; sourceTree = "<group>"; };
 		3C8926B124658C670029378E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE301A5246452CF0005BE0D /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
@@ -408,15 +404,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		3C642B90247ED19400FC7DB1 /* ThemeViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C642B91247ED1D000FC7DB1 /* ThemeTableViewCell.swift */,
-				3C642B92247ED1D000FC7DB1 /* ThemeTableViewCell.xib */,
-			);
-			path = ThemeViewCell;
-			sourceTree = "<group>";
-		};
 		3CE7E5312469B54E00686C44 /* Json */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,7 +435,6 @@
 		9A13FB08244EA0D600A74F6F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3C642B90247ED19400FC7DB1 /* ThemeViewCell */,
 				36E503432469D1F8006022DC /* PlayerRankingCell */,
 				3CFD2FE02461AF2400AE3926 /* SelectRoomCell */,
 				3C55358D245BAB9A00422CE0 /* MessageSystemGame */,
@@ -599,7 +585,6 @@
 				3CE7E5332469B54E00686C44 /* themesAndWords.json in Resources */,
 				36BC042C243E1083005B753A /* LaunchScreen.storyboard in Resources */,
 				36BC0429243E1083005B753A /* Assets.xcassets in Resources */,
-				3C642B94247ED1D000FC7DB1 /* ThemeTableViewCell.xib in Resources */,
 				3C8926B224658C670029378E /* GoogleService-Info.plist in Resources */,
 				36BC0424243E1081005B753A /* Main.storyboard in Resources */,
 				368214862459F92E00C6A254 /* Lobby.json in Resources */,
@@ -720,7 +705,6 @@
 				9A9EED41246F3836004DF8DA /* SoundFX.swift in Sources */,
 				3CE92CBB246C37DD007113DA /* RankingFinalViewController.swift in Sources */,
 				3C36CFDC2450856E003648AE /* RefreshControl.swift in Sources */,
-				3C642B93247ED1D000FC7DB1 /* ThemeTableViewCell.swift in Sources */,
 				363D101A248144F500E9B881 /* GameSettings.swift in Sources */,
 				36E503462469D21A006022DC /* PlayerRankingTableViewCell.swift in Sources */,
 				3695A91F24524FF700815617 /* MimeServices.swift in Sources */,
