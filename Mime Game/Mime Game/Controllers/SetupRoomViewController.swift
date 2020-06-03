@@ -52,12 +52,47 @@ class SetupRoomViewController: UIViewController {
             if let error = error {
                 print(error)
             } else {
-                
                 self.themes = themes?.keys.map { $0 }
                 self.themes.insert("Aleatório", at: 0)
                 self.setupLayout()
+                self.setupTextFieldContent()
+                self.setPickerStartingRow()
             }
         }
+    }
+    
+    func setupTextFieldContent(){
+        guard let gameSettings = self.gameSettings else { return }
+        
+        self.timeTxtField.text = "\(gameSettings.totalTurnTime) segundos"
+        self.themeTxtField.text = gameSettings.theme
+        self.roundsTxtField.text = "\(gameSettings.quantityPlayedWithMimickr) vezes"
+        
+        self.selectedTime = gameSettings.totalTurnTime
+        self.selectedRound = gameSettings.quantityPlayedWithMimickr
+        self.selectedTheme = gameSettings.theme
+    }
+    
+    func setPickerStartingRow(){
+        guard let gameSettings = self.gameSettings else { return }
+        guard let themes = self.themes else { return }
+        
+        for i in 0...(times.count-1){
+            if times[i] == gameSettings.totalTurnTime{
+                selectedIndexForPicker[0] = i
+            }
+        }
+        for i in 0...(themes.count-1){
+            if themes[i] == gameSettings.theme {
+                selectedIndexForPicker[1] = i
+            }
+        }
+        for i in 0...(rounds.count-1){
+            if rounds[i] == gameSettings.quantityPlayedWithMimickr{
+                selectedIndexForPicker[2] = i
+            }
+        }
+
     }
     
     func setupLayout() {
@@ -182,12 +217,16 @@ extension SetupRoomViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         case .time:
             self.selectedTime = times[row]
             timeTxtField.text = String(times[row]) + " segundos"
+//            self.selectedIndexForPicker[0] = row
         case .theme:
             self.selectedTheme = themes[row]
             themeTxtField.text = themes[row]
+//            self.selectedIndexForPicker[1] = row
         case .rounds:
             self.selectedRound = rounds[row]
             roundsTxtField.text = String(rounds[row]) + " vezes"
+//            self.selectedIndexForPicker[2] = row
+            
         default:
             print("text field not found")
         }
