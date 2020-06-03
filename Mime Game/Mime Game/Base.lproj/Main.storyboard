@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0x-C9-Kb9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XaJ-ts-Oda">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -767,7 +767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1G-9l-eiM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4996" y="534"/>
+            <point key="canvasLocation" x="5905.7971014492759" y="533.70535714285711"/>
         </scene>
         <!--Ranking Final View Controller-->
         <scene sceneID="4q3-mE-aR1">
@@ -1068,7 +1068,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFM-7s-JsZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="BpT-7Z-JnC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5773.913043478261" y="533.70535714285711"/>
+            <point key="canvasLocation" x="6684.057971014493" y="533.70535714285711"/>
         </scene>
         <!--Login No Registered View Controller-->
         <scene sceneID="hbm-GQ-Ui6">
@@ -1230,10 +1230,10 @@
             </objects>
             <point key="canvasLocation" x="1926.0869565217392" y="-182.14285714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Initial View Controller-->
         <scene sceneID="TMC-CP-X7R">
             <objects>
-                <viewController id="x4L-92-WxS" sceneMemberID="viewController">
+                <viewController id="x4L-92-WxS" customClass="InitialViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t3m-qV-lfB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1250,6 +1250,9 @@
                                     <constraint firstAttribute="width" secondItem="ymg-oj-zhY" secondAttribute="height" multiplier="176:71" id="33E-G0-JEk"/>
                                 </constraints>
                                 <state key="normal" image="Botao_jogar"/>
+                                <connections>
+                                    <action selector="didStartGameButtonPressed:" destination="x4L-92-WxS" eventType="touchUpInside" id="qhz-zj-zNT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jogar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beU-MI-boy">
                                 <rect key="frame" x="182" y="585" width="50" height="22"/>
@@ -1257,8 +1260,8 @@
                                 <color key="textColor" name="Azul  claro"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versão 1.1.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JS-bX-YzF">
-                                <rect key="frame" x="164.5" y="832.5" width="85.5" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versão 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JS-bX-YzF">
+                                <rect key="frame" x="163.5" y="832.5" width="87.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1279,10 +1282,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bjs-Zm-DuG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Xr-w8-5HP"/>
+                    <connections>
+                        <segue destination="EmN-KB-pVX" kind="show" identifier="goToSelectAvatar" id="0V8-kS-woV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ao7-VY-uAT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991.304347826087" y="527.67857142857144"/>
+            <point key="canvasLocation" x="1122" y="-174"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aJR-9C-CaP">
@@ -1336,25 +1343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tt2-Pu-fEi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="535"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xES-uD-8U5">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l0x-C9-Kb9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DIR-nr-lCk">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="EmN-KB-pVX" kind="relationship" relationship="rootViewController" id="Uc7-OW-R6y"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JyA-IH-kFq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1015.9420289855074" y="-182.14285714285714"/>
+            <point key="canvasLocation" x="2813.04347826087" y="534.375"/>
         </scene>
         <!--Select Room View Controller-->
         <scene sceneID="aoM-Ma-lO8">
@@ -1640,11 +1629,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaj-wN-ot8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3818.8405797101454" y="554.46428571428567"/>
+            <point key="canvasLocation" x="4728.985507246377" y="554.46428571428567"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rqh-p8-MYu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XaJ-ts-Oda" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fr-vQ-aHs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x4L-92-WxS" kind="relationship" relationship="rootViewController" id="CgY-k6-BfT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3wH-iI-B6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317" y="-173"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="M3A-SR-UAl"/>
+        <segue reference="NML-vg-3MR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AudioON" width="35" height="39"/>
