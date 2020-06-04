@@ -145,7 +145,7 @@
                                     <action selector="muteActionBtn:" destination="mfc-Vc-YaR" eventType="touchUpInside" id="fpu-eM-LXc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3o-5F-qk4">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3o-5F-qk4">
                                 <rect key="frame" x="0.0" y="759" width="414" height="137"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCr-64-I7a">
@@ -165,7 +165,7 @@
                                     <constraint firstItem="vCr-64-I7a" firstAttribute="top" secondItem="O3o-5F-qk4" secondAttribute="top" constant="24" id="dzZ-AR-AvI"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEB-mu-SjX">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEB-mu-SjX">
                                 <rect key="frame" x="0.0" y="759" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -216,12 +216,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fv4-D2-ndW"/>
                     <connections>
+                        <outlet property="_view" destination="MEB-mu-SjX" id="aty-bp-n2l"/>
                         <outlet property="exitLobby" destination="0S3-2j-mzT" id="VKB-W7-1dT"/>
                         <outlet property="lobbyView" destination="Ni4-kL-dJM" id="1Wz-h6-Wl8"/>
                         <outlet property="muteBtn" destination="IOO-i5-8fW" id="fKe-8i-yWV"/>
                         <outlet property="playersQuantityLbl" destination="yHO-Ru-8iz" id="BM2-z5-LaN"/>
                         <outlet property="roomName" destination="1TP-Hd-QxI" id="S9c-PT-jBd"/>
                         <outlet property="startGameBtn" destination="vCr-64-I7a" id="LWs-sA-ggW"/>
+                        <outlet property="startGameHostView" destination="O3o-5F-qk4" id="jL7-cu-52z"/>
                         <outlet property="tableView" destination="ptJ-XD-LZv" id="qXf-6K-Bzf"/>
                         <segue destination="wo4-Pi-ajL" kind="show" identifier="startGame" id="MBy-jB-Rz7"/>
                         <segue destination="dUq-V7-mMH" kind="showDetail" identifier="setupRoom" id="Ahu-Dn-2D9"/>
