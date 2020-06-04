@@ -404,6 +404,7 @@ class LobbyViewController: UIViewController {
         else if segue.identifier == "setupRoom" {
             if let setupVC = segue.destination as? SetupRoomViewController {
                 setupVC.delegate = self
+                setupVC.gameSettings = self.gameSettings
             }
         }
     }
