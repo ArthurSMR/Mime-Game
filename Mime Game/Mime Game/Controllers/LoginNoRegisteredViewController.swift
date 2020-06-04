@@ -31,6 +31,7 @@ class LoginNoRegisteredViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -253,6 +254,21 @@ extension LoginNoRegisteredViewController:  UIScrollViewDelegate {
 //MARK: - TextField
 extension LoginNoRegisteredViewController:  UITextFieldDelegate {
     
+    func hideConfirmButton() {
+        
+        self.confirmButton.isHidden = true
+        self.confirmButton.alpha = 0.0
+    }
+    
+    func showConfirmButton() {
+        
+        UIButton.animate(withDuration: 0.5) {
+            self.confirmButton.alpha = 1.0
+        }
+        confirmButton.isHidden = false
+        
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
@@ -269,11 +285,23 @@ extension LoginNoRegisteredViewController:  UITextFieldDelegate {
         if string.isEmpty {
             return true
         }
+        
         switch textField {
         case nameTextField:
             return textField.checkIfAchieveTheLimitName()
         default:
             return textField.checkIfAchieveTheLimitDefault()
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        guard let name = nameTextField.text else { return }
+        
+        if name.isEmpty {
+            hideConfirmButton()
+        } else {
+            showConfirmButton()
         }
     }
     
