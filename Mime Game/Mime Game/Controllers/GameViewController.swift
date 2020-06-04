@@ -137,7 +137,7 @@ class GameViewController: UIViewController {
     /// This method will show the right mime animation
     func setupRightMimeAnimation() {
         textField.resignFirstResponder()
-        let animation = Animation.named("acerto_palavra")
+        let animation = Animation.named("acerto_palavra2")
         rightMimeView.animation = animation
         rightMimeView.loopMode = .playOnce
         rightMimeView.play()

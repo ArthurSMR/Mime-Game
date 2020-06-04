@@ -30,13 +30,13 @@
                                         <constraint firstAttribute="height" constant="62" id="vRi-oJ-0An"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Aviso" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXN-Ej-fkp">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Aviso" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="KXN-Ej-fkp">
                                     <rect key="frame" x="127" y="174" width="112" height="53"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                     <color key="textColor" name="Rosa respostas"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja realmente sair dessa partida?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqy-on-DRD">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja realmente sair dessa partida?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uqy-on-DRD">
                                     <rect key="frame" x="48" y="277" width="270" height="72"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                     <color key="textColor" name="Azul mais escuro"/>

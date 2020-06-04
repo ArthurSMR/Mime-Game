@@ -47,6 +47,7 @@
 		3C09D65A24570DB400849B83 /* DrawPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65924570DB400849B83 /* DrawPlayer.xib */; };
 		3C09D65D2457128000849B83 /* ModalTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09D65C2457128000849B83 /* ModalTip.swift */; };
 		3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C09D65E2457128B00849B83 /* ModalTip.xib */; };
+		3C33C1482489322E007EF187 /* acerto_palavra2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C33C1472489322D007EF187 /* acerto_palavra2.json */; };
 		3C36CFBE2450809F003648AE /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36CFBD2450809F003648AE /* LobbyViewController.swift */; };
 		3C36CFCE24508441003648AE /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36CFC224508440003648AE /* UserDefaults+Extensions.swift */; };
 		3C36CFD024508441003648AE /* UITextField+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36CFC424508440003648AE /* UITextField+Localization.swift */; };
@@ -139,6 +140,7 @@
 		3C09D65924570DB400849B83 /* DrawPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawPlayer.xib; sourceTree = "<group>"; };
 		3C09D65C2457128000849B83 /* ModalTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTip.swift; sourceTree = "<group>"; };
 		3C09D65E2457128B00849B83 /* ModalTip.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalTip.xib; sourceTree = "<group>"; };
+		3C33C1472489322D007EF187 /* acerto_palavra2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acerto_palavra2.json; sourceTree = "<group>"; };
 		3C36CFBD2450809F003648AE /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		3C36CFC224508440003648AE /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		3C36CFC424508440003648AE /* UITextField+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localization.swift"; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				3C36CFD82450856E003648AE /* Views */,
 				3C36CFBF24508293003648AE /* Extensions */,
 				368214852459F92E00C6A254 /* Lobby.json */,
+				3C33C1472489322D007EF187 /* acerto_palavra2.json */,
 				364DE99B2469886100449013 /* Sorteiojogador_Load.json */,
 				36F0F78E246F0F5400E36B14 /* acerto_palavra.json */,
 				36BC0428243E1083005B753A /* Assets.xcassets */,
@@ -597,6 +600,7 @@
 				3C553591245BABDF00422CE0 /* MessageSystemGameTableViewCell.xib in Resources */,
 				3CFD2FE42461AF4E00AE3926 /* SelectRomTableViewCell.xib in Resources */,
 				360525442458A71600BEA330 /* ChatTableViewCell.xib in Resources */,
+				3C33C1482489322E007EF187 /* acerto_palavra2.json in Resources */,
 				36F0F78F246F0F5400E36B14 /* acerto_palavra.json in Resources */,
 				3C09D65F2457128B00849B83 /* ModalTip.xib in Resources */,
 				364DE99C2469886100449013 /* Sorteiojogador_Load.json in Resources */,
