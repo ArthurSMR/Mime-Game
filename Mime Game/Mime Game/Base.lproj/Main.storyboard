@@ -1456,11 +1456,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="PNE-bL-lR3">
-                                <rect key="frame" x="131" y="192.5" width="152" height="152.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="PNE-bL-lR3" secondAttribute="height" id="oSc-wy-g5b"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home" translatesAutoresizingMaskIntoConstraints="NO" id="sh7-mZ-rc5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-oj-zhY">
                                 <rect key="frame" x="119" y="502" width="176" height="71"/>
@@ -1475,42 +1472,51 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jogar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beU-MI-boy">
                                 <rect key="frame" x="182" y="585" width="50" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" name="Azul  claro"/>
+                                <color key="textColor" name="Azul mais escuro"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versão 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JS-bX-YzF">
-                                <rect key="frame" x="163.5" y="832.5" width="87.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O seu jogo de Mímica." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn7-5G-GSO">
+                                <rect key="frame" x="84.5" y="388.5" width="245" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" name="Azul mais escuro"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-yw-gPN">
-                                <rect key="frame" x="366" y="104" width="32" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-yw-gPN" customClass="RoundButton" customModule="HandsUP" customModuleProvider="target">
+                                <rect key="frame" x="127" y="786.5" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.2274509804" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="ShJ-QS-yY6"/>
-                                    <constraint firstAttribute="width" secondItem="rD6-yw-gPN" secondAttribute="height" multiplier="10:11" id="heS-of-t9F"/>
+                                    <constraint firstAttribute="height" constant="40" id="gm0-aj-bL2"/>
+                                    <constraint firstAttribute="width" constant="160" id="lR2-gP-3Jv"/>
                                 </constraints>
                                 <color key="tintColor" name="Amarelo"/>
-                                <state key="normal" image="questionmark.circle.fill" catalog="system"/>
+                                <state key="normal" title="Saiba como jogar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTipButtonPressed:" destination="x4L-92-WxS" eventType="touchUpInside" id="ggM-ha-g4D"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="Azul mediano"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PNE-bL-lR3" firstAttribute="height" secondItem="t3m-qV-lfB" secondAttribute="height" multiplier="0.17" id="05m-fP-SfQ"/>
                             <constraint firstItem="ymg-oj-zhY" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="1.2" id="1Em-ef-kna"/>
-                            <constraint firstItem="6JS-bX-YzF" firstAttribute="centerX" secondItem="7zM-Tt-n7V" secondAttribute="centerX" id="4Dg-aP-Skd"/>
-                            <constraint firstItem="7zM-Tt-n7V" firstAttribute="trailing" secondItem="rD6-yw-gPN" secondAttribute="trailing" constant="16" id="Bfk-oP-YPq"/>
+                            <constraint firstItem="rD6-yw-gPN" firstAttribute="centerX" secondItem="t3m-qV-lfB" secondAttribute="centerX" id="7Fg-I8-yyB"/>
                             <constraint firstItem="ymg-oj-zhY" firstAttribute="height" secondItem="t3m-qV-lfB" secondAttribute="height" multiplier="0.0792411" id="Cop-71-D9p"/>
-                            <constraint firstItem="rD6-yw-gPN" firstAttribute="top" secondItem="7zM-Tt-n7V" secondAttribute="top" constant="16" id="Hat-1o-CtQ"/>
-                            <constraint firstItem="6JS-bX-YzF" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="1.88" id="R35-UF-KKV"/>
                             <constraint firstItem="beU-MI-boy" firstAttribute="centerX" secondItem="ymg-oj-zhY" secondAttribute="centerX" id="Tn0-ij-QQH"/>
+                            <constraint firstItem="rD6-yw-gPN" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="1.8" id="XC0-lU-SuE"/>
+                            <constraint firstItem="7zM-Tt-n7V" firstAttribute="trailing" secondItem="sh7-mZ-rc5" secondAttribute="trailing" id="cx2-MD-Jef"/>
                             <constraint firstItem="beU-MI-boy" firstAttribute="top" secondItem="ymg-oj-zhY" secondAttribute="bottom" constant="12" id="d0h-JD-msK"/>
+                            <constraint firstItem="sh7-mZ-rc5" firstAttribute="top" secondItem="t3m-qV-lfB" secondAttribute="top" id="dfj-dd-XZx"/>
                             <constraint firstItem="ymg-oj-zhY" firstAttribute="centerX" secondItem="7zM-Tt-n7V" secondAttribute="centerX" id="egV-5v-P37"/>
-                            <constraint firstItem="PNE-bL-lR3" firstAttribute="centerX" secondItem="7zM-Tt-n7V" secondAttribute="centerX" id="v09-kO-Rrb"/>
-                            <constraint firstItem="PNE-bL-lR3" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="0.6" id="wa5-Qm-y7Z"/>
+                            <constraint firstItem="Tn7-5G-GSO" firstAttribute="centerY" secondItem="t3m-qV-lfB" secondAttribute="centerY" multiplier="0.9" id="gDG-0Y-IhD"/>
+                            <constraint firstItem="Tn7-5G-GSO" firstAttribute="centerX" secondItem="t3m-qV-lfB" secondAttribute="centerX" id="low-Zx-zge"/>
+                            <constraint firstItem="sh7-mZ-rc5" firstAttribute="leading" secondItem="7zM-Tt-n7V" secondAttribute="leading" id="mun-5s-LI4"/>
+                            <constraint firstAttribute="bottom" secondItem="sh7-mZ-rc5" secondAttribute="bottom" id="w2W-Vk-iGd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7zM-Tt-n7V"/>
                     </view>
@@ -1522,7 +1528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ao7-VY-uAT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="-174"/>
+            <point key="canvasLocation" x="1121.7391304347827" y="-174.10714285714286"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aJR-9C-CaP">
@@ -1947,6 +1953,7 @@
         <image name="ExitModal" width="35" height="35"/>
         <image name="Frame 1" width="63" height="29"/>
         <image name="Frame 4" width="215" height="55"/>
+        <image name="Home" width="375" height="812"/>
         <image name="Icone_pessoas" width="15" height="15"/>
         <image name="Info" width="35" height="39"/>
         <image name="Moldura" width="332" height="483"/>
@@ -1959,15 +1966,10 @@
         <image name="RankingFinal_background" width="552" height="636"/>
         <image name="Report-1" width="36" height="35"/>
         <image name="Timer1" width="112" height="112"/>
-        <image name="img_user_placeholder" width="300" height="300"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="112" height="128"/>
-        <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="Amarelo">
             <color red="0.98000001907348633" green="0.89800000190734863" blue="0.41200000047683716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Azul  claro">
-            <color red="0.54900002479553223" green="0.77600002288818359" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Azul mais escuro">
             <color red="0.11400000005960464" green="0.22699999809265137" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
