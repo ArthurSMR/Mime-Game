@@ -114,7 +114,7 @@
 		36A8F93824508AB4008D0FD3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		36AA377F247703C600AB7BBE /* MessageStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStream.swift; sourceTree = "<group>"; };
 		36AA37832478437A00AB7BBE /* DataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
-		36BC0419243E1080005B753A /* Mime Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mime Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36BC0419243E1080005B753A /* HandsUP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandsUP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BC041C243E1080005B753A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BC041E243E1080005B753A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		36BC0420243E1080005B753A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 		36BC041A243E1080005B753A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				36BC0419243E1080005B753A /* Mime Game.app */,
+				36BC0419243E1080005B753A /* HandsUP.app */,
 				36BC0432243E1083005B753A /* Mime GameTests.xctest */,
 			);
 			name = Products;
@@ -530,7 +530,7 @@
 			);
 			name = "Mime Game";
 			productName = "Mime Game";
-			productReference = 36BC0419243E1080005B753A /* Mime Game.app */;
+			productReference = 36BC0419243E1080005B753A /* HandsUP.app */;
 			productType = "com.apple.product-type.application";
 		};
 		36BC0431243E1083005B753A /* Mime GameTests */ = {
@@ -934,7 +934,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Mime-Game";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HandsUP;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -956,7 +956,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Mime-Game";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HandsUP;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
