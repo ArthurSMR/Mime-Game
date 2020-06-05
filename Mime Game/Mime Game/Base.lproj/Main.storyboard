@@ -304,7 +304,7 @@
                                             <action selector="reportBtn:" destination="wo4-Pi-ajL" eventType="touchUpInside" id="hw2-i6-k7S"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xxa-Nk-ioS" customClass="AnimationView" customModule="Lottie">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxa-Nk-ioS" customClass="AnimationView" customModule="Lottie">
                                         <rect key="frame" x="16" y="379" width="382" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
