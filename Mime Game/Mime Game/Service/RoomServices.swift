@@ -42,9 +42,8 @@ class RoomServices {
         }
     }
     
-    static func updateNumberOfPlayersTo(number: Int, room: Room){
+    static func updateNumberOfPlayers(at room: Room){
         let database = DatabaseContainer.shared.publicCloudDatabase
-        room.numberOfPlayers = number
         
         var predicate = NSPredicate(format: "name == %@", room.name)
         var query = CKQuery(recordType: "Room", predicate: predicate)

@@ -214,6 +214,7 @@ class LobbyViewController: UIViewController {
     
     /// ThIs method will update the players quantity label
     private func updatePlayersQuantity() {
+        guard let thisRoom = self.room else { print("error loading self.room"); return }
         
         var playerQuantity = 1 // it starts with 1 counting the local player
         
@@ -222,8 +223,8 @@ class LobbyViewController: UIViewController {
                 playerQuantity += 1
             }
         }
-        
-        RoomServices.updateNumberOfPlayersTo(number: playerQuantity, room: self.room!)
+        thisRoom.numberOfPlayers = playerQuantity
+        RoomServices.updateNumberOfPlayers(at: thisRoom)
         
         self.playersQuantityLbl.text = "\(playerQuantity)/\(self.totalPlayers)"
     }
@@ -284,7 +285,7 @@ class LobbyViewController: UIViewController {
         self.UIDs.append(remote.uid)
         print("remote \(remote.name) with id \(remote.uid) joined")
         self.tableView.reloadData()
-        self.updatePlayersQuantity()
+//        self.updatePlayersQuantity()
     }
     
     private func setHost(){
@@ -316,7 +317,7 @@ class LobbyViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        self.updatePlayersQuantity()
+//        self.updatePlayersQuantity()
     }
     
     /// This method for leaving the channel
