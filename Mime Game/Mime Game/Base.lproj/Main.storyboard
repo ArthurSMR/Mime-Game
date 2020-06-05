@@ -12,7 +12,7 @@
         <!--Lobby View Controller-->
         <scene sceneID="Xot-Za-eCW">
             <objects>
-                <viewController id="mfc-Vc-YaR" customClass="LobbyViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mfc-Vc-YaR" customClass="LobbyViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6D-fi-puJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="491"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-dd-be5" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-dd-be5" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="459" width="414" height="320"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ptJ-XD-LZv">
@@ -236,7 +236,7 @@
         <!--Game View Controller-->
         <scene sceneID="0ZZ-tT-WNX">
             <objects>
-                <viewController id="wo4-Pi-ajL" customClass="GameViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wo4-Pi-ajL" customClass="GameViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6FA-vV-4N5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +247,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-US-meX">
                                 <rect key="frame" x="0.0" y="96" width="414" height="758"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-d3-bg6" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-d3-bg6" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="16" y="500" width="382" height="200"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F4N-Cl-Y3B">
@@ -275,7 +275,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moldura" translatesAutoresizingMaskIntoConstraints="NO" id="8Kj-Js-Emn">
                                         <rect key="frame" x="16" y="82" width="382" height="450"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1n-kR-OFm" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1n-kR-OFm" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="30" y="93" width="358" height="424"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -308,7 +308,7 @@
                                         <rect key="frame" x="16" y="379" width="382" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mM-Eb-kAI" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mM-Eb-kAI" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="157" y="32" width="100" height="100"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Timer1" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-em-ZtS">
@@ -338,7 +338,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-3g-9Us" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-3g-9Us" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="16" y="708" width="382" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite sua Resposta aqui" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJZ-tp-Ewd">
@@ -467,7 +467,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5X-YE-BAe">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZV-lu-JCn" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZV-lu-JCn" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="298" y="16" width="100" height="100"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Timer1" translatesAutoresizingMaskIntoConstraints="NO" id="7Yy-5d-OVz">
@@ -497,7 +497,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD4-VX-Kyd" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD4-VX-Kyd" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="16" y="558" width="382" height="200"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KiU-WW-pur">
@@ -521,7 +521,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moldura" translatesAutoresizingMaskIntoConstraints="NO" id="d99-14-6p6">
                                         <rect key="frame" x="16" y="116" width="382" height="474"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-fI-5WB" userLabel="Mimickr View" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-fI-5WB" userLabel="Mimickr View" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="30" y="127" width="358" height="448"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -624,7 +624,7 @@
         <!--Match Details View Controller-->
         <scene sceneID="8mf-zw-HOW">
             <objects>
-                <viewController id="AvQ-re-xfj" customClass="MatchDetailsViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AvQ-re-xfj" customClass="MatchDetailsViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z86-DK-tQi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -774,7 +774,7 @@
         <!--Ranking Final View Controller-->
         <scene sceneID="4q3-mE-aR1">
             <objects>
-                <viewController id="ObD-HM-kOc" customClass="RankingFinalViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ObD-HM-kOc" customClass="RankingFinalViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6qa-gF-k6v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -799,7 +799,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-Ej-MvB" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-Ej-MvB" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="173" width="100" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9r5-ff-WXi">
@@ -850,7 +850,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-xs-Akn" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-xs-Akn" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="127.5" width="79.5" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pNt-pO-XmO">
@@ -897,7 +897,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="ZxI-Y0-BxZ" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="ZxI-Y0-BxZ" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="98.5" width="100" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gs-r3-mlq">
@@ -933,7 +933,7 @@
                                     <constraint firstItem="yIB-SF-ENE" firstAttribute="width" secondItem="yIB-SF-ENE" secondAttribute="height" multiplier="1:1" id="haM-hT-T1u"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97J-Zl-16E" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97J-Zl-16E" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="575" width="414" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking Final" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="PWl-Hz-FZT">
@@ -1074,7 +1074,7 @@
         <!--Login No Registered View Controller-->
         <scene sceneID="hbm-GQ-Ui6">
             <objects>
-                <viewController id="EmN-KB-pVX" customClass="LoginNoRegisteredViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EmN-KB-pVX" customClass="LoginNoRegisteredViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OmO-rH-I7b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1098,7 +1098,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="avatarCellId" id="Pgz-4h-1hf" customClass="AvatarCell" customModule="Mime_Game" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="avatarCellId" id="Pgz-4h-1hf" customClass="AvatarCell" customModule="HandsUP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80.5" width="210" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="kh0-Fj-E24">
@@ -1235,7 +1235,7 @@
         <!--Tips View Controller-->
         <scene sceneID="zg0-32-utf">
             <objects>
-                <viewController id="TyP-on-6c8" customClass="TipsViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TyP-on-6c8" customClass="TipsViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IIk-PH-Lm7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1256,8 +1256,8 @@
                                                     <action selector="dismissModalAction:" destination="AvQ-re-xfj" eventType="touchUpInside" id="TjX-5Z-Tnp"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dicas para você:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-qM-GrS">
-                                                <rect key="frame" x="24" y="217" width="204" height="33.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dicas para você:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-qM-GrS">
+                                                <rect key="frame" x="24" y="185" width="330" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                                 <color key="textColor" name="Azul mais escuro"/>
                                                 <nil key="highlightedColor"/>
@@ -1282,90 +1282,90 @@
                                                     <action selector="didReadyButtonPressed:" destination="TyP-on-6c8" eventType="touchUpInside" id="7b3-UM-yLq"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aqui vai umas dicas para você aprender a jogar" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ0-6E-OJO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aqui vai umas dicas para você aprender a jogar" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="cZ0-6E-OJO">
                                                 <rect key="frame" x="24" y="80" width="366" height="72"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <color key="textColor" name="Azul mais escuro"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeB-Gh-i0L">
-                                                <rect key="frame" x="24" y="184" width="366" height="1"/>
+                                                <rect key="frame" x="24" y="168" width="366" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="QnF-n6-YYA"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-34" translatesAutoresizingMaskIntoConstraints="NO" id="uZf-dM-PC6">
-                                                <rect key="frame" x="24" y="258.5" width="366" height="389.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="uZf-dM-PC6">
+                                                <rect key="frame" x="24" y="226.5" width="366" height="437.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xw4-bu-loN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="152.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="142"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Num_1" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-lX-EOL">
-                                                                <rect key="frame" x="0.0" y="58" width="37" height="37"/>
+                                                                <rect key="frame" x="0.0" y="52.5" width="37" height="37"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="3yn-lX-EOL" secondAttribute="height" id="V9f-VZ-rZ8"/>
                                                                     <constraint firstAttribute="height" constant="37" id="t1r-su-Cbv"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coloque o dispositivo apoiado em um lugar fixo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGJ-tp-dnn">
-                                                                <rect key="frame" x="53" y="33.5" width="207" height="86"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coloque o dispositivo apoiado em um lugar fixo." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGJ-tp-dnn">
+                                                                <rect key="frame" x="53" y="28" width="207" height="86"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                 <color key="textColor" name="Azul mais escuro"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dica1" translatesAutoresizingMaskIntoConstraints="NO" id="pkc-uQ-oS9">
-                                                                <rect key="frame" x="276" y="34.5" width="90" height="84"/>
+                                                                <rect key="frame" x="276" y="29" width="90" height="84"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="Bms-4N-cq7"/>
+                                                                    <constraint firstAttribute="width" secondItem="pkc-uQ-oS9" secondAttribute="height" multiplier="15:14" id="jHk-QK-VQs"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Jqp-km-jtl">
-                                                        <rect key="frame" x="0.0" y="118.5" width="366" height="152.5"/>
+                                                        <rect key="frame" x="0.0" y="148" width="366" height="141.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Num_2" translatesAutoresizingMaskIntoConstraints="NO" id="uUd-1B-XR7">
-                                                                <rect key="frame" x="0.0" y="58" width="37" height="37"/>
+                                                                <rect key="frame" x="0.0" y="52.5" width="37" height="37"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="uUd-1B-XR7" secondAttribute="height" id="1li-QQ-9D4"/>
                                                                     <constraint firstAttribute="height" constant="37" id="knH-ao-PXx"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apoie no modo vertical e se atente ao quadro." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-oF-wa5">
-                                                                <rect key="frame" x="53" y="33.5" width="207" height="86"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apoie no modo vertical e se atente ao quadro." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-oF-wa5">
+                                                                <rect key="frame" x="53" y="28" width="207" height="86"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                 <color key="textColor" name="Azul mais escuro"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dica2" translatesAutoresizingMaskIntoConstraints="NO" id="idP-pY-w3u">
-                                                                <rect key="frame" x="276" y="46" width="90" height="61"/>
+                                                                <rect key="frame" x="276" y="40.5" width="90" height="61"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="xPm-qs-9bE"/>
+                                                                    <constraint firstAttribute="width" secondItem="idP-pY-w3u" secondAttribute="height" multiplier="90:61" id="laG-86-6CD"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="60u-2j-1kQ">
-                                                        <rect key="frame" x="0.0" y="237" width="366" height="152.5"/>
+                                                        <rect key="frame" x="0.0" y="295.5" width="366" height="142"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Num_3" translatesAutoresizingMaskIntoConstraints="NO" id="pps-El-DqR">
-                                                                <rect key="frame" x="0.0" y="58" width="37" height="37"/>
+                                                                <rect key="frame" x="0.0" y="52.5" width="37" height="37"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="37" id="In3-ca-2tG"/>
                                                                     <constraint firstAttribute="width" secondItem="pps-El-DqR" secondAttribute="height" id="yWt-fT-qfL"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preste atenção para realizar a mímica correta." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdi-Ir-rTp">
-                                                                <rect key="frame" x="53" y="33.5" width="207" height="86"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preste atenção para realizar a mímica correta." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zdi-Ir-rTp">
+                                                                <rect key="frame" x="53" y="28" width="207" height="86"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                 <color key="textColor" name="Azul mais escuro"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dica3" translatesAutoresizingMaskIntoConstraints="NO" id="Phg-fA-Qro">
-                                                                <rect key="frame" x="276" y="46" width="90" height="61"/>
+                                                                <rect key="frame" x="276" y="40.5" width="90" height="61"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="EiB-lc-Phf"/>
+                                                                    <constraint firstAttribute="width" secondItem="Phg-fA-Qro" secondAttribute="height" multiplier="90:61" id="UD7-Gk-NvS"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
@@ -1393,17 +1393,18 @@
                                             <constraint firstAttribute="trailing" secondItem="R9y-9v-q5S" secondAttribute="trailing" constant="16" id="3bo-be-wYs"/>
                                             <constraint firstItem="uZf-dM-PC6" firstAttribute="leading" secondItem="cZ0-6E-OJO" secondAttribute="leading" id="94c-nd-lvP"/>
                                             <constraint firstItem="xA9-DE-buF" firstAttribute="leading" secondItem="cZ0-6E-OJO" secondAttribute="leading" id="Fvc-s2-vMf"/>
-                                            <constraint firstItem="xA9-DE-buF" firstAttribute="top" secondItem="uZf-dM-PC6" secondAttribute="bottom" constant="32" id="G5j-cG-0DD"/>
+                                            <constraint firstItem="xA9-DE-buF" firstAttribute="top" secondItem="uZf-dM-PC6" secondAttribute="bottom" constant="16" id="G5j-cG-0DD"/>
                                             <constraint firstAttribute="trailing" secondItem="cZ0-6E-OJO" secondAttribute="trailing" constant="24" id="H0X-n3-BH2"/>
                                             <constraint firstItem="3iZ-qM-GrS" firstAttribute="leading" secondItem="cZ0-6E-OJO" secondAttribute="leading" id="IJh-kX-m7s"/>
-                                            <constraint firstItem="3iZ-qM-GrS" firstAttribute="top" secondItem="IeB-Gh-i0L" secondAttribute="bottom" constant="32" id="NRK-ih-LcT"/>
+                                            <constraint firstItem="3iZ-qM-GrS" firstAttribute="top" secondItem="IeB-Gh-i0L" secondAttribute="bottom" constant="16" id="NRK-ih-LcT"/>
                                             <constraint firstItem="IeB-Gh-i0L" firstAttribute="leading" secondItem="cZ0-6E-OJO" secondAttribute="leading" id="Pwh-Z7-RBb"/>
                                             <constraint firstItem="IeB-Gh-i0L" firstAttribute="trailing" secondItem="cZ0-6E-OJO" secondAttribute="trailing" id="Rj1-3c-GEl"/>
-                                            <constraint firstItem="IeB-Gh-i0L" firstAttribute="top" secondItem="cZ0-6E-OJO" secondAttribute="bottom" constant="32" id="RjS-lX-Jod"/>
+                                            <constraint firstItem="IeB-Gh-i0L" firstAttribute="top" secondItem="cZ0-6E-OJO" secondAttribute="bottom" constant="16" id="RjS-lX-Jod"/>
                                             <constraint firstAttribute="bottom" secondItem="6Hx-xQ-Cn7" secondAttribute="bottom" constant="40" id="Rx9-YP-H9Z"/>
                                             <constraint firstItem="cZ0-6E-OJO" firstAttribute="leading" secondItem="vI2-39-rbr" secondAttribute="leading" constant="24" id="SvH-ZR-mC0"/>
                                             <constraint firstItem="6Hx-xQ-Cn7" firstAttribute="centerX" secondItem="vI2-39-rbr" secondAttribute="centerX" id="UJ4-sJ-5sI"/>
                                             <constraint firstItem="uZf-dM-PC6" firstAttribute="trailing" secondItem="cZ0-6E-OJO" secondAttribute="trailing" id="WUX-dl-OG4"/>
+                                            <constraint firstAttribute="trailing" secondItem="3iZ-qM-GrS" secondAttribute="trailing" constant="60" id="bSL-gR-vvh"/>
                                             <constraint firstItem="cZ0-6E-OJO" firstAttribute="top" secondItem="vI2-39-rbr" secondAttribute="top" constant="80" id="kJe-cl-KG9"/>
                                             <constraint firstItem="xA9-DE-buF" firstAttribute="trailing" secondItem="cZ0-6E-OJO" secondAttribute="trailing" id="p7f-e7-8KT"/>
                                             <constraint firstItem="R9y-9v-q5S" firstAttribute="top" secondItem="vI2-39-rbr" secondAttribute="top" constant="16" id="x6e-Or-Ptg"/>
@@ -1428,7 +1429,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="pkc-uQ-oS9" firstAttribute="height" secondItem="IIk-PH-Lm7" secondAttribute="height" multiplier="0.0997625" id="8uO-8Y-gxN"/>
+                            <constraint firstItem="3yn-lX-EOL" firstAttribute="height" secondItem="IIk-PH-Lm7" secondAttribute="height" multiplier="0.043943" id="GLY-2E-5cf"/>
+                            <constraint firstItem="Phg-fA-Qro" firstAttribute="height" secondItem="IIk-PH-Lm7" secondAttribute="height" multiplier="0.0724466" id="JE8-W4-8kL"/>
+                            <constraint firstItem="idP-pY-w3u" firstAttribute="height" secondItem="IIk-PH-Lm7" secondAttribute="height" multiplier="0.0724466" id="Ldk-MF-JeL"/>
+                            <constraint firstItem="uUd-1B-XR7" firstAttribute="height" secondItem="IIk-PH-Lm7" secondAttribute="height" multiplier="0.043943" id="Prj-QM-tyb"/>
                             <constraint firstItem="ovm-b1-ezV" firstAttribute="top" secondItem="IIk-PH-Lm7" secondAttribute="top" id="bed-0H-xeu"/>
+                            <constraint firstItem="pps-El-DqR" firstAttribute="height" secondItem="IIk-PH-Lm7" secondAttribute="height" multiplier="0.043943" id="iBz-nP-ax8"/>
                             <constraint firstItem="U6S-2f-EMR" firstAttribute="bottom" secondItem="ovm-b1-ezV" secondAttribute="bottom" id="jQa-b4-7iv"/>
                             <constraint firstItem="U6S-2f-EMR" firstAttribute="trailing" secondItem="ovm-b1-ezV" secondAttribute="trailing" id="uYs-uM-KnJ"/>
                             <constraint firstItem="ovm-b1-ezV" firstAttribute="leading" secondItem="U6S-2f-EMR" secondAttribute="leading" id="uge-Bq-daL"/>
@@ -1444,7 +1451,7 @@
         <!--Initial View Controller-->
         <scene sceneID="TMC-CP-X7R">
             <objects>
-                <viewController id="x4L-92-WxS" customClass="InitialViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x4L-92-WxS" customClass="InitialViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t3m-qV-lfB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1478,7 +1485,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-yw-gPN">
-                                <rect key="frame" x="378" y="104" width="20" height="22"/>
+                                <rect key="frame" x="366" y="104" width="32" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ShJ-QS-yY6"/>
+                                    <constraint firstAttribute="width" secondItem="rD6-yw-gPN" secondAttribute="height" multiplier="10:11" id="heS-of-t9F"/>
+                                </constraints>
                                 <color key="tintColor" name="Amarelo"/>
                                 <state key="normal" image="questionmark.circle.fill" catalog="system"/>
                                 <connections>
@@ -1570,7 +1581,7 @@
         <!--Select Room View Controller-->
         <scene sceneID="aoM-Ma-lO8">
             <objects>
-                <viewController id="q50-Cc-qlk" customClass="SelectRoomViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q50-Cc-qlk" customClass="SelectRoomViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mvy-hZ-cWp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1630,7 +1641,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8T-iw-BYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="UGU-EY-ccW" customClass="RoundView" customModule="Mime_Game" customModuleProvider="target">
+                <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="UGU-EY-ccW" customClass="RoundView" customModule="HandsUP" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="100" height="24"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="200 Pontos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMR-aj-ydo">
@@ -1666,7 +1677,7 @@
         <!--Setup Room View Controller-->
         <scene sceneID="arV-2d-BS1">
             <objects>
-                <viewController id="dUq-V7-mMH" customClass="SetupRoomViewController" customModule="Mime_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dUq-V7-mMH" customClass="SetupRoomViewController" customModule="HandsUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dbe-Cw-2yk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
